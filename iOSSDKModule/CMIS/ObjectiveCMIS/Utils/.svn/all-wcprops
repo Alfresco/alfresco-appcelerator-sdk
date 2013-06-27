@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/asf/!svn/ver/1483747/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils
+END
+CMISFileUtil.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/asf/!svn/ver/1448154/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISFileUtil.h
+END
+CMISDefaultNetworkProvider.m
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/asf/!svn/ver/1483738/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISDefaultNetworkProvider.m
+END
+CMISHttpDownloadRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/repos/asf/!svn/ver/1483738/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISHttpDownloadRequest.h
+END
+CMISDateUtil.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/asf/!svn/ver/1455067/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISDateUtil.m
+END
+CMISLog.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/asf/!svn/ver/1447948/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISLog.h
+END
+CMISFileUtil.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/asf/!svn/ver/1448154/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISFileUtil.m
+END
+CMISBase64Encoder.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/asf/!svn/ver/1445217/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISBase64Encoder.h
+END
+CMISHttpDownloadRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/repos/asf/!svn/ver/1483738/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISHttpDownloadRequest.m
+END
+CMISLog.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/asf/!svn/ver/1449287/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISLog.m
+END
+CMISStringInOutParameter.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/asf/!svn/ver/1426154/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISStringInOutParameter.h
+END
+CMISHttpRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/asf/!svn/ver/1483738/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISHttpRequest.h
+END
+CMISBase64Encoder.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/asf/!svn/ver/1477571/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISBase64Encoder.m
+END
+CMISStringInOutParameter.m
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/asf/!svn/ver/1444698/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISStringInOutParameter.m
+END
+CMISHttpUploadRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/asf/!svn/ver/1483738/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISHttpUploadRequest.h
+END
+CMISHttpRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/asf/!svn/ver/1483747/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISHttpRequest.m
+END
+CMISHttpResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/asf/!svn/ver/1448154/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISHttpResponse.h
+END
+CMISObjectConverter.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/repos/asf/!svn/ver/1426154/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISObjectConverter.h
+END
+CMISURLUtil.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/repos/asf/!svn/ver/1445217/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISURLUtil.h
+END
+CMISHttpUploadRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/asf/!svn/ver/1483738/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISHttpUploadRequest.m
+END
+CMISHttpResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/asf/!svn/ver/1445217/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISHttpResponse.m
+END
+CMISObjectConverter.m
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/repos/asf/!svn/ver/1445217/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISObjectConverter.m
+END
+CMISURLUtil.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/repos/asf/!svn/ver/1477571/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISURLUtil.m
+END
+CMISDefaultNetworkProvider.h
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/asf/!svn/ver/1443899/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISDefaultNetworkProvider.h
+END
+CMISDateUtil.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/asf/!svn/ver/1448154/chemistry/objectivecmis/trunk/ObjectiveCMIS/Utils/CMISDateUtil.h
+END

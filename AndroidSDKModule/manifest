@@ -1,0 +1,16 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0
+apiversion: 2
+description: AndroidSDKModule
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2012 by Your Company
+
+# these should not be edited
+name: AndroidSDKModule
+moduleid: com.alfresco.appcelerator.module.android.sdk
+guid: 8ae6d2a8-6f14-48a1-a569-65459235d230
+platforms: android
