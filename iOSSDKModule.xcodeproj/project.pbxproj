@@ -1,0 +1,1916 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		24416B8111C4CA220047AFDD /* Build & Test */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 24416B8A11C4CA520047AFDD /* Build configuration list for PBXAggregateTarget "Build & Test" */;
+			buildPhases = (
+				24416B8011C4CA220047AFDD /* ShellScript */,
+			);
+			dependencies = (
+				24416B8511C4CA280047AFDD /* PBXTargetDependency */,
+			);
+			name = "Build & Test";
+			productName = "Build & test";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		05666AC6176F1340005807F3 /* ComAlfrescoAppceleratorIosSdkFolderProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05666AC4176F1340005807F3 /* ComAlfrescoAppceleratorIosSdkFolderProxy.h */; };
+		05666AC7176F1340005807F3 /* ComAlfrescoAppceleratorIosSdkDocumentProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05666AC5176F1340005807F3 /* ComAlfrescoAppceleratorIosSdkDocumentProxy.m */; };
+		05666AD217721160005807F3 /* ComAlfrescoAppceleratorIosSdkFolderProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05666AD11772112A005807F3 /* ComAlfrescoAppceleratorIosSdkFolderProxy.m */; };
+		05666AD317721169005807F3 /* ComAlfrescoAppceleratorIosSdkDocumentProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05666AD017720FC5005807F3 /* ComAlfrescoAppceleratorIosSdkDocumentProxy.h */; };
+		05AFDCBE175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05AFDCB2175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.h */; };
+		05AFDCBF175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDCB3175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.m */; };
+		05AFDCC0175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05AFDCB4175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.h */; };
+		05AFDCC1175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDCB5175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.m */; };
+		05AFDCC2175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRequestProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05AFDCB6175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRequestProxy.h */; };
+		05AFDCC3175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRequestProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDCB7175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRequestProxy.m */; };
+		05AFDCC6175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05AFDCBA175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.h */; };
+		05AFDCC7175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDCBB175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.m */; };
+		05AFDCC8175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05AFDCBC175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionProxy.h */; };
+		05AFDCC9175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDCBD175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionProxy.m */; };
+		05EF9A41176883650047F36D /* AlfrescoCMISDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF98F2176883650047F36D /* AlfrescoCMISDocument.h */; };
+		05EF9A42176883650047F36D /* AlfrescoCMISDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF98F3176883650047F36D /* AlfrescoCMISDocument.m */; };
+		05EF9A43176883650047F36D /* AlfrescoCMISFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF98F4176883650047F36D /* AlfrescoCMISFolder.h */; };
+		05EF9A44176883650047F36D /* AlfrescoCMISFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF98F5176883650047F36D /* AlfrescoCMISFolder.m */; };
+		05EF9A45176883650047F36D /* AlfrescoCMISObjectConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF98F6176883650047F36D /* AlfrescoCMISObjectConverter.h */; };
+		05EF9A46176883650047F36D /* AlfrescoCMISObjectConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF98F7176883650047F36D /* AlfrescoCMISObjectConverter.m */; };
+		05EF9A47176883650047F36D /* AlfrescoCMISUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF98F8176883650047F36D /* AlfrescoCMISUtil.h */; };
+		05EF9A48176883650047F36D /* AlfrescoCMISUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF98F9176883650047F36D /* AlfrescoCMISUtil.m */; };
+		05EF9A49176883650047F36D /* CMISAllowableActionsParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF98FE176883650047F36D /* CMISAllowableActionsParser.h */; };
+		05EF9A4A176883650047F36D /* CMISAllowableActionsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF98FF176883650047F36D /* CMISAllowableActionsParser.m */; };
+		05EF9A4B176883650047F36D /* CMISAtomEntryParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9900176883650047F36D /* CMISAtomEntryParser.h */; };
+		05EF9A4C176883650047F36D /* CMISAtomEntryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9901176883650047F36D /* CMISAtomEntryParser.m */; };
+		05EF9A4D176883650047F36D /* CMISAtomEntryWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9902176883650047F36D /* CMISAtomEntryWriter.h */; };
+		05EF9A4E176883650047F36D /* CMISAtomEntryWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9903176883650047F36D /* CMISAtomEntryWriter.m */; };
+		05EF9A4F176883650047F36D /* CMISAtomFeedParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9904176883650047F36D /* CMISAtomFeedParser.h */; };
+		05EF9A50176883650047F36D /* CMISAtomFeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9905176883650047F36D /* CMISAtomFeedParser.m */; };
+		05EF9A51176883650047F36D /* CMISAtomParserUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9906176883650047F36D /* CMISAtomParserUtil.h */; };
+		05EF9A52176883650047F36D /* CMISAtomParserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9907176883650047F36D /* CMISAtomParserUtil.m */; };
+		05EF9A53176883650047F36D /* CMISAtomPubConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9908176883650047F36D /* CMISAtomPubConstants.h */; };
+		05EF9A54176883650047F36D /* CMISAtomPubConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9909176883650047F36D /* CMISAtomPubConstants.m */; };
+		05EF9A55176883650047F36D /* CMISAtomPubExtensionDataParserBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF990A176883650047F36D /* CMISAtomPubExtensionDataParserBase.h */; };
+		05EF9A56176883650047F36D /* CMISAtomPubExtensionDataParserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF990B176883650047F36D /* CMISAtomPubExtensionDataParserBase.m */; };
+		05EF9A57176883650047F36D /* CMISAtomPubExtensionElementParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF990C176883650047F36D /* CMISAtomPubExtensionElementParser.h */; };
+		05EF9A58176883650047F36D /* CMISAtomPubExtensionElementParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF990D176883650047F36D /* CMISAtomPubExtensionElementParser.m */; };
+		05EF9A59176883650047F36D /* CMISPropertyDefinitionParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF990E176883650047F36D /* CMISPropertyDefinitionParser.h */; };
+		05EF9A5A176883650047F36D /* CMISPropertyDefinitionParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF990F176883650047F36D /* CMISPropertyDefinitionParser.m */; };
+		05EF9A5B176883650047F36D /* CMISRepositoryInfoParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9910176883650047F36D /* CMISRepositoryInfoParser.h */; };
+		05EF9A5C176883650047F36D /* CMISRepositoryInfoParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9911176883650047F36D /* CMISRepositoryInfoParser.m */; };
+		05EF9A5D176883650047F36D /* CMISServiceDocumentParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9912176883650047F36D /* CMISServiceDocumentParser.h */; };
+		05EF9A5E176883650047F36D /* CMISServiceDocumentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9913176883650047F36D /* CMISServiceDocumentParser.m */; };
+		05EF9A5F176883650047F36D /* CMISTypeDefinitionAtomEntryParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9914176883650047F36D /* CMISTypeDefinitionAtomEntryParser.h */; };
+		05EF9A60176883650047F36D /* CMISTypeDefinitionAtomEntryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9915176883650047F36D /* CMISTypeDefinitionAtomEntryParser.m */; };
+		05EF9A61176883650047F36D /* CMISAtomPubBaseService+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9916176883650047F36D /* CMISAtomPubBaseService+Protected.h */; };
+		05EF9A62176883650047F36D /* CMISAtomPubBaseService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9917176883650047F36D /* CMISAtomPubBaseService.h */; };
+		05EF9A63176883650047F36D /* CMISAtomPubBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9918176883650047F36D /* CMISAtomPubBaseService.m */; };
+		05EF9A64176883650047F36D /* CMISAtomPubBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9919176883650047F36D /* CMISAtomPubBinding.h */; };
+		05EF9A65176883650047F36D /* CMISAtomPubBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF991A176883650047F36D /* CMISAtomPubBinding.m */; };
+		05EF9A66176883650047F36D /* CMISAtomPubDiscoveryService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF991B176883650047F36D /* CMISAtomPubDiscoveryService.h */; };
+		05EF9A67176883650047F36D /* CMISAtomPubDiscoveryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF991C176883650047F36D /* CMISAtomPubDiscoveryService.m */; };
+		05EF9A68176883650047F36D /* CMISAtomPubNavigationService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF991D176883650047F36D /* CMISAtomPubNavigationService.h */; };
+		05EF9A69176883650047F36D /* CMISAtomPubNavigationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF991E176883650047F36D /* CMISAtomPubNavigationService.m */; };
+		05EF9A6A176883650047F36D /* CMISAtomPubObjectService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF991F176883650047F36D /* CMISAtomPubObjectService.h */; };
+		05EF9A6B176883650047F36D /* CMISAtomPubObjectService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9920176883650047F36D /* CMISAtomPubObjectService.m */; };
+		05EF9A6C176883650047F36D /* CMISAtomPubRepositoryService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9921176883650047F36D /* CMISAtomPubRepositoryService.h */; };
+		05EF9A6D176883650047F36D /* CMISAtomPubRepositoryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9922176883650047F36D /* CMISAtomPubRepositoryService.m */; };
+		05EF9A6E176883650047F36D /* CMISAtomPubVersioningService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9923176883650047F36D /* CMISAtomPubVersioningService.h */; };
+		05EF9A6F176883650047F36D /* CMISAtomPubVersioningService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9924176883650047F36D /* CMISAtomPubVersioningService.m */; };
+		05EF9A70176883650047F36D /* CMISObjectByIdUriBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9925176883650047F36D /* CMISObjectByIdUriBuilder.h */; };
+		05EF9A71176883650047F36D /* CMISObjectByIdUriBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9926176883650047F36D /* CMISObjectByIdUriBuilder.m */; };
+		05EF9A72176883650047F36D /* CMISObjectByPathUriBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9927176883650047F36D /* CMISObjectByPathUriBuilder.h */; };
+		05EF9A73176883650047F36D /* CMISObjectByPathUriBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9928176883650047F36D /* CMISObjectByPathUriBuilder.m */; };
+		05EF9A74176883650047F36D /* CMISQueryAtomEntryWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9929176883650047F36D /* CMISQueryAtomEntryWriter.h */; };
+		05EF9A75176883650047F36D /* CMISQueryAtomEntryWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF992A176883650047F36D /* CMISQueryAtomEntryWriter.m */; };
+		05EF9A76176883650047F36D /* CMISTypeByIdUriBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF992B176883650047F36D /* CMISTypeByIdUriBuilder.h */; };
+		05EF9A77176883650047F36D /* CMISTypeByIdUriBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF992C176883650047F36D /* CMISTypeByIdUriBuilder.m */; };
+		05EF9A78176883650047F36D /* CMISAtomCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF992E176883650047F36D /* CMISAtomCollection.h */; };
+		05EF9A79176883650047F36D /* CMISAtomCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF992F176883650047F36D /* CMISAtomCollection.m */; };
+		05EF9A7A176883650047F36D /* CMISAtomLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9930176883650047F36D /* CMISAtomLink.h */; };
+		05EF9A7B176883650047F36D /* CMISAtomLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9931176883650047F36D /* CMISAtomLink.m */; };
+		05EF9A7C176883650047F36D /* CMISLinkRelations.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9932176883650047F36D /* CMISLinkRelations.h */; };
+		05EF9A7D176883650047F36D /* CMISLinkRelations.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9933176883650047F36D /* CMISLinkRelations.m */; };
+		05EF9A7E176883650047F36D /* CMISWorkspace.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9934176883650047F36D /* CMISWorkspace.h */; };
+		05EF9A7F176883650047F36D /* CMISWorkspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9935176883650047F36D /* CMISWorkspace.m */; };
+		05EF9A80176883650047F36D /* CMISAclService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9936176883650047F36D /* CMISAclService.h */; };
+		05EF9A81176883650047F36D /* CMISBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9937176883650047F36D /* CMISBinding.h */; };
+		05EF9A82176883650047F36D /* CMISBindingFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9938176883650047F36D /* CMISBindingFactory.h */; };
+		05EF9A83176883650047F36D /* CMISBindingFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9939176883650047F36D /* CMISBindingFactory.m */; };
+		05EF9A84176883650047F36D /* CMISBindingSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF993A176883650047F36D /* CMISBindingSession.h */; };
+		05EF9A85176883650047F36D /* CMISBindingSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF993B176883650047F36D /* CMISBindingSession.m */; };
+		05EF9A86176883650047F36D /* CMISDiscoveryService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF993C176883650047F36D /* CMISDiscoveryService.h */; };
+		05EF9A87176883650047F36D /* CMISLinkCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF993D176883650047F36D /* CMISLinkCache.h */; };
+		05EF9A88176883650047F36D /* CMISLinkCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF993E176883650047F36D /* CMISLinkCache.m */; };
+		05EF9A89176883650047F36D /* CMISMultiFilingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF993F176883650047F36D /* CMISMultiFilingService.h */; };
+		05EF9A8A176883650047F36D /* CMISNavigationService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9940176883650047F36D /* CMISNavigationService.h */; };
+		05EF9A8B176883650047F36D /* CMISObjectList.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9941176883650047F36D /* CMISObjectList.h */; };
+		05EF9A8C176883650047F36D /* CMISObjectList.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9942176883650047F36D /* CMISObjectList.m */; };
+		05EF9A8D176883650047F36D /* CMISObjectService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9943176883650047F36D /* CMISObjectService.h */; };
+		05EF9A8E176883650047F36D /* CMISPolicyService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9944176883650047F36D /* CMISPolicyService.h */; };
+		05EF9A8F176883650047F36D /* CMISPropertyDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9945176883650047F36D /* CMISPropertyDefinition.h */; };
+		05EF9A90176883650047F36D /* CMISPropertyDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9946176883650047F36D /* CMISPropertyDefinition.m */; };
+		05EF9A91176883650047F36D /* CMISQueryResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9947176883650047F36D /* CMISQueryResult.h */; };
+		05EF9A92176883650047F36D /* CMISQueryResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9948176883650047F36D /* CMISQueryResult.m */; };
+		05EF9A93176883650047F36D /* CMISRelationshipService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9949176883650047F36D /* CMISRelationshipService.h */; };
+		05EF9A94176883650047F36D /* CMISRenditionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF994A176883650047F36D /* CMISRenditionData.h */; };
+		05EF9A95176883650047F36D /* CMISRenditionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF994B176883650047F36D /* CMISRenditionData.m */; };
+		05EF9A96176883650047F36D /* CMISRepositoryService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF994C176883650047F36D /* CMISRepositoryService.h */; };
+		05EF9A97176883650047F36D /* CMISTypeDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF994D176883650047F36D /* CMISTypeDefinition.h */; };
+		05EF9A98176883650047F36D /* CMISTypeDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF994E176883650047F36D /* CMISTypeDefinition.m */; };
+		05EF9A99176883650047F36D /* CMISVersioningService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF994F176883650047F36D /* CMISVersioningService.h */; };
+		05EF9A9A176883650047F36D /* CMISCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9951176883650047F36D /* CMISCollection.h */; };
+		05EF9A9B176883650047F36D /* CMISCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9952176883650047F36D /* CMISCollection.m */; };
+		05EF9A9C176883650047F36D /* CMISDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9953176883650047F36D /* CMISDocument.h */; };
+		05EF9A9D176883650047F36D /* CMISDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9954176883650047F36D /* CMISDocument.m */; };
+		05EF9A9E176883650047F36D /* CMISFileableObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9955176883650047F36D /* CMISFileableObject.h */; };
+		05EF9A9F176883650047F36D /* CMISFileableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9956176883650047F36D /* CMISFileableObject.m */; };
+		05EF9AA0176883650047F36D /* CMISFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9957176883650047F36D /* CMISFolder.h */; };
+		05EF9AA1176883650047F36D /* CMISFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9958176883650047F36D /* CMISFolder.m */; };
+		05EF9AA2176883650047F36D /* CMISObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9959176883650047F36D /* CMISObject.h */; };
+		05EF9AA3176883650047F36D /* CMISObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF995A176883650047F36D /* CMISObject.m */; };
+		05EF9AA4176883650047F36D /* CMISObjectId.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF995B176883650047F36D /* CMISObjectId.h */; };
+		05EF9AA5176883650047F36D /* CMISObjectId.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF995C176883650047F36D /* CMISObjectId.m */; };
+		05EF9AA6176883650047F36D /* CMISOperationContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF995D176883650047F36D /* CMISOperationContext.h */; };
+		05EF9AA7176883650047F36D /* CMISOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF995E176883650047F36D /* CMISOperationContext.m */; };
+		05EF9AA8176883650047F36D /* CMISPagedResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF995F176883650047F36D /* CMISPagedResult.h */; };
+		05EF9AA9176883650047F36D /* CMISPagedResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9960176883650047F36D /* CMISPagedResult.m */; };
+		05EF9AAA176883650047F36D /* CMISRendition.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9961176883650047F36D /* CMISRendition.h */; };
+		05EF9AAB176883650047F36D /* CMISRendition.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9962176883650047F36D /* CMISRendition.m */; };
+		05EF9AAC176883650047F36D /* CMISRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9963176883650047F36D /* CMISRequest.h */; };
+		05EF9AAD176883650047F36D /* CMISRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9964176883650047F36D /* CMISRequest.m */; };
+		05EF9AAE176883650047F36D /* CMISSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9965176883650047F36D /* CMISSession.h */; };
+		05EF9AAF176883650047F36D /* CMISSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9966176883650047F36D /* CMISSession.m */; };
+		05EF9AB0176883650047F36D /* CMISAllowableActions.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9968176883650047F36D /* CMISAllowableActions.h */; };
+		05EF9AB1176883650047F36D /* CMISAllowableActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9969176883650047F36D /* CMISAllowableActions.m */; };
+		05EF9AB2176883650047F36D /* CMISAuthenticationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF996A176883650047F36D /* CMISAuthenticationProvider.h */; };
+		05EF9AB3176883650047F36D /* CMISConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF996B176883650047F36D /* CMISConstants.h */; };
+		05EF9AB4176883650047F36D /* CMISConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF996C176883650047F36D /* CMISConstants.m */; };
+		05EF9AB5176883650047F36D /* CMISEnums.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF996D176883650047F36D /* CMISEnums.h */; };
+		05EF9AB6176883650047F36D /* CMISEnums.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF996E176883650047F36D /* CMISEnums.m */; };
+		05EF9AB7176883650047F36D /* CMISErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF996F176883650047F36D /* CMISErrors.h */; };
+		05EF9AB8176883650047F36D /* CMISErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9970176883650047F36D /* CMISErrors.m */; };
+		05EF9AB9176883650047F36D /* CMISExtensionData.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9971176883650047F36D /* CMISExtensionData.h */; };
+		05EF9ABA176883650047F36D /* CMISExtensionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9972176883650047F36D /* CMISExtensionData.m */; };
+		05EF9ABB176883650047F36D /* CMISExtensionElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9973176883650047F36D /* CMISExtensionElement.h */; };
+		05EF9ABC176883650047F36D /* CMISExtensionElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9974176883650047F36D /* CMISExtensionElement.m */; };
+		05EF9ABD176883650047F36D /* CMISNetworkProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9975176883650047F36D /* CMISNetworkProvider.h */; };
+		05EF9ABE176883650047F36D /* CMISObjectData.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9976176883650047F36D /* CMISObjectData.h */; };
+		05EF9ABF176883650047F36D /* CMISObjectData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9977176883650047F36D /* CMISObjectData.m */; };
+		05EF9AC0176883650047F36D /* CMISProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9978176883650047F36D /* CMISProperties.h */; };
+		05EF9AC1176883650047F36D /* CMISProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9979176883650047F36D /* CMISProperties.m */; };
+		05EF9AC2176883650047F36D /* CMISPropertyData.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF997A176883650047F36D /* CMISPropertyData.h */; };
+		05EF9AC3176883650047F36D /* CMISPropertyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF997B176883650047F36D /* CMISPropertyData.m */; };
+		05EF9AC4176883650047F36D /* CMISRepositoryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF997C176883650047F36D /* CMISRepositoryInfo.h */; };
+		05EF9AC5176883650047F36D /* CMISRepositoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF997D176883650047F36D /* CMISRepositoryInfo.m */; };
+		05EF9AC6176883650047F36D /* CMISSessionParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF997E176883650047F36D /* CMISSessionParameters.h */; };
+		05EF9AC7176883650047F36D /* CMISSessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF997F176883650047F36D /* CMISSessionParameters.m */; };
+		05EF9AC8176883650047F36D /* CMISStandardAuthenticationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9980176883650047F36D /* CMISStandardAuthenticationProvider.h */; };
+		05EF9AC9176883650047F36D /* CMISStandardAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9981176883650047F36D /* CMISStandardAuthenticationProvider.m */; };
+		05EF9ACA176883650047F36D /* ObjectiveCMIS-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9982176883650047F36D /* ObjectiveCMIS-Prefix.pch */; };
+		05EF9ACB176883650047F36D /* CMISBase64Encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9984176883650047F36D /* CMISBase64Encoder.h */; };
+		05EF9ACC176883650047F36D /* CMISBase64Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9985176883650047F36D /* CMISBase64Encoder.m */; };
+		05EF9ACD176883650047F36D /* CMISDateUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9986176883650047F36D /* CMISDateUtil.h */; };
+		05EF9ACE176883650047F36D /* CMISDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9987176883650047F36D /* CMISDateUtil.m */; };
+		05EF9ACF176883650047F36D /* CMISDefaultNetworkProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9988176883650047F36D /* CMISDefaultNetworkProvider.h */; };
+		05EF9AD0176883650047F36D /* CMISDefaultNetworkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9989176883650047F36D /* CMISDefaultNetworkProvider.m */; };
+		05EF9AD1176883650047F36D /* CMISFileUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF998A176883650047F36D /* CMISFileUtil.h */; };
+		05EF9AD2176883650047F36D /* CMISFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF998B176883650047F36D /* CMISFileUtil.m */; };
+		05EF9AD3176883650047F36D /* CMISHttpDownloadRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF998C176883650047F36D /* CMISHttpDownloadRequest.h */; };
+		05EF9AD4176883650047F36D /* CMISHttpDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF998D176883650047F36D /* CMISHttpDownloadRequest.m */; };
+		05EF9AD5176883650047F36D /* CMISHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF998E176883650047F36D /* CMISHttpRequest.h */; };
+		05EF9AD6176883650047F36D /* CMISHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF998F176883650047F36D /* CMISHttpRequest.m */; };
+		05EF9AD7176883650047F36D /* CMISHttpResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9990176883650047F36D /* CMISHttpResponse.h */; };
+		05EF9AD8176883650047F36D /* CMISHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9991176883650047F36D /* CMISHttpResponse.m */; };
+		05EF9AD9176883650047F36D /* CMISHttpUploadRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9992176883650047F36D /* CMISHttpUploadRequest.h */; };
+		05EF9ADA176883650047F36D /* CMISHttpUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9993176883650047F36D /* CMISHttpUploadRequest.m */; };
+		05EF9ADB176883650047F36D /* CMISLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9994176883650047F36D /* CMISLog.h */; };
+		05EF9ADC176883650047F36D /* CMISLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9995176883650047F36D /* CMISLog.m */; };
+		05EF9ADD176883650047F36D /* CMISObjectConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9996176883650047F36D /* CMISObjectConverter.h */; };
+		05EF9ADE176883650047F36D /* CMISObjectConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9997176883650047F36D /* CMISObjectConverter.m */; };
+		05EF9ADF176883650047F36D /* CMISStringInOutParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9998176883650047F36D /* CMISStringInOutParameter.h */; };
+		05EF9AE0176883650047F36D /* CMISStringInOutParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9999176883650047F36D /* CMISStringInOutParameter.m */; };
+		05EF9AE1176883650047F36D /* CMISURLUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF999A176883650047F36D /* CMISURLUtil.h */; };
+		05EF9AE2176883650047F36D /* CMISURLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF999B176883650047F36D /* CMISURLUtil.m */; };
+		05EF9AE3176883650047F36D /* AlfrescoSDK-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 05EF999D176883650047F36D /* AlfrescoSDK-Prefix.pch */; };
+		05EF9AE4176883650047F36D /* AlfrescoConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF999F176883650047F36D /* AlfrescoConstants.h */; };
+		05EF9AE5176883650047F36D /* AlfrescoConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99A0176883650047F36D /* AlfrescoConstants.m */; };
+		05EF9AE6176883650047F36D /* AlfrescoErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99A1176883650047F36D /* AlfrescoErrors.h */; };
+		05EF9AE7176883650047F36D /* AlfrescoErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99A2176883650047F36D /* AlfrescoErrors.m */; };
+		05EF9AE8176883650047F36D /* AlfrescoInternalConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99A3176883650047F36D /* AlfrescoInternalConstants.h */; };
+		05EF9AE9176883650047F36D /* AlfrescoInternalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99A4176883650047F36D /* AlfrescoInternalConstants.m */; };
+		05EF9AEA176883650047F36D /* AlfrescoDefaultFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99A6176883650047F36D /* AlfrescoDefaultFileManager.h */; };
+		05EF9AEB176883650047F36D /* AlfrescoDefaultFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99A7176883650047F36D /* AlfrescoDefaultFileManager.m */; };
+		05EF9AEC176883650047F36D /* AlfrescoFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99A8176883650047F36D /* AlfrescoFileManager.h */; };
+		05EF9AED176883650047F36D /* AlfrescoFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99A9176883650047F36D /* AlfrescoFileManager.m */; };
+		05EF9AEE176883650047F36D /* AlfrescoPlaceholderFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99AA176883650047F36D /* AlfrescoPlaceholderFileManager.h */; };
+		05EF9AEF176883650047F36D /* AlfrescoPlaceholderFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99AB176883650047F36D /* AlfrescoPlaceholderFileManager.m */; };
+		05EF9AF0176883650047F36D /* AlfrescoActivityEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99AD176883650047F36D /* AlfrescoActivityEntry.h */; };
+		05EF9AF1176883650047F36D /* AlfrescoActivityEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99AE176883650047F36D /* AlfrescoActivityEntry.m */; };
+		05EF9AF2176883650047F36D /* AlfrescoComment.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99AF176883650047F36D /* AlfrescoComment.h */; };
+		05EF9AF3176883650047F36D /* AlfrescoComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99B0176883650047F36D /* AlfrescoComment.m */; };
+		05EF9AF4176883650047F36D /* AlfrescoContent.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99B1176883650047F36D /* AlfrescoContent.h */; };
+		05EF9AF5176883650047F36D /* AlfrescoContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99B2176883650047F36D /* AlfrescoContent.m */; };
+		05EF9AF6176883650047F36D /* AlfrescoContentFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99B3176883650047F36D /* AlfrescoContentFile.h */; };
+		05EF9AF7176883650047F36D /* AlfrescoContentFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99B4176883650047F36D /* AlfrescoContentFile.m */; };
+		05EF9AF8176883650047F36D /* AlfrescoContentStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99B5176883650047F36D /* AlfrescoContentStream.h */; };
+		05EF9AF9176883650047F36D /* AlfrescoContentStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99B6176883650047F36D /* AlfrescoContentStream.m */; };
+		05EF9AFA176883650047F36D /* AlfrescoDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99B7176883650047F36D /* AlfrescoDocument.h */; };
+		05EF9AFB176883650047F36D /* AlfrescoDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99B8176883650047F36D /* AlfrescoDocument.m */; };
+		05EF9AFC176883650047F36D /* AlfrescoFolder.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99B9176883650047F36D /* AlfrescoFolder.h */; };
+		05EF9AFD176883650047F36D /* AlfrescoFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99BA176883650047F36D /* AlfrescoFolder.m */; };
+		05EF9AFE176883650047F36D /* AlfrescoKeywordSearchOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99BB176883650047F36D /* AlfrescoKeywordSearchOptions.h */; };
+		05EF9AFF176883650047F36D /* AlfrescoKeywordSearchOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99BC176883650047F36D /* AlfrescoKeywordSearchOptions.m */; };
+		05EF9B00176883650047F36D /* AlfrescoListingContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99BD176883650047F36D /* AlfrescoListingContext.h */; };
+		05EF9B01176883650047F36D /* AlfrescoListingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99BE176883650047F36D /* AlfrescoListingContext.m */; };
+		05EF9B02176883650047F36D /* AlfrescoNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99BF176883650047F36D /* AlfrescoNode.h */; };
+		05EF9B03176883650047F36D /* AlfrescoNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99C0176883650047F36D /* AlfrescoNode.m */; };
+		05EF9B04176883650047F36D /* AlfrescoPagingResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99C1176883650047F36D /* AlfrescoPagingResult.h */; };
+		05EF9B05176883650047F36D /* AlfrescoPagingResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99C2176883650047F36D /* AlfrescoPagingResult.m */; };
+		05EF9B06176883650047F36D /* AlfrescoPermissions.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99C3176883650047F36D /* AlfrescoPermissions.h */; };
+		05EF9B07176883650047F36D /* AlfrescoPermissions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99C4176883650047F36D /* AlfrescoPermissions.m */; };
+		05EF9B08176883650047F36D /* AlfrescoPerson.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99C5176883650047F36D /* AlfrescoPerson.h */; };
+		05EF9B09176883650047F36D /* AlfrescoPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99C6176883650047F36D /* AlfrescoPerson.m */; };
+		05EF9B0A176883650047F36D /* AlfrescoProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99C7176883650047F36D /* AlfrescoProperty.h */; };
+		05EF9B0B176883650047F36D /* AlfrescoProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99C8176883650047F36D /* AlfrescoProperty.m */; };
+		05EF9B0C176883650047F36D /* AlfrescoRepositoryCapabilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99C9176883650047F36D /* AlfrescoRepositoryCapabilities.h */; };
+		05EF9B0D176883650047F36D /* AlfrescoRepositoryCapabilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99CA176883650047F36D /* AlfrescoRepositoryCapabilities.m */; };
+		05EF9B0E176883650047F36D /* AlfrescoRepositoryInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99CB176883650047F36D /* AlfrescoRepositoryInfo.h */; };
+		05EF9B0F176883650047F36D /* AlfrescoRepositoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99CC176883650047F36D /* AlfrescoRepositoryInfo.m */; };
+		05EF9B10176883650047F36D /* AlfrescoSearchLanguage.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99CD176883650047F36D /* AlfrescoSearchLanguage.h */; };
+		05EF9B11176883650047F36D /* AlfrescoSite.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99CE176883650047F36D /* AlfrescoSite.h */; };
+		05EF9B12176883650047F36D /* AlfrescoSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99CF176883650047F36D /* AlfrescoSite.m */; };
+		05EF9B13176883650047F36D /* AlfrescoTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99D0176883650047F36D /* AlfrescoTag.h */; };
+		05EF9B14176883650047F36D /* AlfrescoTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99D1176883650047F36D /* AlfrescoTag.m */; };
+		05EF9B15176883650047F36D /* AlfrescoActivityStreamService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99D3176883650047F36D /* AlfrescoActivityStreamService.h */; };
+		05EF9B16176883650047F36D /* AlfrescoActivityStreamService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99D4176883650047F36D /* AlfrescoActivityStreamService.m */; };
+		05EF9B17176883650047F36D /* AlfrescoCommentService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99D5176883650047F36D /* AlfrescoCommentService.h */; };
+		05EF9B18176883650047F36D /* AlfrescoCommentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99D6176883650047F36D /* AlfrescoCommentService.m */; };
+		05EF9B19176883650047F36D /* AlfrescoDocumentFolderService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99D7176883650047F36D /* AlfrescoDocumentFolderService.h */; };
+		05EF9B1A176883650047F36D /* AlfrescoDocumentFolderService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99D8176883650047F36D /* AlfrescoDocumentFolderService.m */; };
+		05EF9B1B176883650047F36D /* AlfrescoPersonService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99D9176883650047F36D /* AlfrescoPersonService.h */; };
+		05EF9B1C176883650047F36D /* AlfrescoPersonService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99DA176883650047F36D /* AlfrescoPersonService.m */; };
+		05EF9B1D176883650047F36D /* AlfrescoRatingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99DB176883650047F36D /* AlfrescoRatingService.h */; };
+		05EF9B1E176883650047F36D /* AlfrescoRatingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99DC176883650047F36D /* AlfrescoRatingService.m */; };
+		05EF9B1F176883650047F36D /* AlfrescoSearchService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99DD176883650047F36D /* AlfrescoSearchService.h */; };
+		05EF9B20176883650047F36D /* AlfrescoSearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99DE176883650047F36D /* AlfrescoSearchService.m */; };
+		05EF9B21176883650047F36D /* AlfrescoSiteService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99DF176883650047F36D /* AlfrescoSiteService.h */; };
+		05EF9B22176883650047F36D /* AlfrescoSiteService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99E0176883650047F36D /* AlfrescoSiteService.m */; };
+		05EF9B23176883650047F36D /* AlfrescoTaggingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99E1176883650047F36D /* AlfrescoTaggingService.h */; };
+		05EF9B24176883650047F36D /* AlfrescoTaggingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99E2176883650047F36D /* AlfrescoTaggingService.m */; };
+		05EF9B25176883650047F36D /* AlfrescoVersionService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99E3176883650047F36D /* AlfrescoVersionService.h */; };
+		05EF9B26176883650047F36D /* AlfrescoVersionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99E4176883650047F36D /* AlfrescoVersionService.m */; };
+		05EF9B27176883650047F36D /* AlfrescoCloudActivityStreamService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99E6176883650047F36D /* AlfrescoCloudActivityStreamService.h */; };
+		05EF9B28176883650047F36D /* AlfrescoCloudActivityStreamService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99E7176883650047F36D /* AlfrescoCloudActivityStreamService.m */; };
+		05EF9B29176883650047F36D /* AlfrescoCloudCommentService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99E8176883650047F36D /* AlfrescoCloudCommentService.h */; };
+		05EF9B2A176883650047F36D /* AlfrescoCloudCommentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99E9176883650047F36D /* AlfrescoCloudCommentService.m */; };
+		05EF9B2B176883650047F36D /* AlfrescoCloudDocumentFolderService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99EA176883650047F36D /* AlfrescoCloudDocumentFolderService.h */; };
+		05EF9B2C176883650047F36D /* AlfrescoCloudDocumentFolderService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99EB176883650047F36D /* AlfrescoCloudDocumentFolderService.m */; };
+		05EF9B2D176883650047F36D /* AlfrescoCloudPersonService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99EC176883650047F36D /* AlfrescoCloudPersonService.h */; };
+		05EF9B2E176883650047F36D /* AlfrescoCloudPersonService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99ED176883650047F36D /* AlfrescoCloudPersonService.m */; };
+		05EF9B2F176883650047F36D /* AlfrescoCloudRatingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99EE176883650047F36D /* AlfrescoCloudRatingService.h */; };
+		05EF9B30176883650047F36D /* AlfrescoCloudRatingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99EF176883650047F36D /* AlfrescoCloudRatingService.m */; };
+		05EF9B31176883650047F36D /* AlfrescoCloudSiteService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99F0176883650047F36D /* AlfrescoCloudSiteService.h */; };
+		05EF9B32176883650047F36D /* AlfrescoCloudSiteService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99F1176883650047F36D /* AlfrescoCloudSiteService.m */; };
+		05EF9B33176883650047F36D /* AlfrescoCloudTaggingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99F2176883650047F36D /* AlfrescoCloudTaggingService.h */; };
+		05EF9B34176883650047F36D /* AlfrescoCloudTaggingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99F3176883650047F36D /* AlfrescoCloudTaggingService.m */; };
+		05EF9B35176883650047F36D /* AlfrescoOnPremiseActivityStreamService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99F5176883650047F36D /* AlfrescoOnPremiseActivityStreamService.h */; };
+		05EF9B36176883650047F36D /* AlfrescoOnPremiseActivityStreamService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99F6176883650047F36D /* AlfrescoOnPremiseActivityStreamService.m */; };
+		05EF9B37176883650047F36D /* AlfrescoOnPremiseCommentService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99F7176883650047F36D /* AlfrescoOnPremiseCommentService.h */; };
+		05EF9B38176883650047F36D /* AlfrescoOnPremiseCommentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99F8176883650047F36D /* AlfrescoOnPremiseCommentService.m */; };
+		05EF9B39176883650047F36D /* AlfrescoOnPremiseDocumentFolderService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99F9176883650047F36D /* AlfrescoOnPremiseDocumentFolderService.h */; };
+		05EF9B3A176883650047F36D /* AlfrescoOnPremiseDocumentFolderService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99FA176883650047F36D /* AlfrescoOnPremiseDocumentFolderService.m */; };
+		05EF9B3B176883650047F36D /* AlfrescoOnPremiseJoinSiteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99FB176883650047F36D /* AlfrescoOnPremiseJoinSiteRequest.h */; };
+		05EF9B3C176883650047F36D /* AlfrescoOnPremiseJoinSiteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99FC176883650047F36D /* AlfrescoOnPremiseJoinSiteRequest.m */; };
+		05EF9B3D176883650047F36D /* AlfrescoOnPremisePersonService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99FD176883650047F36D /* AlfrescoOnPremisePersonService.h */; };
+		05EF9B3E176883650047F36D /* AlfrescoOnPremisePersonService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF99FE176883650047F36D /* AlfrescoOnPremisePersonService.m */; };
+		05EF9B3F176883650047F36D /* AlfrescoOnPremiseRatingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF99FF176883650047F36D /* AlfrescoOnPremiseRatingService.h */; };
+		05EF9B40176883650047F36D /* AlfrescoOnPremiseRatingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A00176883650047F36D /* AlfrescoOnPremiseRatingService.m */; };
+		05EF9B41176883650047F36D /* AlfrescoOnPremiseSiteService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A01176883650047F36D /* AlfrescoOnPremiseSiteService.h */; };
+		05EF9B42176883650047F36D /* AlfrescoOnPremiseSiteService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A02176883650047F36D /* AlfrescoOnPremiseSiteService.m */; };
+		05EF9B43176883650047F36D /* AlfrescoOnPremiseTaggingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A03176883650047F36D /* AlfrescoOnPremiseTaggingService.h */; };
+		05EF9B44176883650047F36D /* AlfrescoOnPremiseTaggingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A04176883650047F36D /* AlfrescoOnPremiseTaggingService.m */; };
+		05EF9B45176883650047F36D /* AlfrescoPlaceholderActivityStreamService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A06176883650047F36D /* AlfrescoPlaceholderActivityStreamService.h */; };
+		05EF9B46176883650047F36D /* AlfrescoPlaceholderActivityStreamService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A07176883650047F36D /* AlfrescoPlaceholderActivityStreamService.m */; };
+		05EF9B47176883650047F36D /* AlfrescoPlaceholderCommentService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A08176883650047F36D /* AlfrescoPlaceholderCommentService.h */; };
+		05EF9B48176883650047F36D /* AlfrescoPlaceholderCommentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A09176883650047F36D /* AlfrescoPlaceholderCommentService.m */; };
+		05EF9B49176883650047F36D /* AlfrescoPlaceholderDocumentFolderService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A0A176883650047F36D /* AlfrescoPlaceholderDocumentFolderService.h */; };
+		05EF9B4A176883650047F36D /* AlfrescoPlaceholderDocumentFolderService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A0B176883650047F36D /* AlfrescoPlaceholderDocumentFolderService.m */; };
+		05EF9B4B176883650047F36D /* AlfrescoPlaceholderPersonService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A0C176883650047F36D /* AlfrescoPlaceholderPersonService.h */; };
+		05EF9B4C176883650047F36D /* AlfrescoPlaceholderPersonService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A0D176883650047F36D /* AlfrescoPlaceholderPersonService.m */; };
+		05EF9B4D176883650047F36D /* AlfrescoPlaceholderRatingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A0E176883650047F36D /* AlfrescoPlaceholderRatingService.h */; };
+		05EF9B4E176883650047F36D /* AlfrescoPlaceholderRatingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A0F176883650047F36D /* AlfrescoPlaceholderRatingService.m */; };
+		05EF9B4F176883650047F36D /* AlfrescoPlaceholderSiteService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A10176883650047F36D /* AlfrescoPlaceholderSiteService.h */; };
+		05EF9B50176883650047F36D /* AlfrescoPlaceholderSiteService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A11176883650047F36D /* AlfrescoPlaceholderSiteService.m */; };
+		05EF9B51176883650047F36D /* AlfrescoPlaceholderTaggingService.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A12176883650047F36D /* AlfrescoPlaceholderTaggingService.h */; };
+		05EF9B52176883650047F36D /* AlfrescoPlaceholderTaggingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A13176883650047F36D /* AlfrescoPlaceholderTaggingService.m */; };
+		05EF9B53176883650047F36D /* AlfrescoAuthenticationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A15176883650047F36D /* AlfrescoAuthenticationProvider.h */; };
+		05EF9B54176883650047F36D /* AlfrescoBasicAuthenticationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A16176883650047F36D /* AlfrescoBasicAuthenticationProvider.h */; };
+		05EF9B55176883650047F36D /* AlfrescoBasicAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A17176883650047F36D /* AlfrescoBasicAuthenticationProvider.m */; };
+		05EF9B56176883650047F36D /* AlfrescoSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A18176883650047F36D /* AlfrescoSession.h */; };
+		05EF9B57176883650047F36D /* AlfrescoCloudNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A1A176883650047F36D /* AlfrescoCloudNetwork.h */; };
+		05EF9B58176883650047F36D /* AlfrescoCloudNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A1B176883650047F36D /* AlfrescoCloudNetwork.m */; };
+		05EF9B59176883650047F36D /* AlfrescoCloudSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A1C176883650047F36D /* AlfrescoCloudSession.h */; };
+		05EF9B5A176883650047F36D /* AlfrescoCloudSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A1D176883650047F36D /* AlfrescoCloudSession.m */; };
+		05EF9B5B176883650047F36D /* CMISPassThroughAuthenticationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A1E176883650047F36D /* CMISPassThroughAuthenticationProvider.h */; };
+		05EF9B5C176883650047F36D /* CMISPassThroughAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A1F176883650047F36D /* CMISPassThroughAuthenticationProvider.m */; };
+		05EF9B5D176883650047F36D /* AlfrescoOAuthAuthenticationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A21176883650047F36D /* AlfrescoOAuthAuthenticationProvider.h */; };
+		05EF9B5E176883650047F36D /* AlfrescoOAuthAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A22176883650047F36D /* AlfrescoOAuthAuthenticationProvider.m */; };
+		05EF9B5F176883650047F36D /* AlfrescoOAuthData.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A23176883650047F36D /* AlfrescoOAuthData.h */; };
+		05EF9B60176883650047F36D /* AlfrescoOAuthData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A24176883650047F36D /* AlfrescoOAuthData.m */; };
+		05EF9B61176883650047F36D /* AlfrescoOAuthHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A25176883650047F36D /* AlfrescoOAuthHelper.h */; };
+		05EF9B62176883650047F36D /* AlfrescoOAuthHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A26176883650047F36D /* AlfrescoOAuthHelper.m */; };
+		05EF9B63176883650047F36D /* AlfrescoOAuthLoginDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A27176883650047F36D /* AlfrescoOAuthLoginDelegate.h */; };
+		05EF9B64176883650047F36D /* AlfrescoOAuthLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A28176883650047F36D /* AlfrescoOAuthLoginViewController.h */; };
+		05EF9B65176883650047F36D /* AlfrescoOAuthLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A29176883650047F36D /* AlfrescoOAuthLoginViewController.m */; };
+		05EF9B66176883650047F36D /* AlfrescoRepositorySession.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A2B176883650047F36D /* AlfrescoRepositorySession.h */; };
+		05EF9B67176883650047F36D /* AlfrescoRepositorySession.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A2C176883650047F36D /* AlfrescoRepositorySession.m */; };
+		05EF9B68176883650047F36D /* AlfrescoDefaultHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A2E176883650047F36D /* AlfrescoDefaultHTTPRequest.h */; };
+		05EF9B69176883650047F36D /* AlfrescoDefaultHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A2F176883650047F36D /* AlfrescoDefaultHTTPRequest.m */; };
+		05EF9B6A176883650047F36D /* AlfrescoDefaultNetworkProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A30176883650047F36D /* AlfrescoDefaultNetworkProvider.h */; };
+		05EF9B6B176883650047F36D /* AlfrescoDefaultNetworkProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A31176883650047F36D /* AlfrescoDefaultNetworkProvider.m */; };
+		05EF9B6C176883650047F36D /* AlfrescoLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A32176883650047F36D /* AlfrescoLog.h */; };
+		05EF9B6D176883650047F36D /* AlfrescoLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A33176883650047F36D /* AlfrescoLog.m */; };
+		05EF9B6E176883650047F36D /* AlfrescoNetworkProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A34176883650047F36D /* AlfrescoNetworkProvider.h */; };
+		05EF9B6F176883650047F36D /* AlfrescoObjectConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A35176883650047F36D /* AlfrescoObjectConverter.h */; };
+		05EF9B70176883650047F36D /* AlfrescoObjectConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A36176883650047F36D /* AlfrescoObjectConverter.m */; };
+		05EF9B71176883650047F36D /* AlfrescoPagingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A37176883650047F36D /* AlfrescoPagingUtils.h */; };
+		05EF9B72176883650047F36D /* AlfrescoPagingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A38176883650047F36D /* AlfrescoPagingUtils.m */; };
+		05EF9B73176883650047F36D /* AlfrescoRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A39176883650047F36D /* AlfrescoRequest.h */; };
+		05EF9B74176883650047F36D /* AlfrescoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A3A176883650047F36D /* AlfrescoRequest.m */; };
+		05EF9B75176883650047F36D /* AlfrescoSiteCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A3B176883650047F36D /* AlfrescoSiteCache.h */; };
+		05EF9B76176883650047F36D /* AlfrescoSiteCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A3C176883650047F36D /* AlfrescoSiteCache.m */; };
+		05EF9B77176883650047F36D /* AlfrescoSortingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A3D176883650047F36D /* AlfrescoSortingUtils.h */; };
+		05EF9B78176883650047F36D /* AlfrescoSortingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A3E176883650047F36D /* AlfrescoSortingUtils.m */; };
+		05EF9B79176883650047F36D /* AlfrescoURLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EF9A3F176883650047F36D /* AlfrescoURLUtils.h */; };
+		05EF9B7A176883650047F36D /* AlfrescoURLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EF9A40176883650047F36D /* AlfrescoURLUtils.m */; };
+		24DD6CF91134B3F500162E58 /* ComAlfrescoAppceleratorModuleIosSdkModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* ComAlfrescoAppceleratorModuleIosSdkModule.h */; };
+		24DD6CFA1134B3F500162E58 /* ComAlfrescoAppceleratorModuleIosSdkModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComAlfrescoAppceleratorModuleIosSdkModule.m */; };
+		24DE9E1111C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleIosSdkModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleIosSdkModuleAssets.h */; };
+		24DE9E1211C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleIosSdkModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleIosSdkModuleAssets.m */; };
+		AA747D9F0F9514B9006C5449 /* ComAlfrescoAppceleratorModuleIosSdk_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComAlfrescoAppceleratorModuleIosSdk_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		24416B8411C4CA280047AFDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = iOSSDKModule;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05666AC4176F1340005807F3 /* ComAlfrescoAppceleratorIosSdkFolderProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAlfrescoAppceleratorIosSdkFolderProxy.h; sourceTree = "<group>"; };
+		05666AC5176F1340005807F3 /* ComAlfrescoAppceleratorIosSdkDocumentProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComAlfrescoAppceleratorIosSdkDocumentProxy.m; sourceTree = "<group>"; };
+		05666AD017720FC5005807F3 /* ComAlfrescoAppceleratorIosSdkDocumentProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAlfrescoAppceleratorIosSdkDocumentProxy.h; sourceTree = "<group>"; };
+		05666AD11772112A005807F3 /* ComAlfrescoAppceleratorIosSdkFolderProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComAlfrescoAppceleratorIosSdkFolderProxy.m; sourceTree = "<group>"; };
+		05AFDCB2175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.h; path = Classes/ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.h; sourceTree = "<group>"; };
+		05AFDCB3175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.m; path = Classes/ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.m; sourceTree = "<group>"; };
+		05AFDCB4175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.h; path = Classes/ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.h; sourceTree = "<group>"; };
+		05AFDCB5175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.m; path = Classes/ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.m; sourceTree = "<group>"; };
+		05AFDCB6175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRequestProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorIosSdkRequestProxy.h; path = Classes/ComAlfrescoAppceleratorIosSdkRequestProxy.h; sourceTree = "<group>"; };
+		05AFDCB7175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRequestProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorIosSdkRequestProxy.m; path = Classes/ComAlfrescoAppceleratorIosSdkRequestProxy.m; sourceTree = "<group>"; };
+		05AFDCBA175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.h; path = Classes/ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.h; sourceTree = "<group>"; };
+		05AFDCBB175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.m; path = Classes/ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.m; sourceTree = "<group>"; };
+		05AFDCBC175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorIosSdkSessionProxy.h; path = Classes/ComAlfrescoAppceleratorIosSdkSessionProxy.h; sourceTree = "<group>"; };
+		05AFDCBD175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorIosSdkSessionProxy.m; path = Classes/ComAlfrescoAppceleratorIosSdkSessionProxy.m; sourceTree = "<group>"; };
+		05EF98F2176883650047F36D /* AlfrescoCMISDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCMISDocument.h; sourceTree = "<group>"; };
+		05EF98F3176883650047F36D /* AlfrescoCMISDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCMISDocument.m; sourceTree = "<group>"; };
+		05EF98F4176883650047F36D /* AlfrescoCMISFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCMISFolder.h; sourceTree = "<group>"; };
+		05EF98F5176883650047F36D /* AlfrescoCMISFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCMISFolder.m; sourceTree = "<group>"; };
+		05EF98F6176883650047F36D /* AlfrescoCMISObjectConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCMISObjectConverter.h; sourceTree = "<group>"; };
+		05EF98F7176883650047F36D /* AlfrescoCMISObjectConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCMISObjectConverter.m; sourceTree = "<group>"; };
+		05EF98F8176883650047F36D /* AlfrescoCMISUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCMISUtil.h; sourceTree = "<group>"; };
+		05EF98F9176883650047F36D /* AlfrescoCMISUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCMISUtil.m; sourceTree = "<group>"; };
+		05EF98FE176883650047F36D /* CMISAllowableActionsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAllowableActionsParser.h; sourceTree = "<group>"; };
+		05EF98FF176883650047F36D /* CMISAllowableActionsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAllowableActionsParser.m; sourceTree = "<group>"; };
+		05EF9900176883650047F36D /* CMISAtomEntryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomEntryParser.h; sourceTree = "<group>"; };
+		05EF9901176883650047F36D /* CMISAtomEntryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomEntryParser.m; sourceTree = "<group>"; };
+		05EF9902176883650047F36D /* CMISAtomEntryWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomEntryWriter.h; sourceTree = "<group>"; };
+		05EF9903176883650047F36D /* CMISAtomEntryWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomEntryWriter.m; sourceTree = "<group>"; };
+		05EF9904176883650047F36D /* CMISAtomFeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomFeedParser.h; sourceTree = "<group>"; };
+		05EF9905176883650047F36D /* CMISAtomFeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomFeedParser.m; sourceTree = "<group>"; };
+		05EF9906176883650047F36D /* CMISAtomParserUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomParserUtil.h; sourceTree = "<group>"; };
+		05EF9907176883650047F36D /* CMISAtomParserUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomParserUtil.m; sourceTree = "<group>"; };
+		05EF9908176883650047F36D /* CMISAtomPubConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomPubConstants.h; sourceTree = "<group>"; };
+		05EF9909176883650047F36D /* CMISAtomPubConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomPubConstants.m; sourceTree = "<group>"; };
+		05EF990A176883650047F36D /* CMISAtomPubExtensionDataParserBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomPubExtensionDataParserBase.h; sourceTree = "<group>"; };
+		05EF990B176883650047F36D /* CMISAtomPubExtensionDataParserBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomPubExtensionDataParserBase.m; sourceTree = "<group>"; };
+		05EF990C176883650047F36D /* CMISAtomPubExtensionElementParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomPubExtensionElementParser.h; sourceTree = "<group>"; };
+		05EF990D176883650047F36D /* CMISAtomPubExtensionElementParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomPubExtensionElementParser.m; sourceTree = "<group>"; };
+		05EF990E176883650047F36D /* CMISPropertyDefinitionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISPropertyDefinitionParser.h; sourceTree = "<group>"; };
+		05EF990F176883650047F36D /* CMISPropertyDefinitionParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISPropertyDefinitionParser.m; sourceTree = "<group>"; };
+		05EF9910176883650047F36D /* CMISRepositoryInfoParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISRepositoryInfoParser.h; sourceTree = "<group>"; };
+		05EF9911176883650047F36D /* CMISRepositoryInfoParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISRepositoryInfoParser.m; sourceTree = "<group>"; };
+		05EF9912176883650047F36D /* CMISServiceDocumentParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISServiceDocumentParser.h; sourceTree = "<group>"; };
+		05EF9913176883650047F36D /* CMISServiceDocumentParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISServiceDocumentParser.m; sourceTree = "<group>"; };
+		05EF9914176883650047F36D /* CMISTypeDefinitionAtomEntryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISTypeDefinitionAtomEntryParser.h; sourceTree = "<group>"; };
+		05EF9915176883650047F36D /* CMISTypeDefinitionAtomEntryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISTypeDefinitionAtomEntryParser.m; sourceTree = "<group>"; };
+		05EF9916176883650047F36D /* CMISAtomPubBaseService+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CMISAtomPubBaseService+Protected.h"; sourceTree = "<group>"; };
+		05EF9917176883650047F36D /* CMISAtomPubBaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomPubBaseService.h; sourceTree = "<group>"; };
+		05EF9918176883650047F36D /* CMISAtomPubBaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomPubBaseService.m; sourceTree = "<group>"; };
+		05EF9919176883650047F36D /* CMISAtomPubBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomPubBinding.h; sourceTree = "<group>"; };
+		05EF991A176883650047F36D /* CMISAtomPubBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomPubBinding.m; sourceTree = "<group>"; };
+		05EF991B176883650047F36D /* CMISAtomPubDiscoveryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomPubDiscoveryService.h; sourceTree = "<group>"; };
+		05EF991C176883650047F36D /* CMISAtomPubDiscoveryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomPubDiscoveryService.m; sourceTree = "<group>"; };
+		05EF991D176883650047F36D /* CMISAtomPubNavigationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomPubNavigationService.h; sourceTree = "<group>"; };
+		05EF991E176883650047F36D /* CMISAtomPubNavigationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomPubNavigationService.m; sourceTree = "<group>"; };
+		05EF991F176883650047F36D /* CMISAtomPubObjectService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomPubObjectService.h; sourceTree = "<group>"; };
+		05EF9920176883650047F36D /* CMISAtomPubObjectService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomPubObjectService.m; sourceTree = "<group>"; };
+		05EF9921176883650047F36D /* CMISAtomPubRepositoryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomPubRepositoryService.h; sourceTree = "<group>"; };
+		05EF9922176883650047F36D /* CMISAtomPubRepositoryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomPubRepositoryService.m; sourceTree = "<group>"; };
+		05EF9923176883650047F36D /* CMISAtomPubVersioningService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomPubVersioningService.h; sourceTree = "<group>"; };
+		05EF9924176883650047F36D /* CMISAtomPubVersioningService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomPubVersioningService.m; sourceTree = "<group>"; };
+		05EF9925176883650047F36D /* CMISObjectByIdUriBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISObjectByIdUriBuilder.h; sourceTree = "<group>"; };
+		05EF9926176883650047F36D /* CMISObjectByIdUriBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISObjectByIdUriBuilder.m; sourceTree = "<group>"; };
+		05EF9927176883650047F36D /* CMISObjectByPathUriBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISObjectByPathUriBuilder.h; sourceTree = "<group>"; };
+		05EF9928176883650047F36D /* CMISObjectByPathUriBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISObjectByPathUriBuilder.m; sourceTree = "<group>"; };
+		05EF9929176883650047F36D /* CMISQueryAtomEntryWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISQueryAtomEntryWriter.h; sourceTree = "<group>"; };
+		05EF992A176883650047F36D /* CMISQueryAtomEntryWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISQueryAtomEntryWriter.m; sourceTree = "<group>"; };
+		05EF992B176883650047F36D /* CMISTypeByIdUriBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISTypeByIdUriBuilder.h; sourceTree = "<group>"; };
+		05EF992C176883650047F36D /* CMISTypeByIdUriBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISTypeByIdUriBuilder.m; sourceTree = "<group>"; };
+		05EF992E176883650047F36D /* CMISAtomCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomCollection.h; sourceTree = "<group>"; };
+		05EF992F176883650047F36D /* CMISAtomCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomCollection.m; sourceTree = "<group>"; };
+		05EF9930176883650047F36D /* CMISAtomLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAtomLink.h; sourceTree = "<group>"; };
+		05EF9931176883650047F36D /* CMISAtomLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAtomLink.m; sourceTree = "<group>"; };
+		05EF9932176883650047F36D /* CMISLinkRelations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISLinkRelations.h; sourceTree = "<group>"; };
+		05EF9933176883650047F36D /* CMISLinkRelations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISLinkRelations.m; sourceTree = "<group>"; };
+		05EF9934176883650047F36D /* CMISWorkspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISWorkspace.h; sourceTree = "<group>"; };
+		05EF9935176883650047F36D /* CMISWorkspace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISWorkspace.m; sourceTree = "<group>"; };
+		05EF9936176883650047F36D /* CMISAclService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAclService.h; sourceTree = "<group>"; };
+		05EF9937176883650047F36D /* CMISBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISBinding.h; sourceTree = "<group>"; };
+		05EF9938176883650047F36D /* CMISBindingFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISBindingFactory.h; sourceTree = "<group>"; };
+		05EF9939176883650047F36D /* CMISBindingFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISBindingFactory.m; sourceTree = "<group>"; };
+		05EF993A176883650047F36D /* CMISBindingSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISBindingSession.h; sourceTree = "<group>"; };
+		05EF993B176883650047F36D /* CMISBindingSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISBindingSession.m; sourceTree = "<group>"; };
+		05EF993C176883650047F36D /* CMISDiscoveryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISDiscoveryService.h; sourceTree = "<group>"; };
+		05EF993D176883650047F36D /* CMISLinkCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISLinkCache.h; sourceTree = "<group>"; };
+		05EF993E176883650047F36D /* CMISLinkCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISLinkCache.m; sourceTree = "<group>"; };
+		05EF993F176883650047F36D /* CMISMultiFilingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISMultiFilingService.h; sourceTree = "<group>"; };
+		05EF9940176883650047F36D /* CMISNavigationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISNavigationService.h; sourceTree = "<group>"; };
+		05EF9941176883650047F36D /* CMISObjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISObjectList.h; sourceTree = "<group>"; };
+		05EF9942176883650047F36D /* CMISObjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISObjectList.m; sourceTree = "<group>"; };
+		05EF9943176883650047F36D /* CMISObjectService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISObjectService.h; sourceTree = "<group>"; };
+		05EF9944176883650047F36D /* CMISPolicyService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISPolicyService.h; sourceTree = "<group>"; };
+		05EF9945176883650047F36D /* CMISPropertyDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISPropertyDefinition.h; sourceTree = "<group>"; };
+		05EF9946176883650047F36D /* CMISPropertyDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISPropertyDefinition.m; sourceTree = "<group>"; };
+		05EF9947176883650047F36D /* CMISQueryResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISQueryResult.h; sourceTree = "<group>"; };
+		05EF9948176883650047F36D /* CMISQueryResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISQueryResult.m; sourceTree = "<group>"; };
+		05EF9949176883650047F36D /* CMISRelationshipService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISRelationshipService.h; sourceTree = "<group>"; };
+		05EF994A176883650047F36D /* CMISRenditionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISRenditionData.h; sourceTree = "<group>"; };
+		05EF994B176883650047F36D /* CMISRenditionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISRenditionData.m; sourceTree = "<group>"; };
+		05EF994C176883650047F36D /* CMISRepositoryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISRepositoryService.h; sourceTree = "<group>"; };
+		05EF994D176883650047F36D /* CMISTypeDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISTypeDefinition.h; sourceTree = "<group>"; };
+		05EF994E176883650047F36D /* CMISTypeDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISTypeDefinition.m; sourceTree = "<group>"; };
+		05EF994F176883650047F36D /* CMISVersioningService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISVersioningService.h; sourceTree = "<group>"; };
+		05EF9951176883650047F36D /* CMISCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISCollection.h; sourceTree = "<group>"; };
+		05EF9952176883650047F36D /* CMISCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISCollection.m; sourceTree = "<group>"; };
+		05EF9953176883650047F36D /* CMISDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISDocument.h; sourceTree = "<group>"; };
+		05EF9954176883650047F36D /* CMISDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISDocument.m; sourceTree = "<group>"; };
+		05EF9955176883650047F36D /* CMISFileableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISFileableObject.h; sourceTree = "<group>"; };
+		05EF9956176883650047F36D /* CMISFileableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISFileableObject.m; sourceTree = "<group>"; };
+		05EF9957176883650047F36D /* CMISFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISFolder.h; sourceTree = "<group>"; };
+		05EF9958176883650047F36D /* CMISFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISFolder.m; sourceTree = "<group>"; };
+		05EF9959176883650047F36D /* CMISObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISObject.h; sourceTree = "<group>"; };
+		05EF995A176883650047F36D /* CMISObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISObject.m; sourceTree = "<group>"; };
+		05EF995B176883650047F36D /* CMISObjectId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISObjectId.h; sourceTree = "<group>"; };
+		05EF995C176883650047F36D /* CMISObjectId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISObjectId.m; sourceTree = "<group>"; };
+		05EF995D176883650047F36D /* CMISOperationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISOperationContext.h; sourceTree = "<group>"; };
+		05EF995E176883650047F36D /* CMISOperationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISOperationContext.m; sourceTree = "<group>"; };
+		05EF995F176883650047F36D /* CMISPagedResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISPagedResult.h; sourceTree = "<group>"; };
+		05EF9960176883650047F36D /* CMISPagedResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISPagedResult.m; sourceTree = "<group>"; };
+		05EF9961176883650047F36D /* CMISRendition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISRendition.h; sourceTree = "<group>"; };
+		05EF9962176883650047F36D /* CMISRendition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISRendition.m; sourceTree = "<group>"; };
+		05EF9963176883650047F36D /* CMISRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISRequest.h; sourceTree = "<group>"; };
+		05EF9964176883650047F36D /* CMISRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISRequest.m; sourceTree = "<group>"; };
+		05EF9965176883650047F36D /* CMISSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISSession.h; sourceTree = "<group>"; };
+		05EF9966176883650047F36D /* CMISSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISSession.m; sourceTree = "<group>"; };
+		05EF9968176883650047F36D /* CMISAllowableActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAllowableActions.h; sourceTree = "<group>"; };
+		05EF9969176883650047F36D /* CMISAllowableActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISAllowableActions.m; sourceTree = "<group>"; };
+		05EF996A176883650047F36D /* CMISAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISAuthenticationProvider.h; sourceTree = "<group>"; };
+		05EF996B176883650047F36D /* CMISConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISConstants.h; sourceTree = "<group>"; };
+		05EF996C176883650047F36D /* CMISConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISConstants.m; sourceTree = "<group>"; };
+		05EF996D176883650047F36D /* CMISEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISEnums.h; sourceTree = "<group>"; };
+		05EF996E176883650047F36D /* CMISEnums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISEnums.m; sourceTree = "<group>"; };
+		05EF996F176883650047F36D /* CMISErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISErrors.h; sourceTree = "<group>"; };
+		05EF9970176883650047F36D /* CMISErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISErrors.m; sourceTree = "<group>"; };
+		05EF9971176883650047F36D /* CMISExtensionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISExtensionData.h; sourceTree = "<group>"; };
+		05EF9972176883650047F36D /* CMISExtensionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISExtensionData.m; sourceTree = "<group>"; };
+		05EF9973176883650047F36D /* CMISExtensionElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISExtensionElement.h; sourceTree = "<group>"; };
+		05EF9974176883650047F36D /* CMISExtensionElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISExtensionElement.m; sourceTree = "<group>"; };
+		05EF9975176883650047F36D /* CMISNetworkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISNetworkProvider.h; sourceTree = "<group>"; };
+		05EF9976176883650047F36D /* CMISObjectData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISObjectData.h; sourceTree = "<group>"; };
+		05EF9977176883650047F36D /* CMISObjectData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISObjectData.m; sourceTree = "<group>"; };
+		05EF9978176883650047F36D /* CMISProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISProperties.h; sourceTree = "<group>"; };
+		05EF9979176883650047F36D /* CMISProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISProperties.m; sourceTree = "<group>"; };
+		05EF997A176883650047F36D /* CMISPropertyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISPropertyData.h; sourceTree = "<group>"; };
+		05EF997B176883650047F36D /* CMISPropertyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISPropertyData.m; sourceTree = "<group>"; };
+		05EF997C176883650047F36D /* CMISRepositoryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISRepositoryInfo.h; sourceTree = "<group>"; };
+		05EF997D176883650047F36D /* CMISRepositoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISRepositoryInfo.m; sourceTree = "<group>"; };
+		05EF997E176883650047F36D /* CMISSessionParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISSessionParameters.h; sourceTree = "<group>"; };
+		05EF997F176883650047F36D /* CMISSessionParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISSessionParameters.m; sourceTree = "<group>"; };
+		05EF9980176883650047F36D /* CMISStandardAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISStandardAuthenticationProvider.h; sourceTree = "<group>"; };
+		05EF9981176883650047F36D /* CMISStandardAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISStandardAuthenticationProvider.m; sourceTree = "<group>"; };
+		05EF9982176883650047F36D /* ObjectiveCMIS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjectiveCMIS-Prefix.pch"; sourceTree = "<group>"; };
+		05EF9984176883650047F36D /* CMISBase64Encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISBase64Encoder.h; sourceTree = "<group>"; };
+		05EF9985176883650047F36D /* CMISBase64Encoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISBase64Encoder.m; sourceTree = "<group>"; };
+		05EF9986176883650047F36D /* CMISDateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISDateUtil.h; sourceTree = "<group>"; };
+		05EF9987176883650047F36D /* CMISDateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISDateUtil.m; sourceTree = "<group>"; };
+		05EF9988176883650047F36D /* CMISDefaultNetworkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISDefaultNetworkProvider.h; sourceTree = "<group>"; };
+		05EF9989176883650047F36D /* CMISDefaultNetworkProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISDefaultNetworkProvider.m; sourceTree = "<group>"; };
+		05EF998A176883650047F36D /* CMISFileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISFileUtil.h; sourceTree = "<group>"; };
+		05EF998B176883650047F36D /* CMISFileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISFileUtil.m; sourceTree = "<group>"; };
+		05EF998C176883650047F36D /* CMISHttpDownloadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISHttpDownloadRequest.h; sourceTree = "<group>"; };
+		05EF998D176883650047F36D /* CMISHttpDownloadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISHttpDownloadRequest.m; sourceTree = "<group>"; };
+		05EF998E176883650047F36D /* CMISHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISHttpRequest.h; sourceTree = "<group>"; };
+		05EF998F176883650047F36D /* CMISHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISHttpRequest.m; sourceTree = "<group>"; };
+		05EF9990176883650047F36D /* CMISHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISHttpResponse.h; sourceTree = "<group>"; };
+		05EF9991176883650047F36D /* CMISHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISHttpResponse.m; sourceTree = "<group>"; };
+		05EF9992176883650047F36D /* CMISHttpUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISHttpUploadRequest.h; sourceTree = "<group>"; };
+		05EF9993176883650047F36D /* CMISHttpUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISHttpUploadRequest.m; sourceTree = "<group>"; };
+		05EF9994176883650047F36D /* CMISLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISLog.h; sourceTree = "<group>"; };
+		05EF9995176883650047F36D /* CMISLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISLog.m; sourceTree = "<group>"; };
+		05EF9996176883650047F36D /* CMISObjectConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISObjectConverter.h; sourceTree = "<group>"; };
+		05EF9997176883650047F36D /* CMISObjectConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISObjectConverter.m; sourceTree = "<group>"; };
+		05EF9998176883650047F36D /* CMISStringInOutParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISStringInOutParameter.h; sourceTree = "<group>"; };
+		05EF9999176883650047F36D /* CMISStringInOutParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISStringInOutParameter.m; sourceTree = "<group>"; };
+		05EF999A176883650047F36D /* CMISURLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISURLUtil.h; sourceTree = "<group>"; };
+		05EF999B176883650047F36D /* CMISURLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISURLUtil.m; sourceTree = "<group>"; };
+		05EF999D176883650047F36D /* AlfrescoSDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AlfrescoSDK-Prefix.pch"; sourceTree = "<group>"; };
+		05EF999F176883650047F36D /* AlfrescoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoConstants.h; sourceTree = "<group>"; };
+		05EF99A0176883650047F36D /* AlfrescoConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoConstants.m; sourceTree = "<group>"; };
+		05EF99A1176883650047F36D /* AlfrescoErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoErrors.h; sourceTree = "<group>"; };
+		05EF99A2176883650047F36D /* AlfrescoErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoErrors.m; sourceTree = "<group>"; };
+		05EF99A3176883650047F36D /* AlfrescoInternalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoInternalConstants.h; sourceTree = "<group>"; };
+		05EF99A4176883650047F36D /* AlfrescoInternalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoInternalConstants.m; sourceTree = "<group>"; };
+		05EF99A6176883650047F36D /* AlfrescoDefaultFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoDefaultFileManager.h; sourceTree = "<group>"; };
+		05EF99A7176883650047F36D /* AlfrescoDefaultFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoDefaultFileManager.m; sourceTree = "<group>"; };
+		05EF99A8176883650047F36D /* AlfrescoFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoFileManager.h; sourceTree = "<group>"; };
+		05EF99A9176883650047F36D /* AlfrescoFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoFileManager.m; sourceTree = "<group>"; };
+		05EF99AA176883650047F36D /* AlfrescoPlaceholderFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPlaceholderFileManager.h; sourceTree = "<group>"; };
+		05EF99AB176883650047F36D /* AlfrescoPlaceholderFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPlaceholderFileManager.m; sourceTree = "<group>"; };
+		05EF99AD176883650047F36D /* AlfrescoActivityEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoActivityEntry.h; sourceTree = "<group>"; };
+		05EF99AE176883650047F36D /* AlfrescoActivityEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoActivityEntry.m; sourceTree = "<group>"; };
+		05EF99AF176883650047F36D /* AlfrescoComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoComment.h; sourceTree = "<group>"; };
+		05EF99B0176883650047F36D /* AlfrescoComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoComment.m; sourceTree = "<group>"; };
+		05EF99B1176883650047F36D /* AlfrescoContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoContent.h; sourceTree = "<group>"; };
+		05EF99B2176883650047F36D /* AlfrescoContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoContent.m; sourceTree = "<group>"; };
+		05EF99B3176883650047F36D /* AlfrescoContentFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoContentFile.h; sourceTree = "<group>"; };
+		05EF99B4176883650047F36D /* AlfrescoContentFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoContentFile.m; sourceTree = "<group>"; };
+		05EF99B5176883650047F36D /* AlfrescoContentStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoContentStream.h; sourceTree = "<group>"; };
+		05EF99B6176883650047F36D /* AlfrescoContentStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoContentStream.m; sourceTree = "<group>"; };
+		05EF99B7176883650047F36D /* AlfrescoDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoDocument.h; sourceTree = "<group>"; };
+		05EF99B8176883650047F36D /* AlfrescoDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoDocument.m; sourceTree = "<group>"; };
+		05EF99B9176883650047F36D /* AlfrescoFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoFolder.h; sourceTree = "<group>"; };
+		05EF99BA176883650047F36D /* AlfrescoFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoFolder.m; sourceTree = "<group>"; };
+		05EF99BB176883650047F36D /* AlfrescoKeywordSearchOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoKeywordSearchOptions.h; sourceTree = "<group>"; };
+		05EF99BC176883650047F36D /* AlfrescoKeywordSearchOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoKeywordSearchOptions.m; sourceTree = "<group>"; };
+		05EF99BD176883650047F36D /* AlfrescoListingContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoListingContext.h; sourceTree = "<group>"; };
+		05EF99BE176883650047F36D /* AlfrescoListingContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoListingContext.m; sourceTree = "<group>"; };
+		05EF99BF176883650047F36D /* AlfrescoNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoNode.h; sourceTree = "<group>"; };
+		05EF99C0176883650047F36D /* AlfrescoNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoNode.m; sourceTree = "<group>"; };
+		05EF99C1176883650047F36D /* AlfrescoPagingResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPagingResult.h; sourceTree = "<group>"; };
+		05EF99C2176883650047F36D /* AlfrescoPagingResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPagingResult.m; sourceTree = "<group>"; };
+		05EF99C3176883650047F36D /* AlfrescoPermissions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPermissions.h; sourceTree = "<group>"; };
+		05EF99C4176883650047F36D /* AlfrescoPermissions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPermissions.m; sourceTree = "<group>"; };
+		05EF99C5176883650047F36D /* AlfrescoPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPerson.h; sourceTree = "<group>"; };
+		05EF99C6176883650047F36D /* AlfrescoPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPerson.m; sourceTree = "<group>"; };
+		05EF99C7176883650047F36D /* AlfrescoProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoProperty.h; sourceTree = "<group>"; };
+		05EF99C8176883650047F36D /* AlfrescoProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoProperty.m; sourceTree = "<group>"; };
+		05EF99C9176883650047F36D /* AlfrescoRepositoryCapabilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoRepositoryCapabilities.h; sourceTree = "<group>"; };
+		05EF99CA176883650047F36D /* AlfrescoRepositoryCapabilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoRepositoryCapabilities.m; sourceTree = "<group>"; };
+		05EF99CB176883650047F36D /* AlfrescoRepositoryInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoRepositoryInfo.h; sourceTree = "<group>"; };
+		05EF99CC176883650047F36D /* AlfrescoRepositoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoRepositoryInfo.m; sourceTree = "<group>"; };
+		05EF99CD176883650047F36D /* AlfrescoSearchLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoSearchLanguage.h; sourceTree = "<group>"; };
+		05EF99CE176883650047F36D /* AlfrescoSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoSite.h; sourceTree = "<group>"; };
+		05EF99CF176883650047F36D /* AlfrescoSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoSite.m; sourceTree = "<group>"; };
+		05EF99D0176883650047F36D /* AlfrescoTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoTag.h; sourceTree = "<group>"; };
+		05EF99D1176883650047F36D /* AlfrescoTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoTag.m; sourceTree = "<group>"; };
+		05EF99D3176883650047F36D /* AlfrescoActivityStreamService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoActivityStreamService.h; sourceTree = "<group>"; };
+		05EF99D4176883650047F36D /* AlfrescoActivityStreamService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoActivityStreamService.m; sourceTree = "<group>"; };
+		05EF99D5176883650047F36D /* AlfrescoCommentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCommentService.h; sourceTree = "<group>"; };
+		05EF99D6176883650047F36D /* AlfrescoCommentService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCommentService.m; sourceTree = "<group>"; };
+		05EF99D7176883650047F36D /* AlfrescoDocumentFolderService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoDocumentFolderService.h; sourceTree = "<group>"; };
+		05EF99D8176883650047F36D /* AlfrescoDocumentFolderService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoDocumentFolderService.m; sourceTree = "<group>"; };
+		05EF99D9176883650047F36D /* AlfrescoPersonService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPersonService.h; sourceTree = "<group>"; };
+		05EF99DA176883650047F36D /* AlfrescoPersonService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPersonService.m; sourceTree = "<group>"; };
+		05EF99DB176883650047F36D /* AlfrescoRatingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoRatingService.h; sourceTree = "<group>"; };
+		05EF99DC176883650047F36D /* AlfrescoRatingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoRatingService.m; sourceTree = "<group>"; };
+		05EF99DD176883650047F36D /* AlfrescoSearchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoSearchService.h; sourceTree = "<group>"; };
+		05EF99DE176883650047F36D /* AlfrescoSearchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoSearchService.m; sourceTree = "<group>"; };
+		05EF99DF176883650047F36D /* AlfrescoSiteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoSiteService.h; sourceTree = "<group>"; };
+		05EF99E0176883650047F36D /* AlfrescoSiteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoSiteService.m; sourceTree = "<group>"; };
+		05EF99E1176883650047F36D /* AlfrescoTaggingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoTaggingService.h; sourceTree = "<group>"; };
+		05EF99E2176883650047F36D /* AlfrescoTaggingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoTaggingService.m; sourceTree = "<group>"; };
+		05EF99E3176883650047F36D /* AlfrescoVersionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoVersionService.h; sourceTree = "<group>"; };
+		05EF99E4176883650047F36D /* AlfrescoVersionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoVersionService.m; sourceTree = "<group>"; };
+		05EF99E6176883650047F36D /* AlfrescoCloudActivityStreamService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCloudActivityStreamService.h; sourceTree = "<group>"; };
+		05EF99E7176883650047F36D /* AlfrescoCloudActivityStreamService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCloudActivityStreamService.m; sourceTree = "<group>"; };
+		05EF99E8176883650047F36D /* AlfrescoCloudCommentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCloudCommentService.h; sourceTree = "<group>"; };
+		05EF99E9176883650047F36D /* AlfrescoCloudCommentService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCloudCommentService.m; sourceTree = "<group>"; };
+		05EF99EA176883650047F36D /* AlfrescoCloudDocumentFolderService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCloudDocumentFolderService.h; sourceTree = "<group>"; };
+		05EF99EB176883650047F36D /* AlfrescoCloudDocumentFolderService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCloudDocumentFolderService.m; sourceTree = "<group>"; };
+		05EF99EC176883650047F36D /* AlfrescoCloudPersonService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCloudPersonService.h; sourceTree = "<group>"; };
+		05EF99ED176883650047F36D /* AlfrescoCloudPersonService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCloudPersonService.m; sourceTree = "<group>"; };
+		05EF99EE176883650047F36D /* AlfrescoCloudRatingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCloudRatingService.h; sourceTree = "<group>"; };
+		05EF99EF176883650047F36D /* AlfrescoCloudRatingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCloudRatingService.m; sourceTree = "<group>"; };
+		05EF99F0176883650047F36D /* AlfrescoCloudSiteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCloudSiteService.h; sourceTree = "<group>"; };
+		05EF99F1176883650047F36D /* AlfrescoCloudSiteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCloudSiteService.m; sourceTree = "<group>"; };
+		05EF99F2176883650047F36D /* AlfrescoCloudTaggingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCloudTaggingService.h; sourceTree = "<group>"; };
+		05EF99F3176883650047F36D /* AlfrescoCloudTaggingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCloudTaggingService.m; sourceTree = "<group>"; };
+		05EF99F5176883650047F36D /* AlfrescoOnPremiseActivityStreamService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOnPremiseActivityStreamService.h; sourceTree = "<group>"; };
+		05EF99F6176883650047F36D /* AlfrescoOnPremiseActivityStreamService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOnPremiseActivityStreamService.m; sourceTree = "<group>"; };
+		05EF99F7176883650047F36D /* AlfrescoOnPremiseCommentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOnPremiseCommentService.h; sourceTree = "<group>"; };
+		05EF99F8176883650047F36D /* AlfrescoOnPremiseCommentService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOnPremiseCommentService.m; sourceTree = "<group>"; };
+		05EF99F9176883650047F36D /* AlfrescoOnPremiseDocumentFolderService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOnPremiseDocumentFolderService.h; sourceTree = "<group>"; };
+		05EF99FA176883650047F36D /* AlfrescoOnPremiseDocumentFolderService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOnPremiseDocumentFolderService.m; sourceTree = "<group>"; };
+		05EF99FB176883650047F36D /* AlfrescoOnPremiseJoinSiteRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOnPremiseJoinSiteRequest.h; sourceTree = "<group>"; };
+		05EF99FC176883650047F36D /* AlfrescoOnPremiseJoinSiteRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOnPremiseJoinSiteRequest.m; sourceTree = "<group>"; };
+		05EF99FD176883650047F36D /* AlfrescoOnPremisePersonService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOnPremisePersonService.h; sourceTree = "<group>"; };
+		05EF99FE176883650047F36D /* AlfrescoOnPremisePersonService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOnPremisePersonService.m; sourceTree = "<group>"; };
+		05EF99FF176883650047F36D /* AlfrescoOnPremiseRatingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOnPremiseRatingService.h; sourceTree = "<group>"; };
+		05EF9A00176883650047F36D /* AlfrescoOnPremiseRatingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOnPremiseRatingService.m; sourceTree = "<group>"; };
+		05EF9A01176883650047F36D /* AlfrescoOnPremiseSiteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOnPremiseSiteService.h; sourceTree = "<group>"; };
+		05EF9A02176883650047F36D /* AlfrescoOnPremiseSiteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOnPremiseSiteService.m; sourceTree = "<group>"; };
+		05EF9A03176883650047F36D /* AlfrescoOnPremiseTaggingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOnPremiseTaggingService.h; sourceTree = "<group>"; };
+		05EF9A04176883650047F36D /* AlfrescoOnPremiseTaggingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOnPremiseTaggingService.m; sourceTree = "<group>"; };
+		05EF9A06176883650047F36D /* AlfrescoPlaceholderActivityStreamService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPlaceholderActivityStreamService.h; sourceTree = "<group>"; };
+		05EF9A07176883650047F36D /* AlfrescoPlaceholderActivityStreamService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPlaceholderActivityStreamService.m; sourceTree = "<group>"; };
+		05EF9A08176883650047F36D /* AlfrescoPlaceholderCommentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPlaceholderCommentService.h; sourceTree = "<group>"; };
+		05EF9A09176883650047F36D /* AlfrescoPlaceholderCommentService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPlaceholderCommentService.m; sourceTree = "<group>"; };
+		05EF9A0A176883650047F36D /* AlfrescoPlaceholderDocumentFolderService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPlaceholderDocumentFolderService.h; sourceTree = "<group>"; };
+		05EF9A0B176883650047F36D /* AlfrescoPlaceholderDocumentFolderService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPlaceholderDocumentFolderService.m; sourceTree = "<group>"; };
+		05EF9A0C176883650047F36D /* AlfrescoPlaceholderPersonService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPlaceholderPersonService.h; sourceTree = "<group>"; };
+		05EF9A0D176883650047F36D /* AlfrescoPlaceholderPersonService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPlaceholderPersonService.m; sourceTree = "<group>"; };
+		05EF9A0E176883650047F36D /* AlfrescoPlaceholderRatingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPlaceholderRatingService.h; sourceTree = "<group>"; };
+		05EF9A0F176883650047F36D /* AlfrescoPlaceholderRatingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPlaceholderRatingService.m; sourceTree = "<group>"; };
+		05EF9A10176883650047F36D /* AlfrescoPlaceholderSiteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPlaceholderSiteService.h; sourceTree = "<group>"; };
+		05EF9A11176883650047F36D /* AlfrescoPlaceholderSiteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPlaceholderSiteService.m; sourceTree = "<group>"; };
+		05EF9A12176883650047F36D /* AlfrescoPlaceholderTaggingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPlaceholderTaggingService.h; sourceTree = "<group>"; };
+		05EF9A13176883650047F36D /* AlfrescoPlaceholderTaggingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPlaceholderTaggingService.m; sourceTree = "<group>"; };
+		05EF9A15176883650047F36D /* AlfrescoAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoAuthenticationProvider.h; sourceTree = "<group>"; };
+		05EF9A16176883650047F36D /* AlfrescoBasicAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoBasicAuthenticationProvider.h; sourceTree = "<group>"; };
+		05EF9A17176883650047F36D /* AlfrescoBasicAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoBasicAuthenticationProvider.m; sourceTree = "<group>"; };
+		05EF9A18176883650047F36D /* AlfrescoSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoSession.h; sourceTree = "<group>"; };
+		05EF9A1A176883650047F36D /* AlfrescoCloudNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCloudNetwork.h; sourceTree = "<group>"; };
+		05EF9A1B176883650047F36D /* AlfrescoCloudNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCloudNetwork.m; sourceTree = "<group>"; };
+		05EF9A1C176883650047F36D /* AlfrescoCloudSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoCloudSession.h; sourceTree = "<group>"; };
+		05EF9A1D176883650047F36D /* AlfrescoCloudSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoCloudSession.m; sourceTree = "<group>"; };
+		05EF9A1E176883650047F36D /* CMISPassThroughAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMISPassThroughAuthenticationProvider.h; sourceTree = "<group>"; };
+		05EF9A1F176883650047F36D /* CMISPassThroughAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMISPassThroughAuthenticationProvider.m; sourceTree = "<group>"; };
+		05EF9A21176883650047F36D /* AlfrescoOAuthAuthenticationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOAuthAuthenticationProvider.h; sourceTree = "<group>"; };
+		05EF9A22176883650047F36D /* AlfrescoOAuthAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOAuthAuthenticationProvider.m; sourceTree = "<group>"; };
+		05EF9A23176883650047F36D /* AlfrescoOAuthData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOAuthData.h; sourceTree = "<group>"; };
+		05EF9A24176883650047F36D /* AlfrescoOAuthData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOAuthData.m; sourceTree = "<group>"; };
+		05EF9A25176883650047F36D /* AlfrescoOAuthHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOAuthHelper.h; sourceTree = "<group>"; };
+		05EF9A26176883650047F36D /* AlfrescoOAuthHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOAuthHelper.m; sourceTree = "<group>"; };
+		05EF9A27176883650047F36D /* AlfrescoOAuthLoginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOAuthLoginDelegate.h; sourceTree = "<group>"; };
+		05EF9A28176883650047F36D /* AlfrescoOAuthLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoOAuthLoginViewController.h; sourceTree = "<group>"; };
+		05EF9A29176883650047F36D /* AlfrescoOAuthLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoOAuthLoginViewController.m; sourceTree = "<group>"; };
+		05EF9A2B176883650047F36D /* AlfrescoRepositorySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoRepositorySession.h; sourceTree = "<group>"; };
+		05EF9A2C176883650047F36D /* AlfrescoRepositorySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoRepositorySession.m; sourceTree = "<group>"; };
+		05EF9A2E176883650047F36D /* AlfrescoDefaultHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoDefaultHTTPRequest.h; sourceTree = "<group>"; };
+		05EF9A2F176883650047F36D /* AlfrescoDefaultHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoDefaultHTTPRequest.m; sourceTree = "<group>"; };
+		05EF9A30176883650047F36D /* AlfrescoDefaultNetworkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoDefaultNetworkProvider.h; sourceTree = "<group>"; };
+		05EF9A31176883650047F36D /* AlfrescoDefaultNetworkProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoDefaultNetworkProvider.m; sourceTree = "<group>"; };
+		05EF9A32176883650047F36D /* AlfrescoLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoLog.h; sourceTree = "<group>"; };
+		05EF9A33176883650047F36D /* AlfrescoLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoLog.m; sourceTree = "<group>"; };
+		05EF9A34176883650047F36D /* AlfrescoNetworkProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoNetworkProvider.h; sourceTree = "<group>"; };
+		05EF9A35176883650047F36D /* AlfrescoObjectConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoObjectConverter.h; sourceTree = "<group>"; };
+		05EF9A36176883650047F36D /* AlfrescoObjectConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoObjectConverter.m; sourceTree = "<group>"; };
+		05EF9A37176883650047F36D /* AlfrescoPagingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoPagingUtils.h; sourceTree = "<group>"; };
+		05EF9A38176883650047F36D /* AlfrescoPagingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoPagingUtils.m; sourceTree = "<group>"; };
+		05EF9A39176883650047F36D /* AlfrescoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoRequest.h; sourceTree = "<group>"; };
+		05EF9A3A176883650047F36D /* AlfrescoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoRequest.m; sourceTree = "<group>"; };
+		05EF9A3B176883650047F36D /* AlfrescoSiteCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoSiteCache.h; sourceTree = "<group>"; };
+		05EF9A3C176883650047F36D /* AlfrescoSiteCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoSiteCache.m; sourceTree = "<group>"; };
+		05EF9A3D176883650047F36D /* AlfrescoSortingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoSortingUtils.h; sourceTree = "<group>"; };
+		05EF9A3E176883650047F36D /* AlfrescoSortingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoSortingUtils.m; sourceTree = "<group>"; };
+		05EF9A3F176883650047F36D /* AlfrescoURLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlfrescoURLUtils.h; sourceTree = "<group>"; };
+		05EF9A40176883650047F36D /* AlfrescoURLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlfrescoURLUtils.m; sourceTree = "<group>"; };
+		24DD6CF71134B3F500162E58 /* ComAlfrescoAppceleratorModuleIosSdkModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorModuleIosSdkModule.h; path = Classes/ComAlfrescoAppceleratorModuleIosSdkModule.h; sourceTree = "<group>"; };
+		24DD6CF81134B3F500162E58 /* ComAlfrescoAppceleratorModuleIosSdkModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorModuleIosSdkModule.m; path = Classes/ComAlfrescoAppceleratorModuleIosSdkModule.m; sourceTree = "<group>"; };
+		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
+		24DE9E0F11C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleIosSdkModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorModuleIosSdkModuleAssets.h; path = Classes/ComAlfrescoAppceleratorModuleIosSdkModuleAssets.h; sourceTree = "<group>"; };
+		24DE9E1011C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleIosSdkModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorModuleIosSdkModuleAssets.m; path = Classes/ComAlfrescoAppceleratorModuleIosSdkModuleAssets.m; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* ComAlfrescoAppceleratorModuleIosSdk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAlfrescoAppceleratorModuleIosSdk_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libComAlfrescoAppceleratorModuleIosSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComAlfrescoAppceleratorModuleIosSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libComAlfrescoAppceleratorModuleIosSdk.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05EF98F0176883650047F36D /* CMIS */ = {
+			isa = PBXGroup;
+			children = (
+				05EF98F1176883650047F36D /* AlfrescoCMIS */,
+				05EF98FA176883650047F36D /* ObjectiveCMIS */,
+			);
+			name = CMIS;
+			path = "../../../alfresco-ios-sdk copy/AlfrescoSDK/CMIS";
+			sourceTree = "<group>";
+		};
+		05EF98F1176883650047F36D /* AlfrescoCMIS */ = {
+			isa = PBXGroup;
+			children = (
+				05EF98F2176883650047F36D /* AlfrescoCMISDocument.h */,
+				05EF98F3176883650047F36D /* AlfrescoCMISDocument.m */,
+				05EF98F4176883650047F36D /* AlfrescoCMISFolder.h */,
+				05EF98F5176883650047F36D /* AlfrescoCMISFolder.m */,
+				05EF98F6176883650047F36D /* AlfrescoCMISObjectConverter.h */,
+				05EF98F7176883650047F36D /* AlfrescoCMISObjectConverter.m */,
+				05EF98F8176883650047F36D /* AlfrescoCMISUtil.h */,
+				05EF98F9176883650047F36D /* AlfrescoCMISUtil.m */,
+			);
+			path = AlfrescoCMIS;
+			sourceTree = "<group>";
+		};
+		05EF98FA176883650047F36D /* ObjectiveCMIS */ = {
+			isa = PBXGroup;
+			children = (
+				05EF98FB176883650047F36D /* Bindings */,
+				05EF9950176883650047F36D /* Client */,
+				05EF9967176883650047F36D /* Common */,
+				05EF9982176883650047F36D /* ObjectiveCMIS-Prefix.pch */,
+				05EF9983176883650047F36D /* Utils */,
+			);
+			path = ObjectiveCMIS;
+			sourceTree = "<group>";
+		};
+		05EF98FB176883650047F36D /* Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				05EF98FC176883650047F36D /* AtomPub */,
+				05EF9936176883650047F36D /* CMISAclService.h */,
+				05EF9937176883650047F36D /* CMISBinding.h */,
+				05EF9938176883650047F36D /* CMISBindingFactory.h */,
+				05EF9939176883650047F36D /* CMISBindingFactory.m */,
+				05EF993A176883650047F36D /* CMISBindingSession.h */,
+				05EF993B176883650047F36D /* CMISBindingSession.m */,
+				05EF993C176883650047F36D /* CMISDiscoveryService.h */,
+				05EF993D176883650047F36D /* CMISLinkCache.h */,
+				05EF993E176883650047F36D /* CMISLinkCache.m */,
+				05EF993F176883650047F36D /* CMISMultiFilingService.h */,
+				05EF9940176883650047F36D /* CMISNavigationService.h */,
+				05EF9941176883650047F36D /* CMISObjectList.h */,
+				05EF9942176883650047F36D /* CMISObjectList.m */,
+				05EF9943176883650047F36D /* CMISObjectService.h */,
+				05EF9944176883650047F36D /* CMISPolicyService.h */,
+				05EF9945176883650047F36D /* CMISPropertyDefinition.h */,
+				05EF9946176883650047F36D /* CMISPropertyDefinition.m */,
+				05EF9947176883650047F36D /* CMISQueryResult.h */,
+				05EF9948176883650047F36D /* CMISQueryResult.m */,
+				05EF9949176883650047F36D /* CMISRelationshipService.h */,
+				05EF994A176883650047F36D /* CMISRenditionData.h */,
+				05EF994B176883650047F36D /* CMISRenditionData.m */,
+				05EF994C176883650047F36D /* CMISRepositoryService.h */,
+				05EF994D176883650047F36D /* CMISTypeDefinition.h */,
+				05EF994E176883650047F36D /* CMISTypeDefinition.m */,
+				05EF994F176883650047F36D /* CMISVersioningService.h */,
+			);
+			path = Bindings;
+			sourceTree = "<group>";
+		};
+		05EF98FC176883650047F36D /* AtomPub */ = {
+			isa = PBXGroup;
+			children = (
+				05EF98FD176883650047F36D /* AtomPubParser */,
+				05EF9916176883650047F36D /* CMISAtomPubBaseService+Protected.h */,
+				05EF9917176883650047F36D /* CMISAtomPubBaseService.h */,
+				05EF9918176883650047F36D /* CMISAtomPubBaseService.m */,
+				05EF9919176883650047F36D /* CMISAtomPubBinding.h */,
+				05EF991A176883650047F36D /* CMISAtomPubBinding.m */,
+				05EF991B176883650047F36D /* CMISAtomPubDiscoveryService.h */,
+				05EF991C176883650047F36D /* CMISAtomPubDiscoveryService.m */,
+				05EF991D176883650047F36D /* CMISAtomPubNavigationService.h */,
+				05EF991E176883650047F36D /* CMISAtomPubNavigationService.m */,
+				05EF991F176883650047F36D /* CMISAtomPubObjectService.h */,
+				05EF9920176883650047F36D /* CMISAtomPubObjectService.m */,
+				05EF9921176883650047F36D /* CMISAtomPubRepositoryService.h */,
+				05EF9922176883650047F36D /* CMISAtomPubRepositoryService.m */,
+				05EF9923176883650047F36D /* CMISAtomPubVersioningService.h */,
+				05EF9924176883650047F36D /* CMISAtomPubVersioningService.m */,
+				05EF9925176883650047F36D /* CMISObjectByIdUriBuilder.h */,
+				05EF9926176883650047F36D /* CMISObjectByIdUriBuilder.m */,
+				05EF9927176883650047F36D /* CMISObjectByPathUriBuilder.h */,
+				05EF9928176883650047F36D /* CMISObjectByPathUriBuilder.m */,
+				05EF9929176883650047F36D /* CMISQueryAtomEntryWriter.h */,
+				05EF992A176883650047F36D /* CMISQueryAtomEntryWriter.m */,
+				05EF992B176883650047F36D /* CMISTypeByIdUriBuilder.h */,
+				05EF992C176883650047F36D /* CMISTypeByIdUriBuilder.m */,
+				05EF992D176883650047F36D /* Objects */,
+			);
+			path = AtomPub;
+			sourceTree = "<group>";
+		};
+		05EF98FD176883650047F36D /* AtomPubParser */ = {
+			isa = PBXGroup;
+			children = (
+				05EF98FE176883650047F36D /* CMISAllowableActionsParser.h */,
+				05EF98FF176883650047F36D /* CMISAllowableActionsParser.m */,
+				05EF9900176883650047F36D /* CMISAtomEntryParser.h */,
+				05EF9901176883650047F36D /* CMISAtomEntryParser.m */,
+				05EF9902176883650047F36D /* CMISAtomEntryWriter.h */,
+				05EF9903176883650047F36D /* CMISAtomEntryWriter.m */,
+				05EF9904176883650047F36D /* CMISAtomFeedParser.h */,
+				05EF9905176883650047F36D /* CMISAtomFeedParser.m */,
+				05EF9906176883650047F36D /* CMISAtomParserUtil.h */,
+				05EF9907176883650047F36D /* CMISAtomParserUtil.m */,
+				05EF9908176883650047F36D /* CMISAtomPubConstants.h */,
+				05EF9909176883650047F36D /* CMISAtomPubConstants.m */,
+				05EF990A176883650047F36D /* CMISAtomPubExtensionDataParserBase.h */,
+				05EF990B176883650047F36D /* CMISAtomPubExtensionDataParserBase.m */,
+				05EF990C176883650047F36D /* CMISAtomPubExtensionElementParser.h */,
+				05EF990D176883650047F36D /* CMISAtomPubExtensionElementParser.m */,
+				05EF990E176883650047F36D /* CMISPropertyDefinitionParser.h */,
+				05EF990F176883650047F36D /* CMISPropertyDefinitionParser.m */,
+				05EF9910176883650047F36D /* CMISRepositoryInfoParser.h */,
+				05EF9911176883650047F36D /* CMISRepositoryInfoParser.m */,
+				05EF9912176883650047F36D /* CMISServiceDocumentParser.h */,
+				05EF9913176883650047F36D /* CMISServiceDocumentParser.m */,
+				05EF9914176883650047F36D /* CMISTypeDefinitionAtomEntryParser.h */,
+				05EF9915176883650047F36D /* CMISTypeDefinitionAtomEntryParser.m */,
+			);
+			path = AtomPubParser;
+			sourceTree = "<group>";
+		};
+		05EF992D176883650047F36D /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				05EF992E176883650047F36D /* CMISAtomCollection.h */,
+				05EF992F176883650047F36D /* CMISAtomCollection.m */,
+				05EF9930176883650047F36D /* CMISAtomLink.h */,
+				05EF9931176883650047F36D /* CMISAtomLink.m */,
+				05EF9932176883650047F36D /* CMISLinkRelations.h */,
+				05EF9933176883650047F36D /* CMISLinkRelations.m */,
+				05EF9934176883650047F36D /* CMISWorkspace.h */,
+				05EF9935176883650047F36D /* CMISWorkspace.m */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		05EF9950176883650047F36D /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				05EF9951176883650047F36D /* CMISCollection.h */,
+				05EF9952176883650047F36D /* CMISCollection.m */,
+				05EF9953176883650047F36D /* CMISDocument.h */,
+				05EF9954176883650047F36D /* CMISDocument.m */,
+				05EF9955176883650047F36D /* CMISFileableObject.h */,
+				05EF9956176883650047F36D /* CMISFileableObject.m */,
+				05EF9957176883650047F36D /* CMISFolder.h */,
+				05EF9958176883650047F36D /* CMISFolder.m */,
+				05EF9959176883650047F36D /* CMISObject.h */,
+				05EF995A176883650047F36D /* CMISObject.m */,
+				05EF995B176883650047F36D /* CMISObjectId.h */,
+				05EF995C176883650047F36D /* CMISObjectId.m */,
+				05EF995D176883650047F36D /* CMISOperationContext.h */,
+				05EF995E176883650047F36D /* CMISOperationContext.m */,
+				05EF995F176883650047F36D /* CMISPagedResult.h */,
+				05EF9960176883650047F36D /* CMISPagedResult.m */,
+				05EF9961176883650047F36D /* CMISRendition.h */,
+				05EF9962176883650047F36D /* CMISRendition.m */,
+				05EF9963176883650047F36D /* CMISRequest.h */,
+				05EF9964176883650047F36D /* CMISRequest.m */,
+				05EF9965176883650047F36D /* CMISSession.h */,
+				05EF9966176883650047F36D /* CMISSession.m */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		05EF9967176883650047F36D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				05EF9968176883650047F36D /* CMISAllowableActions.h */,
+				05EF9969176883650047F36D /* CMISAllowableActions.m */,
+				05EF996A176883650047F36D /* CMISAuthenticationProvider.h */,
+				05EF996B176883650047F36D /* CMISConstants.h */,
+				05EF996C176883650047F36D /* CMISConstants.m */,
+				05EF996D176883650047F36D /* CMISEnums.h */,
+				05EF996E176883650047F36D /* CMISEnums.m */,
+				05EF996F176883650047F36D /* CMISErrors.h */,
+				05EF9970176883650047F36D /* CMISErrors.m */,
+				05EF9971176883650047F36D /* CMISExtensionData.h */,
+				05EF9972176883650047F36D /* CMISExtensionData.m */,
+				05EF9973176883650047F36D /* CMISExtensionElement.h */,
+				05EF9974176883650047F36D /* CMISExtensionElement.m */,
+				05EF9975176883650047F36D /* CMISNetworkProvider.h */,
+				05EF9976176883650047F36D /* CMISObjectData.h */,
+				05EF9977176883650047F36D /* CMISObjectData.m */,
+				05EF9978176883650047F36D /* CMISProperties.h */,
+				05EF9979176883650047F36D /* CMISProperties.m */,
+				05EF997A176883650047F36D /* CMISPropertyData.h */,
+				05EF997B176883650047F36D /* CMISPropertyData.m */,
+				05EF997C176883650047F36D /* CMISRepositoryInfo.h */,
+				05EF997D176883650047F36D /* CMISRepositoryInfo.m */,
+				05EF997E176883650047F36D /* CMISSessionParameters.h */,
+				05EF997F176883650047F36D /* CMISSessionParameters.m */,
+				05EF9980176883650047F36D /* CMISStandardAuthenticationProvider.h */,
+				05EF9981176883650047F36D /* CMISStandardAuthenticationProvider.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		05EF9983176883650047F36D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				05EF9984176883650047F36D /* CMISBase64Encoder.h */,
+				05EF9985176883650047F36D /* CMISBase64Encoder.m */,
+				05EF9986176883650047F36D /* CMISDateUtil.h */,
+				05EF9987176883650047F36D /* CMISDateUtil.m */,
+				05EF9988176883650047F36D /* CMISDefaultNetworkProvider.h */,
+				05EF9989176883650047F36D /* CMISDefaultNetworkProvider.m */,
+				05EF998A176883650047F36D /* CMISFileUtil.h */,
+				05EF998B176883650047F36D /* CMISFileUtil.m */,
+				05EF998C176883650047F36D /* CMISHttpDownloadRequest.h */,
+				05EF998D176883650047F36D /* CMISHttpDownloadRequest.m */,
+				05EF998E176883650047F36D /* CMISHttpRequest.h */,
+				05EF998F176883650047F36D /* CMISHttpRequest.m */,
+				05EF9990176883650047F36D /* CMISHttpResponse.h */,
+				05EF9991176883650047F36D /* CMISHttpResponse.m */,
+				05EF9992176883650047F36D /* CMISHttpUploadRequest.h */,
+				05EF9993176883650047F36D /* CMISHttpUploadRequest.m */,
+				05EF9994176883650047F36D /* CMISLog.h */,
+				05EF9995176883650047F36D /* CMISLog.m */,
+				05EF9996176883650047F36D /* CMISObjectConverter.h */,
+				05EF9997176883650047F36D /* CMISObjectConverter.m */,
+				05EF9998176883650047F36D /* CMISStringInOutParameter.h */,
+				05EF9999176883650047F36D /* CMISStringInOutParameter.m */,
+				05EF999A176883650047F36D /* CMISURLUtil.h */,
+				05EF999B176883650047F36D /* CMISURLUtil.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		05EF999C176883650047F36D /* AlfrescoSDK */ = {
+			isa = PBXGroup;
+			children = (
+				05EF999D176883650047F36D /* AlfrescoSDK-Prefix.pch */,
+				05EF999E176883650047F36D /* Constants */,
+				05EF99A5176883650047F36D /* File Manager */,
+				05EF99AC176883650047F36D /* Model */,
+				05EF99D2176883650047F36D /* Services */,
+				05EF9A14176883650047F36D /* Session */,
+				05EF9A2D176883650047F36D /* Utils */,
+			);
+			name = AlfrescoSDK;
+			path = "../../../alfresco-ios-sdk copy/AlfrescoSDK/AlfrescoSDK";
+			sourceTree = "<group>";
+		};
+		05EF999E176883650047F36D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				05EF999F176883650047F36D /* AlfrescoConstants.h */,
+				05EF99A0176883650047F36D /* AlfrescoConstants.m */,
+				05EF99A1176883650047F36D /* AlfrescoErrors.h */,
+				05EF99A2176883650047F36D /* AlfrescoErrors.m */,
+				05EF99A3176883650047F36D /* AlfrescoInternalConstants.h */,
+				05EF99A4176883650047F36D /* AlfrescoInternalConstants.m */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		05EF99A5176883650047F36D /* File Manager */ = {
+			isa = PBXGroup;
+			children = (
+				05EF99A6176883650047F36D /* AlfrescoDefaultFileManager.h */,
+				05EF99A7176883650047F36D /* AlfrescoDefaultFileManager.m */,
+				05EF99A8176883650047F36D /* AlfrescoFileManager.h */,
+				05EF99A9176883650047F36D /* AlfrescoFileManager.m */,
+				05EF99AA176883650047F36D /* AlfrescoPlaceholderFileManager.h */,
+				05EF99AB176883650047F36D /* AlfrescoPlaceholderFileManager.m */,
+			);
+			path = "File Manager";
+			sourceTree = "<group>";
+		};
+		05EF99AC176883650047F36D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				05EF99AD176883650047F36D /* AlfrescoActivityEntry.h */,
+				05EF99AE176883650047F36D /* AlfrescoActivityEntry.m */,
+				05EF99AF176883650047F36D /* AlfrescoComment.h */,
+				05EF99B0176883650047F36D /* AlfrescoComment.m */,
+				05EF99B1176883650047F36D /* AlfrescoContent.h */,
+				05EF99B2176883650047F36D /* AlfrescoContent.m */,
+				05EF99B3176883650047F36D /* AlfrescoContentFile.h */,
+				05EF99B4176883650047F36D /* AlfrescoContentFile.m */,
+				05EF99B5176883650047F36D /* AlfrescoContentStream.h */,
+				05EF99B6176883650047F36D /* AlfrescoContentStream.m */,
+				05EF99B7176883650047F36D /* AlfrescoDocument.h */,
+				05EF99B8176883650047F36D /* AlfrescoDocument.m */,
+				05EF99B9176883650047F36D /* AlfrescoFolder.h */,
+				05EF99BA176883650047F36D /* AlfrescoFolder.m */,
+				05EF99BB176883650047F36D /* AlfrescoKeywordSearchOptions.h */,
+				05EF99BC176883650047F36D /* AlfrescoKeywordSearchOptions.m */,
+				05EF99BD176883650047F36D /* AlfrescoListingContext.h */,
+				05EF99BE176883650047F36D /* AlfrescoListingContext.m */,
+				05EF99BF176883650047F36D /* AlfrescoNode.h */,
+				05EF99C0176883650047F36D /* AlfrescoNode.m */,
+				05EF99C1176883650047F36D /* AlfrescoPagingResult.h */,
+				05EF99C2176883650047F36D /* AlfrescoPagingResult.m */,
+				05EF99C3176883650047F36D /* AlfrescoPermissions.h */,
+				05EF99C4176883650047F36D /* AlfrescoPermissions.m */,
+				05EF99C5176883650047F36D /* AlfrescoPerson.h */,
+				05EF99C6176883650047F36D /* AlfrescoPerson.m */,
+				05EF99C7176883650047F36D /* AlfrescoProperty.h */,
+				05EF99C8176883650047F36D /* AlfrescoProperty.m */,
+				05EF99C9176883650047F36D /* AlfrescoRepositoryCapabilities.h */,
+				05EF99CA176883650047F36D /* AlfrescoRepositoryCapabilities.m */,
+				05EF99CB176883650047F36D /* AlfrescoRepositoryInfo.h */,
+				05EF99CC176883650047F36D /* AlfrescoRepositoryInfo.m */,
+				05EF99CD176883650047F36D /* AlfrescoSearchLanguage.h */,
+				05EF99CE176883650047F36D /* AlfrescoSite.h */,
+				05EF99CF176883650047F36D /* AlfrescoSite.m */,
+				05EF99D0176883650047F36D /* AlfrescoTag.h */,
+				05EF99D1176883650047F36D /* AlfrescoTag.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		05EF99D2176883650047F36D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				05EF99D3176883650047F36D /* AlfrescoActivityStreamService.h */,
+				05EF99D4176883650047F36D /* AlfrescoActivityStreamService.m */,
+				05EF99D5176883650047F36D /* AlfrescoCommentService.h */,
+				05EF99D6176883650047F36D /* AlfrescoCommentService.m */,
+				05EF99D7176883650047F36D /* AlfrescoDocumentFolderService.h */,
+				05EF99D8176883650047F36D /* AlfrescoDocumentFolderService.m */,
+				05EF99D9176883650047F36D /* AlfrescoPersonService.h */,
+				05EF99DA176883650047F36D /* AlfrescoPersonService.m */,
+				05EF99DB176883650047F36D /* AlfrescoRatingService.h */,
+				05EF99DC176883650047F36D /* AlfrescoRatingService.m */,
+				05EF99DD176883650047F36D /* AlfrescoSearchService.h */,
+				05EF99DE176883650047F36D /* AlfrescoSearchService.m */,
+				05EF99DF176883650047F36D /* AlfrescoSiteService.h */,
+				05EF99E0176883650047F36D /* AlfrescoSiteService.m */,
+				05EF99E1176883650047F36D /* AlfrescoTaggingService.h */,
+				05EF99E2176883650047F36D /* AlfrescoTaggingService.m */,
+				05EF99E3176883650047F36D /* AlfrescoVersionService.h */,
+				05EF99E4176883650047F36D /* AlfrescoVersionService.m */,
+				05EF99E5176883650047F36D /* CloudServices */,
+				05EF99F4176883650047F36D /* OnPremiseServices */,
+				05EF9A05176883650047F36D /* PlaceholderServices */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		05EF99E5176883650047F36D /* CloudServices */ = {
+			isa = PBXGroup;
+			children = (
+				05EF99E6176883650047F36D /* AlfrescoCloudActivityStreamService.h */,
+				05EF99E7176883650047F36D /* AlfrescoCloudActivityStreamService.m */,
+				05EF99E8176883650047F36D /* AlfrescoCloudCommentService.h */,
+				05EF99E9176883650047F36D /* AlfrescoCloudCommentService.m */,
+				05EF99EA176883650047F36D /* AlfrescoCloudDocumentFolderService.h */,
+				05EF99EB176883650047F36D /* AlfrescoCloudDocumentFolderService.m */,
+				05EF99EC176883650047F36D /* AlfrescoCloudPersonService.h */,
+				05EF99ED176883650047F36D /* AlfrescoCloudPersonService.m */,
+				05EF99EE176883650047F36D /* AlfrescoCloudRatingService.h */,
+				05EF99EF176883650047F36D /* AlfrescoCloudRatingService.m */,
+				05EF99F0176883650047F36D /* AlfrescoCloudSiteService.h */,
+				05EF99F1176883650047F36D /* AlfrescoCloudSiteService.m */,
+				05EF99F2176883650047F36D /* AlfrescoCloudTaggingService.h */,
+				05EF99F3176883650047F36D /* AlfrescoCloudTaggingService.m */,
+			);
+			path = CloudServices;
+			sourceTree = "<group>";
+		};
+		05EF99F4176883650047F36D /* OnPremiseServices */ = {
+			isa = PBXGroup;
+			children = (
+				05EF99F5176883650047F36D /* AlfrescoOnPremiseActivityStreamService.h */,
+				05EF99F6176883650047F36D /* AlfrescoOnPremiseActivityStreamService.m */,
+				05EF99F7176883650047F36D /* AlfrescoOnPremiseCommentService.h */,
+				05EF99F8176883650047F36D /* AlfrescoOnPremiseCommentService.m */,
+				05EF99F9176883650047F36D /* AlfrescoOnPremiseDocumentFolderService.h */,
+				05EF99FA176883650047F36D /* AlfrescoOnPremiseDocumentFolderService.m */,
+				05EF99FB176883650047F36D /* AlfrescoOnPremiseJoinSiteRequest.h */,
+				05EF99FC176883650047F36D /* AlfrescoOnPremiseJoinSiteRequest.m */,
+				05EF99FD176883650047F36D /* AlfrescoOnPremisePersonService.h */,
+				05EF99FE176883650047F36D /* AlfrescoOnPremisePersonService.m */,
+				05EF99FF176883650047F36D /* AlfrescoOnPremiseRatingService.h */,
+				05EF9A00176883650047F36D /* AlfrescoOnPremiseRatingService.m */,
+				05EF9A01176883650047F36D /* AlfrescoOnPremiseSiteService.h */,
+				05EF9A02176883650047F36D /* AlfrescoOnPremiseSiteService.m */,
+				05EF9A03176883650047F36D /* AlfrescoOnPremiseTaggingService.h */,
+				05EF9A04176883650047F36D /* AlfrescoOnPremiseTaggingService.m */,
+			);
+			path = OnPremiseServices;
+			sourceTree = "<group>";
+		};
+		05EF9A05176883650047F36D /* PlaceholderServices */ = {
+			isa = PBXGroup;
+			children = (
+				05EF9A06176883650047F36D /* AlfrescoPlaceholderActivityStreamService.h */,
+				05EF9A07176883650047F36D /* AlfrescoPlaceholderActivityStreamService.m */,
+				05EF9A08176883650047F36D /* AlfrescoPlaceholderCommentService.h */,
+				05EF9A09176883650047F36D /* AlfrescoPlaceholderCommentService.m */,
+				05EF9A0A176883650047F36D /* AlfrescoPlaceholderDocumentFolderService.h */,
+				05EF9A0B176883650047F36D /* AlfrescoPlaceholderDocumentFolderService.m */,
+				05EF9A0C176883650047F36D /* AlfrescoPlaceholderPersonService.h */,
+				05EF9A0D176883650047F36D /* AlfrescoPlaceholderPersonService.m */,
+				05EF9A0E176883650047F36D /* AlfrescoPlaceholderRatingService.h */,
+				05EF9A0F176883650047F36D /* AlfrescoPlaceholderRatingService.m */,
+				05EF9A10176883650047F36D /* AlfrescoPlaceholderSiteService.h */,
+				05EF9A11176883650047F36D /* AlfrescoPlaceholderSiteService.m */,
+				05EF9A12176883650047F36D /* AlfrescoPlaceholderTaggingService.h */,
+				05EF9A13176883650047F36D /* AlfrescoPlaceholderTaggingService.m */,
+			);
+			path = PlaceholderServices;
+			sourceTree = "<group>";
+		};
+		05EF9A14176883650047F36D /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				05EF9A15176883650047F36D /* AlfrescoAuthenticationProvider.h */,
+				05EF9A16176883650047F36D /* AlfrescoBasicAuthenticationProvider.h */,
+				05EF9A17176883650047F36D /* AlfrescoBasicAuthenticationProvider.m */,
+				05EF9A18176883650047F36D /* AlfrescoSession.h */,
+				05EF9A19176883650047F36D /* CloudSession */,
+				05EF9A1E176883650047F36D /* CMISPassThroughAuthenticationProvider.h */,
+				05EF9A1F176883650047F36D /* CMISPassThroughAuthenticationProvider.m */,
+				05EF9A20176883650047F36D /* OAuth */,
+				05EF9A2A176883650047F36D /* OnPremiseSession */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		05EF9A19176883650047F36D /* CloudSession */ = {
+			isa = PBXGroup;
+			children = (
+				05EF9A1A176883650047F36D /* AlfrescoCloudNetwork.h */,
+				05EF9A1B176883650047F36D /* AlfrescoCloudNetwork.m */,
+				05EF9A1C176883650047F36D /* AlfrescoCloudSession.h */,
+				05EF9A1D176883650047F36D /* AlfrescoCloudSession.m */,
+			);
+			path = CloudSession;
+			sourceTree = "<group>";
+		};
+		05EF9A20176883650047F36D /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				05EF9A21176883650047F36D /* AlfrescoOAuthAuthenticationProvider.h */,
+				05EF9A22176883650047F36D /* AlfrescoOAuthAuthenticationProvider.m */,
+				05EF9A23176883650047F36D /* AlfrescoOAuthData.h */,
+				05EF9A24176883650047F36D /* AlfrescoOAuthData.m */,
+				05EF9A25176883650047F36D /* AlfrescoOAuthHelper.h */,
+				05EF9A26176883650047F36D /* AlfrescoOAuthHelper.m */,
+				05EF9A27176883650047F36D /* AlfrescoOAuthLoginDelegate.h */,
+				05EF9A28176883650047F36D /* AlfrescoOAuthLoginViewController.h */,
+				05EF9A29176883650047F36D /* AlfrescoOAuthLoginViewController.m */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
+		05EF9A2A176883650047F36D /* OnPremiseSession */ = {
+			isa = PBXGroup;
+			children = (
+				05EF9A2B176883650047F36D /* AlfrescoRepositorySession.h */,
+				05EF9A2C176883650047F36D /* AlfrescoRepositorySession.m */,
+			);
+			path = OnPremiseSession;
+			sourceTree = "<group>";
+		};
+		05EF9A2D176883650047F36D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				05EF9A2E176883650047F36D /* AlfrescoDefaultHTTPRequest.h */,
+				05EF9A2F176883650047F36D /* AlfrescoDefaultHTTPRequest.m */,
+				05EF9A30176883650047F36D /* AlfrescoDefaultNetworkProvider.h */,
+				05EF9A31176883650047F36D /* AlfrescoDefaultNetworkProvider.m */,
+				05EF9A32176883650047F36D /* AlfrescoLog.h */,
+				05EF9A33176883650047F36D /* AlfrescoLog.m */,
+				05EF9A34176883650047F36D /* AlfrescoNetworkProvider.h */,
+				05EF9A35176883650047F36D /* AlfrescoObjectConverter.h */,
+				05EF9A36176883650047F36D /* AlfrescoObjectConverter.m */,
+				05EF9A37176883650047F36D /* AlfrescoPagingUtils.h */,
+				05EF9A38176883650047F36D /* AlfrescoPagingUtils.m */,
+				05EF9A39176883650047F36D /* AlfrescoRequest.h */,
+				05EF9A3A176883650047F36D /* AlfrescoRequest.m */,
+				05EF9A3B176883650047F36D /* AlfrescoSiteCache.h */,
+				05EF9A3C176883650047F36D /* AlfrescoSiteCache.m */,
+				05EF9A3D176883650047F36D /* AlfrescoSortingUtils.h */,
+				05EF9A3E176883650047F36D /* AlfrescoSortingUtils.m */,
+				05EF9A3F176883650047F36D /* AlfrescoURLUtils.h */,
+				05EF9A40176883650047F36D /* AlfrescoURLUtils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* iOSSDKModule */ = {
+			isa = PBXGroup;
+			children = (
+				05EF98F0176883650047F36D /* CMIS */,
+				05EF999C176883650047F36D /* AlfrescoSDK */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = iOSSDKModule;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				05AFDCB2175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.h */,
+				05AFDCB3175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.m */,
+				05AFDCB4175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.h */,
+				05AFDCB5175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.m */,
+				05AFDCB6175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRequestProxy.h */,
+				05AFDCB7175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRequestProxy.m */,
+				05AFDCBA175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.h */,
+				05AFDCBB175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.m */,
+				05AFDCBC175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionProxy.h */,
+				05AFDCBD175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionProxy.m */,
+				24DE9E0F11C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleIosSdkModuleAssets.h */,
+				24DE9E1011C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleIosSdkModuleAssets.m */,
+				24DD6CF71134B3F500162E58 /* ComAlfrescoAppceleratorModuleIosSdkModule.h */,
+				24DD6CF81134B3F500162E58 /* ComAlfrescoAppceleratorModuleIosSdkModule.m */,
+				05666AC4176F1340005807F3 /* ComAlfrescoAppceleratorIosSdkFolderProxy.h */,
+				05666AD017720FC5005807F3 /* ComAlfrescoAppceleratorIosSdkDocumentProxy.h */,
+				05666AC5176F1340005807F3 /* ComAlfrescoAppceleratorIosSdkDocumentProxy.m */,
+				05666AD11772112A005807F3 /* ComAlfrescoAppceleratorIosSdkFolderProxy.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* ComAlfrescoAppceleratorModuleIosSdk_Prefix.pch */,
+				24DD6D1B1134B66800162E58 /* titanium.xcconfig */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* ComAlfrescoAppceleratorModuleIosSdk_Prefix.pch in Headers */,
+				24DD6CF91134B3F500162E58 /* ComAlfrescoAppceleratorModuleIosSdkModule.h in Headers */,
+				24DE9E1111C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleIosSdkModuleAssets.h in Headers */,
+				05AFDCBE175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.h in Headers */,
+				05AFDCC0175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.h in Headers */,
+				05AFDCC2175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRequestProxy.h in Headers */,
+				05AFDCC6175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.h in Headers */,
+				05AFDCC8175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionProxy.h in Headers */,
+				05EF9A41176883650047F36D /* AlfrescoCMISDocument.h in Headers */,
+				05EF9A43176883650047F36D /* AlfrescoCMISFolder.h in Headers */,
+				05EF9A45176883650047F36D /* AlfrescoCMISObjectConverter.h in Headers */,
+				05EF9A47176883650047F36D /* AlfrescoCMISUtil.h in Headers */,
+				05EF9A49176883650047F36D /* CMISAllowableActionsParser.h in Headers */,
+				05EF9A4B176883650047F36D /* CMISAtomEntryParser.h in Headers */,
+				05EF9A4D176883650047F36D /* CMISAtomEntryWriter.h in Headers */,
+				05EF9A4F176883650047F36D /* CMISAtomFeedParser.h in Headers */,
+				05EF9A51176883650047F36D /* CMISAtomParserUtil.h in Headers */,
+				05EF9A53176883650047F36D /* CMISAtomPubConstants.h in Headers */,
+				05EF9A55176883650047F36D /* CMISAtomPubExtensionDataParserBase.h in Headers */,
+				05EF9A57176883650047F36D /* CMISAtomPubExtensionElementParser.h in Headers */,
+				05EF9A59176883650047F36D /* CMISPropertyDefinitionParser.h in Headers */,
+				05EF9A5B176883650047F36D /* CMISRepositoryInfoParser.h in Headers */,
+				05EF9A5D176883650047F36D /* CMISServiceDocumentParser.h in Headers */,
+				05EF9A5F176883650047F36D /* CMISTypeDefinitionAtomEntryParser.h in Headers */,
+				05EF9A61176883650047F36D /* CMISAtomPubBaseService+Protected.h in Headers */,
+				05EF9A62176883650047F36D /* CMISAtomPubBaseService.h in Headers */,
+				05EF9A64176883650047F36D /* CMISAtomPubBinding.h in Headers */,
+				05EF9A66176883650047F36D /* CMISAtomPubDiscoveryService.h in Headers */,
+				05EF9A68176883650047F36D /* CMISAtomPubNavigationService.h in Headers */,
+				05EF9A6A176883650047F36D /* CMISAtomPubObjectService.h in Headers */,
+				05EF9A6C176883650047F36D /* CMISAtomPubRepositoryService.h in Headers */,
+				05EF9A6E176883650047F36D /* CMISAtomPubVersioningService.h in Headers */,
+				05EF9A70176883650047F36D /* CMISObjectByIdUriBuilder.h in Headers */,
+				05EF9A72176883650047F36D /* CMISObjectByPathUriBuilder.h in Headers */,
+				05EF9A74176883650047F36D /* CMISQueryAtomEntryWriter.h in Headers */,
+				05EF9A76176883650047F36D /* CMISTypeByIdUriBuilder.h in Headers */,
+				05EF9A78176883650047F36D /* CMISAtomCollection.h in Headers */,
+				05EF9A7A176883650047F36D /* CMISAtomLink.h in Headers */,
+				05EF9A7C176883650047F36D /* CMISLinkRelations.h in Headers */,
+				05EF9A7E176883650047F36D /* CMISWorkspace.h in Headers */,
+				05EF9A80176883650047F36D /* CMISAclService.h in Headers */,
+				05EF9A81176883650047F36D /* CMISBinding.h in Headers */,
+				05EF9A82176883650047F36D /* CMISBindingFactory.h in Headers */,
+				05EF9A84176883650047F36D /* CMISBindingSession.h in Headers */,
+				05EF9A86176883650047F36D /* CMISDiscoveryService.h in Headers */,
+				05EF9A87176883650047F36D /* CMISLinkCache.h in Headers */,
+				05EF9A89176883650047F36D /* CMISMultiFilingService.h in Headers */,
+				05EF9A8A176883650047F36D /* CMISNavigationService.h in Headers */,
+				05EF9A8B176883650047F36D /* CMISObjectList.h in Headers */,
+				05EF9A8D176883650047F36D /* CMISObjectService.h in Headers */,
+				05EF9A8E176883650047F36D /* CMISPolicyService.h in Headers */,
+				05EF9A8F176883650047F36D /* CMISPropertyDefinition.h in Headers */,
+				05EF9A91176883650047F36D /* CMISQueryResult.h in Headers */,
+				05EF9A93176883650047F36D /* CMISRelationshipService.h in Headers */,
+				05EF9A94176883650047F36D /* CMISRenditionData.h in Headers */,
+				05EF9A96176883650047F36D /* CMISRepositoryService.h in Headers */,
+				05EF9A97176883650047F36D /* CMISTypeDefinition.h in Headers */,
+				05EF9A99176883650047F36D /* CMISVersioningService.h in Headers */,
+				05EF9A9A176883650047F36D /* CMISCollection.h in Headers */,
+				05EF9A9C176883650047F36D /* CMISDocument.h in Headers */,
+				05EF9A9E176883650047F36D /* CMISFileableObject.h in Headers */,
+				05EF9AA0176883650047F36D /* CMISFolder.h in Headers */,
+				05EF9AA2176883650047F36D /* CMISObject.h in Headers */,
+				05EF9AA4176883650047F36D /* CMISObjectId.h in Headers */,
+				05EF9AA6176883650047F36D /* CMISOperationContext.h in Headers */,
+				05EF9AA8176883650047F36D /* CMISPagedResult.h in Headers */,
+				05EF9AAA176883650047F36D /* CMISRendition.h in Headers */,
+				05EF9AAC176883650047F36D /* CMISRequest.h in Headers */,
+				05EF9AAE176883650047F36D /* CMISSession.h in Headers */,
+				05EF9AB0176883650047F36D /* CMISAllowableActions.h in Headers */,
+				05EF9AB2176883650047F36D /* CMISAuthenticationProvider.h in Headers */,
+				05EF9AB3176883650047F36D /* CMISConstants.h in Headers */,
+				05EF9AB5176883650047F36D /* CMISEnums.h in Headers */,
+				05EF9AB7176883650047F36D /* CMISErrors.h in Headers */,
+				05EF9AB9176883650047F36D /* CMISExtensionData.h in Headers */,
+				05EF9ABB176883650047F36D /* CMISExtensionElement.h in Headers */,
+				05EF9ABD176883650047F36D /* CMISNetworkProvider.h in Headers */,
+				05EF9ABE176883650047F36D /* CMISObjectData.h in Headers */,
+				05EF9AC0176883650047F36D /* CMISProperties.h in Headers */,
+				05EF9AC2176883650047F36D /* CMISPropertyData.h in Headers */,
+				05EF9AC4176883650047F36D /* CMISRepositoryInfo.h in Headers */,
+				05EF9AC6176883650047F36D /* CMISSessionParameters.h in Headers */,
+				05EF9AC8176883650047F36D /* CMISStandardAuthenticationProvider.h in Headers */,
+				05EF9ACA176883650047F36D /* ObjectiveCMIS-Prefix.pch in Headers */,
+				05EF9ACB176883650047F36D /* CMISBase64Encoder.h in Headers */,
+				05EF9ACD176883650047F36D /* CMISDateUtil.h in Headers */,
+				05EF9ACF176883650047F36D /* CMISDefaultNetworkProvider.h in Headers */,
+				05EF9AD1176883650047F36D /* CMISFileUtil.h in Headers */,
+				05EF9AD3176883650047F36D /* CMISHttpDownloadRequest.h in Headers */,
+				05EF9AD5176883650047F36D /* CMISHttpRequest.h in Headers */,
+				05EF9AD7176883650047F36D /* CMISHttpResponse.h in Headers */,
+				05EF9AD9176883650047F36D /* CMISHttpUploadRequest.h in Headers */,
+				05EF9ADB176883650047F36D /* CMISLog.h in Headers */,
+				05EF9ADD176883650047F36D /* CMISObjectConverter.h in Headers */,
+				05EF9ADF176883650047F36D /* CMISStringInOutParameter.h in Headers */,
+				05EF9AE1176883650047F36D /* CMISURLUtil.h in Headers */,
+				05EF9AE3176883650047F36D /* AlfrescoSDK-Prefix.pch in Headers */,
+				05EF9AE4176883650047F36D /* AlfrescoConstants.h in Headers */,
+				05EF9AE6176883650047F36D /* AlfrescoErrors.h in Headers */,
+				05EF9AE8176883650047F36D /* AlfrescoInternalConstants.h in Headers */,
+				05EF9AEA176883650047F36D /* AlfrescoDefaultFileManager.h in Headers */,
+				05EF9AEC176883650047F36D /* AlfrescoFileManager.h in Headers */,
+				05EF9AEE176883650047F36D /* AlfrescoPlaceholderFileManager.h in Headers */,
+				05EF9AF0176883650047F36D /* AlfrescoActivityEntry.h in Headers */,
+				05EF9AF2176883650047F36D /* AlfrescoComment.h in Headers */,
+				05EF9AF4176883650047F36D /* AlfrescoContent.h in Headers */,
+				05EF9AF6176883650047F36D /* AlfrescoContentFile.h in Headers */,
+				05EF9AF8176883650047F36D /* AlfrescoContentStream.h in Headers */,
+				05EF9AFA176883650047F36D /* AlfrescoDocument.h in Headers */,
+				05EF9AFC176883650047F36D /* AlfrescoFolder.h in Headers */,
+				05EF9AFE176883650047F36D /* AlfrescoKeywordSearchOptions.h in Headers */,
+				05EF9B00176883650047F36D /* AlfrescoListingContext.h in Headers */,
+				05EF9B02176883650047F36D /* AlfrescoNode.h in Headers */,
+				05EF9B04176883650047F36D /* AlfrescoPagingResult.h in Headers */,
+				05EF9B06176883650047F36D /* AlfrescoPermissions.h in Headers */,
+				05EF9B08176883650047F36D /* AlfrescoPerson.h in Headers */,
+				05EF9B0A176883650047F36D /* AlfrescoProperty.h in Headers */,
+				05EF9B0C176883650047F36D /* AlfrescoRepositoryCapabilities.h in Headers */,
+				05EF9B0E176883650047F36D /* AlfrescoRepositoryInfo.h in Headers */,
+				05EF9B10176883650047F36D /* AlfrescoSearchLanguage.h in Headers */,
+				05EF9B11176883650047F36D /* AlfrescoSite.h in Headers */,
+				05EF9B13176883650047F36D /* AlfrescoTag.h in Headers */,
+				05EF9B15176883650047F36D /* AlfrescoActivityStreamService.h in Headers */,
+				05EF9B17176883650047F36D /* AlfrescoCommentService.h in Headers */,
+				05EF9B19176883650047F36D /* AlfrescoDocumentFolderService.h in Headers */,
+				05EF9B1B176883650047F36D /* AlfrescoPersonService.h in Headers */,
+				05EF9B1D176883650047F36D /* AlfrescoRatingService.h in Headers */,
+				05EF9B1F176883650047F36D /* AlfrescoSearchService.h in Headers */,
+				05EF9B21176883650047F36D /* AlfrescoSiteService.h in Headers */,
+				05EF9B23176883650047F36D /* AlfrescoTaggingService.h in Headers */,
+				05EF9B25176883650047F36D /* AlfrescoVersionService.h in Headers */,
+				05EF9B27176883650047F36D /* AlfrescoCloudActivityStreamService.h in Headers */,
+				05EF9B29176883650047F36D /* AlfrescoCloudCommentService.h in Headers */,
+				05EF9B2B176883650047F36D /* AlfrescoCloudDocumentFolderService.h in Headers */,
+				05EF9B2D176883650047F36D /* AlfrescoCloudPersonService.h in Headers */,
+				05EF9B2F176883650047F36D /* AlfrescoCloudRatingService.h in Headers */,
+				05EF9B31176883650047F36D /* AlfrescoCloudSiteService.h in Headers */,
+				05EF9B33176883650047F36D /* AlfrescoCloudTaggingService.h in Headers */,
+				05EF9B35176883650047F36D /* AlfrescoOnPremiseActivityStreamService.h in Headers */,
+				05EF9B37176883650047F36D /* AlfrescoOnPremiseCommentService.h in Headers */,
+				05EF9B39176883650047F36D /* AlfrescoOnPremiseDocumentFolderService.h in Headers */,
+				05EF9B3B176883650047F36D /* AlfrescoOnPremiseJoinSiteRequest.h in Headers */,
+				05EF9B3D176883650047F36D /* AlfrescoOnPremisePersonService.h in Headers */,
+				05EF9B3F176883650047F36D /* AlfrescoOnPremiseRatingService.h in Headers */,
+				05EF9B41176883650047F36D /* AlfrescoOnPremiseSiteService.h in Headers */,
+				05EF9B43176883650047F36D /* AlfrescoOnPremiseTaggingService.h in Headers */,
+				05EF9B45176883650047F36D /* AlfrescoPlaceholderActivityStreamService.h in Headers */,
+				05EF9B47176883650047F36D /* AlfrescoPlaceholderCommentService.h in Headers */,
+				05EF9B49176883650047F36D /* AlfrescoPlaceholderDocumentFolderService.h in Headers */,
+				05EF9B4B176883650047F36D /* AlfrescoPlaceholderPersonService.h in Headers */,
+				05EF9B4D176883650047F36D /* AlfrescoPlaceholderRatingService.h in Headers */,
+				05EF9B4F176883650047F36D /* AlfrescoPlaceholderSiteService.h in Headers */,
+				05EF9B51176883650047F36D /* AlfrescoPlaceholderTaggingService.h in Headers */,
+				05EF9B53176883650047F36D /* AlfrescoAuthenticationProvider.h in Headers */,
+				05EF9B54176883650047F36D /* AlfrescoBasicAuthenticationProvider.h in Headers */,
+				05EF9B56176883650047F36D /* AlfrescoSession.h in Headers */,
+				05EF9B57176883650047F36D /* AlfrescoCloudNetwork.h in Headers */,
+				05EF9B59176883650047F36D /* AlfrescoCloudSession.h in Headers */,
+				05EF9B5B176883650047F36D /* CMISPassThroughAuthenticationProvider.h in Headers */,
+				05EF9B5D176883650047F36D /* AlfrescoOAuthAuthenticationProvider.h in Headers */,
+				05EF9B5F176883650047F36D /* AlfrescoOAuthData.h in Headers */,
+				05EF9B61176883650047F36D /* AlfrescoOAuthHelper.h in Headers */,
+				05EF9B63176883650047F36D /* AlfrescoOAuthLoginDelegate.h in Headers */,
+				05EF9B64176883650047F36D /* AlfrescoOAuthLoginViewController.h in Headers */,
+				05EF9B66176883650047F36D /* AlfrescoRepositorySession.h in Headers */,
+				05EF9B68176883650047F36D /* AlfrescoDefaultHTTPRequest.h in Headers */,
+				05EF9B6A176883650047F36D /* AlfrescoDefaultNetworkProvider.h in Headers */,
+				05EF9B6C176883650047F36D /* AlfrescoLog.h in Headers */,
+				05EF9B6E176883650047F36D /* AlfrescoNetworkProvider.h in Headers */,
+				05EF9B6F176883650047F36D /* AlfrescoObjectConverter.h in Headers */,
+				05EF9B71176883650047F36D /* AlfrescoPagingUtils.h in Headers */,
+				05EF9B73176883650047F36D /* AlfrescoRequest.h in Headers */,
+				05EF9B75176883650047F36D /* AlfrescoSiteCache.h in Headers */,
+				05EF9B77176883650047F36D /* AlfrescoSortingUtils.h in Headers */,
+				05EF9B79176883650047F36D /* AlfrescoURLUtils.h in Headers */,
+				05666AC6176F1340005807F3 /* ComAlfrescoAppceleratorIosSdkFolderProxy.h in Headers */,
+				05666AD317721169005807F3 /* ComAlfrescoAppceleratorIosSdkDocumentProxy.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* iOSSDKModule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "iOSSDKModule" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOSSDKModule;
+			productName = iOSSDKModule;
+			productReference = D2AAC07E0554694100DB518D /* libComAlfrescoAppceleratorModuleIosSdk.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "iOSSDKModule" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* iOSSDKModule */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* iOSSDKModule */,
+				24416B8111C4CA220047AFDD /* Build & Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24416B8011C4CA220047AFDD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here\n\npython \"${TITANIUM_SDK}/titanium.py\" run --dir=\"${PROJECT_DIR}\"\nexit $?\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24DD6CFA1134B3F500162E58 /* ComAlfrescoAppceleratorModuleIosSdkModule.m in Sources */,
+				24DE9E1211C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleIosSdkModuleAssets.m in Sources */,
+				05AFDCBF175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.m in Sources */,
+				05AFDCC1175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRepositorySessionProxy.m in Sources */,
+				05AFDCC3175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkRequestProxy.m in Sources */,
+				05AFDCC7175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionCompletionBlockProxy.m in Sources */,
+				05AFDCC9175DEB3600E9ABED /* ComAlfrescoAppceleratorIosSdkSessionProxy.m in Sources */,
+				05EF9A42176883650047F36D /* AlfrescoCMISDocument.m in Sources */,
+				05EF9A44176883650047F36D /* AlfrescoCMISFolder.m in Sources */,
+				05EF9A46176883650047F36D /* AlfrescoCMISObjectConverter.m in Sources */,
+				05EF9A48176883650047F36D /* AlfrescoCMISUtil.m in Sources */,
+				05EF9A4A176883650047F36D /* CMISAllowableActionsParser.m in Sources */,
+				05EF9A4C176883650047F36D /* CMISAtomEntryParser.m in Sources */,
+				05EF9A4E176883650047F36D /* CMISAtomEntryWriter.m in Sources */,
+				05EF9A50176883650047F36D /* CMISAtomFeedParser.m in Sources */,
+				05EF9A52176883650047F36D /* CMISAtomParserUtil.m in Sources */,
+				05EF9A54176883650047F36D /* CMISAtomPubConstants.m in Sources */,
+				05EF9A56176883650047F36D /* CMISAtomPubExtensionDataParserBase.m in Sources */,
+				05EF9A58176883650047F36D /* CMISAtomPubExtensionElementParser.m in Sources */,
+				05EF9A5A176883650047F36D /* CMISPropertyDefinitionParser.m in Sources */,
+				05EF9A5C176883650047F36D /* CMISRepositoryInfoParser.m in Sources */,
+				05EF9A5E176883650047F36D /* CMISServiceDocumentParser.m in Sources */,
+				05EF9A60176883650047F36D /* CMISTypeDefinitionAtomEntryParser.m in Sources */,
+				05EF9A63176883650047F36D /* CMISAtomPubBaseService.m in Sources */,
+				05EF9A65176883650047F36D /* CMISAtomPubBinding.m in Sources */,
+				05EF9A67176883650047F36D /* CMISAtomPubDiscoveryService.m in Sources */,
+				05EF9A69176883650047F36D /* CMISAtomPubNavigationService.m in Sources */,
+				05EF9A6B176883650047F36D /* CMISAtomPubObjectService.m in Sources */,
+				05EF9A6D176883650047F36D /* CMISAtomPubRepositoryService.m in Sources */,
+				05EF9A6F176883650047F36D /* CMISAtomPubVersioningService.m in Sources */,
+				05EF9A71176883650047F36D /* CMISObjectByIdUriBuilder.m in Sources */,
+				05EF9A73176883650047F36D /* CMISObjectByPathUriBuilder.m in Sources */,
+				05EF9A75176883650047F36D /* CMISQueryAtomEntryWriter.m in Sources */,
+				05EF9A77176883650047F36D /* CMISTypeByIdUriBuilder.m in Sources */,
+				05EF9A79176883650047F36D /* CMISAtomCollection.m in Sources */,
+				05EF9A7B176883650047F36D /* CMISAtomLink.m in Sources */,
+				05EF9A7D176883650047F36D /* CMISLinkRelations.m in Sources */,
+				05EF9A7F176883650047F36D /* CMISWorkspace.m in Sources */,
+				05EF9A83176883650047F36D /* CMISBindingFactory.m in Sources */,
+				05EF9A85176883650047F36D /* CMISBindingSession.m in Sources */,
+				05EF9A88176883650047F36D /* CMISLinkCache.m in Sources */,
+				05EF9A8C176883650047F36D /* CMISObjectList.m in Sources */,
+				05EF9A90176883650047F36D /* CMISPropertyDefinition.m in Sources */,
+				05EF9A92176883650047F36D /* CMISQueryResult.m in Sources */,
+				05EF9A95176883650047F36D /* CMISRenditionData.m in Sources */,
+				05EF9A98176883650047F36D /* CMISTypeDefinition.m in Sources */,
+				05EF9A9B176883650047F36D /* CMISCollection.m in Sources */,
+				05EF9A9D176883650047F36D /* CMISDocument.m in Sources */,
+				05EF9A9F176883650047F36D /* CMISFileableObject.m in Sources */,
+				05EF9AA1176883650047F36D /* CMISFolder.m in Sources */,
+				05EF9AA3176883650047F36D /* CMISObject.m in Sources */,
+				05EF9AA5176883650047F36D /* CMISObjectId.m in Sources */,
+				05EF9AA7176883650047F36D /* CMISOperationContext.m in Sources */,
+				05EF9AA9176883650047F36D /* CMISPagedResult.m in Sources */,
+				05EF9AAB176883650047F36D /* CMISRendition.m in Sources */,
+				05EF9AAD176883650047F36D /* CMISRequest.m in Sources */,
+				05EF9AAF176883650047F36D /* CMISSession.m in Sources */,
+				05EF9AB1176883650047F36D /* CMISAllowableActions.m in Sources */,
+				05EF9AB4176883650047F36D /* CMISConstants.m in Sources */,
+				05EF9AB6176883650047F36D /* CMISEnums.m in Sources */,
+				05EF9AB8176883650047F36D /* CMISErrors.m in Sources */,
+				05EF9ABA176883650047F36D /* CMISExtensionData.m in Sources */,
+				05EF9ABC176883650047F36D /* CMISExtensionElement.m in Sources */,
+				05EF9ABF176883650047F36D /* CMISObjectData.m in Sources */,
+				05EF9AC1176883650047F36D /* CMISProperties.m in Sources */,
+				05EF9AC3176883650047F36D /* CMISPropertyData.m in Sources */,
+				05EF9AC5176883650047F36D /* CMISRepositoryInfo.m in Sources */,
+				05EF9AC7176883650047F36D /* CMISSessionParameters.m in Sources */,
+				05EF9AC9176883650047F36D /* CMISStandardAuthenticationProvider.m in Sources */,
+				05EF9ACC176883650047F36D /* CMISBase64Encoder.m in Sources */,
+				05EF9ACE176883650047F36D /* CMISDateUtil.m in Sources */,
+				05EF9AD0176883650047F36D /* CMISDefaultNetworkProvider.m in Sources */,
+				05EF9AD2176883650047F36D /* CMISFileUtil.m in Sources */,
+				05EF9AD4176883650047F36D /* CMISHttpDownloadRequest.m in Sources */,
+				05EF9AD6176883650047F36D /* CMISHttpRequest.m in Sources */,
+				05EF9AD8176883650047F36D /* CMISHttpResponse.m in Sources */,
+				05EF9ADA176883650047F36D /* CMISHttpUploadRequest.m in Sources */,
+				05EF9ADC176883650047F36D /* CMISLog.m in Sources */,
+				05EF9ADE176883650047F36D /* CMISObjectConverter.m in Sources */,
+				05EF9AE0176883650047F36D /* CMISStringInOutParameter.m in Sources */,
+				05EF9AE2176883650047F36D /* CMISURLUtil.m in Sources */,
+				05EF9AE5176883650047F36D /* AlfrescoConstants.m in Sources */,
+				05EF9AE7176883650047F36D /* AlfrescoErrors.m in Sources */,
+				05EF9AE9176883650047F36D /* AlfrescoInternalConstants.m in Sources */,
+				05EF9AEB176883650047F36D /* AlfrescoDefaultFileManager.m in Sources */,
+				05EF9AED176883650047F36D /* AlfrescoFileManager.m in Sources */,
+				05EF9AEF176883650047F36D /* AlfrescoPlaceholderFileManager.m in Sources */,
+				05EF9AF1176883650047F36D /* AlfrescoActivityEntry.m in Sources */,
+				05EF9AF3176883650047F36D /* AlfrescoComment.m in Sources */,
+				05EF9AF5176883650047F36D /* AlfrescoContent.m in Sources */,
+				05EF9AF7176883650047F36D /* AlfrescoContentFile.m in Sources */,
+				05EF9AF9176883650047F36D /* AlfrescoContentStream.m in Sources */,
+				05EF9AFB176883650047F36D /* AlfrescoDocument.m in Sources */,
+				05EF9AFD176883650047F36D /* AlfrescoFolder.m in Sources */,
+				05EF9AFF176883650047F36D /* AlfrescoKeywordSearchOptions.m in Sources */,
+				05EF9B01176883650047F36D /* AlfrescoListingContext.m in Sources */,
+				05EF9B03176883650047F36D /* AlfrescoNode.m in Sources */,
+				05EF9B05176883650047F36D /* AlfrescoPagingResult.m in Sources */,
+				05EF9B07176883650047F36D /* AlfrescoPermissions.m in Sources */,
+				05EF9B09176883650047F36D /* AlfrescoPerson.m in Sources */,
+				05EF9B0B176883650047F36D /* AlfrescoProperty.m in Sources */,
+				05EF9B0D176883650047F36D /* AlfrescoRepositoryCapabilities.m in Sources */,
+				05EF9B0F176883650047F36D /* AlfrescoRepositoryInfo.m in Sources */,
+				05EF9B12176883650047F36D /* AlfrescoSite.m in Sources */,
+				05EF9B14176883650047F36D /* AlfrescoTag.m in Sources */,
+				05EF9B16176883650047F36D /* AlfrescoActivityStreamService.m in Sources */,
+				05EF9B18176883650047F36D /* AlfrescoCommentService.m in Sources */,
+				05EF9B1A176883650047F36D /* AlfrescoDocumentFolderService.m in Sources */,
+				05EF9B1C176883650047F36D /* AlfrescoPersonService.m in Sources */,
+				05EF9B1E176883650047F36D /* AlfrescoRatingService.m in Sources */,
+				05EF9B20176883650047F36D /* AlfrescoSearchService.m in Sources */,
+				05EF9B22176883650047F36D /* AlfrescoSiteService.m in Sources */,
+				05EF9B24176883650047F36D /* AlfrescoTaggingService.m in Sources */,
+				05EF9B26176883650047F36D /* AlfrescoVersionService.m in Sources */,
+				05EF9B28176883650047F36D /* AlfrescoCloudActivityStreamService.m in Sources */,
+				05EF9B2A176883650047F36D /* AlfrescoCloudCommentService.m in Sources */,
+				05EF9B2C176883650047F36D /* AlfrescoCloudDocumentFolderService.m in Sources */,
+				05EF9B2E176883650047F36D /* AlfrescoCloudPersonService.m in Sources */,
+				05EF9B30176883650047F36D /* AlfrescoCloudRatingService.m in Sources */,
+				05EF9B32176883650047F36D /* AlfrescoCloudSiteService.m in Sources */,
+				05EF9B34176883650047F36D /* AlfrescoCloudTaggingService.m in Sources */,
+				05EF9B36176883650047F36D /* AlfrescoOnPremiseActivityStreamService.m in Sources */,
+				05EF9B38176883650047F36D /* AlfrescoOnPremiseCommentService.m in Sources */,
+				05EF9B3A176883650047F36D /* AlfrescoOnPremiseDocumentFolderService.m in Sources */,
+				05EF9B3C176883650047F36D /* AlfrescoOnPremiseJoinSiteRequest.m in Sources */,
+				05EF9B3E176883650047F36D /* AlfrescoOnPremisePersonService.m in Sources */,
+				05EF9B40176883650047F36D /* AlfrescoOnPremiseRatingService.m in Sources */,
+				05EF9B42176883650047F36D /* AlfrescoOnPremiseSiteService.m in Sources */,
+				05EF9B44176883650047F36D /* AlfrescoOnPremiseTaggingService.m in Sources */,
+				05EF9B46176883650047F36D /* AlfrescoPlaceholderActivityStreamService.m in Sources */,
+				05EF9B48176883650047F36D /* AlfrescoPlaceholderCommentService.m in Sources */,
+				05EF9B4A176883650047F36D /* AlfrescoPlaceholderDocumentFolderService.m in Sources */,
+				05EF9B4C176883650047F36D /* AlfrescoPlaceholderPersonService.m in Sources */,
+				05EF9B4E176883650047F36D /* AlfrescoPlaceholderRatingService.m in Sources */,
+				05EF9B50176883650047F36D /* AlfrescoPlaceholderSiteService.m in Sources */,
+				05EF9B52176883650047F36D /* AlfrescoPlaceholderTaggingService.m in Sources */,
+				05EF9B55176883650047F36D /* AlfrescoBasicAuthenticationProvider.m in Sources */,
+				05EF9B58176883650047F36D /* AlfrescoCloudNetwork.m in Sources */,
+				05EF9B5A176883650047F36D /* AlfrescoCloudSession.m in Sources */,
+				05EF9B5C176883650047F36D /* CMISPassThroughAuthenticationProvider.m in Sources */,
+				05EF9B5E176883650047F36D /* AlfrescoOAuthAuthenticationProvider.m in Sources */,
+				05EF9B60176883650047F36D /* AlfrescoOAuthData.m in Sources */,
+				05EF9B62176883650047F36D /* AlfrescoOAuthHelper.m in Sources */,
+				05EF9B65176883650047F36D /* AlfrescoOAuthLoginViewController.m in Sources */,
+				05EF9B67176883650047F36D /* AlfrescoRepositorySession.m in Sources */,
+				05EF9B69176883650047F36D /* AlfrescoDefaultHTTPRequest.m in Sources */,
+				05EF9B6B176883650047F36D /* AlfrescoDefaultNetworkProvider.m in Sources */,
+				05EF9B6D176883650047F36D /* AlfrescoLog.m in Sources */,
+				05EF9B70176883650047F36D /* AlfrescoObjectConverter.m in Sources */,
+				05EF9B72176883650047F36D /* AlfrescoPagingUtils.m in Sources */,
+				05EF9B74176883650047F36D /* AlfrescoRequest.m in Sources */,
+				05EF9B76176883650047F36D /* AlfrescoSiteCache.m in Sources */,
+				05EF9B78176883650047F36D /* AlfrescoSortingUtils.m in Sources */,
+				05EF9B7A176883650047F36D /* AlfrescoURLUtils.m in Sources */,
+				05666AC7176F1340005807F3 /* ComAlfrescoAppceleratorIosSdkDocumentProxy.m in Sources */,
+				05666AD217721160005807F3 /* ComAlfrescoAppceleratorIosSdkFolderProxy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		24416B8511C4CA280047AFDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* iOSSDKModule */;
+			targetProxy = 24416B8411C4CA280047AFDD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DSTROOT = /tmp/ComAlfrescoAppceleratorModuleIosSdk.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComAlfrescoAppceleratorModuleIosSdk_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/AlfrescoSDK\"",
+					"\"$(SRCROOT)/alfresco-ios-sdk-1.1.0\"",
+					"\"$(SRCROOT)/../../../alfresco-ios-sdk/AlfrescoSDK/build/Debug-universal/alfresco-ios-sdk-1.1.0\"",
+				);
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"-DTI_POST_1_2",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComAlfrescoAppceleratorModuleIosSdk;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/ComAlfrescoAppceleratorModuleIosSdk.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComAlfrescoAppceleratorModuleIosSdk_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/AlfrescoSDK\"",
+					"\"$(SRCROOT)/alfresco-ios-sdk-1.1.0\"",
+					"\"$(SRCROOT)/../../../alfresco-ios-sdk/AlfrescoSDK/build/Debug-universal/alfresco-ios-sdk-1.1.0\"",
+				);
+				OTHER_CFLAGS = "-DTI_POST_1_2";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComAlfrescoAppceleratorModuleIosSdk;
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DSTROOT = /tmp/ComAlfrescoAppceleratorModuleIosSdk.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComAlfrescoAppceleratorModuleIosSdk_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"-DTI_POST_1_2",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComAlfrescoAppceleratorModuleIosSdk;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DSTROOT = /tmp/ComAlfrescoAppceleratorModuleIosSdk.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComAlfrescoAppceleratorModuleIosSdk_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DTI_POST_1_2";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComAlfrescoAppceleratorModuleIosSdk;
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		24416B8211C4CA220047AFDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Build & test";
+			};
+			name = Debug;
+		};
+		24416B8311C4CA220047AFDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Build & test";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "iOSSDKModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "iOSSDKModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24416B8A11C4CA520047AFDD /* Build configuration list for PBXAggregateTarget "Build & Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24416B8211C4CA220047AFDD /* Debug */,
+				24416B8311C4CA220047AFDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
