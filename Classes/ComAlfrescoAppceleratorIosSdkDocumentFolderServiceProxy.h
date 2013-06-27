@@ -15,12 +15,14 @@
     AlfrescoDocumentFolderService* service;
     AlfrescoFolder* currentFolder;
     NSError* errorCode;
-    NSDictionary *values;
+   __strong NSMutableDictionary* folders;
 }
 
--(void)initWithSession:(id)args;
--(void)retrieveRootFolder:(id)args;
--(void)retrieveChildrenInFolder:(id)args;
+-(void)initWithSession:(id)arg;
+-(void)retrieveRootFolder:(id)noargs;
+-(void)setFolder:(id)arg;
+-(void)retrieveChildrenInFolder:(id)noargs;
+-(id)getCurrentFolder:(id)noargs;
 
--(void)enumerateFolderProperties:(AlfrescoNode*)node propertyValues:(NSDictionary*)propValues;
+//-(void)enumerateFolderProperties:(AlfrescoNode*)node propertyValues:(NSDictionary*)propValues;
 @end

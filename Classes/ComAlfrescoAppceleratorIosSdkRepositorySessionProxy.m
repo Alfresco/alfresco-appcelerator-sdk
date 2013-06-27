@@ -15,8 +15,8 @@
 
 @implementation ComAlfrescoAppceleratorIosSdkRepositorySessionProxy
 
-
--(void)connect:(id)args
+ 
+-(void)connect:(id)noargs
 {
     ENSURE_UI_THREAD_0_ARGS
     
@@ -30,7 +30,7 @@
         [self fireEvent:@"paramerror" withObject:event];
         
         return;
-    }
+    } 
     
     AlfrescoRequest* request;
     ComAlfrescoAppceleratorIosSdkRepositorySessionProxy *weakSelf = self;

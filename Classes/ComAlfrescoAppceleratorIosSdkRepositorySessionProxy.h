@@ -35,7 +35,7 @@
 
 @interface ComAlfrescoAppceleratorIosSdkRepositorySessionProxy : ComAlfrescoAppceleratorIosSdkSessionProxy
 
--(void)connect:(id)args;
+-(void)connect:(id)noargs;
 
 @end
 

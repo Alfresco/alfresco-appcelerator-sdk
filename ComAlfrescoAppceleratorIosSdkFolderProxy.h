@@ -7,7 +7,16 @@
 //
 
 #import "TiProxy.h"
+#import "AlfrescoFolder.h"
 
-@interface ComAlfrescoAppceleratorIosSdkFolder : TiProxy
+
+@interface ComAlfrescoAppceleratorIosSdkFolderProxy : TiProxy
+
+@property (nonatomic, strong) AlfrescoFolder* currentFolder;
+
+- (id)initWithFolder:(AlfrescoFolder *)folder;
+- (id)getFolderName:(id)args;
+
+- (void)dealloc;
 
 @end

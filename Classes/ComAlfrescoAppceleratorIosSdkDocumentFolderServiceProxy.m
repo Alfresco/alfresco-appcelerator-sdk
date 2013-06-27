@@ -8,19 +8,21 @@
 
 #import "ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy.h"
 #import "ComAlfrescoAppceleratorIosSdkSessionProxy.h"
+#import "ComAlfrescoAppceleratorIosSdkFolderProxy.h"
+#import "ComAlfrescoAppceleratorIosSdkDocumentProxy.h"
 
 #import "AlfrescoFolder.h"
 #import <objc/runtime.h>
-
+#import "TiUtils.h"
 
 @implementation ComAlfrescoAppceleratorIosSdkDocumentFolderServiceProxy
 
 
--(void)initWithSession:(id)args
-{
-    ENSURE_UI_THREAD_1_ARG(args)
+-(void)initWithSession:(id)arg
+{ 
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorIosSdkSessionProxy)
     
-    ComAlfrescoAppceleratorIosSdkSessionProxy* sessionProxy = [args objectAtIndex:0];
+    ComAlfrescoAppceleratorIosSdkSessionProxy* sessionProxy = arg;
     
     if (sessionProxy == nil || sessionProxy.session == nil)
     {
@@ -36,7 +38,8 @@
     service = [[AlfrescoDocumentFolderService alloc] initWithSession:sessionProxy.session];
 }
 
--(void)retrieveRootFolder:(id)args
+
+-(void)retrieveRootFolder:(id)noargs
 {
     ENSURE_UI_THREAD_0_ARGS
     
@@ -51,13 +54,38 @@
     }];
 }
 
--(void)retrieveChildrenInFolder:(id)args
+ 
+-(void)setFolder:(id)arg
+{
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorIosSdkFolderProxy)
+    
+    NSLog(@"[INFO] folder arg object: %@", arg);
+    ComAlfrescoAppceleratorIosSdkFolderProxy* folder = arg;
+    
+    NSLog(@"[INFO] folder object set: %@ (name: %@)", folder, folder.currentFolder.name);
+    
+    currentFolder = folder.currentFolder;
+}
+
+
+-(id)getCurrentFolder:(id)noargs
+{
+    return [[ComAlfrescoAppceleratorIosSdkFolderProxy alloc] initWithFolder:currentFolder];
+}
+
+-(void)retrieveChildrenInFolder:(id)noargs
 {
     ENSURE_UI_THREAD_0_ARGS
+     
+    NSLog(@"[INFO] folder object in use: %@ (name: %@)", currentFolder, currentFolder.name);
     
     [service retrieveChildrenInFolder:currentFolder
     completionBlock:^(NSArray* array, NSError* error)
     {
+        NSLog(@"[INFO] Number of nodes: %d", array.count);
+        
+        folders = [[NSMutableDictionary alloc] init];
+        
         for (int i = 0;  i < array.count;  i++)
         {
             AlfrescoNode *node = [array objectAtIndex:i];
@@ -65,15 +93,25 @@
             
             if (node.isFolder)
             {
-                values = [node dictionaryWithValuesForKeys:keys];
+                NSLog(@"[INFO] ** Folder node: %@", node.name);
+                
+                NSMutableDictionary* values = [[node dictionaryWithValuesForKeys:keys] mutableCopy];
+                
+                ComAlfrescoAppceleratorIosSdkFolderProxy *thisFolder = [[ComAlfrescoAppceleratorIosSdkFolderProxy alloc] initWithFolder:(AlfrescoFolder*)node];
+                [values setValue:thisFolder forKey:@"folder"];
                 
                 [self fireEvent:@"foldernode" withObject:values];
             }
             else
             {
+                NSLog(@"[INFO] ** Document node: %@", node.name);
+                
                 [keys addObjectsFromArray:[[NSArray alloc] initWithObjects:@"contentMimeType", @"contentLength", @"versionLabel", @"versionComment", @"isLatestVersion", nil]];
 
-                values = [node dictionaryWithValuesForKeys:keys];
+                NSMutableDictionary* values = [[node dictionaryWithValuesForKeys:keys] mutableCopy];
+                
+                ComAlfrescoAppceleratorIosSdkDocumentProxy *thisDocument = [[ComAlfrescoAppceleratorIosSdkDocumentProxy alloc] initWithDocument:(AlfrescoDocument*)node];
+                [values setValue:thisDocument forKey:@"document"];
                 
                 [self fireEvent:@"documentnode" withObject:values];
             }
@@ -81,6 +119,33 @@
     }];
 }
 
+-(void)saveDocument:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorIosSdkDocumentProxy)
+  
+    ComAlfrescoAppceleratorIosSdkDocumentProxy* document = arg;
+    
+    [service retrieveContentOfDocument:document.currentDocument
+        completionBlock:^(AlfrescoContentFile *contentFile, NSError *error)
+        {
+            NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[TiFile alloc] initWithPath:contentFile.fileUrl.path], @"document", nil];
+            [self fireEvent:@"retrieveddocument" withObject:event];
+        }
+        progressBlock:^(unsigned long long bytesTransferred, unsigned long long bytesTotal)
+        {
+            NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:   [NSNumber numberWithLongLong:bytesTransferred], @"bytes",
+                                                                                [NSNumber numberWithLongLong:bytesTotal], @"total",
+                                                                                nil];
+            [self fireEvent:@"progresseddocument" withObject:event];
+        }];
+}
+
+
+
+
+
+/*
 -(void)enumerateFolderProperties:(AlfrescoNode*)node propertyValues:(NSDictionary*)propValues
 {
     unsigned int count=0;
@@ -107,5 +172,6 @@
         [propValues setValue:value forKey:name];
     }
 }
+*/
 
 @end
