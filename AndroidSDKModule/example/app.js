@@ -13,16 +13,16 @@ win.add(label);
 win.open();
 
 // TODO: write your module tests here
-var ___PROJECTNAME___ = require('__MODULE_ID__');
-Ti.API.info("module is => " + ___PROJECTNAME___);
+var androidsdkmodule = require('com.alfresco.appcelerator.module.android.sdk');
+Ti.API.info("module is => " + androidsdkmodule);
 
-label.text = ___PROJECTNAME___.example();
+label.text = androidsdkmodule.example();
 
-Ti.API.info("module exampleProp is => " + ___PROJECTNAME___.exampleProp);
-___PROJECTNAME___.exampleProp = "This is a test value";
+Ti.API.info("module exampleProp is => " + androidsdkmodule.exampleProp);
+androidsdkmodule.exampleProp = "This is a test value";
 
 if (Ti.Platform.name == "android") {
-	var proxy = ___PROJECTNAME___.createExample({
+	var proxy = androidsdkmodule.createExample({
 		message: "Creating an example Proxy",
 		backgroundColor: "red",
 		width: 100,
