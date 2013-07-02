@@ -50,7 +50,10 @@
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
+    
     <modules>
-        <module version="0.1">com.alfresco.appcelerator.module.ios.sdk</module>
+    	<module platform="iphone" version="0.1">com.alfresco.appcelerator.module.ios.sdk</module>
+    	<module platform="android" version="1.0">com.alfresco.appcelerator.module.android.sdk</module>
     </modules>
+    
 </ti:app>
