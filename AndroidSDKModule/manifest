@@ -5,14 +5,14 @@
 version: 1.0
 apiversion: 2
 description: My module
-author: Luke Jagger
+author: Your Name
 license: Specify your license
-copyright: ©2013 Alfresco Ltd
+copyright: Copyright (c) 2013 by Your Company
 
 
 # these should not be edited
 name: androidsdkmodule
-moduleid: com.alfresco.appcelerator.module.android.sdk
-guid: 4e4bfc23-d538-4bf3-90c8-1f94a4953a76
+moduleid: com.alfresco.appcelerator.module.sdk
+guid: 058fea91-699e-46d3-b725-49613063854c
 platform: android
 minsdk: 3.1.1.GA

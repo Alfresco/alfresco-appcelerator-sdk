@@ -1,6 +1,6 @@
 $.index.open();
 
-var iOSSDKModule = require('com.alfresco.appcelerator.module.ios.sdk');	
+var iOSSDKModule = require('com.alfresco.appcelerator.module.sdk');	
 var mainSection;
 var documentFolderService;
 var parentFolders = new Array();

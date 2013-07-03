@@ -6,7 +6,7 @@
  * Please see the LICENSE included with this distribution for details.
  *
  */
-package com.alfresco.appcelerator.module.android.sdk;
+package com.alfresco.appcelerator.module.sdk;
 
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
@@ -14,7 +14,7 @@ import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.kroll.common.Log;
 
-@Kroll.module(name="Androidsdkmodule", id="com.alfresco.appcelerator.module.android.sdk")
+@Kroll.module(name="Androidsdkmodule", id="com.alfresco.appcelerator.module.sdk")
 public class AndroidsdkmoduleModule extends KrollModule
 {
 

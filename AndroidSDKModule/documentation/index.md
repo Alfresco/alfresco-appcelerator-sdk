@@ -8,7 +8,7 @@ TODO: Enter your module description here
 
 To access this module from JavaScript, you would do the following:
 
-	var androidsdkmodule = require("com.alfresco.appcelerator.module.android.sdk");
+	var androidsdkmodule = require("com.alfresco.appcelerator.module.sdk");
 
 The androidsdkmodule variable is a reference to the Module object.	
 

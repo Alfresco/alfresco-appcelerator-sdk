@@ -13,7 +13,7 @@ win.add(label);
 win.open();
 
 // TODO: write your module tests here
-var androidsdkmodule = require('com.alfresco.appcelerator.module.android.sdk');
+var androidsdkmodule = require('com.alfresco.appcelerator.module.sdk');
 Ti.API.info("module is => " + androidsdkmodule);
 
 label.text = androidsdkmodule.example();
