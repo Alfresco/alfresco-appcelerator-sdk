@@ -2,3 +2,7 @@ tmp
 bin
 build
 *.zip
+androidsdkmodule/dist/androidsdkmodule.jar
+androidsdkmodule/libs/armeabi-v7a/libcom.alfresco.appcelerator.module.sdk.so
+androidsdkmodule/libs/armeabi/libcom.alfresco.appcelerator.module.sdk.so
+androidsdkmodule/libs/x86/libcom.alfresco.appcelerator.module.sdk.so

@@ -7,7 +7,7 @@ import org.appcelerator.kroll.common.Log;
 import org.appcelerator.kroll.common.TiConfig;
 
 
-@Kroll.module(name="RepositorySession", id="com.alfresco.appcelerator.module.sdk.session")
+@Kroll.module(name="RepositorySession", id="com.alfresco.appcelerator.module.sdk.repositorysession")
 public class RepositorySessionModule extends KrollModule 
 {
 
