@@ -1,6 +1,6 @@
 $.index.open();
 
-var iOSSDKModule = require('com.alfresco.appcelerator.module.sdk');	
+var SDKModule = require('com.alfresco.appcelerator.module.sdk');	
 var mainSection;
 var documentFolderService;
 var parentFolders = new Array();
@@ -103,7 +103,7 @@ function createNodeList()
 
 function connect()
 {
-	var repositorySession = iOSSDKModule.createRepositorySession({
+	var repositorySession = SDKModule.createRepositorySession({
 																	serverUrl: "http://localhost:8080/alfresco",
 																	serverUsername: "admin",
 																	serverPassword: "password",
@@ -131,7 +131,7 @@ function connect()
 
 function getFolder(repoSesh)
 {
-	documentFolderService = iOSSDKModule.createDocumentFolderService();
+	documentFolderService = SDKModule.createDocumentFolderService();
 	
 	documentFolderService.initWithSession(repoSesh);
 

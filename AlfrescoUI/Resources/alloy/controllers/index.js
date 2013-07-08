@@ -90,7 +90,7 @@ function Controller() {
         });
     }
     function connect() {
-        var repositorySession = iOSSDKModule.createRepositorySession({
+        var repositorySession = SDKModule.createRepositorySession({
             serverUrl: "http://localhost:8080/alfresco",
             serverUsername: "admin",
             serverPassword: "password"
@@ -108,7 +108,7 @@ function Controller() {
         });
     }
     function getFolder(repoSesh) {
-        documentFolderService = iOSSDKModule.createDocumentFolderService();
+        documentFolderService = SDKModule.createDocumentFolderService();
         documentFolderService.initWithSession(repoSesh);
         documentFolderService.retrieveRootFolder();
         documentFolderService.addEventListener("retrievedfolder", function() {
@@ -195,7 +195,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.index.open();
-    var iOSSDKModule = require("com.alfresco.appcelerator.module.sdk");
+    var SDKModule = require("com.alfresco.appcelerator.module.sdk");
     var mainSection;
     var documentFolderService;
     var parentFolders = new Array();
