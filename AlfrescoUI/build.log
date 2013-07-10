@@ -1,11 +1,11 @@
 Logfile initialized
 [INFO] logfile = /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build.log
-[DEBUG] /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/builder.py emulator AlfrescoUI /Users/ljagger/android-sdk-macosx /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI com.alfresco.appcelerator.ui 4 WVGA854 armeabi
+[DEBUG] /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/builder.py emulator AlfrescoUI /Users/ljagger/android-sdk-macosx /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI com.alfresco.appcelerator.ui 7 WXGA armeabi
 [INFO] Launching Android emulator...one moment
 [DEBUG] From: /Users/ljagger/android-sdk-macosx/tools/emulator
 [DEBUG] SDCard: /Users/ljagger/.titanium/android2.sdcard
-[DEBUG] AVD ID: 4
-[DEBUG] AVD Skin: WVGA854
+[DEBUG] AVD ID: 7
+[DEBUG] AVD Skin: WXGA
 [DEBUG] AVD ABI: armeabi
 [DEBUG] SDK: /Users/ljagger/android-sdk-macosx
 [INFO] Emulator is running.
@@ -16,7 +16,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.014621 seconds on emulator to get ready
+[DEBUG] waited 0.014258 seconds on emulator to get ready
 [DEBUG] com.alfresco.appcelerator.ui installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
@@ -34,7 +34,16 @@ Logfile initialized
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/widget.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/widget.js
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy.js
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/appicon.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/appicon.png
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default-568h@2x.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default-568h@2x.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default-Landscape.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default-Landscape.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default-Portrait.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default-Portrait.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default@2x.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default@2x.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/folder@2x.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/folder@2x.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/mime_doc.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/mime_doc.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/mime_img.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/mime_img.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/mime_txt.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/mime_txt.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/wm_back.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/wm_back.png
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/app.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/app.js
 [DEBUG] LiveView not enabled
 [TRACE] Generating Java Classes
@@ -83,10 +92,19 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/alloy/backbone.js
 [DEBUG] from resource zip => assets/Resources/alloy/underscore.js
 [DEBUG] from resource zip => assets/Resources/alloy/widget.js
+[DEBUG] from resource zip => assets/Resources/Default-568h@2x.png
+[DEBUG] from resource zip => assets/Resources/Default-Landscape.png
+[DEBUG] from resource zip => assets/Resources/Default-Portrait.png
+[DEBUG] from resource zip => assets/Resources/Default.png
+[DEBUG] from resource zip => assets/Resources/Default@2x.png
 [DEBUG] from resource zip => assets/Resources/alloy.js
 [DEBUG] from resource zip => assets/Resources/app.js
 [DEBUG] from resource zip => assets/Resources/appicon.png
-[DEBUG] from resource zip => assets/Resources/default.png
+[DEBUG] from resource zip => assets/Resources/folder@2x.png
+[DEBUG] from resource zip => assets/Resources/mime_doc.png
+[DEBUG] from resource zip => assets/Resources/mime_img.png
+[DEBUG] from resource zip => assets/Resources/mime_txt.png
+[DEBUG] from resource zip => assets/Resources/wm_back.png
 [DEBUG] from resource zip => assets/app.json
 [DEBUG] from resource zip => assets/index.json
 [DEBUG] from resource zip => assets/tiapp.xml
@@ -143,7 +161,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.014332 seconds on emulator to get ready
+[DEBUG] waited 0.014692 seconds on emulator to get ready
 [INFO] Installing application on emulator
 [INFO] Launching application ... AlfrescoUI
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.alfresco.appcelerator.ui/.AlfrescouiActivity }

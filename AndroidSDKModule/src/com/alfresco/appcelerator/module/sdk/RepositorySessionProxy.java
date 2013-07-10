@@ -6,6 +6,7 @@ import java.util.List;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
+import org.appcelerator.kroll.annotations.Kroll.getProperty;
 import org.appcelerator.titanium.util.TiConvert;
 
 import android.os.AsyncTask;
@@ -22,7 +23,7 @@ import org.alfresco.mobile.android.api.session.RepositorySession;
 import org.alfresco.mobile.android.api.session.impl.*;
 
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class, propertyAccessors = { "serverUrl", "serverUsername", "serverPassword" })
-public class RepositorySessionProxy extends KrollProxy 
+public class RepositorySessionProxy extends SessionProxy 
 {
 	public RepositorySessionProxy()
 	{
@@ -32,13 +33,12 @@ public class RepositorySessionProxy extends KrollProxy
 	@Kroll.method
 	public void connect()
 	{
-		Log.w("test", "msg");
+		String url = (String) getProperty("serverUrl");
+		url = url.replace("localhost", "10.0.2.2");	//For emulator to call on a local server.
+		Log.i ("Alfresco", "URL: " + url);
 		
-		//TODO: Get params from Javascript.
-		// Also replace 'localhost' with '10.0.2.2' if it comes in, as this is required in emulator.
-		String url = "http://10.0.2.2:8080/alfresco";
-        String username = "admin";
-        String password = "password";
+        String username = (String) getProperty("serverUsername");
+        String password = (String) getProperty("serverPassword");
 
         new ConnectToRepo().execute(url, username, password);
 	}
@@ -51,75 +51,32 @@ public class RepositorySessionProxy extends KrollProxy
         @Override
         protected String doInBackground(String... params)
         {
-
-            Log.d(TAG, "doInBackground");
-            Log.d(TAG, params[0] + ":" + params[1] + ":" + params[2]);
-
             String url = params[0];
             String username = params[1];
             String password = params[2];
 
-            // HelloRepo
             try
             {
                 // connect to on-premise repo
-                RepositorySession session = RepositorySession.connect(url, username, password);
+                RepositorySessionProxy.this.session = RepositorySession.connect(url, username, password);
 
                 if (session != null)
                 {
-                    // Get some repository information
-                    Log.d(TAG, "baseUrl: " + session.getBaseUrl());
-                    Log.d(TAG, "rootFolder: " + session.getRootFolder().getName());
-
                     // Obtain a repository information object
-                    RepositoryInfo repoInfo = session.getRepositoryInfo();
-
-                    Log.d(TAG, "repoId: " + repoInfo.getIdentifier());
-                    Log.d(TAG, "repoName: " + repoInfo.getName());
-                    Log.d(TAG, "repoDescription: " + repoInfo.getDescription());
-                    Log.d(TAG, "repoVersion: " + repoInfo.getVersion());
-                    Log.d(TAG, "repoEdition: " + repoInfo.getEdition());
+                    RepositorySessionProxy.this.info = session.getRepositoryInfo();
 
                     HashMap<String, Object> map = new HashMap<String, Object>();
-                    map.put("servername", repoInfo.getName());
+                    map.put("servername", info.getName());
                     fireEvent("success", new KrollDict(map));
-                    
-                    /*
-                    // Get site service
-                    SiteService siteService = session.getServiceRegistry().getSiteService();
-
-                    // Get sites for current user
-                    List<Site> sites = siteService.getSites();
-
-                    // Get first site
-                    Site site = sites.get(0);
-
-                    // Get site document library
-                    Folder folder = siteService.getDocumentLibrary(site);
-
-                    // Find DocumentFolderService
-                    DocumentFolderService documentFolderService = session.getServiceRegistry()
-                            .getDocumentFolderService();
-
-                    // Get children of document library
-                    List<Node> nodes = documentFolderService.getChildren(folder);
-
-                    for (Node node : nodes)
-                    {
-
-                        Log.d(TAG,
-                                "node: " + node.getTitle() + "=" + node.getName() + " created by: "
-                                        + node.getCreatedBy() + " isFolder: " + node.isFolder());
-
-                    }
-*/
                 }
                 else
                 {
                     Log.d(TAG, "No Session available!");
                     
+                    RepositorySessionProxy.this.error = - 1;
+                    
                     HashMap<String, Object> map = new HashMap<String, Object>();
-                    map.put("errorcode", TiConvert.toInt(1) );
+                    map.put("errorcode", TiConvert.toInt(error) );
                     fireEvent("error", new KrollDict(map) );
                 }
 
@@ -128,12 +85,13 @@ public class RepositorySessionProxy extends KrollProxy
             {
                 Log.e(TAG, "Failed to connect: " + e.toString());
                 
+                RepositorySessionProxy.this.error = e.getErrorCode();
+                
                 HashMap<String, Object> map = new HashMap<String, Object>();
-                map.put("errorcode", TiConvert.toInt(e.getErrorCode()) );
+                map.put("errorcode", TiConvert.toInt(error));
                 fireEvent("error", new KrollDict(map) );
             }
 
-            Log.d(TAG, "doInBackground Complete");
             return "doInBackground Complete";
         }
 
@@ -141,16 +99,12 @@ public class RepositorySessionProxy extends KrollProxy
         protected void onPostExecute(String result)
         {
             super.onPostExecute(result);
-            Log.d(TAG, "onPostExecute");
         }
 
         @Override
         protected void onProgressUpdate(Integer... values)
         {
             super.onProgressUpdate(values);
-            Log.d(TAG, "onProgressUpdate");
-
         }
-
     }
 }
