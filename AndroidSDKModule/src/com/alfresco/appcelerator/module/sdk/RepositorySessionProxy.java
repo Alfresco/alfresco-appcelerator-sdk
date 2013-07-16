@@ -89,6 +89,7 @@ public class RepositorySessionProxy extends SessionProxy
                 
                 HashMap<String, Object> map = new HashMap<String, Object>();
                 map.put("errorcode", TiConvert.toInt(error));
+                map.put("errorstring", e.getMessage());
                 fireEvent("error", new KrollDict(map) );
             }
 

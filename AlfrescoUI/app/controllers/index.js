@@ -5,12 +5,81 @@ var mainSection;
 var documentFolderService;
 var parentFolders = new Array();
 
-//Create a ListView ready for nodes.
-createNodeList();
+loginPane();
 
-//Connect to repo and fill the Node List with nodes from the root of the repository
-connect();
 
+function loginPane()
+{
+	var data = [];
+	
+	var logoRow = Ti.UI.createTableViewRow({clickName:'banner', editable:false});
+	var logoView = Ti.UI.createView({left: 0, width: '80%', height: Ti.UI.SIZE});
+	var logo = Ti.UI.createImageView({image:"alfresco_logo_large.png"});
+	logoView.add(logo);
+	logoRow.add(logoView);
+	data.push(logoRow);
+	
+	var serverRow = Ti.UI.createTableViewRow({clickName:'User', editable:false});
+	var serverView = Ti.UI.createView({width: Ti.UI.SIZE, height: Ti.UI.SIZE});
+	var serverLabel = Ti.UI.createLabel({text: "Server address:", top: 0, left: 0, width: Ti.UI.FILL, height: 40});
+	var serverTextField = Ti.UI.createTextField({value: "http://localhost:8080/alfresco", borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: 40, left: 0, width: Ti.UI.FILL, height: 40});	
+	serverView.add(serverLabel);
+	serverView.add(serverTextField);
+	serverRow.add(serverView);
+	serverRow.classname = 'serverRow';
+	data.push(serverRow);
+	
+	var usernameRow = Ti.UI.createTableViewRow({clickName:'User', editable:false});
+	var usernameView = Ti.UI.createView({width: Ti.UI.SIZE, height: Ti.UI.SIZE});
+	var usernameLabel = Ti.UI.createLabel({text: "User name:", top: 0, left: 0, width: Ti.UI.FILL, height: 40});
+	var usernameTextField = Ti.UI.createTextField({value: "admin", borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: 40, left: 0, width: Ti.UI.FILL, height: 40});	
+	usernameView.add(usernameLabel);
+	usernameView.add(usernameTextField);
+	usernameRow.add(usernameView);
+	usernameRow.classname = 'userRow';
+	data.push(usernameRow);
+	
+	var passwordRow = Ti.UI.createTableViewRow({clickName:'Password', editable:false});
+	var passwordView = Ti.UI.createView({width: Ti.UI.SIZE, height: Ti.UI.SIZE});
+	var passwordLabel = Ti.UI.createLabel({text: "Password:", top: 0, left: 0, width: Ti.UI.FILL, height: 40});
+	var passwordTextField = Ti.UI.createTextField({value: "password", passwordMask:true, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: 40, left: 0, width: Ti.UI.FILL, height: 40});	
+	passwordView.add(passwordLabel);
+	passwordView.add(passwordTextField);
+	passwordRow.add(passwordView);
+	passwordRow.classname = 'pwdRow';
+	data.push(passwordRow);
+	
+	var buttonRow = Ti.UI.createTableViewRow({clickName:'Buttons', editable:false});
+	var buttonView = Ti.UI.createView({width: Ti.UI.FILL, height: Ti.UI.SIZE});
+	var button = Ti.UI.createButton({style: Ti.UI.iPhone.SystemButtonStyle.BORDERED, left: 0, top: 50, width: Ti.UI.SIZE, title: "Log in", clickName:'Login'});
+	buttonView.add(button);
+	buttonRow.add(buttonView);
+	data.push(buttonRow);
+	
+	button.addEventListener('click', function(e)
+	{
+		var svr = serverTextField.value;
+		var user = usernameTextField.value;
+		var pwd = passwordTextField.value;
+		
+		if (svr.length == 0 || user.length == 0)
+		{
+			alert("Please enter values for all fields");
+		}
+		else
+		{
+			//Connect to repo and fill the Node List with nodes from the root of the repository
+			connect(svr, user, pwd);
+		}
+	});
+	
+	Ti.UI.backgroundColor = 'white';
+	var table = Ti.UI.createTableView({data: data, top: '2%', left: '2%', width: '96%', height: '96%'});
+	
+	table.separatorColor = 'white';
+	
+	$.index.add(table);
+}
 
 function createNodeList()
 {
@@ -101,30 +170,36 @@ function createNodeList()
 }
 
 
-function connect()
+function connect(serverUrl, serverUsername, serverPassword)
 {
-	var repositorySession = SDKModule.createRepositorySession({
-																	serverUrl: "http://localhost:8080/alfresco",
-																	serverUsername: "admin",
-																	serverPassword: "password",
-																});
+	var repositorySession = SDKModule.createRepositorySession({	serverUrl: serverUrl, serverUsername: serverUsername, serverPassword: serverPassword});
 	repositorySession.connect();
 	
 	repositorySession.addEventListener('paramerror',function(e)
 	{
 	  	Ti.API.info("Param error code: " + e.errorcode);
+	  	return 0;
 	});
 	
 	repositorySession.addEventListener('error',function(e)
 	{
-	  	alert("Cannot connect to server, error code: " + e.errorcode);
+	  	alert("Cannot connect to server (" + e.errorcode + "): " + e.errorstring);
+	  	return 0;
 	});
 	
 	repositorySession.addEventListener('success',function(e)
 	{
 	  	Ti.API.info("Connected to server: " + e.servername);
 	  	
+	  	//Remove the login pane
+	  	$.index.remove($.index.children[0]);
+	  	
+	  	//Create a ListView ready for nodes.
+		createNodeList();
+			
 		getFolder(repositorySession);
+		
+		return 1;
 	});    
 }
 
@@ -221,5 +296,10 @@ function getFolder(repoSesh)
 			var bytes = e.bytes;
 			var total = e.total;
    		});
+   		
+   		documentFolderService.addEventListener('error',function(e)
+		{
+		  	alert("Error getting folders (" + e.errorcode + "): " + e.errorstring);
+		});
 }); 
 }

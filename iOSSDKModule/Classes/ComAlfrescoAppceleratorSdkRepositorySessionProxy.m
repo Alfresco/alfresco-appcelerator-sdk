@@ -42,7 +42,7 @@
                                                             {
                                                                 self.error = error;
                                                                 
-                                                                NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:error.code], @"errorcode", nil];
+                                                                NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:error.code], @"errorcode", @"", @"errorstring", nil];
                                                                 [weakSelf fireEvent:@"error" withObject:event];
                                                             }
                                                             else

@@ -19,4 +19,10 @@ public class DocumentProxy extends KrollProxy
 	{
 		this.document = document;
 	}
+	
+	
+	Document getDocument()
+	{
+		return document;
+	}
 }

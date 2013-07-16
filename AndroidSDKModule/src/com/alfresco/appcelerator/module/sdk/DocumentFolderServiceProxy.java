@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.alfresco.mobile.android.api.model.ContentFile;
 import org.alfresco.mobile.android.api.model.Document;
 import org.alfresco.mobile.android.api.model.Folder;
 import org.alfresco.mobile.android.api.model.Node;
@@ -16,6 +17,7 @@ import org.alfresco.mobile.android.api.services.SiteService;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
+import org.appcelerator.titanium.io.TiFile;
 import org.appcelerator.titanium.util.Log;
 import org.appcelerator.titanium.util.TiConvert;
 
@@ -80,9 +82,23 @@ public class DocumentFolderServiceProxy extends KrollProxy
     		@Override
     		public void run() 
     		{
-    			// Get children of document library
-    	        List<Node> nodes = service.getChildren(currentFolder);
-
+    			List<Node> nodes;
+    			try
+    			{
+	    			// Get children of document library
+	    	        nodes = service.getChildren(currentFolder);
+    			}
+    			catch (Exception e)
+    			{
+    				Log.e("Alfresco", "Error retrieving child nodes: " + e.getMessage());
+    				
+    				HashMap<String, Object> map = new HashMap<String, Object>();
+                    map.put("errorcode", TiConvert.toInt(1));
+                    map.put("errorstring", "Error calling DocumentFolderService.getChildren() in Alfresco SDK: " + e.getMessage());
+                    fireEvent("error", new KrollDict(map) );
+                    return;
+    			}
+    			
     	        Log.i("Alfresco", "Nodes: " + nodes.size());
     	        
     	        for (Node node : nodes)
@@ -127,7 +143,6 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	        		
     	        		FolderProxy thisFolder = new FolderProxy (folder);
     	                map.put("folder", thisFolder);
-    	        		
     	        		fireEvent("foldernode", new KrollDict(map));
     	        	}
     	        }
@@ -144,6 +159,21 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	return new FolderProxy (currentFolder);
     }
     
+ 
+    @Kroll.method
+    void saveDocument (Object args[])
+    {
+        DocumentProxy arg = (DocumentProxy) args[0];
+     
+        ContentFile file = service.getContent(arg.getDocument());
+        
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        TiFile tiFile = new TiFile(file.getFile(), file.getFile().getPath(), true);
+        
+        map.put("document", tiFile);
+        fireEvent("retrieveddocument", new KrollDict(map) );
+    }
+
     
     Object extractProperty (Object obj, String getter)
     {
