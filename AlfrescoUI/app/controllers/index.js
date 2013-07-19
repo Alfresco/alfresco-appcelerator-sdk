@@ -1,9 +1,11 @@
 $.index.open();
 
-var SDKModule = require('com.alfresco.appcelerator.module.sdk');	
+var SDKModule = require('com.alfresco.appcelerator.module.sdk');
+					
 var mainSection;
 var documentFolderService;
 var parentFolders = new Array();
+var folderLabel;
 
 loginPane();
 
@@ -12,25 +14,32 @@ function loginPane()
 {
 	var data = [];
 	
-	var logoRow = Ti.UI.createTableViewRow({clickName:'banner', editable:false});
+	//This provides convenient defaults while testing.
+	var serverDefault;
+	if (Titanium.Platform.model == 'google_sdk' ||  Titanium.Platform.model == 'Simulator')  
+  		serverDefault = "http://localhost:8080/alfresco";		//Running on Simulator/Emulator. Assume local server on the PC/Mac.
+	else
+		serverDefault = "http://192.168.1.91:8080/alfresco";	//Running on-device. NOTE: Change to your servers IP address!
+
+	var logoRow = Ti.UI.createTableViewRow({left: 0, clickName:'banner', editable:false});
 	var logoView = Ti.UI.createView({left: 0, width: '80%', height: Ti.UI.SIZE});
-	var logo = Ti.UI.createImageView({image:"alfresco_logo_large.png"});
+	var logo = Ti.UI.createImageView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE, image:"alfresco_logo_large.png"});
 	logoView.add(logo);
 	logoRow.add(logoView);
 	data.push(logoRow);
 	
-	var serverRow = Ti.UI.createTableViewRow({clickName:'User', editable:false});
-	var serverView = Ti.UI.createView({width: Ti.UI.SIZE, height: Ti.UI.SIZE});
+	var serverRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'User', editable:false});
+	var serverView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var serverLabel = Ti.UI.createLabel({text: "Server address:", top: 0, left: 0, width: Ti.UI.FILL, height: 40});
-	var serverTextField = Ti.UI.createTextField({value: "http://localhost:8080/alfresco", borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: 40, left: 0, width: Ti.UI.FILL, height: 40});	
+	var serverTextField = Ti.UI.createTextField({value: serverDefault, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: 40, left: 0, width: Ti.UI.FILL, height: 40});	
 	serverView.add(serverLabel);
 	serverView.add(serverTextField);
 	serverRow.add(serverView);
 	serverRow.classname = 'serverRow';
 	data.push(serverRow);
 	
-	var usernameRow = Ti.UI.createTableViewRow({clickName:'User', editable:false});
-	var usernameView = Ti.UI.createView({width: Ti.UI.SIZE, height: Ti.UI.SIZE});
+	var usernameRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'User', editable:false});
+	var usernameView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var usernameLabel = Ti.UI.createLabel({text: "User name:", top: 0, left: 0, width: Ti.UI.FILL, height: 40});
 	var usernameTextField = Ti.UI.createTextField({value: "admin", borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: 40, left: 0, width: Ti.UI.FILL, height: 40});	
 	usernameView.add(usernameLabel);
@@ -39,8 +48,8 @@ function loginPane()
 	usernameRow.classname = 'userRow';
 	data.push(usernameRow);
 	
-	var passwordRow = Ti.UI.createTableViewRow({clickName:'Password', editable:false});
-	var passwordView = Ti.UI.createView({width: Ti.UI.SIZE, height: Ti.UI.SIZE});
+	var passwordRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'Password', editable:false});
+	var passwordView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var passwordLabel = Ti.UI.createLabel({text: "Password:", top: 0, left: 0, width: Ti.UI.FILL, height: 40});
 	var passwordTextField = Ti.UI.createTextField({value: "password", passwordMask:true, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: 40, left: 0, width: Ti.UI.FILL, height: 40});	
 	passwordView.add(passwordLabel);
@@ -49,8 +58,8 @@ function loginPane()
 	passwordRow.classname = 'pwdRow';
 	data.push(passwordRow);
 	
-	var buttonRow = Ti.UI.createTableViewRow({clickName:'Buttons', editable:false});
-	var buttonView = Ti.UI.createView({width: Ti.UI.FILL, height: Ti.UI.SIZE});
+	var buttonRow = Ti.UI.createTableViewRow({left: 0, clickName:'Buttons', editable:false});
+	var buttonView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var button = Ti.UI.createButton({style: Ti.UI.iPhone.SystemButtonStyle.BORDERED, left: 0, top: 50, width: Ti.UI.SIZE, title: "Log in", clickName:'Login'});
 	buttonView.add(button);
 	buttonRow.add(buttonView);
@@ -115,14 +124,16 @@ function createNodeList()
 	    ]
 	};
 		
-	var leftpane = Ti.UI.createListView( {templates: { 'template': myTemplate }, defaultItemTemplate: 'template'} );	
+	var leftpane = Ti.UI.createListView( {top: 33, left: 0, templates: { 'template': myTemplate }, defaultItemTemplate: 'template'} );	
+	folderLabel = Ti.UI.createLabel({text: "", color: 'white', backgroundColor: '#336699', top: 0, left: 0, width: Ti.UI.FILL, height: 30});
 	
-	mainSection = Ti.UI.createListSection({ headerTitle: 'Repository'});
+	mainSection = Ti.UI.createListSection({ headerTitle: ''});
 	
 	var sections = [];
 	sections.push(mainSection);
 	leftpane.sections = sections;
 	
+	$.index.add(folderLabel);
 	$.index.add(leftpane);
 	
 	leftpane.addEventListener('itemclick', function(e)
@@ -148,7 +159,7 @@ function createNodeList()
 	        Ti.API.info("Folder name from object: " + folder.getFolderName());
 	        
 	        //Empty list, and add 'Back' item if we're not at root folder.
-	        mainSection.deleteItemsAt(0,mainSection.getItems().length);	  
+	        mainSection.deleteItemsAt(0,mainSection.getItems().length);
 	        if (parentFolders.length > 0)
 	        {      
 		        var mainDataSet = [];
@@ -157,6 +168,7 @@ function createNodeList()
 		  	 	mainSection.appendItems(mainDataSet);
 		  	}
 		  	 	 	
+		  	folderLabel.text = " " + folder.getFolderName();
 	        documentFolderService.setFolder(folder);
 	        documentFolderService.retrieveChildrenInFolder();	//Events will be fired for 'foldernode's and 'documentnode's.
 	    }    
@@ -215,6 +227,8 @@ function getFolder(repoSesh)
 	documentFolderService.addEventListener('retrievedfolder',function(e)
 	{
 		//alert ("Folder is " + e.folder);
+
+		folderLabel.text = " " + documentFolderService.getCurrentFolder().getFolderName();
 		
 		documentFolderService.retrieveChildrenInFolder();
 	
@@ -276,19 +290,25 @@ function getFolder(repoSesh)
 	  	  	
 	  	documentFolderService.addEventListener('retrieveddocument',function(e)
 		{
-			var file = e.document;
-			
-			var readContents;
-			var readFile = Titanium.Filesystem.getFile(file.path);        
-			 
-			if (readFile.exists())
+			var file = Ti.Filesystem.getFile(e.document.path);
+			var path = file.getNativePath(); //For URL.
+			     
+			if (Ti.Platform.name == 'iPhone OS')
 			{
-			     readContents = readFile.read();
-			     Ti.API.info('File Exists');  
+				//Using DocumentViewer available from SmartAccess at https://marketplace.appcelerator.com/apps/3820?897323448
+				//This is due to the fact that OpenURL() functionality does not work under iOS 6> for local files, and the Appcelerator DocumentViewer
+				//will currently only open resource documents, not file system based documents.
+				var documentviewer = require('es.smartaccess.documentviewer');
+				var documentViewerProxy = require('es.smartaccess.documentviewer');		
+
+				documentViewer = documentViewerProxy.createDocumentViewer({url: path});
+				documentViewer.show();
 			}
-			 
-			var doc = readContents.text;
-			alert (doc);
+			else if (Ti.Platform.name == 'android')
+			{
+				//This ought to work on Android to raise an Intent.
+				Ti.Platform.openURL (path);
+			}
    		});
    		
    		documentFolderService.addEventListener('progresseddocument',function(e)
@@ -301,5 +321,6 @@ function getFolder(repoSesh)
 		{
 		  	alert("Error getting folders (" + e.errorcode + "): " + e.errorstring);
 		});
-}); 
+	}); 
 }
+

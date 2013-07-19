@@ -29,12 +29,11 @@
         </orientations>
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
-    	<manifest>
-    		<uses-sdk android:minSdkVersion="12"/>
-    		<application android:debuggable="true" />
-	    </manifest>
-	</android>
-	
+        <manifest>
+            <uses-sdk android:minSdkVersion="12"/>
+            <application android:debuggable="true"/>
+        </manifest>
+    </android>
     <mobileweb>
         <precache/>
         <splash>
@@ -58,5 +57,6 @@
     <modules>
         <module platform="iphone" version="1.0">com.alfresco.appcelerator.module.sdk</module>
         <module platform="android" version="1.0">com.alfresco.appcelerator.module.sdk</module>
+        <module platform="iphone">es.smartaccess.documentviewer</module>
     </modules>
 </ti:app>

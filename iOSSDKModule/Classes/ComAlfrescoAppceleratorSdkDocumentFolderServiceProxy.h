@@ -23,6 +23,6 @@
 -(void)setFolder:(id)arg;
 -(void)retrieveChildrenInFolder:(id)noargs;
 -(id)getCurrentFolder:(id)noargs;
+-(void)saveDocument:(id)arg;
 
-//-(void)enumerateFolderProperties:(AlfrescoNode*)node propertyValues:(NSDictionary*)propValues;
 @end

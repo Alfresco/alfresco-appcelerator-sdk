@@ -142,9 +142,6 @@
 }
 
 
-
-
-
 /*
 -(void)enumerateFolderProperties:(AlfrescoNode*)node propertyValues:(NSDictionary*)propValues
 {

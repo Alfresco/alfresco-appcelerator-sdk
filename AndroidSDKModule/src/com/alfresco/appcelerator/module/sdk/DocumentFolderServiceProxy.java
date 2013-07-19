@@ -161,17 +161,24 @@ public class DocumentFolderServiceProxy extends KrollProxy
     
  
     @Kroll.method
-    void saveDocument (Object args[])
+    void saveDocument (final Object args[])
     {
-        DocumentProxy arg = (DocumentProxy) args[0];
-     
-        ContentFile file = service.getContent(arg.getDocument());
-        
-        HashMap<String, Object> map = new HashMap<String, Object>();
-        TiFile tiFile = new TiFile(file.getFile(), file.getFile().getPath(), true);
-        
-        map.put("document", tiFile);
-        fireEvent("retrieveddocument", new KrollDict(map) );
+    	new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			DocumentProxy arg = (DocumentProxy) args[0];
+    		     
+    	        ContentFile file = service.getContent(arg.getDocument());
+    	        
+    	        HashMap<String, Object> map = new HashMap<String, Object>();
+    	        TiFile tiFile = new TiFile(file.getFile(), file.getFile().getPath(), true);
+    	        
+    	        map.put("document", tiFile);
+    	        fireEvent("retrieveddocument", new KrollDict(map) );
+    		}
+    	}.start();
     }
 
     

@@ -1,7 +1,10 @@
 function Controller() {
     function loginPane() {
         var data = [];
+        var serverDefault;
+        serverDefault = "google_sdk" == Titanium.Platform.model || "Simulator" == Titanium.Platform.model ? "http://localhost:8080/alfresco" : "http://192.168.1.91:8080/alfresco";
         var logoRow = Ti.UI.createTableViewRow({
+            left: 0,
             clickName: "banner",
             editable: false
         });
@@ -11,17 +14,23 @@ function Controller() {
             height: Ti.UI.SIZE
         });
         var logo = Ti.UI.createImageView({
+            left: 0,
+            width: Ti.UI.FILL,
+            height: Ti.UI.SIZE,
             image: "alfresco_logo_large.png"
         });
         logoView.add(logo);
         logoRow.add(logoView);
         data.push(logoRow);
         var serverRow = Ti.UI.createTableViewRow({
+            left: 0,
+            width: Ti.UI.FILL,
             clickName: "User",
             editable: false
         });
         var serverView = Ti.UI.createView({
-            width: Ti.UI.SIZE,
+            left: 0,
+            width: Ti.UI.FILL,
             height: Ti.UI.SIZE
         });
         var serverLabel = Ti.UI.createLabel({
@@ -32,7 +41,7 @@ function Controller() {
             height: 40
         });
         var serverTextField = Ti.UI.createTextField({
-            value: "http://localhost:8080/alfresco",
+            value: serverDefault,
             borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
             color: "#336699",
             top: 40,
@@ -46,11 +55,14 @@ function Controller() {
         serverRow.classname = "serverRow";
         data.push(serverRow);
         var usernameRow = Ti.UI.createTableViewRow({
+            left: 0,
+            width: Ti.UI.FILL,
             clickName: "User",
             editable: false
         });
         var usernameView = Ti.UI.createView({
-            width: Ti.UI.SIZE,
+            left: 0,
+            width: Ti.UI.FILL,
             height: Ti.UI.SIZE
         });
         var usernameLabel = Ti.UI.createLabel({
@@ -75,11 +87,14 @@ function Controller() {
         usernameRow.classname = "userRow";
         data.push(usernameRow);
         var passwordRow = Ti.UI.createTableViewRow({
+            left: 0,
+            width: Ti.UI.FILL,
             clickName: "Password",
             editable: false
         });
         var passwordView = Ti.UI.createView({
-            width: Ti.UI.SIZE,
+            left: 0,
+            width: Ti.UI.FILL,
             height: Ti.UI.SIZE
         });
         var passwordLabel = Ti.UI.createLabel({
@@ -105,10 +120,12 @@ function Controller() {
         passwordRow.classname = "pwdRow";
         data.push(passwordRow);
         var buttonRow = Ti.UI.createTableViewRow({
+            left: 0,
             clickName: "Buttons",
             editable: false
         });
         var buttonView = Ti.UI.createView({
+            left: 0,
             width: Ti.UI.FILL,
             height: Ti.UI.SIZE
         });
@@ -178,17 +195,29 @@ function Controller() {
             } ]
         };
         var leftpane = Ti.UI.createListView({
+            top: 33,
+            left: 0,
             templates: {
                 template: myTemplate
             },
             defaultItemTemplate: "template"
         });
+        folderLabel = Ti.UI.createLabel({
+            text: "",
+            color: "white",
+            backgroundColor: "#336699",
+            top: 0,
+            left: 0,
+            width: Ti.UI.FILL,
+            height: 30
+        });
         mainSection = Ti.UI.createListSection({
-            headerTitle: "Repository"
+            headerTitle: ""
         });
         var sections = [];
         sections.push(mainSection);
         leftpane.sections = sections;
+        $.index.add(folderLabel);
         $.index.add(leftpane);
         leftpane.addEventListener("itemclick", function(e) {
             var item = e.section.getItemAt(e.itemIndex);
@@ -222,6 +251,7 @@ function Controller() {
                     mainDataSet.push(data);
                     mainSection.appendItems(mainDataSet);
                 }
+                folderLabel.text = " " + folder.getFolderName();
                 documentFolderService.setFolder(folder);
                 documentFolderService.retrieveChildrenInFolder();
             } else {
@@ -258,6 +288,7 @@ function Controller() {
         documentFolderService.initWithSession(repoSesh);
         documentFolderService.retrieveRootFolder();
         documentFolderService.addEventListener("retrievedfolder", function() {
+            folderLabel.text = " " + documentFolderService.getCurrentFolder().getFolderName();
             documentFolderService.retrieveChildrenInFolder();
             documentFolderService.addEventListener("documentnode", function(e) {
                 Ti.API.info("DOCUMENT: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ", MIME type = " + e.contentMimeType);
@@ -312,15 +343,14 @@ function Controller() {
                 mainSection.appendItems(mainDataSet);
             });
             documentFolderService.addEventListener("retrieveddocument", function(e) {
-                var file = e.document;
-                var readContents;
-                var readFile = Titanium.Filesystem.getFile(file.path);
-                if (readFile.exists()) {
-                    readContents = readFile.read();
-                    Ti.API.info("File Exists");
-                }
-                var doc = readContents.text;
-                alert(doc);
+                var file = Ti.Filesystem.getFile(e.document.path);
+                var path = file.getNativePath();
+                require("es.smartaccess.documentviewer");
+                var documentViewerProxy = require("es.smartaccess.documentviewer");
+                documentViewer = documentViewerProxy.createDocumentViewer({
+                    url: path
+                });
+                documentViewer.show();
             });
             documentFolderService.addEventListener("progresseddocument", function(e) {
                 e.bytes;
@@ -348,6 +378,7 @@ function Controller() {
     var mainSection;
     var documentFolderService;
     var parentFolders = new Array();
+    var folderLabel;
     loginPane();
     _.extend($, exports);
 }
