@@ -129,7 +129,7 @@
     [service retrieveContentOfDocument:document.currentDocument
         completionBlock:^(AlfrescoContentFile *contentFile, NSError *error)
         {
-            NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[TiFile alloc] initWithPath:contentFile.fileUrl.path], @"document", nil];
+            NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:contentFile.fileUrl.path, @"filename", nil];
             [self fireEvent:@"retrieveddocument" withObject:event];
         }
         progressBlock:^(unsigned long long bytesTransferred, unsigned long long bytesTotal)

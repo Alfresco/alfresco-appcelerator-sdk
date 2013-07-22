@@ -343,14 +343,9 @@ function Controller() {
                 mainSection.appendItems(mainDataSet);
             });
             documentFolderService.addEventListener("retrieveddocument", function(e) {
-                var file = Ti.Filesystem.getFile(e.document.path);
+                var file = Ti.Filesystem.getFile(e.filename);
                 var path = file.getNativePath();
-                require("es.smartaccess.documentviewer");
-                var documentViewerProxy = require("es.smartaccess.documentviewer");
-                documentViewer = documentViewerProxy.createDocumentViewer({
-                    url: path
-                });
-                documentViewer.show();
+                Ti.Platform.canOpenURL(path) ? Ti.Platform.openURL(path) : alert("No app installed to open this kind of document");
             });
             documentFolderService.addEventListener("progresseddocument", function(e) {
                 e.bytes;

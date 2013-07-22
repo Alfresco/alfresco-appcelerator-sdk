@@ -1,5 +1,6 @@
 package com.alfresco.appcelerator.module.sdk;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -171,11 +172,11 @@ public class DocumentFolderServiceProxy extends KrollProxy
     			DocumentProxy arg = (DocumentProxy) args[0];
     		     
     	        ContentFile file = service.getContent(arg.getDocument());
+    	        File newLocation = new File(file.getFile().getPath() + "-" + arg.getDocument().getName());
+    	        file.getFile().renameTo(newLocation);
     	        
     	        HashMap<String, Object> map = new HashMap<String, Object>();
-    	        TiFile tiFile = new TiFile(file.getFile(), file.getFile().getPath(), true);
-    	        
-    	        map.put("document", tiFile);
+    	        map.put("filename", newLocation.getPath());
     	        fireEvent("retrieveddocument", new KrollDict(map) );
     		}
     	}.start();

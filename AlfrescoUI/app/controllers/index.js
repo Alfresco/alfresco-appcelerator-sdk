@@ -290,7 +290,7 @@ function getFolder(repoSesh)
 	  	  	
 	  	documentFolderService.addEventListener('retrieveddocument',function(e)
 		{
-			var file = Ti.Filesystem.getFile(e.document.path);
+			var file = Ti.Filesystem.getFile(e.filename);
 			var path = file.getNativePath(); //For URL.
 			     
 			if (Ti.Platform.name == 'iPhone OS')

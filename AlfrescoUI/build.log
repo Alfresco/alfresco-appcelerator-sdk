@@ -1,6 +1,7 @@
 Logfile initialized
 [INFO] logfile = /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build.log
-[DEBUG] /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/builder.py simulator AlfrescoUI /Users/ljagger/android-sdk-macosx /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI com.alfresco.appcelerator.ui 7 WXGA
+[DEBUG] /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/builder.py emulator AlfrescoUI /Users/ljagger/android-sdk-macosx /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI com.alfresco.appcelerator.ui 7 WXGA armeabi
+[INFO] Building AlfrescoUI for Android ... one moment
 [INFO] Launching Android emulator...one moment
 [DEBUG] From: /Users/ljagger/android-sdk-macosx/tools/emulator
 [DEBUG] SDCard: /Users/ljagger/.titanium/android2.sdcard
@@ -8,7 +9,6 @@ Logfile initialized
 [DEBUG] AVD Skin: WXGA
 [DEBUG] AVD ABI: armeabi
 [DEBUG] SDK: /Users/ljagger/android-sdk-macosx
-[INFO] Building AlfrescoUI for Android ... one moment
 [INFO] Emulator is running.
 [INFO] plugin=/Users/ljagger/Library/Application Support/Titanium/plugins/ti.alloy/1.0/plugin.py
 [INFO] Detected compiler plugin: ti.alloy/1.0
@@ -16,7 +16,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.014417 seconds on emulator to get ready
+[DEBUG] waited 0.014317 seconds on emulator to get ready
 [DEBUG] com.alfresco.appcelerator.ui installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
@@ -40,4 +40,3 @@ Logfile initialized
 [INFO] Launching application ... AlfrescoUI
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.alfresco.appcelerator.ui/.AlfrescouiActivity }
 
-[INFO] Android Emulator has exited
