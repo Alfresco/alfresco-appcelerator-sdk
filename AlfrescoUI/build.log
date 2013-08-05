@@ -1,7 +1,6 @@
 Logfile initialized
 [INFO] logfile = /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build.log
-[DEBUG] /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/builder.py emulator AlfrescoUI /Users/ljagger/android-sdk-macosx /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI com.alfresco.appcelerator.ui 7 WXGA armeabi
-[INFO] Building AlfrescoUI for Android ... one moment
+[DEBUG] /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/builder.py simulator AlfrescoUI /Users/ljagger/android-sdk-macosx /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI com.alfresco.appcelerator.ui 7 WXGA
 [INFO] Launching Android emulator...one moment
 [DEBUG] From: /Users/ljagger/android-sdk-macosx/tools/emulator
 [DEBUG] SDCard: /Users/ljagger/.titanium/android2.sdcard
@@ -10,33 +9,154 @@ Logfile initialized
 [DEBUG] AVD ABI: armeabi
 [DEBUG] SDK: /Users/ljagger/android-sdk-macosx
 [INFO] Emulator is running.
+[INFO] Building AlfrescoUI for Android ... one moment
 [INFO] plugin=/Users/ljagger/Library/Application Support/Titanium/plugins/ti.alloy/1.0/plugin.py
 [INFO] Detected compiler plugin: ti.alloy/1.0
 [INFO] Titanium SDK version: 3.1.1 (06/15/13 16:09 f7592c1)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.014317 seconds on emulator to get ready
+[DEBUG] waited 0.014116 seconds on emulator to get ready
 [DEBUG] com.alfresco.appcelerator.ui installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/backbone.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/backbone.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/CFG.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/CFG.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/controllers/BaseController.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/controllers/BaseController.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/controllers/index.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/controllers/index.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/localStorage.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/localStorage.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/properties.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/properties.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/sql.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/sql.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/util.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/util.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/underscore.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/underscore.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/widget.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/widget.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy.js
-[TRACE] COPYING MODIFIED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/app.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/app.js
+[INFO] Detected change in tiapp.xml, or assets deleted. Forcing full re-build...
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/backbone.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/backbone.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/CFG.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/CFG.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/controllers/BaseController.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/controllers/BaseController.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/controllers/index.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/controllers/index.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/localStorage.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/localStorage.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/properties.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/properties.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/sql.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/sql.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/util.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/util.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/underscore.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/underscore.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/widget.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/widget.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alfresco_logo_large.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alfresco_logo_large.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/appicon.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/appicon.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default-568h@2x.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default-568h@2x.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default-Landscape.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default-Landscape.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default-Portrait.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default-Portrait.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default@2x.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default@2x.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/folder@2x.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/folder@2x.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/mime_doc.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/mime_doc.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/mime_img.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/mime_img.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/mime_txt.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/mime_txt.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/wm_back.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/wm_back.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-long-land-hdpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-long-land-hdpi/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-long-land-ldpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-long-land-ldpi/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-long-port-hdpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-long-port-hdpi/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-long-port-ldpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-long-port-ldpi/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-notlong-land-hdpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-notlong-land-hdpi/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-notlong-land-ldpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-notlong-land-ldpi/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-notlong-land-mdpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-notlong-land-mdpi/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-notlong-port-hdpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-notlong-port-hdpi/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-notlong-port-ldpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-notlong-port-ldpi/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-notlong-port-mdpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-notlong-port-mdpi/default.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/app.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/app.js
 [DEBUG] LiveView not enabled
-[INFO] Tiapp.xml unchanged, skipping class generation
+[TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
-[INFO] Re-launching application ... AlfrescoUI
+[DEBUG] app stylesheet => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/ApplicationStylesheet.java
+[DEBUG] copying app icon: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/appicon.png
+[DEBUG] generating theme.xml
+[DEBUG] found splash screen at /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/default.png
+[TRACE] Writing out AndroidManifest.xml
+[DEBUG] adding /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/AlfrescouiActivity.java to javac build list
+[DEBUG] adding /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/AlfrescouiAppInfo.java to javac build list
+[DEBUG] adding /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/AlfrescouiApplication.java to javac build list
+[DEBUG] adding /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/ApplicationStylesheet.java to javac build list
+[DEBUG] adding /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/R.java to javac build list
+[DEBUG] Building Java Sources: "/Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/AlfrescouiActivity.java" "/Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/AlfrescouiAppInfo.java" "/Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/AlfrescouiApplication.java" "/Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/ApplicationStylesheet.java" "/Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/gen/com/alfresco/appcelerator/ui/R.java"
+[INFO] Compiling Android Resources... This could take some time
+[DEBUG] Android classes.dex built
+[DEBUG] creating unsigned apk: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/app-unsigned.apk
+[DEBUG] from resource zip => assets/Resources/alloy/controllers/BaseController.js
+[DEBUG] from resource zip => assets/Resources/alloy/controllers/index.js
+[DEBUG] from resource zip => assets/Resources/alloy/sync/localStorage.js
+[DEBUG] from resource zip => assets/Resources/alloy/sync/properties.js
+[DEBUG] from resource zip => assets/Resources/alloy/sync/sql.js
+[DEBUG] from resource zip => assets/Resources/alloy/sync/util.js
+[DEBUG] from resource zip => assets/Resources/alloy/CFG.js
+[DEBUG] from resource zip => assets/Resources/alloy/backbone.js
+[DEBUG] from resource zip => assets/Resources/alloy/underscore.js
+[DEBUG] from resource zip => assets/Resources/alloy/widget.js
+[DEBUG] from resource zip => assets/Resources/ximages/res-long-land-hdpi/default.png
+[DEBUG] from resource zip => assets/Resources/ximages/res-long-land-ldpi/default.png
+[DEBUG] from resource zip => assets/Resources/ximages/res-long-port-hdpi/default.png
+[DEBUG] from resource zip => assets/Resources/ximages/res-long-port-ldpi/default.png
+[DEBUG] from resource zip => assets/Resources/ximages/res-notlong-land-hdpi/default.png
+[DEBUG] from resource zip => assets/Resources/ximages/res-notlong-land-ldpi/default.png
+[DEBUG] from resource zip => assets/Resources/ximages/res-notlong-land-mdpi/default.png
+[DEBUG] from resource zip => assets/Resources/ximages/res-notlong-port-hdpi/default.png
+[DEBUG] from resource zip => assets/Resources/ximages/res-notlong-port-ldpi/default.png
+[DEBUG] from resource zip => assets/Resources/ximages/res-notlong-port-mdpi/default.png
+[DEBUG] from resource zip => assets/Resources/Default-568h@2x.png
+[DEBUG] from resource zip => assets/Resources/Default-Landscape.png
+[DEBUG] from resource zip => assets/Resources/Default-Portrait.png
+[DEBUG] from resource zip => assets/Resources/Default.png
+[DEBUG] from resource zip => assets/Resources/Default@2x.png
+[DEBUG] from resource zip => assets/Resources/alfresco_logo_large.png
+[DEBUG] from resource zip => assets/Resources/alloy.js
+[DEBUG] from resource zip => assets/Resources/app.js
+[DEBUG] from resource zip => assets/Resources/appicon.png
+[DEBUG] from resource zip => assets/Resources/folder@2x.png
+[DEBUG] from resource zip => assets/Resources/mime_doc.png
+[DEBUG] from resource zip => assets/Resources/mime_img.png
+[DEBUG] from resource zip => assets/Resources/mime_txt.png
+[DEBUG] from resource zip => assets/Resources/wm_back.png
+[DEBUG] from resource zip => assets/app.json
+[DEBUG] from resource zip => assets/index.json
+[DEBUG] from resource zip => assets/tiapp.xml
+[DEBUG] from resource zip => res/drawable/appicon.png
+[DEBUG] from resource zip => res/drawable/background.png
+[DEBUG] from resource zip => res/drawable/btn_check_buttonless_on_64.png
+[DEBUG] from resource zip => res/drawable/btn_more_64.png
+[DEBUG] from resource zip => res/drawable/disclosure_64.png
+[DEBUG] from resource zip => res/layout/titanium_tabgroup.xml
+[DEBUG] from resource zip => res/layout/titanium_ui_list_header_or_footer.xml
+[DEBUG] from resource zip => res/layout/titanium_ui_list_item.xml
+[DEBUG] from resource zip => AndroidManifest.xml
+[DEBUG] from resource zip => resources.arsc
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/modules/android/com.alfresco.appcelerator.module.sdk/1.0/lib/alfresco-mobile-android-client-api-1.2.0-SNAPSHOT.jar => org/alfresco/mobile/android/api/utils/messages/messages.properties
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/modules/android/com.alfresco.appcelerator.module.sdk/1.0/lib/alfresco-mobile-android-client-api-1.2.0-SNAPSHOT.jar => org/alfresco/mobile/android/api/utils/messages/messages_en_US.properties
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/modules/android/com.alfresco.appcelerator.module.sdk/1.0/lib/alfresco-mobile-android-client-api-1.2.0-SNAPSHOT.jar => org/alfresco/mobile/android/api/version.properties
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/binding.js
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/binding.min.js
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/json2.js
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.js
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.min.js
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/thirdparty.jar => org/apache/Commons-NOTICE.txt
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/thirdparty.jar => org/apache/HttpComponents-NOTICE.txt
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/thirdparty.jar => org/apache/mime4j-NOTICE.txt
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/build.properties
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/background.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_18.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_48.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_64.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_18.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_48.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_64.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_normal.9.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_pressed.9.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_selected.9.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/default_icon.png
+[DEBUG] from JAR /Users/ljagger/Library/Application Support/Titanium/mobilesdk/osx/3.1.1.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/photoDefault.png
+[DEBUG] installing native lib: /Users/ljagger/Library/Application Support/Titanium/modules/android/com.alfresco.appcelerator.module.sdk/1.0/libs/armeabi/libcom.alfresco.appcelerator.module.sdk.so
+[DEBUG] installing native lib: /Users/ljagger/Library/Application Support/Titanium/modules/android/com.alfresco.appcelerator.module.sdk/1.0/libs/armeabi-v7a/libcom.alfresco.appcelerator.module.sdk.so
+[DEBUG] installing native lib: /Users/ljagger/Library/Application Support/Titanium/modules/android/com.alfresco.appcelerator.module.sdk/1.0/libs/x86/libcom.alfresco.appcelerator.module.sdk.so
+[DEBUG] installing native SDK libs
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.018503 seconds on emulator to get ready
+[INFO] Installing application on emulator
 [INFO] Launching application ... AlfrescoUI
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.alfresco.appcelerator.ui/.AlfrescouiActivity }
 
+[INFO] Deployed AlfrescoUI ... Application should be running.
+[INFO] Android Emulator has exited

@@ -2,7 +2,7 @@ function Controller() {
     function loginPane() {
         var data = [];
         var serverDefault;
-        serverDefault = "google_sdk" == Titanium.Platform.model || "Simulator" == Titanium.Platform.model ? "http://localhost:8080/alfresco" : "http://192.168.1.91:8080/alfresco";
+        serverDefault = "google_sdk" == Titanium.Platform.model || "Simulator" == Titanium.Platform.model ? "http://localhost:8080/alfresco" : "http://10.244.51.57:8080/alfresco";
         var logoRow = Ti.UI.createTableViewRow({
             left: 0,
             clickName: "banner",
@@ -35,19 +35,29 @@ function Controller() {
         });
         var serverLabel = Ti.UI.createLabel({
             text: "Server address:",
+            font: {
+                fontFamily: "Arial",
+                fontSize: "18dp",
+                fontWeight: "bold"
+            },
             top: 0,
             left: 0,
             width: Ti.UI.FILL,
-            height: 40
+            height: "40dp"
         });
         var serverTextField = Ti.UI.createTextField({
             value: serverDefault,
+            font: {
+                fontFamily: "Arial",
+                fontSize: "18dp",
+                fontWeight: "bold"
+            },
             borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
             color: "#336699",
-            top: 40,
+            top: "40dp",
             left: 0,
             width: Ti.UI.FILL,
-            height: 40
+            height: "40dp"
         });
         serverView.add(serverLabel);
         serverView.add(serverTextField);
@@ -67,19 +77,29 @@ function Controller() {
         });
         var usernameLabel = Ti.UI.createLabel({
             text: "User name:",
+            font: {
+                fontFamily: "Arial",
+                fontSize: "18dp",
+                fontWeight: "bold"
+            },
             top: 0,
             left: 0,
             width: Ti.UI.FILL,
-            height: 40
+            height: "40dp"
         });
         var usernameTextField = Ti.UI.createTextField({
             value: "admin",
+            font: {
+                fontFamily: "Arial",
+                fontSize: "18dp",
+                fontWeight: "bold"
+            },
             borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
             color: "#336699",
-            top: 40,
+            top: "40dp",
             left: 0,
             width: Ti.UI.FILL,
-            height: 40
+            height: "40dp"
         });
         usernameView.add(usernameLabel);
         usernameView.add(usernameTextField);
@@ -99,20 +119,30 @@ function Controller() {
         });
         var passwordLabel = Ti.UI.createLabel({
             text: "Password:",
+            font: {
+                fontFamily: "Arial",
+                fontSize: "18dp",
+                fontWeight: "bold"
+            },
             top: 0,
             left: 0,
             width: Ti.UI.FILL,
-            height: 40
+            height: "40dp"
         });
         var passwordTextField = Ti.UI.createTextField({
             value: "password",
+            font: {
+                fontFamily: "Arial",
+                fontSize: "18dp",
+                fontWeight: "bold"
+            },
             passwordMask: true,
             borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
             color: "#336699",
-            top: 40,
+            top: "40dp",
             left: 0,
             width: Ti.UI.FILL,
-            height: 40
+            height: "40dp"
         });
         passwordView.add(passwordLabel);
         passwordView.add(passwordTextField);
@@ -131,6 +161,11 @@ function Controller() {
         });
         var button = Ti.UI.createButton({
             style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+            font: {
+                fontFamily: "Arial",
+                fontSize: "18dp",
+                fontWeight: "bold"
+            },
             left: 0,
             top: 50,
             width: Ti.UI.SIZE,
@@ -194,22 +229,27 @@ function Controller() {
                 }
             } ]
         };
+        folderLabel = Ti.UI.createLabel({
+            text: "",
+            color: "white",
+            font: {
+                fontFamily: "Arial",
+                fontSize: "18dp",
+                fontWeight: "bold"
+            },
+            backgroundColor: "#336699",
+            top: 0,
+            left: 0,
+            width: Ti.UI.FILL,
+            height: "40dp"
+        });
         var leftpane = Ti.UI.createListView({
-            top: 33,
+            top: "40dp",
             left: 0,
             templates: {
                 template: myTemplate
             },
             defaultItemTemplate: "template"
-        });
-        folderLabel = Ti.UI.createLabel({
-            text: "",
-            color: "white",
-            backgroundColor: "#336699",
-            top: 0,
-            left: 0,
-            width: Ti.UI.FILL,
-            height: 30
         });
         mainSection = Ti.UI.createListSection({
             headerTitle: ""
@@ -343,16 +383,23 @@ function Controller() {
                 mainSection.appendItems(mainDataSet);
             });
             documentFolderService.addEventListener("retrieveddocument", function(e) {
-                var file = Ti.Filesystem.getFile(e.filename);
-                var path = file.getNativePath();
-                Ti.Platform.canOpenURL(path) ? Ti.Platform.openURL(path) : alert("No app installed to open this kind of document");
+                var contentFile = e.contentfile;
+                var file = Ti.Filesystem.getFile("file:/" + contentFile.getPath());
+                var newFile = Ti.Filesystem.getFile(Ti.Filesystem.tempDirectory, contentFile.getName());
+                newFile.write(file.read());
+                file.deleteFile();
+                Ti.Android.currentActivity.startActivity(Ti.Android.createIntent({
+                    action: Ti.Android.ACTION_VIEW,
+                    type: contentFile.getMIMEType(),
+                    data: newFile.getNativePath()
+                }));
             });
             documentFolderService.addEventListener("progresseddocument", function(e) {
                 e.bytes;
                 e.total;
             });
             documentFolderService.addEventListener("error", function(e) {
-                alert("Error getting folders (" + e.errorcode + "): " + e.errorstring);
+                alert("Operation failed (" + e.errorcode + "): " + e.errorstring);
             });
         });
     }

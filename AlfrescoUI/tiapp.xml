@@ -32,6 +32,7 @@
         <manifest>
             <uses-sdk android:minSdkVersion="12"/>
             <application android:debuggable="true"/>
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
         </manifest>
     </android>
     <mobileweb>

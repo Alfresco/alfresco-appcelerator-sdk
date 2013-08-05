@@ -1,6 +1,5 @@
 package com.alfresco.appcelerator.module.sdk;
 
-import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -11,16 +10,14 @@ import org.alfresco.mobile.android.api.model.ContentFile;
 import org.alfresco.mobile.android.api.model.Document;
 import org.alfresco.mobile.android.api.model.Folder;
 import org.alfresco.mobile.android.api.model.Node;
-import org.alfresco.mobile.android.api.model.Property;
-import org.alfresco.mobile.android.api.model.Site;
 import org.alfresco.mobile.android.api.services.DocumentFolderService;
 import org.alfresco.mobile.android.api.services.SiteService;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
-import org.appcelerator.titanium.io.TiFile;
 import org.appcelerator.titanium.util.Log;
 import org.appcelerator.titanium.util.TiConvert;
+
 
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class)
 public class DocumentFolderServiceProxy extends KrollProxy
@@ -172,11 +169,17 @@ public class DocumentFolderServiceProxy extends KrollProxy
     			DocumentProxy arg = (DocumentProxy) args[0];
     		     
     	        ContentFile file = service.getContent(arg.getDocument());
-    	        File newLocation = new File(file.getFile().getPath() + "-" + arg.getDocument().getName());
-    	        file.getFile().renameTo(newLocation);
+    	        if (!file.getFile().exists())
+    	        {
+    	        	HashMap<String, Object> map = new HashMap<String, Object>();
+        	        map.put("errorcode", 1);
+        	        map.put("errorstring", "File does not exist");
+        	        fireEvent("error", new KrollDict(map) );
+        	        return;
+    	        }
     	        
     	        HashMap<String, Object> map = new HashMap<String, Object>();
-    	        map.put("filename", newLocation.getPath());
+    	        map.put("contentfile", new ContentFileProxy(file, arg.getDocument().getName()));
     	        fireEvent("retrieveddocument", new KrollDict(map) );
     		}
     	}.start();

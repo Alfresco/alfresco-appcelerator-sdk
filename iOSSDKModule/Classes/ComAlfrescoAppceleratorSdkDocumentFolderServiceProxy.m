@@ -10,6 +10,7 @@
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 #import "ComAlfrescoAppceleratorSdkFolderProxy.h"
 #import "ComAlfrescoAppceleratorSdkDocumentProxy.h"
+#import "ComAlfrescoAppceleratorSdkContentFileProxy.h"
 
 #import "AlfrescoFolder.h"
 #import <objc/runtime.h>
@@ -129,7 +130,10 @@
     [service retrieveContentOfDocument:document.currentDocument
         completionBlock:^(AlfrescoContentFile *contentFile, NSError *error)
         {
-            NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:contentFile.fileUrl.path, @"filename", nil];
+            NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [[ComAlfrescoAppceleratorSdkContentFileProxy alloc] initWithContentFile:contentFile], @"contentfile",
+                                   nil];
+            
             [self fireEvent:@"retrieveddocument" withObject:event];
         }
         progressBlock:^(unsigned long long bytesTransferred, unsigned long long bytesTotal)

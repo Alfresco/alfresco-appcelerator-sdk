@@ -19,8 +19,9 @@ function loginPane()
 	if (Titanium.Platform.model == 'google_sdk' ||  Titanium.Platform.model == 'Simulator')  
   		serverDefault = "http://localhost:8080/alfresco";		//Running on Simulator/Emulator. Assume local server on the PC/Mac.
 	else
-		serverDefault = "http://192.168.1.91:8080/alfresco";	//Running on-device. NOTE: Change to your servers IP address!
-
+		//serverDefault = "http://192.168.1.91:8080/alfresco";	//Running on-device. NOTE: Change to your servers IP address!
+		serverDefault = "http://10.244.51.57:8080/alfresco";
+		
 	var logoRow = Ti.UI.createTableViewRow({left: 0, clickName:'banner', editable:false});
 	var logoView = Ti.UI.createView({left: 0, width: '80%', height: Ti.UI.SIZE});
 	var logo = Ti.UI.createImageView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE, image:"alfresco_logo_large.png"});
@@ -30,8 +31,8 @@ function loginPane()
 	
 	var serverRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'User', editable:false});
 	var serverView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
-	var serverLabel = Ti.UI.createLabel({text: "Server address:", top: 0, left: 0, width: Ti.UI.FILL, height: 40});
-	var serverTextField = Ti.UI.createTextField({value: serverDefault, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: 40, left: 0, width: Ti.UI.FILL, height: 40});	
+	var serverLabel = Ti.UI.createLabel({text: "Server address:", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
+	var serverTextField = Ti.UI.createTextField({value: serverDefault, font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
 	serverView.add(serverLabel);
 	serverView.add(serverTextField);
 	serverRow.add(serverView);
@@ -40,8 +41,8 @@ function loginPane()
 	
 	var usernameRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'User', editable:false});
 	var usernameView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
-	var usernameLabel = Ti.UI.createLabel({text: "User name:", top: 0, left: 0, width: Ti.UI.FILL, height: 40});
-	var usernameTextField = Ti.UI.createTextField({value: "admin", borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: 40, left: 0, width: Ti.UI.FILL, height: 40});	
+	var usernameLabel = Ti.UI.createLabel({text: "User name:", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
+	var usernameTextField = Ti.UI.createTextField({value: "admin", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
 	usernameView.add(usernameLabel);
 	usernameView.add(usernameTextField);
 	usernameRow.add(usernameView);
@@ -50,8 +51,8 @@ function loginPane()
 	
 	var passwordRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'Password', editable:false});
 	var passwordView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
-	var passwordLabel = Ti.UI.createLabel({text: "Password:", top: 0, left: 0, width: Ti.UI.FILL, height: 40});
-	var passwordTextField = Ti.UI.createTextField({value: "password", passwordMask:true, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: 40, left: 0, width: Ti.UI.FILL, height: 40});	
+	var passwordLabel = Ti.UI.createLabel({text: "Password:", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
+	var passwordTextField = Ti.UI.createTextField({value: "password", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, passwordMask:true, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
 	passwordView.add(passwordLabel);
 	passwordView.add(passwordTextField);
 	passwordRow.add(passwordView);
@@ -60,7 +61,7 @@ function loginPane()
 	
 	var buttonRow = Ti.UI.createTableViewRow({left: 0, clickName:'Buttons', editable:false});
 	var buttonView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
-	var button = Ti.UI.createButton({style: Ti.UI.iPhone.SystemButtonStyle.BORDERED, left: 0, top: 50, width: Ti.UI.SIZE, title: "Log in", clickName:'Login'});
+	var button = Ti.UI.createButton({style: Ti.UI.iPhone.SystemButtonStyle.BORDERED, font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, left: 0, top: 50, width: Ti.UI.SIZE, title: "Log in", clickName:'Login'});
 	buttonView.add(button);
 	buttonRow.add(buttonView);
 	data.push(buttonRow);
@@ -123,9 +124,9 @@ function createNodeList()
 	        }
 	    ]
 	};
-		
-	var leftpane = Ti.UI.createListView( {top: 33, left: 0, templates: { 'template': myTemplate }, defaultItemTemplate: 'template'} );	
-	folderLabel = Ti.UI.createLabel({text: "", color: 'white', backgroundColor: '#336699', top: 0, left: 0, width: Ti.UI.FILL, height: 30});
+			
+	folderLabel = Ti.UI.createLabel({text: "", color: 'white', font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, backgroundColor: '#336699', top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
+	var leftpane = Ti.UI.createListView( {top: '40dp', left: 0, templates: { 'template': myTemplate }, defaultItemTemplate: 'template'} );
 	
 	mainSection = Ti.UI.createListSection({ headerTitle: ''});
 	
@@ -290,9 +291,15 @@ function getFolder(repoSesh)
 	  	  	
 	  	documentFolderService.addEventListener('retrieveddocument',function(e)
 		{
-			var file = Ti.Filesystem.getFile(e.filename);
-			var path = file.getNativePath(); //For URL.
-			     
+			var contentFile = e.contentfile;
+			
+			//Move the file into the app's temporary folder, as it needs to be within the app's folders to be openable as an Intent.
+			//The new temporary file will get deleted as the app shuts down.
+			var file = Ti.Filesystem.getFile("file:/" + contentFile.getPath());
+			var newFile = Ti.Filesystem.getFile(Ti.Filesystem.tempDirectory, contentFile.getName());
+			newFile.write(file.read());
+			file.deleteFile();
+		
 			if (Ti.Platform.name == 'iPhone OS')
 			{
 				//Using DocumentViewer available from SmartAccess at https://marketplace.appcelerator.com/apps/3820?897323448
@@ -301,13 +308,13 @@ function getFolder(repoSesh)
 				var documentviewer = require('es.smartaccess.documentviewer');
 				var documentViewerProxy = require('es.smartaccess.documentviewer');		
 
-				documentViewer = documentViewerProxy.createDocumentViewer({url: path});
+				documentViewer = documentViewerProxy.createDocumentViewer({url: newFile.getNativePath()});
 				documentViewer.show();
 			}
-			else if (Ti.Platform.name == 'android')
+			else
+			if (Ti.Platform.name == 'android')
 			{
-				//This ought to work on Android to raise an Intent.
-				Ti.Platform.openURL (path);
+				Ti.Android.currentActivity.startActivity(Ti.Android.createIntent( { action: Ti.Android.ACTION_VIEW, type: contentFile.getMIMEType(), data: newFile.getNativePath() } ));
 			}
    		});
    		
@@ -319,7 +326,7 @@ function getFolder(repoSesh)
    		
    		documentFolderService.addEventListener('error',function(e)
 		{
-		  	alert("Error getting folders (" + e.errorcode + "): " + e.errorstring);
+		  	alert("Operation failed (" + e.errorcode + "): " + e.errorstring);
 		});
 	}); 
 }
