@@ -1,0 +1,11 @@
+"Window":{
+	backgroundColor:"white",
+	separatorColor:"white",
+	navBarHidden:true
+},
+"loginTab":{
+	navBarHidden:true
+},
+"repoTab":{
+	navBarHidden:true
+}

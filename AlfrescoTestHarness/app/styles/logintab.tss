@@ -1,0 +1,99 @@
+"Window":{
+	backgroundColor:"white",
+	separatorColor:"white",
+	navBarHidden:true
+},
+"#loginTable":{
+	top: '2%',
+	left: '2%',
+	width:'96%',
+	height:'96%',
+	backgroundColor:"white",
+	separatorColor:"white"
+},
+"#loginWindow":{
+	backgroundColor:"white"
+},
+"#logoWindow":{
+	width:'80%',
+	height:Ti.UI.SIZE
+},
+"#logoImage":{
+	left: 0, 
+	width: Ti.UI.FILL, 
+	height: Ti.UI.SIZE, 
+	image:"alfresco_logo_large.png"
+},
+"#serverWindow":{
+	height:Ti.UI.SIZE
+},
+"#serverLabel":{
+	text: "Server address:",
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
+	top: 0,
+	left: 0,
+	width: Ti.UI.FILL,
+	height: '40dp'
+},
+"#serverEdit":{
+	value: "",
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, 
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, 
+	color: '#336699', 
+	top: '40dp', 
+	left: 0, 
+	width: Ti.UI.FILL, 
+	height: '40dp'
+},
+"#usernameWindow":{
+	height:Ti.UI.SIZE
+},
+"#usernameLabel":{
+	text: "User name:",
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
+	top: 0,
+	left: 0,
+	width: Ti.UI.FILL,
+	height: '40dp'
+},
+"#usernameEdit":{
+	value: "admin",
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, 
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, 
+	color: '#336699', 
+	top: '40dp', 
+	left: 0, 
+	width: Ti.UI.FILL, 
+	height: '40dp'
+},
+"#passwordWindow":{
+	height:Ti.UI.SIZE
+},
+"#passwordLabel":{
+	text: "Password:",
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
+	top: 0,
+	left: 0,
+	width: Ti.UI.FILL,
+	height: '40dp'
+},
+"#passwordEdit":{
+	value: "password",
+	passwordMask:true,
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, 
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, 
+	color: '#336699', 
+	top: '40dp', 
+	left: 0, 
+	width: Ti.UI.FILL, 
+	height: '40dp'
+},
+"#loginButton":{
+	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
+	left: 0, 
+	top: 50, 
+	width: Ti.UI.SIZE, 
+	title: "Log in"
+}
+

@@ -1,0 +1,19 @@
+<Alloy>
+
+	<TabGroup>
+
+		<Tab id="loginTab" title="Account" icon="KS_nav_ui.png">
+
+			<Require src="logintab" id="logintab"/>
+						
+		</Tab>
+		
+		<Tab id="repoTab" title="Repository" icon="KS_nav_views.png">
+			
+			<Require src="repotab" id="repotab">
+			
+		</Tab>
+		
+	</TabGroup>
+	
+</Alloy>

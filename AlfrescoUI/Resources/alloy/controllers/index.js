@@ -388,11 +388,12 @@ function Controller() {
                 var newFile = Ti.Filesystem.getFile(Ti.Filesystem.tempDirectory, contentFile.getName());
                 newFile.write(file.read());
                 file.deleteFile();
-                Ti.Android.currentActivity.startActivity(Ti.Android.createIntent({
-                    action: Ti.Android.ACTION_VIEW,
-                    type: contentFile.getMIMEType(),
-                    data: newFile.getNativePath()
-                }));
+                require("es.smartaccess.documentviewer");
+                var documentViewerProxy = require("es.smartaccess.documentviewer");
+                documentViewer = documentViewerProxy.createDocumentViewer({
+                    url: newFile.getNativePath()
+                });
+                documentViewer.show();
             });
             documentFolderService.addEventListener("progresseddocument", function(e) {
                 e.bytes;

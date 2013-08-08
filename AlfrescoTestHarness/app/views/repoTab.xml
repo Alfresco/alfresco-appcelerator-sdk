@@ -1,0 +1,23 @@
+<Alloy>
+	
+	<Window>
+		
+		<Label id="folderLabel">
+			
+		<ListView id="folderList" defaultItemTemplate="repoTemplate">
+			
+			 <Templates>
+                <ItemTemplate name="repoTemplate">
+    				<ImageView id="picImage" bindId="pic"/>
+    				<Label id="infoLabel" bindId="info"/>
+    				<Label id="esinfoLabel" bindId="es_info"/>
+                </ItemTemplate>
+            </Templates>
+            
+            <ListSection id="mainSection"/>
+            
+		</ListView>
+	
+	</Window>
+	
+</Alloy>

@@ -1,0 +1,36 @@
+"Window":{
+	backgroundColor:"white",
+	separatorColor:"white",
+	navBarHidden:true
+},
+"#folderLabel":{
+	text: "", 
+	color: 'white', 
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, 
+	backgroundColor: '#336699', 
+	top: 0, 
+	left: 0, 
+	width: Ti.UI.FILL, 
+	height: '40dp'
+},
+"#folderList":{
+	top: '40dp', 
+	left: 0 
+}, 
+"#picImage":{
+	width: '35dp', 
+	height: '35dp',
+	left: 5
+},
+"#infoLabel":{
+	color: 'black',
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
+	left: '60dp', 
+	top: 0
+},
+"#esinfoLabel":{
+    color: 'gray',
+    font: { fontFamily:'Arial', fontSize: '11dp' },
+    left: '60dp', 
+    top: '25dp'
+}
