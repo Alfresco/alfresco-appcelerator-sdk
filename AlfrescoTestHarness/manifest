@@ -1,9 +1,9 @@
-#appname: AlfrescoTestHarness
-#appid: com.alfresco.appcelerator.alfrescotestharness
-#type: mobile
-#guid: 5b87ae1d-1d27-4e7b-895a-33c392d912ff
-#version: 1.0
-#publisher: not specified
-#url: not specified
-#image: appicon.png
-#desc: not specified
+#appname:AlfrescoTestHarness
+#appid:com.alfresco.appcelerator.alfrescotestharness
+#type:mobile
+#guid:5b87ae1d-1d27-4e7b-895a-33c392d912ff
+#version:1.0
+#publisher:ljagger
+#url:http://www.alfresco.com
+#image:appicon.png
+#desc:not specified

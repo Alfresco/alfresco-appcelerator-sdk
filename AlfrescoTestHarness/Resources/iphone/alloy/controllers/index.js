@@ -31,6 +31,18 @@ function Controller() {
         icon: "KS_nav_views.png"
     });
     __alloyId1.push($.__views.repoTab);
+    $.__views.sitestab = Alloy.createController("sitestab", {
+        id: "sitestab"
+    });
+    $.__views.sitesTab = Ti.UI.createTab({
+        window: $.__views.sitestab.getViewEx({
+            recurse: true
+        }),
+        id: "sitesTab",
+        title: "Sites",
+        icon: "KS_nav_views.png"
+    });
+    __alloyId1.push($.__views.sitesTab);
     $.__views.index = Ti.UI.createTabGroup({
         tabs: __alloyId1,
         id: "index"
@@ -38,6 +50,7 @@ function Controller() {
     $.__views.index && $.addTopLevelView($.__views.index);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    Alloy.Globals.AlfrescoSDKVersion = .1;
     Alloy.Globals.SDKModule = require("com.alfresco.appcelerator.module.sdk");
     Alloy.Globals.tabGroup = $.index;
     $.index.open();

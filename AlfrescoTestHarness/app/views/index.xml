@@ -14,6 +14,12 @@
 			
 		</Tab>
 		
+		<Tab id="sitesTab" title="Sites" icon="KS_nav_views.png">
+			
+			<Require src="sitestab" id="sitestab">
+				
+		</Tab>
+		
 	</TabGroup>
 	
 </Alloy>
