@@ -22,7 +22,7 @@ function loginButtonClick()
 	}
 	else
 	{
-		//Connect to repo and fill the Node List with nodes from the root of the repository
+		//Connect to repo and fire event to 'populate' the list.
 		connect(svr, user, pwd);
 	}
 }
