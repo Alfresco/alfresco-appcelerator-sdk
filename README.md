@@ -7,8 +7,13 @@ Project structure:
 ------------------
 
 AlfrescoUI  -  
-The Titanium project to build a cross-platform app for Android and iOS (currently).
-This is a basic Hello Repo example of calling the Android and iOS Modules to navigate the repo.
+The Titanium project to build a basic cross-platform app for Android and iOS (currently).
+This is a basic Hello Repo example of calling the Android and iOS Modules to navigate the repo, using standard Titanium.
+
+AlfrescoTestHarness -   
+The Titanium 'Alloy' project to build a test harness UI for Android and iOS (currently).
+This project utilises Alloy in order to refine the design (MVC architecture) and aid in the addition of future API tests.
+It is intended that this project will contain tests / example calls for most of the Alfresco API's currently implemented.
 
 iOSSDKModule -  
 The iOS Alfresco SDK Proxy, for calling from Javascript.
