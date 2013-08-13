@@ -5,9 +5,9 @@
  
  service		The Alfresco service being enumerated.
  mainSection	The ListView section to populate.
- 
+  
  */
-Alloy.Globals.createServiceListeners = function(service, mainSection) 
+Alloy.Globals.modelListeners = function(service, mainSection)  
 {
 	service.addEventListener('documentnode',function(e)
   	{
@@ -105,3 +105,47 @@ Alloy.Globals.createServiceListeners = function(service, mainSection)
 	  	alert("Operation failed (" + e.errorcode + "): " + e.errorstring);
 	});
 }
+
+
+Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument)
+{
+	view.folderList.addEventListener('itemclick', function(e)
+	{
+		var mainSection = e.section;
+	    var item = e.section.getItemAt(e.itemIndex);
+	    var name = item.properties.name;
+	    
+	    if (item.properties.folder > 0)
+		{
+	        var folder;
+	        if (item.properties.folder == 2)	//'Up' folder item press.
+	        {
+	        	folder = parentFolders.pop();
+	        }
+	        else
+	        {
+	        	parentFolders.push(service.getCurrentFolder());     	
+	        	folder = item.properties.folderobject;
+	        }        
+	        
+	        //Empty the list and add 'Back' item if we're not at root folder.
+	        mainSection.deleteItemsAt(0,mainSection.getItems().length);
+	        if (parentFolders.length > 0)
+	        {      
+		        var mainDataSet = [];
+		  	 	var data = {info: {text: "Back"}, es_info: {text: "Previous folder"}, pic: {image: 'wm_back.png'},  properties: {folder: 2, name: null, folderobject: null} };		
+		  	 	mainDataSet.push(data);
+		  	 	mainSection.appendItems(mainDataSet);
+		  	}
+		  	 	 	
+		  	view.folderLabel.text = " " + folder.getFolderName();
+		  	
+		  	onFolder(folder);
+	    }    
+	    else
+	    {
+	    	onDocument(item.properties.docobject);	    	
+	   	}
+	});
+}
+

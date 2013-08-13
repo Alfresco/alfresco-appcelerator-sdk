@@ -1,6 +1,6 @@
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
-Alloy.Globals.createServiceListeners = function(service, mainSection) {
+Alloy.Globals.modelListeners = function(service, mainSection) {
     service.addEventListener("documentnode", function(e) {
         Ti.API.info("DOCUMENT: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ", MIME type = " + e.contentMimeType);
         var icon = "mime_txt.png";
@@ -72,6 +72,45 @@ Alloy.Globals.createServiceListeners = function(service, mainSection) {
     });
     service.addEventListener("error", function(e) {
         alert("Operation failed (" + e.errorcode + "): " + e.errorstring);
+    });
+};
+
+Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument) {
+    view.folderList.addEventListener("itemclick", function(e) {
+        var mainSection = e.section;
+        var item = e.section.getItemAt(e.itemIndex);
+        item.properties.name;
+        if (item.properties.folder > 0) {
+            var folder;
+            if (2 == item.properties.folder) folder = parentFolders.pop(); else {
+                parentFolders.push(service.getCurrentFolder());
+                folder = item.properties.folderobject;
+            }
+            mainSection.deleteItemsAt(0, mainSection.getItems().length);
+            if (parentFolders.length > 0) {
+                var mainDataSet = [];
+                var data = {
+                    info: {
+                        text: "Back"
+                    },
+                    es_info: {
+                        text: "Previous folder"
+                    },
+                    pic: {
+                        image: "wm_back.png"
+                    },
+                    properties: {
+                        folder: 2,
+                        name: null,
+                        folderobject: null
+                    }
+                };
+                mainDataSet.push(data);
+                mainSection.appendItems(mainDataSet);
+            }
+            view.folderLabel.text = " " + folder.getFolderName();
+            onFolder(folder);
+        } else onDocument(item.properties.docobject);
     });
 };
 

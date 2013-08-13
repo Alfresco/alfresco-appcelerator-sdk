@@ -1,53 +1,11 @@
 function Controller() {
-    function addClickListener() {
-        $.folderList.addEventListener("itemclick", function(e) {
-            var item = e.section.getItemAt(e.itemIndex);
-            item.properties.name;
-            if (item.properties.folder > 0) {
-                var folder;
-                if (2 == item.properties.folder) folder = parentFolders.pop(); else {
-                    parentFolders.push(documentFolderService.getCurrentFolder());
-                    folder = item.properties.folderobject;
-                }
-                mainSection.deleteItemsAt(0, mainSection.getItems().length);
-                if (parentFolders.length > 0) {
-                    var mainDataSet = [];
-                    var data = {
-                        info: {
-                            text: "Back"
-                        },
-                        es_info: {
-                            text: "Previous folder"
-                        },
-                        pic: {
-                            image: "wm_back.png"
-                        },
-                        properties: {
-                            folder: 2,
-                            name: null,
-                            folderobject: null
-                        }
-                    };
-                    mainDataSet.push(data);
-                    mainSection.appendItems(mainDataSet);
-                }
-                $.folderLabel.text = " " + folder.getFolderName();
-                documentFolderService.setFolder(folder);
-                documentFolderService.retrieveChildrenInFolder();
-            } else {
-                var docobject = item.properties.docobject;
-                documentFolderService.saveDocument(docobject);
-            }
-        });
-    }
     function getFolder(repoSesh) {
-        documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
         documentFolderService.initWithSession(repoSesh);
         documentFolderService.retrieveRootFolder();
         documentFolderService.addEventListener("retrievedfolder", function() {
             $.folderLabel.text = " " + documentFolderService.getCurrentFolder().getFolderName();
             documentFolderService.retrieveChildrenInFolder();
-            Alloy.Globals.createServiceListeners(documentFolderService, mainSection);
+            Alloy.Globals.modelListeners(documentFolderService, mainSection);
         });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -154,7 +112,13 @@ function Controller() {
         if (null != Alloy.Globals.repositorySession) {
             parentFolders = new Array();
             mainSection.deleteItemsAt(0, mainSection.getItems().length);
-            addClickListener();
+            documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
+            Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders, function(folder) {
+                documentFolderService.setFolder(folder);
+                documentFolderService.retrieveChildrenInFolder();
+            }, function(document) {
+                documentFolderService.saveDocument(document);
+            });
             getFolder(Alloy.Globals.repositorySession);
         }
     });
