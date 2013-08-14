@@ -7,10 +7,22 @@ Ti.App.addEventListener('populate',
 							}
 							else
 							{
+								$.info.text = "Loaded";
+								
 								if (Alloy.Globals.repositorySession != null)
 								{
+									var siteService = Alloy.Globals.SDKModule.createSiteService();
+									siteService.initWithSession(Alloy.Globals.repositorySession);
 									
+									siteService.retrieveSites();
+									Alloy.Globals.modelListeners(siteService, $.mysites);
+									
+									siteService.retrieveAllSites();
+									Alloy.Globals.modelListeners(siteService, $.allsites);
+									
+									siteService.retrieveFavoriteSites();
+									Alloy.Globals.modelListeners(siteService, $.favsites);
 								}
 							}
-						});
+						}); 
 

@@ -3,6 +3,22 @@
 	<Window>
 	
 		<Label id="info">
+		
+		<ListView id="siteList" defaultItemTemplate="siteTemplate">
+			
+			 <Templates>
+                <ItemTemplate name="siteTemplate">
+    				<ImageView id="picImage" bindId="pic"/>
+    				<Label id="infoLabel" bindId="info"/>
+    				<Label id="esinfoLabel" bindId="es_info"/>
+                </ItemTemplate>
+            </Templates>
+            
+            <ListSection title="My Sites" id="mysites"/>
+            <ListSection title="All Sites" id="allsites"/>
+            <ListSection title="Favourite Sites" id="favsites"/>
+            
+		</ListView>
 	
 	</Window>
 

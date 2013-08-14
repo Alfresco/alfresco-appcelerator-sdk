@@ -2,21 +2,27 @@
 
 	<TabGroup>
 
-		<Tab id="loginTab" title="Account" icon="KS_nav_ui.png">
+		<Tab id="loginTab" title="Account" icon="KS_nav_login.png">
 
 			<Require src="logintab" id="logintab"/>
 						
 		</Tab>
 		
-		<Tab id="repoTab" title="Repository" icon="KS_nav_views.png">
+		<Tab id="repoTab" title="Repository" icon="KS_nav_folder.png">
 			
 			<Require src="repotab" id="repotab">
 			
 		</Tab>
 		
-		<Tab id="sitesTab" title="Sites" icon="KS_nav_views.png">
+		<Tab id="sitesTab" title="Sites" icon="KS_nav_sites.png">
 			
 			<Require src="sitestab" id="sitestab">
+				
+		</Tab>
+		
+		<Tab id="searchTab" title="Search" icon="KS_nav_search.png">
+			
+			<Window/>
 				
 		</Tab>
 		

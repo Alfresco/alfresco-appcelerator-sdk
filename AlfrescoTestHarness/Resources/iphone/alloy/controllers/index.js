@@ -16,7 +16,7 @@ function Controller() {
         }),
         id: "loginTab",
         title: "Account",
-        icon: "KS_nav_ui.png"
+        icon: "KS_nav_login.png"
     });
     __alloyId1.push($.__views.loginTab);
     $.__views.repotab = Alloy.createController("repotab", {
@@ -28,7 +28,7 @@ function Controller() {
         }),
         id: "repoTab",
         title: "Repository",
-        icon: "KS_nav_views.png"
+        icon: "KS_nav_folder.png"
     });
     __alloyId1.push($.__views.repoTab);
     $.__views.sitestab = Alloy.createController("sitestab", {
@@ -40,9 +40,22 @@ function Controller() {
         }),
         id: "sitesTab",
         title: "Sites",
-        icon: "KS_nav_views.png"
+        icon: "KS_nav_sites.png"
     });
     __alloyId1.push($.__views.sitesTab);
+    $.__views.__alloyId4 = Ti.UI.createWindow({
+        backgroundColor: "white",
+        separatorColor: "white",
+        navBarHidden: true,
+        id: "__alloyId4"
+    });
+    $.__views.searchTab = Ti.UI.createTab({
+        window: $.__views.__alloyId4,
+        id: "searchTab",
+        title: "Search",
+        icon: "KS_nav_search.png"
+    });
+    __alloyId1.push($.__views.searchTab);
     $.__views.index = Ti.UI.createTabGroup({
         tabs: __alloyId1,
         id: "index"
@@ -50,7 +63,7 @@ function Controller() {
     $.__views.index && $.addTopLevelView($.__views.index);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.Globals.AlfrescoSDKVersion = .1;
+    Alloy.Globals.AlfrescoSDKVersion = 1;
     Alloy.Globals.SDKModule = require("com.alfresco.appcelerator.module.sdk");
     Alloy.Globals.tabGroup = $.index;
     $.index.open();

@@ -38,9 +38,9 @@ function Controller() {
         id: "folderLabel"
     });
     $.__views.repoTab.add($.__views.folderLabel);
-    var __alloyId11 = {};
-    var __alloyId14 = [];
-    var __alloyId15 = {
+    var __alloyId12 = {};
+    var __alloyId15 = [];
+    var __alloyId16 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -50,8 +50,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId14.push(__alloyId15);
-    var __alloyId16 = {
+    __alloyId15.push(__alloyId16);
+    var __alloyId17 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -66,8 +66,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId14.push(__alloyId16);
-    var __alloyId17 = {
+    __alloyId15.push(__alloyId17);
+    var __alloyId18 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -81,24 +81,24 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId14.push(__alloyId17);
-    var __alloyId13 = {
+    __alloyId15.push(__alloyId18);
+    var __alloyId14 = {
         properties: {
             name: "repoTemplate"
         },
-        childTemplates: __alloyId14
+        childTemplates: __alloyId15
     };
-    __alloyId11["repoTemplate"] = __alloyId13;
-    var __alloyId18 = [];
+    __alloyId12["repoTemplate"] = __alloyId14;
+    var __alloyId19 = [];
     $.__views.mainSection = Ti.UI.createListSection({
         id: "mainSection"
     });
-    __alloyId18.push($.__views.mainSection);
+    __alloyId19.push($.__views.mainSection);
     $.__views.folderList = Ti.UI.createListView({
         top: "40dp",
         left: 0,
-        sections: __alloyId18,
-        templates: __alloyId11,
+        sections: __alloyId19,
+        templates: __alloyId12,
         id: "folderList",
         defaultItemTemplate: "repoTemplate"
     });

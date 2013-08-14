@@ -104,6 +104,17 @@ Alloy.Globals.modelListeners = function(service, mainSection)
 	{
 	  	alert("Operation failed (" + e.errorcode + "): " + e.errorstring);
 	});
+	
+	service.addEventListener('site',function(e)
+	{
+  	 	Ti.API.info("SITE: name = " + e.shortName + ", title = " + e.title + ", summary = " + e.summary);
+  	 	
+  	 	var mainDataSet = [];
+  	 	var data = {info: {text: e.shortName}, es_info: {text: e.title}, pic: {image: 'folder@2x.png'},  properties: {folder: 1, name: e.shortName, folderobject: null} };
+        		
+  	 	mainDataSet.push(data);
+  	 	mainSection.appendItems(mainDataSet);
+	});
 }
 
 
