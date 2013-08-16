@@ -52,11 +52,12 @@ function connect(serverUrl, serverUsername, serverPassword)
 		
 	  	Ti.API.info("Connected to server: " + e.servername);
 	  	
+	  	//Ti.App.fireEvent('cleartabs');
+	  	
 		//Switch to repo tab
 		Alloy.Globals.tabGroup.setActiveTab(1);
 		
-		//Populate from repo
-		Ti.App.fireEvent('populate');
+		$.loginButton.enabled = false;
 		
 		return 1;
 	});    

@@ -24,7 +24,7 @@ function Controller() {
             Alloy.Globals.repositorySession = repositorySession;
             Ti.API.info("Connected to server: " + e.servername);
             Alloy.Globals.tabGroup.setActiveTab(1);
-            Ti.App.fireEvent("populate");
+            $.loginButton.enabled = false;
             return 1;
         });
     }
@@ -43,15 +43,15 @@ function Controller() {
         id: "loginWindow"
     });
     $.__views.loginWindow && $.addTopLevelView($.__views.loginWindow);
-    $.__views.__alloyId5 = Ti.UI.createTableViewSection({
-        id: "__alloyId5"
+    $.__views.__alloyId6 = Ti.UI.createTableViewSection({
+        id: "__alloyId6"
     });
-    var __alloyId6 = [];
-    __alloyId6.push($.__views.__alloyId5);
-    $.__views.__alloyId7 = Ti.UI.createTableViewRow({
-        id: "__alloyId7"
+    var __alloyId7 = [];
+    __alloyId7.push($.__views.__alloyId6);
+    $.__views.__alloyId8 = Ti.UI.createTableViewRow({
+        id: "__alloyId8"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId7);
+    $.__views.__alloyId6.add($.__views.__alloyId8);
     $.__views.logoWindow = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
@@ -60,7 +60,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         id: "logoWindow"
     });
-    $.__views.__alloyId7.add($.__views.logoWindow);
+    $.__views.__alloyId8.add($.__views.logoWindow);
     $.__views.logoImage = Ti.UI.createImageView({
         left: 0,
         width: Ti.UI.FILL,
@@ -69,10 +69,10 @@ function Controller() {
         id: "logoImage"
     });
     $.__views.logoWindow.add($.__views.logoImage);
-    $.__views.__alloyId8 = Ti.UI.createTableViewRow({
-        id: "__alloyId8"
+    $.__views.__alloyId9 = Ti.UI.createTableViewRow({
+        id: "__alloyId9"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId8);
+    $.__views.__alloyId6.add($.__views.__alloyId9);
     $.__views.serverWindow = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
@@ -80,7 +80,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         id: "serverWindow"
     });
-    $.__views.__alloyId8.add($.__views.serverWindow);
+    $.__views.__alloyId9.add($.__views.serverWindow);
     $.__views.serverLabel = Ti.UI.createLabel({
         text: "Server address:",
         font: {
@@ -111,10 +111,10 @@ function Controller() {
         id: "serverEdit"
     });
     $.__views.serverWindow.add($.__views.serverEdit);
-    $.__views.__alloyId9 = Ti.UI.createTableViewRow({
-        id: "__alloyId9"
+    $.__views.__alloyId10 = Ti.UI.createTableViewRow({
+        id: "__alloyId10"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId9);
+    $.__views.__alloyId6.add($.__views.__alloyId10);
     $.__views.usernameWindow = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
@@ -122,7 +122,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         id: "usernameWindow"
     });
-    $.__views.__alloyId9.add($.__views.usernameWindow);
+    $.__views.__alloyId10.add($.__views.usernameWindow);
     $.__views.usernameLabel = Ti.UI.createLabel({
         text: "User name:",
         font: {
@@ -153,10 +153,10 @@ function Controller() {
         id: "usernameEdit"
     });
     $.__views.usernameWindow.add($.__views.usernameEdit);
-    $.__views.__alloyId10 = Ti.UI.createTableViewRow({
-        id: "__alloyId10"
+    $.__views.__alloyId11 = Ti.UI.createTableViewRow({
+        id: "__alloyId11"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId10);
+    $.__views.__alloyId6.add($.__views.__alloyId11);
     $.__views.passwordWindow = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
@@ -164,7 +164,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         id: "passwordWindow"
     });
-    $.__views.__alloyId10.add($.__views.passwordWindow);
+    $.__views.__alloyId11.add($.__views.passwordWindow);
     $.__views.passwordLabel = Ti.UI.createLabel({
         text: "Password:",
         font: {
@@ -196,17 +196,17 @@ function Controller() {
         id: "passwordEdit"
     });
     $.__views.passwordWindow.add($.__views.passwordEdit);
-    $.__views.__alloyId11 = Ti.UI.createTableViewRow({
-        id: "__alloyId11"
+    $.__views.__alloyId12 = Ti.UI.createTableViewRow({
+        id: "__alloyId12"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId11);
+    $.__views.__alloyId6.add($.__views.__alloyId12);
     $.__views.buttonWindow = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
         navBarHidden: true,
         id: "buttonWindow"
     });
-    $.__views.__alloyId11.add($.__views.buttonWindow);
+    $.__views.__alloyId12.add($.__views.buttonWindow);
     $.__views.loginButton = Ti.UI.createButton({
         style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
         font: {
@@ -229,7 +229,7 @@ function Controller() {
         height: "96%",
         backgroundColor: "white",
         separatorColor: "white",
-        data: __alloyId6,
+        data: __alloyId7,
         id: "loginTable"
     });
     $.__views.loginWindow.add($.__views.loginTable);

@@ -73,8 +73,11 @@ Alloy.Globals.modelListeners = function(service, mainSection) {
     service.addEventListener("error", function(e) {
         alert("Operation failed (" + e.errorcode + "): " + e.errorstring);
     });
-    service.addEventListener("site", function(e) {
-        Ti.API.info("SITE: name = " + e.shortName + ", title = " + e.title + ", summary = " + e.summary);
+};
+
+Alloy.Globals.sitesModelListener = function(service, section, sitetype) {
+    service.addEventListener(sitetype, function(e) {
+        Ti.API.info(sitetype.toUpperCase() + ": name = " + e.shortName + ", title = " + e.title + ", summary = " + e.summary);
         var mainDataSet = [];
         var data = {
             info: {
@@ -93,7 +96,7 @@ Alloy.Globals.modelListeners = function(service, mainSection) {
             }
         };
         mainDataSet.push(data);
-        mainSection.appendItems(mainDataSet);
+        section.appendItems(mainDataSet);
     });
 };
 

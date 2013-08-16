@@ -20,11 +20,17 @@
 				
 		</Tab>
 		
-		<Tab id="searchTab" title="Search" icon="KS_nav_search.png">
+		<Tab id="activityTab" title="Activities" icon="KS_nav_ui.png">
 			
 			<Window/>
 				
 		</Tab>
+		
+		<Tab id="searchTab" title="Search" icon="KS_nav_search.png">
+			
+			<Window/>
+				
+		</Tab> 
 		
 	</TabGroup>
 	

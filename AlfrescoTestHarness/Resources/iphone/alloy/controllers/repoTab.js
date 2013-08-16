@@ -38,9 +38,9 @@ function Controller() {
         id: "folderLabel"
     });
     $.__views.repoTab.add($.__views.folderLabel);
-    var __alloyId12 = {};
-    var __alloyId15 = [];
-    var __alloyId16 = {
+    var __alloyId13 = {};
+    var __alloyId16 = [];
+    var __alloyId17 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -50,8 +50,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId15.push(__alloyId16);
-    var __alloyId17 = {
+    __alloyId16.push(__alloyId17);
+    var __alloyId18 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -66,8 +66,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId15.push(__alloyId17);
-    var __alloyId18 = {
+    __alloyId16.push(__alloyId18);
+    var __alloyId19 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -81,24 +81,24 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId15.push(__alloyId18);
-    var __alloyId14 = {
+    __alloyId16.push(__alloyId19);
+    var __alloyId15 = {
         properties: {
             name: "repoTemplate"
         },
-        childTemplates: __alloyId15
+        childTemplates: __alloyId16
     };
-    __alloyId12["repoTemplate"] = __alloyId14;
-    var __alloyId19 = [];
+    __alloyId13["repoTemplate"] = __alloyId15;
+    var __alloyId20 = [];
     $.__views.mainSection = Ti.UI.createListSection({
         id: "mainSection"
     });
-    __alloyId19.push($.__views.mainSection);
+    __alloyId20.push($.__views.mainSection);
     $.__views.folderList = Ti.UI.createListView({
         top: "40dp",
         left: 0,
-        sections: __alloyId19,
-        templates: __alloyId12,
+        sections: __alloyId20,
+        templates: __alloyId13,
         id: "folderList",
         defaultItemTemplate: "repoTemplate"
     });
@@ -108,10 +108,12 @@ function Controller() {
     var mainSection = $.mainSection;
     var documentFolderService;
     var parentFolders = new Array();
-    Ti.App.addEventListener("populate", function() {
-        if (null != Alloy.Globals.repositorySession) {
-            parentFolders = new Array();
-            mainSection.deleteItemsAt(0, mainSection.getItems().length);
+    Ti.App.addEventListener("cleartabs", function() {
+        parentFolders = new Array();
+        mainSection.deleteItemsAt(0, mainSection.getItems().length);
+    });
+    Ti.App.addEventListener("repopopulate", function() {
+        if (null != Alloy.Globals.repositorySession && 0 == $.mainSection.getItems().length) {
             documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
             Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders, function(folder) {
                 documentFolderService.setFolder(folder);

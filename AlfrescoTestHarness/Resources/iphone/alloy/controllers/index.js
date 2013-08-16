@@ -49,8 +49,21 @@ function Controller() {
         navBarHidden: true,
         id: "__alloyId4"
     });
-    $.__views.searchTab = Ti.UI.createTab({
+    $.__views.activityTab = Ti.UI.createTab({
         window: $.__views.__alloyId4,
+        id: "activityTab",
+        title: "Activities",
+        icon: "KS_nav_ui.png"
+    });
+    __alloyId1.push($.__views.activityTab);
+    $.__views.__alloyId5 = Ti.UI.createWindow({
+        backgroundColor: "white",
+        separatorColor: "white",
+        navBarHidden: true,
+        id: "__alloyId5"
+    });
+    $.__views.searchTab = Ti.UI.createTab({
+        window: $.__views.__alloyId5,
         id: "searchTab",
         title: "Search",
         icon: "KS_nav_search.png"
@@ -67,6 +80,9 @@ function Controller() {
     Alloy.Globals.SDKModule = require("com.alfresco.appcelerator.module.sdk");
     Alloy.Globals.tabGroup = $.index;
     $.index.open();
+    $.index.addEventListener("focus", function(e) {
+        1 == e.index ? Ti.App.fireEvent("repopopulate") : 2 == e.index && Ti.App.fireEvent("sitespopulate");
+    });
     _.extend($, exports);
 }
 
