@@ -51,7 +51,7 @@
              NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
              
              NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
-             [self fireEvent:@"site" withObject:values];
+             [self fireEvent:@"allsitesnode" withObject:values];
          }
      }];
 }
@@ -69,7 +69,7 @@
              NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
              
              NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
-             [self fireEvent:@"site" withObject:values];
+             [self fireEvent:@"mysitesnode" withObject:values];
          }
      }];
 }
@@ -87,7 +87,7 @@
              NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
              
              NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
-             [self fireEvent:@"site" withObject:values];
+             [self fireEvent:@"favsitesnode" withObject:values];
          }
      }];
 } 
@@ -95,7 +95,7 @@
 
 -(void)retrieveSiteWithShortName:(id)arg
 {
-    ENSURE_UI_THREAD_0_ARGS
+    ENSURE_UI_THREAD_1_ARG(arg)
     ENSURE_SINGLE_ARG(arg,NSString)
     
     NSString* shortName = arg;
@@ -108,9 +108,18 @@
 }
 
 
--(void)retrieveDocumentLibraryFolderForSite:(id)args
+-(void)retrieveDocumentLibraryFolderForSite:(id)arg
 {
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,NSString)
     
+    [service retrieveDocumentLibraryFolderForSite:arg completionBlock:^(AlfrescoFolder* folder, NSError* error)
+     {
+         ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [[ComAlfrescoAppceleratorSdkFolderProxy alloc]initWithFolder:folder];
+         NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy, @"folder", nil];
+
+         [self fireEvent:@"retrievedDocumentFolder" withObject:event];
+     }];
 }
 
 
@@ -138,58 +147,5 @@
 {
     return [[ComAlfrescoAppceleratorSdkFolderProxy alloc] initWithFolder:currentFolder];
 }
-
-
-/*
- Kept for now, as an example of how to return the nodes.
- Will remove as soon as Site service is available for iOS SDK.
- 
--(void)retrieveChildrenInFolder:(id)noargs
-{
-    ENSURE_UI_THREAD_0_ARGS
-     
-    NSLog(@"[INFO] folder object in use: %@ (name: %@)", currentFolder, currentFolder.name);
-    
-    [service retrieveChildrenInFolder:currentFolder
-    completionBlock:^(NSArray* array, NSError* error)
-    {
-        NSLog(@"[INFO] Number of nodes: %d", array.count);
-        
-        folders = [[NSMutableDictionary alloc] init];
-        
-        for (int i = 0;  i < array.count;  i++)
-        {
-            AlfrescoNode *node = [array objectAtIndex:i];
-            NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"name", @"title", @"summary", @"type", @"createdBy", @"createdAt", @"modifiedBy", @"modifiedAt", nil];
-            
-            if (node.isFolder)
-            {
-                NSLog(@"[INFO] ** Folder node: %@", node.name);
-                
-                NSMutableDictionary* values = [[node dictionaryWithValuesForKeys:keys] mutableCopy];
-                
-                ComAlfrescoAppceleratorSdkFolderProxy *thisFolder = [[ComAlfrescoAppceleratorSdkFolderProxy alloc] initWithFolder:(AlfrescoFolder*)node];
-                [values setValue:thisFolder forKey:@"folder"];
-                
-                [self fireEvent:@"foldernode" withObject:values];
-            }
-            else
-            {
-                NSLog(@"[INFO] ** Document node: %@", node.name);
-                
-                [keys addObjectsFromArray:[[NSArray alloc] initWithObjects:@"contentMimeType", @"contentLength", @"versionLabel", @"versionComment", @"isLatestVersion", nil]];
-
-                NSMutableDictionary* values = [[node dictionaryWithValuesForKeys:keys] mutableCopy];
-                
-                ComAlfrescoAppceleratorSdkDocumentProxy *thisDocument = [[ComAlfrescoAppceleratorSdkDocumentProxy alloc] initWithDocument:(AlfrescoDocument*)node];
-                [values setValue:thisDocument forKey:@"document"];
-                
-                [self fireEvent:@"documentnode" withObject:values];
-            }
-        }
-    }];
-}
-*/
-
 
 @end

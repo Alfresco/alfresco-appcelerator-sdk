@@ -23,8 +23,8 @@
 -(void)retrieveAllSites:(id)noargs;
 -(void)retrieveSites:(id)noargs;
 -(void)retrieveFavoriteSites:(id)noargs;
--(void)retrieveSiteWithShortName:(id)args;
--(void)retrieveDocumentLibraryFolderForSite:(id)args;
+-(void)retrieveSiteWithShortName:(id)arg;
+-(void)retrieveDocumentLibraryFolderForSite:(id)arg;
 -(void)clearSitesCache:(id)noargs;
 
 
