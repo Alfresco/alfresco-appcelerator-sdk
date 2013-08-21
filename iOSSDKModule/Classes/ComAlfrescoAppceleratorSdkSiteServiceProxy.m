@@ -8,9 +8,8 @@
 
 #import "ComAlfrescoAppceleratorSdkSiteServiceProxy.h"
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
+#import "ComAlfrescoAppceleratorSdkSiteProxy.h"
 #import "ComAlfrescoAppceleratorSdkFolderProxy.h"
-#import "ComAlfrescoAppceleratorSdkDocumentProxy.h"
-#import "ComAlfrescoAppceleratorSdkContentFileProxy.h"
 
 #import "AlfrescoFolder.h"
 #import <objc/runtime.h>
@@ -32,7 +31,6 @@
         return;
     }
     
-    currentFolder = nil;
     errorCode = [[NSError alloc]init];
     
     service = [[AlfrescoSiteService alloc] initWithSession:sessionProxy.session];
@@ -51,6 +49,10 @@
              NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
              
              NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
+             
+             ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site];
+             [values setValue:siteProxy forKey:@"site"];
+
              [self fireEvent:@"allsitesnode" withObject:values];
          }
      }];
@@ -69,7 +71,12 @@
              NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
              
              NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
+             
+             ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site];
+             [values setValue:siteProxy forKey:@"site"];
+             
              [self fireEvent:@"mysitesnode" withObject:values];
+
          }
      }];
 }
@@ -87,6 +94,10 @@
              NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
              
              NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
+             
+             ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site];
+             [values setValue:siteProxy forKey:@"site"];
+             
              [self fireEvent:@"favsitesnode" withObject:values];
          }
      }];
@@ -102,8 +113,15 @@
     
     [service retrieveSiteWithShortName:shortName completionBlock:^(AlfrescoSite* site, NSError* error)
      {
-      //  ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site]
-      //  [self fireEvent:@"retrievedsite" withObject:siteProxy];
+         NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
+         
+         NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
+         
+         ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site];
+         [values setValue:siteProxy forKey:@"site"];
+         
+         [self fireEvent:@"sitenode" withObject:values];
+
      }];
 }
 
@@ -125,27 +143,7 @@
 
 -(void)clearSitesCache:(id)noargs
 {
-    
-}
-
-
- 
--(void)setFolder:(id)arg
-{
-    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkFolderProxy)
-    
-    NSLog(@"[INFO] folder arg object: %@", arg);
-    ComAlfrescoAppceleratorSdkFolderProxy* folder = arg;
-    
-    NSLog(@"[INFO] folder object set: %@ (name: %@)", folder, folder.currentFolder.name);
-    
-    currentFolder = folder.currentFolder;
-}
-
-
--(id)getCurrentFolder:(id)noargs
-{
-    return [[ComAlfrescoAppceleratorSdkFolderProxy alloc] initWithFolder:currentFolder];
+    [service clear];
 }
 
 @end

@@ -38,6 +38,10 @@
 		05AFDCC7175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionCompletionBlockProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDCBB175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionCompletionBlockProxy.m */; };
 		05AFDCC8175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05AFDCBC175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.h */; };
 		05AFDCC9175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDCBD175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.m */; };
+		05C303D817C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C303D617C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.h */; };
+		05C303D917C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C303D717C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.m */; };
+		05C303DC17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C303DA17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h */; };
+		05C303DD17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C303DB17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m */; };
 		05EAFE72177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EAFE6E177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.h */; };
 		05EAFE73177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EAFE6F177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.m */; };
 		05EAFE74177C383D006E0D6F /* ComAlfrescoAppceleratorSdkFolderProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EAFE70177C383D006E0D6F /* ComAlfrescoAppceleratorSdkFolderProxy.h */; };
@@ -391,6 +395,10 @@
 		05AFDCBB175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionCompletionBlockProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkSessionCompletionBlockProxy.m; path = Classes/ComAlfrescoAppceleratorSdkSessionCompletionBlockProxy.m; sourceTree = "<group>"; };
 		05AFDCBC175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkSessionProxy.h; path = Classes/ComAlfrescoAppceleratorSdkSessionProxy.h; sourceTree = "<group>"; };
 		05AFDCBD175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkSessionProxy.m; path = Classes/ComAlfrescoAppceleratorSdkSessionProxy.m; sourceTree = "<group>"; };
+		05C303D617C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkActivityServiceProxy.h; path = Classes/ComAlfrescoAppceleratorSdkActivityServiceProxy.h; sourceTree = "<group>"; };
+		05C303D717C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkActivityServiceProxy.m; path = Classes/ComAlfrescoAppceleratorSdkActivityServiceProxy.m; sourceTree = "<group>"; };
+		05C303DA17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAlfrescoAppceleratorSdkSiteProxy.h; sourceTree = "<group>"; };
+		05C303DB17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComAlfrescoAppceleratorSdkSiteProxy.m; sourceTree = "<group>"; };
 		05EAFE6E177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkDocumentProxy.h; path = Classes/ComAlfrescoAppceleratorSdkDocumentProxy.h; sourceTree = "<group>"; };
 		05EAFE6F177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkDocumentProxy.m; path = Classes/ComAlfrescoAppceleratorSdkDocumentProxy.m; sourceTree = "<group>"; };
 		05EAFE70177C383D006E0D6F /* ComAlfrescoAppceleratorSdkFolderProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkFolderProxy.h; path = Classes/ComAlfrescoAppceleratorSdkFolderProxy.h; sourceTree = "<group>"; };
@@ -1261,24 +1269,28 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0505DF1B17BB7AE9001F9349 /* ComAlfrescoAppceleratorSdkSiteServiceProxy.m */,
-				0505DF1C17BB7AE9001F9349 /* ComAlfrescoAppceleratorSdkSiteServiceProxy.h */,
+				05AFDCBC175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.h */,
+				05AFDCBD175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.m */,
+				05AFDCB4175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkRepositorySessionProxy.h */,
+				05AFDCB5175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkRepositorySessionProxy.m */,
+				05AFDCB2175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h */,
+				05AFDCB3175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.m */,
 				05EAFE6E177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.h */,
 				05EAFE6F177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.m */,
 				05EAFE70177C383D006E0D6F /* ComAlfrescoAppceleratorSdkFolderProxy.h */,
-				054AA1BC17A130EE000D7083 /* ComAlfrescoAppceleratorSdkContentFileProxy.h */,
 				05EAFE71177C383D006E0D6F /* ComAlfrescoAppceleratorSdkFolderProxy.m */,
+				0505DF1C17BB7AE9001F9349 /* ComAlfrescoAppceleratorSdkSiteServiceProxy.h */,
+				0505DF1B17BB7AE9001F9349 /* ComAlfrescoAppceleratorSdkSiteServiceProxy.m */,
+				05C303DA17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h */,
+				05C303DB17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m */,
+				05C303D617C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.h */,
+				05C303D717C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.m */,
+				054AA1BC17A130EE000D7083 /* ComAlfrescoAppceleratorSdkContentFileProxy.h */,
 				054AA1BD17A13164000D7083 /* ComAlfrescoAppceleratorSdkContentFileProxy.m */,
-				05AFDCB2175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h */,
-				05AFDCB3175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.m */,
-				05AFDCB4175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkRepositorySessionProxy.h */,
-				05AFDCB5175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkRepositorySessionProxy.m */,
 				05AFDCB6175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkRequestProxy.h */,
 				05AFDCB7175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkRequestProxy.m */,
 				05AFDCBA175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionCompletionBlockProxy.h */,
 				05AFDCBB175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionCompletionBlockProxy.m */,
-				05AFDCBC175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.h */,
-				05AFDCBD175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.m */,
 				24DE9E0F11C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleSdkModuleAssets.h */,
 				24DE9E1011C5FE74003F90F6 /* ComAlfrescoAppceleratorModuleSdkModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* ComAlfrescoAppceleratorModuleSdkModule.h */,
@@ -1485,6 +1497,8 @@
 				054AA1BE17A13628000D7083 /* ComAlfrescoAppceleratorSdkContentFileProxy.h in Headers */,
 				0505DF1E17BB7AE9001F9349 /* ComAlfrescoAppceleratorSdkSiteServiceProxy.h in Headers */,
 				0505DF2117BB8B43001F9349 /* SDKUtil.h in Headers */,
+				05C303D817C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.h in Headers */,
+				05C303DC17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1714,6 +1728,8 @@
 				054AA1BF17A13628000D7083 /* ComAlfrescoAppceleratorSdkContentFileProxy.m in Sources */,
 				0505DF1D17BB7AE9001F9349 /* ComAlfrescoAppceleratorSdkSiteServiceProxy.m in Sources */,
 				0505DF2217BB8B43001F9349 /* SDKUtil.m in Sources */,
+				05C303D917C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.m in Sources */,
+				05C303DD17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

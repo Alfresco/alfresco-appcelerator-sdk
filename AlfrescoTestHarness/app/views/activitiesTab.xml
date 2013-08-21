@@ -1,0 +1,35 @@
+<Alloy>
+	
+	<Window>
+			
+		<ListView id="activityList" defaultItemTemplate="activityTemplate">
+			
+			 <Templates>
+                <ItemTemplate name="activityTemplate">
+    				<ImageView id="picImage" bindId="pic"/>
+    				<Label id="infoLabel" bindId="info"/>
+    				<Label id="esinfoLabel" bindId="es_info"/>
+                </ItemTemplate>
+            </Templates>
+            
+            <ListSection headerTitle="Activities" id="activities"/>
+            
+		</ListView>
+	
+		<ListView id="activityProperties" defaultItemTemplate="activityPropertiesTemplate">
+			
+			 <Templates>
+                <ItemTemplate name="activityPropertiesTemplate">
+    				<ImageView id="picImage" bindId="pic"/>
+    				<Label id="infoLabel" bindId="info"/>
+    				<Label id="esinfoLabel" bindId="es_info"/>
+                </ItemTemplate>
+            </Templates>
+            
+            <ListSection headerTitle="Properties" id="properties"/>
+            
+		</ListView>
+				
+	</Window>
+
+</Alloy>

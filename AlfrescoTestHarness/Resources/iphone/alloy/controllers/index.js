@@ -6,7 +6,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __alloyId1 = [];
+    var __alloyId19 = [];
     $.__views.logintab = Alloy.createController("logintab", {
         id: "logintab"
     });
@@ -18,7 +18,7 @@ function Controller() {
         title: "Account",
         icon: "KS_nav_login.png"
     });
-    __alloyId1.push($.__views.loginTab);
+    __alloyId19.push($.__views.loginTab);
     $.__views.repotab = Alloy.createController("repotab", {
         id: "repotab"
     });
@@ -30,7 +30,7 @@ function Controller() {
         title: "Repository",
         icon: "KS_nav_folder.png"
     });
-    __alloyId1.push($.__views.repoTab);
+    __alloyId19.push($.__views.repoTab);
     $.__views.sitestab = Alloy.createController("sitestab", {
         id: "sitestab"
     });
@@ -42,35 +42,34 @@ function Controller() {
         title: "Sites",
         icon: "KS_nav_sites.png"
     });
-    __alloyId1.push($.__views.sitesTab);
-    $.__views.__alloyId4 = Ti.UI.createWindow({
-        backgroundColor: "white",
-        separatorColor: "white",
-        navBarHidden: true,
-        id: "__alloyId4"
+    __alloyId19.push($.__views.sitesTab);
+    $.__views.activitiestab = Alloy.createController("activitiestab", {
+        id: "activitiestab"
     });
-    $.__views.activityTab = Ti.UI.createTab({
-        window: $.__views.__alloyId4,
-        id: "activityTab",
+    $.__views.activitiesTab = Ti.UI.createTab({
+        window: $.__views.activitiestab.getViewEx({
+            recurse: true
+        }),
+        id: "activitiesTab",
         title: "Activities",
         icon: "KS_nav_ui.png"
     });
-    __alloyId1.push($.__views.activityTab);
-    $.__views.__alloyId5 = Ti.UI.createWindow({
+    __alloyId19.push($.__views.activitiesTab);
+    $.__views.__alloyId23 = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
         navBarHidden: true,
-        id: "__alloyId5"
+        id: "__alloyId23"
     });
     $.__views.searchTab = Ti.UI.createTab({
-        window: $.__views.__alloyId5,
+        window: $.__views.__alloyId23,
         id: "searchTab",
         title: "Search",
         icon: "KS_nav_search.png"
     });
-    __alloyId1.push($.__views.searchTab);
+    __alloyId19.push($.__views.searchTab);
     $.__views.index = Ti.UI.createTabGroup({
-        tabs: __alloyId1,
+        tabs: __alloyId19,
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
@@ -82,6 +81,7 @@ function Controller() {
     $.index.open();
     $.index.addEventListener("focus", function(e) {
         1 == e.index ? Ti.App.fireEvent("repopopulate") : 2 == e.index && Ti.App.fireEvent("sitespopulate");
+        3 == e.index && Ti.App.fireEvent("activitiespopulate");
     });
     _.extend($, exports);
 }

@@ -11,5 +11,7 @@ $.index.addEventListener('focus',function(e)
  	else
     if (e.index == 2)
  		Ti.App.fireEvent('sitespopulate');
+ 	if (e.index == 3)
+ 		Ti.App.fireEvent('activitiespopulate');
 });
 

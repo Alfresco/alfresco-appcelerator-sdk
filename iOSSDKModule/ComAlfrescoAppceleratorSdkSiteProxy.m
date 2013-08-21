@@ -6,8 +6,27 @@
 //
 //
 
-#import "ComAlfresconAppceleratorSdkSiteProxy.h"
+#import "TiProxy.h"
+#import "AlfrescoSite.h"
+#import "ComAlfrescoAppceleratorSdkSiteProxy.h"
 
-@implementation ComAlfresconAppceleratorSdkSiteProxy
+@implementation ComAlfrescoAppceleratorSdkSiteProxy
+@synthesize currentSite;
+
+- (id)initWithSite:(AlfrescoSite *)site
+{
+    currentSite = site;
+    return self;
+}
+
+- (id)getSiteName:(id)args
+{
+    return currentSite.shortName;
+}
+
+- (void)dealloc
+{
+    NSLog(@"[INFO] SiteProxy object %@ being deallocated", currentSite.shortName);
+}
 
 @end

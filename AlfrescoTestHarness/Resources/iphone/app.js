@@ -90,9 +90,41 @@ Alloy.Globals.sitesModelListener = function(service, section, sitetype) {
                 image: "folder@2x.png"
             },
             properties: {
-                folder: 1,
                 name: e.shortName,
-                folderobject: null
+                siteObject: e.site
+            }
+        };
+        mainDataSet.push(data);
+        section.appendItems(mainDataSet);
+    });
+};
+
+Alloy.Globals.activitiesModelListener = function(service, section, sitetype) {
+    service.addEventListener(sitetype, function(e) {
+        var title = e.data.title;
+        var siteName = e.siteShortName;
+        0 == siteName.length && (name = "No site name present in this field");
+        Ti.API.info(sitetype.toUpperCase() + ": title = " + title + ", type = " + e.type + ", created by = " + e.createdBy);
+        var creationDate = new String() + e.createdAt;
+        creationDate = creationDate.substr(0, 21);
+        var mainDataSet = [];
+        var data = {
+            info: {
+                text: title
+            },
+            es_info: {
+                text: creationDate + " by " + e.createdBy
+            },
+            pic: {
+                image: "default_entry_icon.png"
+            },
+            properties: {
+                title: title,
+                siteShortName: siteName,
+                identifier: e.identifier,
+                createdAt: e.createdAt,
+                createdBy: e.createdBy,
+                type: e.type
             }
         };
         mainDataSet.push(data);

@@ -20,9 +20,9 @@
 				
 		</Tab>
 		
-		<Tab id="activityTab" title="Activities" icon="KS_nav_ui.png">
+		<Tab id="activitiesTab" title="Activities" icon="KS_nav_ui.png">
 			
-			<Window/>
+			<Require src="activitiestab" id="activitiestab">
 				
 		</Tab>
 		
