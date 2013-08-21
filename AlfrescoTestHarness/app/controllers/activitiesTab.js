@@ -25,27 +25,37 @@ Ti.App.addEventListener('activitiespopulate',function()
 				var mainDataSet = [];
 				
 				$.properties.deleteItemsAt(0,$.properties.getItems().length);
-				
-		  	 	var data = {info: {text: "data.title:"}, es_info: {text: item.properties.title}, pic: {image: 'default_entry_icon.png'}};		
-		  	 	mainDataSet.push(data);
-
-				data = {info: {text: "siteShortName:"}, es_info: {text: item.properties.siteShortName}, pic: {image: 'default_entry_icon.png'}};		
-		  	 	mainDataSet.push(data);
-		  	 
-		  	 	data = {info: {text: "createdAt:"}, es_info: {text: item.properties.createdAt}, pic: {image: 'default_entry_icon.png'}};
-		  	 	mainDataSet.push(data);
 		  	 	
-		  	 	data = {info: {text: "createdBy:"}, es_info: {text: item.properties.createdBy}, pic: {image: 'default_entry_icon.png'}};
-		  	 	mainDataSet.push(data);
-		  	 	
-		  	 	data = {info: {text: "type:"}, es_info: {text: item.properties.type}, pic: {image: 'default_entry_icon.png'}};
-		  	 	mainDataSet.push(data);
-		  	 	
-		  	 	data = {info: {text: "identifier:"}, es_info: {text: item.properties.identifier}, pic: {image: 'default_entry_icon.png'}};
-		  	 	mainDataSet.push(data);
+		  	 	recurseProperties (item.properties, "", function(name,value)
+		  	 	{
+				   	data = {info: {text: name + ":"}, es_info: {text: value}, pic: {image: 'default_entry_icon.png'}};
+		  	 		mainDataSet.push(data);
+				});
 		  	 	
 		  	 	$.properties.appendItems(mainDataSet);
 			});
 		}
 	}
 }); 
+
+function recurseProperties (properties, propertiesName, callForEachProperty)
+{
+	for(var propertyName in properties) 
+	{
+		var propertyValue = properties[propertyName];
+		
+		if (propertyValue.constructor == Object)
+			recurseProperties (propertyValue, propertyName, callForEachProperty);
+		else
+		{
+			var subName;
+			
+			if (propertiesName.length > 0)
+				subName = propertiesName + "." + propertyName;
+			else
+				subName = propertyName;
+					
+			callForEachProperty(subName, propertyValue);
+		}
+	}
+}

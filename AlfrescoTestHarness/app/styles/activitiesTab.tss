@@ -16,7 +16,8 @@
 "#picImage":{
 	width: '35dp', 
 	height: '35dp',
-	left: 5
+	left: 5,
+	top: 7
 },
 "#infoLabel":{
 	color: 'black',

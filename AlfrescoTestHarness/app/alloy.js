@@ -140,7 +140,7 @@ Alloy.Globals.activitiesModelListener = function(service, section, sitetype)
   	 	
   	 	var mainDataSet = [];
   	 	var data = {info: {text: title}, es_info: {text: creationDate + " by " + e.createdBy}, pic: {image: 'default_entry_icon.png'}, 
-  	 				 properties: {title: title, siteShortName: siteName, identifier: e.identifier, createdAt: e.createdAt, createdBy: e.createdBy, type: e.type} };
+  	 				 properties: {data: e.data, title: title, siteShortName: siteName, identifier: e.identifier, createdAt: e.createdAt, createdBy: e.createdBy, type: e.type} };
         		
   	 	mainDataSet.push(data);
   	 	section.appendItems(mainDataSet);

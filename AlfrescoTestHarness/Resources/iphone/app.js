@@ -119,6 +119,7 @@ Alloy.Globals.activitiesModelListener = function(service, section, sitetype) {
                 image: "default_entry_icon.png"
             },
             properties: {
+                data: e.data,
                 title: title,
                 siteShortName: siteName,
                 identifier: e.identifier,

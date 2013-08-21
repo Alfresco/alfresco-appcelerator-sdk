@@ -1,4 +1,14 @@
 function Controller() {
+    function recurseProperties(properties, propertiesName, callForEachProperty) {
+        for (var propertyName in properties) {
+            var propertyValue = properties[propertyName];
+            if (propertyValue.constructor == Object) recurseProperties(propertyValue, propertyName, callForEachProperty); else {
+                var subName;
+                subName = propertiesName.length > 0 ? propertiesName + "." + propertyName : propertyName;
+                callForEachProperty(subName, propertyValue);
+            }
+        }
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "activitiesTab";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -21,6 +31,7 @@ function Controller() {
             width: "35dp",
             height: "35dp",
             left: 5,
+            top: 7,
             bindId: "pic"
         }
     };
@@ -87,6 +98,7 @@ function Controller() {
             width: "35dp",
             height: "35dp",
             left: 5,
+            top: 7,
             bindId: "pic"
         }
     };
@@ -161,78 +173,20 @@ function Controller() {
                 var item = e.section.getItemAt(e.itemIndex);
                 var mainDataSet = [];
                 $.properties.deleteItemsAt(0, $.properties.getItems().length);
-                var data = {
-                    info: {
-                        text: "data.title:"
-                    },
-                    es_info: {
-                        text: item.properties.title
-                    },
-                    pic: {
-                        image: "default_entry_icon.png"
-                    }
-                };
-                mainDataSet.push(data);
-                data = {
-                    info: {
-                        text: "siteShortName:"
-                    },
-                    es_info: {
-                        text: item.properties.siteShortName
-                    },
-                    pic: {
-                        image: "default_entry_icon.png"
-                    }
-                };
-                mainDataSet.push(data);
-                data = {
-                    info: {
-                        text: "createdAt:"
-                    },
-                    es_info: {
-                        text: item.properties.createdAt
-                    },
-                    pic: {
-                        image: "default_entry_icon.png"
-                    }
-                };
-                mainDataSet.push(data);
-                data = {
-                    info: {
-                        text: "createdBy:"
-                    },
-                    es_info: {
-                        text: item.properties.createdBy
-                    },
-                    pic: {
-                        image: "default_entry_icon.png"
-                    }
-                };
-                mainDataSet.push(data);
-                data = {
-                    info: {
-                        text: "type:"
-                    },
-                    es_info: {
-                        text: item.properties.type
-                    },
-                    pic: {
-                        image: "default_entry_icon.png"
-                    }
-                };
-                mainDataSet.push(data);
-                data = {
-                    info: {
-                        text: "identifier:"
-                    },
-                    es_info: {
-                        text: item.properties.identifier
-                    },
-                    pic: {
-                        image: "default_entry_icon.png"
-                    }
-                };
-                mainDataSet.push(data);
+                recurseProperties(item.properties, "", function(name, value) {
+                    data = {
+                        info: {
+                            text: name + ":"
+                        },
+                        es_info: {
+                            text: value
+                        },
+                        pic: {
+                            image: "default_entry_icon.png"
+                        }
+                    };
+                    mainDataSet.push(data);
+                });
                 $.properties.appendItems(mainDataSet);
             });
         }
