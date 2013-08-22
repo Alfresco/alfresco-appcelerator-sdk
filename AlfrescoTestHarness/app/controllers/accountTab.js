@@ -27,6 +27,10 @@ function loginButtonClick()
 	}
 }
 
+function propsButtonChange(e)
+{
+	Alloy.Globals.showProperties = $.propsButton.value;
+}
 
 function connect(serverUrl, serverUsername, serverPassword)
 {
@@ -52,12 +56,12 @@ function connect(serverUrl, serverUsername, serverPassword)
 		
 	  	Ti.API.info("Connected to server: " + e.servername);
 	  	
-	  	Ti.App.fireEvent('cleartabs');
+	  	//Ti.App.fireEvent('cleartabs');
 	  	
 		//Switch to repo tab
 		Alloy.Globals.tabGroup.setActiveTab(1);
 		
-		//$.loginButton.enabled = false;
+		$.loginButton.enabled = false;
 		
 		return 1;
 	});    

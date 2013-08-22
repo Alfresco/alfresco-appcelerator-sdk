@@ -36,6 +36,8 @@
 				<TableViewRow>
 					<Window id="buttonWindow">	
 						<Button id="loginButton" onClick="loginButtonClick">
+						<Label id="propsLabel">
+						<Switch id="propsButton" onChange="propsButtonChange">
 					</Window>
 				</TableViewRow>
 					

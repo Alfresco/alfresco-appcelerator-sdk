@@ -4,25 +4,25 @@
 
 		<Tab id="loginTab" title="Account" icon="KS_nav_login.png">
 
-			<Require src="logintab" id="logintab"/>
+			<Require src="accountTab" id="logintab"/>
 						
 		</Tab>
 		
 		<Tab id="repoTab" title="Repository" icon="KS_nav_folder.png">
 			
-			<Require src="repotab" id="repotab">
+			<Require src="repoTab" id="repotab">
 			
 		</Tab>
 		
 		<Tab id="sitesTab" title="Sites" icon="KS_nav_sites.png">
 			
-			<Require src="sitestab" id="sitestab">
+			<Require src="sitesTab" id="sitestab">
 				
 		</Tab>
 		
 		<Tab id="activitiesTab" title="Activities" icon="KS_nav_ui.png">
 			
-			<Require src="activitiestab" id="activitiestab">
+			<Require src="activitiesTab" id="activitiestab">
 				
 		</Tab>
 		

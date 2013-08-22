@@ -93,7 +93,25 @@
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
 	left: 0, 
 	top: 50, 
-	width: Ti.UI.SIZE, 
+	width: 100, 
 	title: "Log in"
+},
+"#propsLabel":{
+	text: "Properties",
+	font: { fontFamily:'Arial', fontSize: '17dp'},
+	top: 53,
+	left: 135,
+	width: 100,
+	height: '40dp'
+},
+"#propsButton":{
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
+	left: 220, 
+	top: 60, 
+	width: Ti.UI.SIZE, 
+	text: "Show properties",
+	titleOn:'Properties Enabled',
+  	titleOff:'Properties Disabled',
+	value: false
 }
 

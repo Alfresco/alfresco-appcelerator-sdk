@@ -8,6 +8,8 @@
 
 #import "ComAlfrescoAppceleratorSdkActivityServiceProxy.h"
 #import "ComAlfrescoAppceleratorSdkSiteProxy.h"
+#import "ComAlfrescoAppceleratorSdkListingContext.h"
+
 
 @implementation ComAlfrescoAppceleratorSdkActivityServiceProxy
 
@@ -31,6 +33,28 @@
 }
 
 
+-(void)createEventWithActivityEntry:(AlfrescoActivityEntry*)entry
+{
+    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"createdAt", @"createdBy",
+                                                                   @"siteShortName", @"type", @"data", nil];
+    
+    NSMutableDictionary* values = [[entry dictionaryWithValuesForKeys:keys] mutableCopy];
+    
+    [self fireEvent:@"activitynode" withObject:values];
+}
+
+
+-(void)createEventWithPagingResult:(AlfrescoPagingResult*)pagingResult
+{
+    NSDictionary *values = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [NSNumber numberWithBool:pagingResult.hasMoreItems], @"hasmoreitems",
+                            [NSNumber numberWithBool:pagingResult.totalItems], @"totalitems",
+                            nil];
+    
+    [self fireEvent:@"pagingresult" withObject:values];
+}
+
+
 -(void)retrieveActivityStream:(id)noargs
 {
     ENSURE_UI_THREAD_0_ARGS
@@ -39,15 +63,30 @@
     {
         for (int i = 0;  i < array.count;  i++)
         {
-            AlfrescoActivityEntry* entry = [array objectAtIndex:i];
-            NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"createdAt", @"createdBy", @"siteShortName", @"type", @"data", nil];
-            NSMutableDictionary* values = [[entry dictionaryWithValuesForKeys:keys] mutableCopy];
-            
-            [self fireEvent:@"activitynode" withObject:values];
+            [self createEventWithActivityEntry:[array objectAtIndex:i]];
         }
     }];
 }
 
+
+- (void)retrieveActivityStreamWithListingContext:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkListingContext)
+    
+    ComAlfrescoAppceleratorSdkListingContext* listingContextProxy = arg;
+    AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
+
+    [service retrieveActivityStreamWithListingContext:listingContext completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
+    {
+        for (int i = 0;  i < pagingResult.objects.count;  i++)
+        {
+            [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
+        }
+         
+        [self createEventWithPagingResult:pagingResult];
+    }];
+}
 
 -(void)retrieveActivityStreamForPerson:(id)arg
 {
@@ -60,20 +99,35 @@
     {
         for (int i = 0;  i < array.count;  i++)
         {
-            AlfrescoActivityEntry* entry = [array objectAtIndex:i];
-            NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"createdAt", @"createdBy", @"siteShortName", @"type", @"data", nil];
-            NSMutableDictionary* values = [[entry dictionaryWithValuesForKeys:keys] mutableCopy];
-            
-            [self fireEvent:@"activitynode" withObject:values];
+            [self createEventWithActivityEntry:[array objectAtIndex:i]];
         }
     }];
 }
 
 
--(void)retrieveActivityStreamForSite:(id)arg
+-(void)retrieveActivityStreamForPersonWithListingContext:(id)args
 {
     ENSURE_UI_THREAD_1_ARG(arg)
-    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSiteProxy)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkListingContext)
+    
+    ComAlfrescoAppceleratorSdkListingContext* listingContextProxy = arg;
+    AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
+    
+    [service retrieveActivityStreamWithListingContext:listingContext completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
+     {
+         for (int i = 0;  i < pagingResult.objects.count;  i++)
+         {
+             [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
+         }
+         
+         [self createEventWithPagingResult:pagingResult];
+     }];
+}
+
+
+-(void)retrieveActivityStreamForSite:(id)arg
+{
+    NSString* site = [arg objectAtIndex:0];
     
     ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = arg;
     AlfrescoSite* site = siteProxy.currentSite;
@@ -82,11 +136,7 @@
     {
         for (int i = 0;  i < array.count;  i++)
         {
-            AlfrescoActivityEntry* entry = [array objectAtIndex:i];
-            NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"createdAt", @"createdBy", @"siteShortName", @"type", @"data", nil];
-            NSMutableDictionary* values = [[entry dictionaryWithValuesForKeys:keys] mutableCopy];
-            
-            [self fireEvent:@"activitynode" withObject:values];
+            [self createEventWithActivityEntry:[array objectAtIndex:i]];
         }
     }];
 }

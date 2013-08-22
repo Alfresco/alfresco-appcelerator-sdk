@@ -26,7 +26,7 @@ Ti.App.addEventListener('activitiespopulate',function()
 				
 				$.properties.deleteItemsAt(0,$.properties.getItems().length);
 		  	 	
-		  	 	recurseProperties (item.properties, "", function(name,value)
+		  	 	Alloy.Globals.recurseProperties (item.properties, "", function(name,value)
 		  	 	{
 				   	data = {info: {text: name + ":"}, es_info: {text: value}, pic: {image: 'default_entry_icon.png'}};
 		  	 		mainDataSet.push(data);
@@ -38,24 +38,4 @@ Ti.App.addEventListener('activitiespopulate',function()
 	}
 }); 
 
-function recurseProperties (properties, propertiesName, callForEachProperty)
-{
-	for(var propertyName in properties) 
-	{
-		var propertyValue = properties[propertyName];
-		
-		if (propertyValue.constructor == Object)
-			recurseProperties (propertyValue, propertyName, callForEachProperty);
-		else
-		{
-			var subName;
-			
-			if (propertiesName.length > 0)
-				subName = propertiesName + "." + propertyName;
-			else
-				subName = propertyName;
-					
-			callForEachProperty(subName, propertyValue);
-		}
-	}
-}
+

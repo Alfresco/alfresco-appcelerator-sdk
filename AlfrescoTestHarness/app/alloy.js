@@ -44,7 +44,7 @@ Alloy.Globals.modelListeners = function(service, mainSection)
   	 	modified = modified.substr(0,21);
   	 	
   	 	var mainDataSet = [];
-  	 	var data = {info: {text: e.name}, es_info: {text: modified}, pic: {image: icon},  properties: {folder: 0, name: e.name, docobject: e.document} };	 	  	 		
+  	 	var data = {info: {text: e.name}, es_info: {text: modified}, pic: {image: icon},  properties: {data: e, folder: 0, name: e.name, docobject: e.document} };	 	  	 		
   	 	mainDataSet.push(data);
   	 	mainSection.appendItems(mainDataSet);	
   	});
@@ -60,7 +60,7 @@ Alloy.Globals.modelListeners = function(service, mainSection)
   	 	modified = modified.substr(0,21);
   	 	
   	 	var mainDataSet = [];
-  	 	var data = {info: {text: e.name}, es_info: {text: modified}, pic: {image: 'folder@2x.png'},  properties: {folder: 1, name: e.name, folderobject: e.folder} };
+  	 	var data = {info: {text: e.name}, es_info: {text: modified}, pic: {image: 'folder@2x.png'},  properties: {data: e, folder: 1, name: e.name, folderobject: e.folder} };
         		
   	 	mainDataSet.push(data);
   	 	mainSection.appendItems(mainDataSet);
@@ -115,7 +115,7 @@ Alloy.Globals.sitesModelListener = function(service, section, sitetype)
   	 	Ti.API.info(sitetype.toUpperCase() + ": name = " + e.shortName + ", title = " + e.title + ", summary = " + e.summary);
   	 	
   	 	var mainDataSet = [];
-  	 	var data = {info: {text: e.shortName}, es_info: {text: e.title}, pic: {image: 'folder@2x.png'},  properties: {name: e.shortName, siteObject: e.site} };
+  	 	var data = {info: {text: e.shortName}, es_info: {text: e.title}, pic: {image: 'folder@2x.png'},  properties: {data: e, name: e.shortName, siteObject: e.site} };
         		
   	 	mainDataSet.push(data);
   	 	section.appendItems(mainDataSet);
@@ -165,6 +165,8 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	        }
 	        else
 	        {
+	        	Alloy.Globals.recursePropertiesAndAlert (item.properties.data);
+	        	
 	        	parentFolders.push(service.getCurrentFolder());     	
 	        	folder = item.properties.folderobject;
 	        }        
@@ -185,8 +187,53 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	    }    
 	    else
 	    {
+	    	Alloy.Globals.recursePropertiesAndAlert (item.properties.data);
+	    	
 	    	onDocument(item.properties.docobject);	    	
 	   	}
 	});
 }
 
+Alloy.Globals.recursePropertiesAndAlert = function recurseProperties (properties)
+{
+	if (Alloy.Globals.showProperties)
+	{
+		var alertString="";
+		
+		Alloy.Globals.recurseProperties(properties, "", function(name,value)
+	 	{
+	 		alertString += name + " = " + value + "\r\n\r\n";
+	 	});
+	 	
+	 	alert (alertString);
+	 }
+}
+
+Alloy.Globals.recurseProperties = function recurseProperties (properties, propertiesName, callForEachProperty)
+{
+	for(var propertyName in properties) 
+	{
+		var propertyValue = properties[propertyName];
+		
+		if (propertyValue != null  &&  propertyValue.constructor == Object)
+			recurseProperties (propertyValue, propertyName, callForEachProperty);
+		else
+		{
+			var valueAsString = new String;
+			valueAsString += propertyValue;
+			
+			//Filter out our internal properties, and JS internal properties
+			if (valueAsString.indexOf("ComAlfresco") >= 0  ||  propertyName.toUpperCase().indexOf("BUBBLE") >= 0)	
+				continue;
+				
+			var subName;
+			
+			if (propertiesName.length > 0)
+				subName = propertiesName + "." + propertyName;
+			else
+				subName = propertyName;
+					
+			callForEachProperty(subName, propertyValue);
+		}
+	}
+}

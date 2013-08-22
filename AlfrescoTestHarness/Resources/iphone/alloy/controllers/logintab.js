@@ -5,6 +5,9 @@ function Controller() {
         var pwd = $.passwordEdit.value;
         0 == svr.length || 0 == user.length ? alert("Please enter values for all fields") : connect(svr, user, pwd);
     }
+    function propsButtonChange() {
+        Alloy.Globals.showProperties = $.propsButton.value;
+    }
     function connect(serverUrl, serverUsername, serverPassword) {
         var repositorySession = Alloy.Globals.SDKModule.createRepositorySession({
             serverUrl: serverUrl,
@@ -222,6 +225,23 @@ function Controller() {
     });
     $.__views.buttonWindow.add($.__views.loginButton);
     loginButtonClick ? $.__views.loginButton.addEventListener("click", loginButtonClick) : __defers["$.__views.loginButton!click!loginButtonClick"] = true;
+    $.__views.propsButton = Ti.UI.createSwitch({
+        font: {
+            fontFamily: "Arial",
+            fontSize: "18dp",
+            fontWeight: "bold"
+        },
+        left: 200,
+        top: 50,
+        width: Ti.UI.SIZE,
+        text: "Show properties",
+        titleOn: "Properties Enabled",
+        titleOff: "Properties Disabled",
+        value: false,
+        id: "propsButton"
+    });
+    $.__views.buttonWindow.add($.__views.propsButton);
+    propsButtonChange ? $.__views.propsButton.addEventListener("change", propsButtonChange) : __defers["$.__views.propsButton!change!propsButtonChange"] = true;
     $.__views.loginTable = Ti.UI.createTableView({
         top: "2%",
         left: "2%",
@@ -237,6 +257,7 @@ function Controller() {
     _.extend($, $.__views);
     $.serverEdit.value = "google_sdk" == Titanium.Platform.model || "Simulator" == Titanium.Platform.model ? "http://localhost:8080/alfresco" : "http://10.244.51.57:8080/alfresco";
     __defers["$.__views.loginButton!click!loginButtonClick"] && $.__views.loginButton.addEventListener("click", loginButtonClick);
+    __defers["$.__views.propsButton!change!propsButtonChange"] && $.__views.propsButton.addEventListener("change", propsButtonChange);
     _.extend($, exports);
 }
 

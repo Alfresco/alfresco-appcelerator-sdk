@@ -37,6 +37,19 @@
 }
 
 
+-(void)createEventWithSite:(AlfrescoSite*)site context:(NSString*)context
+{
+    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
+    
+    NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
+    
+    ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site];
+    [values setValue:siteProxy forKey:@"site"];
+    
+    [self fireEvent:context withObject:values];
+}
+
+
 -(void)retrieveAllSites:(id)noargs
 {
     ENSURE_UI_THREAD_0_ARGS
@@ -45,15 +58,7 @@
      {
          for (int i = 0;  i < array.count;  i++)
          {
-             AlfrescoSite *site = [array objectAtIndex:i];
-             NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
-             
-             NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
-             
-             ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site];
-             [values setValue:siteProxy forKey:@"site"];
-
-             [self fireEvent:@"allsitesnode" withObject:values];
+             [self createEventWithSite:[array objectAtIndex:i] context:@"allsitesnode"];
          }
      }];
 }
@@ -67,16 +72,7 @@
      {
          for (int i = 0;  i < array.count;  i++)
          {
-             AlfrescoSite *site = [array objectAtIndex:i];
-             NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
-             
-             NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
-             
-             ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site];
-             [values setValue:siteProxy forKey:@"site"];
-             
-             [self fireEvent:@"mysitesnode" withObject:values];
-
+             [self createEventWithSite:[array objectAtIndex:i] context:@"mysitesnode"];
          }
      }];
 }
@@ -90,15 +86,7 @@
      {
          for (int i = 0;  i < array.count;  i++)
          {
-             AlfrescoSite *site = [array objectAtIndex:i];
-             NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
-             
-             NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
-             
-             ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site];
-             [values setValue:siteProxy forKey:@"site"];
-             
-             [self fireEvent:@"favsitesnode" withObject:values];
+             [self createEventWithSite:[array objectAtIndex:i] context:@"favsitesnode"];
          }
      }];
 } 
@@ -113,15 +101,7 @@
     
     [service retrieveSiteWithShortName:shortName completionBlock:^(AlfrescoSite* site, NSError* error)
      {
-         NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
-         
-         NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
-         
-         ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site];
-         [values setValue:siteProxy forKey:@"site"];
-         
-         [self fireEvent:@"sitenode" withObject:values];
-
+         [self createEventWithSite:site context:@"sitenode"];
      }];
 }
 

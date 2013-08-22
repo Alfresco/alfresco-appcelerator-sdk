@@ -37,6 +37,9 @@ Ti.App.addEventListener('sitespopulate',function()
 			{
 				var item = e.section.getItemAt(e.itemIndex);
 				var name = item.properties.name;
+				
+				Alloy.Globals.recursePropertiesAndAlert (item.properties.data);
+				
 			    siteService.retrieveDocumentLibraryFolderForSite(name);
 			});
 			

@@ -145,34 +145,4 @@
         }];
 }
 
-
-/*
--(void)enumerateFolderProperties:(AlfrescoNode*)node propertyValues:(NSDictionary*)propValues
-{
-    unsigned int count=0;
-    objc_property_t *props = class_copyPropertyList([node class],&count);
-    
-    for (int i=0;i<count;i++)
-    {
-        NSString* name = [[NSString alloc]initWithCString:property_getName(props[i]) encoding:NSASCIIStringEncoding];
-        NSString* atts = [[NSString alloc]initWithCString:property_getAttributes(props[i]) encoding:NSASCIIStringEncoding];
-        id value = [node valueForKey:name];
-
-        NSLog(@"[INFO] name %@, value %@", name, value);
-
-        //Wrap scalar types in order to store in an NSDictionary
-        if ([atts rangeOfString:@"BOOL"].location != NSNotFound)
-            value = [NSNumber numberWithBool:value];
-        else
-            if ([atts rangeOfString:@"NSInteger"].location != NSNotFound)
-                value = [NSNumber numberWithInteger:value];
-            else
-                if ([atts rangeOfString:@"unsigned long long"].location != NSNotFound)
-                    value = [NSNumber numberWithLongLong:value];
-        
-        [propValues setValue:value forKey:name];
-    }
-}
-*/
-
 @end

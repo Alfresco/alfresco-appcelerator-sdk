@@ -1,14 +1,4 @@
 function Controller() {
-    function recurseProperties(properties, propertiesName, callForEachProperty) {
-        for (var propertyName in properties) {
-            var propertyValue = properties[propertyName];
-            if (propertyValue.constructor == Object) recurseProperties(propertyValue, propertyName, callForEachProperty); else {
-                var subName;
-                subName = propertiesName.length > 0 ? propertiesName + "." + propertyName : propertyName;
-                callForEachProperty(subName, propertyValue);
-            }
-        }
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "activitiesTab";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -22,9 +12,9 @@ function Controller() {
         id: "activitiesTab"
     });
     $.__views.activitiesTab && $.addTopLevelView($.__views.activitiesTab);
-    var __alloyId0 = {};
-    var __alloyId3 = [];
-    var __alloyId4 = {
+    var __alloyId7 = {};
+    var __alloyId10 = [];
+    var __alloyId11 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -35,8 +25,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId3.push(__alloyId4);
-    var __alloyId5 = {
+    __alloyId10.push(__alloyId11);
+    var __alloyId12 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -51,8 +41,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId3.push(__alloyId5);
-    var __alloyId6 = {
+    __alloyId10.push(__alloyId12);
+    var __alloyId13 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -65,33 +55,33 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId3.push(__alloyId6);
-    var __alloyId2 = {
+    __alloyId10.push(__alloyId13);
+    var __alloyId9 = {
         properties: {
             name: "activityTemplate"
         },
-        childTemplates: __alloyId3
+        childTemplates: __alloyId10
     };
-    __alloyId0["activityTemplate"] = __alloyId2;
-    var __alloyId7 = [];
+    __alloyId7["activityTemplate"] = __alloyId9;
+    var __alloyId14 = [];
     $.__views.activities = Ti.UI.createListSection({
         headerTitle: "Activities",
         id: "activities"
     });
-    __alloyId7.push($.__views.activities);
+    __alloyId14.push($.__views.activities);
     $.__views.activityList = Ti.UI.createListView({
         top: 0,
         left: 0,
         height: "45%",
-        sections: __alloyId7,
-        templates: __alloyId0,
+        sections: __alloyId14,
+        templates: __alloyId7,
         id: "activityList",
         defaultItemTemplate: "activityTemplate"
     });
     $.__views.activitiesTab.add($.__views.activityList);
-    var __alloyId9 = {};
-    var __alloyId12 = [];
-    var __alloyId13 = {
+    var __alloyId16 = {};
+    var __alloyId19 = [];
+    var __alloyId20 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -102,8 +92,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId12.push(__alloyId13);
-    var __alloyId14 = {
+    __alloyId19.push(__alloyId20);
+    var __alloyId21 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -118,8 +108,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId12.push(__alloyId14);
-    var __alloyId15 = {
+    __alloyId19.push(__alloyId21);
+    var __alloyId22 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -132,27 +122,27 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId12.push(__alloyId15);
-    var __alloyId11 = {
+    __alloyId19.push(__alloyId22);
+    var __alloyId18 = {
         properties: {
             name: "activityPropertiesTemplate"
         },
-        childTemplates: __alloyId12
+        childTemplates: __alloyId19
     };
-    __alloyId9["activityPropertiesTemplate"] = __alloyId11;
-    var __alloyId16 = [];
+    __alloyId16["activityPropertiesTemplate"] = __alloyId18;
+    var __alloyId23 = [];
     $.__views.properties = Ti.UI.createListSection({
         headerTitle: "Properties",
         id: "properties"
     });
-    __alloyId16.push($.__views.properties);
+    __alloyId23.push($.__views.properties);
     $.__views.activityProperties = Ti.UI.createListView({
         backgroundColor: "#DDDDDD",
         top: "55%",
         left: 0,
         height: "45%",
-        sections: __alloyId16,
-        templates: __alloyId9,
+        sections: __alloyId23,
+        templates: __alloyId16,
         id: "activityProperties",
         defaultItemTemplate: "activityPropertiesTemplate"
     });
@@ -173,7 +163,7 @@ function Controller() {
                 var item = e.section.getItemAt(e.itemIndex);
                 var mainDataSet = [];
                 $.properties.deleteItemsAt(0, $.properties.getItems().length);
-                recurseProperties(item.properties, "", function(name, value) {
+                Alloy.Globals.recurseProperties(item.properties, "", function(name, value) {
                     data = {
                         info: {
                             text: name + ":"

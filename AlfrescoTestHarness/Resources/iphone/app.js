@@ -19,6 +19,7 @@ Alloy.Globals.modelListeners = function(service, mainSection) {
                 image: icon
             },
             properties: {
+                data: e,
                 folder: 0,
                 name: e.name,
                 docobject: e.document
@@ -45,6 +46,7 @@ Alloy.Globals.modelListeners = function(service, mainSection) {
                 image: "folder@2x.png"
             },
             properties: {
+                data: e,
                 folder: 1,
                 name: e.name,
                 folderobject: e.folder
@@ -90,6 +92,7 @@ Alloy.Globals.sitesModelListener = function(service, section, sitetype) {
                 image: "folder@2x.png"
             },
             properties: {
+                data: e,
                 name: e.shortName,
                 siteObject: e.site
             }
@@ -141,6 +144,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
         if (item.properties.folder > 0) {
             var folder;
             if (2 == item.properties.folder) folder = parentFolders.pop(); else {
+                Alloy.Globals.recursePropertiesAndAlert(item.properties.data);
                 parentFolders.push(service.getCurrentFolder());
                 folder = item.properties.folderobject;
             }
@@ -168,8 +172,35 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
             }
             view.folderLabel.text = " " + folder.getFolderName();
             onFolder(folder);
-        } else onDocument(item.properties.docobject);
+        } else {
+            Alloy.Globals.recursePropertiesAndAlert(item.properties.data);
+            onDocument(item.properties.docobject);
+        }
     });
+};
+
+Alloy.Globals.recursePropertiesAndAlert = function recurseProperties(properties) {
+    if (Alloy.Globals.showProperties) {
+        var alertString = "";
+        Alloy.Globals.recurseProperties(properties, "", function(name, value) {
+            alertString += name + " = " + value + "\r\n\r\n";
+        });
+        alert(alertString);
+    }
+};
+
+Alloy.Globals.recurseProperties = function recurseProperties(properties, propertiesName, callForEachProperty) {
+    for (var propertyName in properties) {
+        var propertyValue = properties[propertyName];
+        if (null != propertyValue && propertyValue.constructor == Object) recurseProperties(propertyValue, propertyName, callForEachProperty); else {
+            var valueAsString = new String();
+            valueAsString += propertyValue;
+            if (valueAsString.indexOf("ComAlfresco") >= 0 || propertyName.toUpperCase().indexOf("BUBBLE") >= 0) continue;
+            var subName;
+            subName = propertiesName.length > 0 ? propertiesName + "." + propertyName : propertyName;
+            callForEachProperty(subName, propertyValue);
+        }
+    }
 };
 
 Alloy.createController("index");

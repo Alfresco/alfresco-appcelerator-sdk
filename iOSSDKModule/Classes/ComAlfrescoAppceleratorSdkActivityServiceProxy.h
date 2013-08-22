@@ -16,16 +16,20 @@
     NSError* errorCode;
 }
 
+-(void)createEvent:(AlfrescoActivityEntry*)entry;
+
 -(void)initWithSession:(id)arg;
 
 -(void)retrieveActivityStream:(id)noargs;
+-(void)retrieveActivityStreamWithListingContext:(id)arg;
 -(void)retrieveActivityStreamForPerson:(id)arg;
+-(void)retrieveActivityStreamForPersonWithListingContext:(id)args;
 -(void)retrieveActivityStreamForSite:(id)arg;
-
+-(void)retrieveActivityStreamForSiteWithListingContext:(id)args;
 
 /*
  
--(void)retrieveActivityStreamWithListingContext:(id)arg;
+
 -(void)retrieveActivityStreamForPerson:(id)args;
 -(void)retrieveActivityStreamForSite:(id)args;
  
