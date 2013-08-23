@@ -25,4 +25,8 @@
 -(void)retrieveDocumentLibraryFolderForSite:(id)arg;
 -(void)clearSitesCache:(id)noargs;
 
+
+//Internal
+-(void)createEventWithSite:(AlfrescoSite*)site context:(NSString*)context;
+
 @end

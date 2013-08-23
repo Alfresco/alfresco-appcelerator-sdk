@@ -107,27 +107,44 @@
 
 -(void)retrieveActivityStreamForPersonWithListingContext:(id)args
 {
-    ENSURE_UI_THREAD_1_ARG(arg)
-    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkListingContext)
+    NSString* person = [args objectAtIndex:0];
+    ComAlfrescoAppceleratorSdkListingContext* listingContextProxy = [args objectAtIndex:1];
     
-    ComAlfrescoAppceleratorSdkListingContext* listingContextProxy = arg;
     AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:listingContext, @"listingContext",
+                                                                              person, @"person",
+                                                                              nil];
+    [self internalRetrieveForPerson:internalParams];
+}
+
+
+//
+//This allows us to use multiple arguments on the JS interface for user-friendliness, but pass them on as an NSDictionary in order
+//to ensure the ENSURE_UI_THREAD_1_ARG is called (a quirk for the iOS Module creation, that we must be on the UI thread initially,
+//even if we then create further threads for the completionBlock).
+//
+-(void)internalRetrieveForPerson:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,NSDictionary)
     
-    [service retrieveActivityStreamWithListingContext:listingContext completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
-     {
+    [service retrieveActivityStreamForPerson:[arg objectForKey:@"person"] listingContext:[arg objectForKey:@"listingContext"]
+    completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
+    {
          for (int i = 0;  i < pagingResult.objects.count;  i++)
          {
              [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
          }
          
          [self createEventWithPagingResult:pagingResult];
-     }];
+    }];
 }
 
 
 -(void)retrieveActivityStreamForSite:(id)arg
 {
-    NSString* site = [arg objectAtIndex:0];
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSiteProxy)
     
     ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = arg;
     AlfrescoSite* site = siteProxy.currentSite;
@@ -141,5 +158,42 @@
     }];
 }
 
+
+-(void)retrieveActivityStreamForSiteWithListingContext:(id)args
+{
+    ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [args objectAtIndex:0];
+    ComAlfrescoAppceleratorSdkListingContext* listingContextProxy = [args objectAtIndex:1];
+
+    AlfrescoSite* site = siteProxy.currentSite;
+
+    AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:listingContext, @"listingContext",
+                                                                              site, @"site",
+                                                                              nil];
+    [self internalRetrieveForSite:internalParams];
+}
+
+
+//
+//This allows us to use multiple arguments on the JS interface for user-friendliness, but pass them on as an NSDictionary in order
+//to ensure the ENSURE_UI_THREAD_1_ARG is called (a quirk for the iOS Module creation, that we must be on the UI thread initially,
+//even if we then create further threads for the completionBlock).
+//
+-(void)internalRetrieveForSite:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,NSDictionary)
+    
+    [service retrieveActivityStreamForSite:[arg objectForKey:@"site"] listingContext:[arg objectForKey:@"listingContext"]
+                             completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
+     {
+         for (int i = 0;  i < pagingResult.objects.count;  i++)
+         {
+             [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
+         }
+         
+         [self createEventWithPagingResult:pagingResult];
+     }];
+}
 
 @end
