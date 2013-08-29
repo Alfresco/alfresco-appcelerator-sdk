@@ -1,0 +1,44 @@
+<Alloy>
+	
+	<Window id="searchWindow">
+		
+		<TableView id="searchTable">
+			
+			<TableViewSection>
+	
+				<TableViewRow>
+					<Window id="searchBarWindow">	
+						<TextField id="searchEdit">
+						<Button id="searchButton" onClick="searchButtonClick">
+					</Window>
+				</TableViewRow>
+	
+				<TableViewRow>
+					<Window id="resultsWindow">	
+	
+						<Label id="folderLabel">
+												
+						<ListView id="folderList" defaultItemTemplate="repoTemplate">
+							
+							 <Templates>
+				                <ItemTemplate name="repoTemplate">
+				    				<ImageView id="picImage" bindId="pic"/>
+				    				<Label id="infoLabel" bindId="info"/>
+				    				<Label id="esinfoLabel" bindId="es_info"/>
+				                </ItemTemplate>
+				            </Templates>
+				            
+				            <ListSection id="mainSection"/>
+				            
+						</ListView>
+						
+					</Window>
+				</TableViewRow>
+					
+			</TableViewSection>
+		
+		</TableView>
+		
+	</Window>
+
+</Alloy>

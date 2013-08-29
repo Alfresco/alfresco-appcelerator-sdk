@@ -6,9 +6,9 @@
 //
 //
 
-#import "ComAlfrescoAppceleratorSdkListingContext.h"
+#import "ComAlfrescoAppceleratorSdkListingContextProxy.h"
 
-@implementation ComAlfrescoAppceleratorSdkListingContext
+@implementation ComAlfrescoAppceleratorSdkListingContextProxy
 
 @synthesize listingContext;
 

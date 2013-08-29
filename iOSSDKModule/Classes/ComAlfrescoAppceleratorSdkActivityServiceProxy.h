@@ -30,7 +30,6 @@
 
 //Internal
 -(void)createEventWithActivityEntry:(AlfrescoActivityEntry*)entry;
--(void)createEventWithPagingResult:(AlfrescoPagingResult*)pagingResult;
 -(void)internalRetrieveForSite:(id)arg;
 -(void)internalRetrieveForPerson:(id)arg;
 

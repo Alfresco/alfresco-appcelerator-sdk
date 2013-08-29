@@ -15,36 +15,46 @@ Alloy.Globals.modelListeners = function(service, mainSection)
   	 	Ti.API.info("DOCUMENT: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ", MIME type = " + e.contentMimeType);	
   	 	
   	 	var icon = "mime_txt.png";
-  	 	if (e.contentMimeType.indexOf("text/") !== -1)
+  	 	
+  	 	if (e.contentMimeType != null)
   	 	{
-  	 		if (e.contentMimeType.indexOf("/plain") !== -1)
-  	 			icon = "mime_txt.png";
-  	 		else
-  	 			icon = "mime_doc.png";
-  	 	}
-  	 	else	
-  	 	if (e.contentMimeType.indexOf("application/") !== -1)
-  	 	{
-  	 		if (e.contentMimeType.indexOf("/msword") !== -1  || 
-  	 			e.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.wordprocessingml") !== -1)
-  	 		{
-  	 			icon = "mime_doc.png";
-  	 		}
-  	 		else
-  	 		if (e.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.spreadsheetml") !== -1)
-  	 		{
-  	 			//Spreadsheet
-  	 		}
-  	 	}
-  	 	else
-  	 	if (e.contentMimeType.indexOf("image/") !== -1)
-  	 		icon="mime_img.png";
-  	 		
+	  	 	if (e.contentMimeType.indexOf("text/") !== -1)
+	  	 	{
+	  	 		if (e.contentMimeType.indexOf("/plain") !== -1)
+	  	 			icon = "mime_txt.png";
+	  	 		else
+	  	 			icon = "mime_doc.png";
+	  	 	}
+	  	 	else	
+	  	 	if (e.contentMimeType.indexOf("application/") !== -1)
+	  	 	{
+	  	 		if (e.contentMimeType.indexOf("/msword") !== -1  || 
+	  	 			e.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.wordprocessingml") !== -1)
+	  	 		{
+	  	 			icon = "mime_doc.png";
+	  	 		}
+	  	 		else
+	  	 		if (e.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.spreadsheetml") !== -1)
+	  	 		{
+	  	 			//Spreadsheet
+	  	 		}
+	  	 	}
+	  	 	else
+	  	 	if (e.contentMimeType.indexOf("image/") !== -1)
+	  	 		icon="mime_img.png";
+	  	}
+	  	 		
   	 	var modified = new String + e.modifiedAt;
   	 	modified = modified.substr(0,21);
   	 	
+  	 	var truncText = e.name;
+  	 	var len  = truncText.length;
+  	 	
+  	 	if (len > 22)
+  	 		truncText = e.name.substr(0, 22) + "...";
+  	 		
   	 	var mainDataSet = [];
-  	 	var data = {info: {text: e.name}, es_info: {text: modified}, pic: {image: icon},  properties: {data: e, folder: 0, name: e.name, docobject: e.document} };	 	  	 		
+  	 	var data = {info: {text: truncText}, es_info: {text: modified}, pic: {image: icon},  properties: {data: e, folder: 0, name: e.name, docobject: e.document} };	 	  	 		
   	 	mainDataSet.push(data);
   	 	mainSection.appendItems(mainDataSet);	
   	});

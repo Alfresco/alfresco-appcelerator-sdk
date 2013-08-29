@@ -1,0 +1,62 @@
+"Window":{
+	backgroundColor:"white",
+	separatorColor:"white",
+	navBarHidden:true
+},
+"#searchTable":{
+	top: '2%',
+	left: '2%',
+	width:'96%',
+	height:'96%',
+	backgroundColor:"white",
+	separatorColor:"white"
+},
+"#searchBarWindow":{
+	backgroundColor:"white",
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE
+},
+"#searchEdit":{
+	value: "",
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, 
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, 
+	color: '#336699', 
+	top: 0, 
+	left: 0, 
+	width: '80%', 
+	height: '40dp'
+},
+"#searchButton":{
+	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
+	left: '85%', 
+	top: 0, 
+	width: '15%',
+	height: '40dp', 
+	title: "Go"
+},
+"#resultsWindow":{
+	height:Ti.UI.FILL,
+	width:Ti.UI.FILL
+},
+"#folderList":{
+	top: 0, 
+	left: 0 
+}, 
+"#picImage":{
+	width: '35dp', 
+	height: '35dp',
+	left: 5
+},
+"#infoLabel":{
+	color: 'black',
+	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
+	left: '60dp', 
+	top: 0
+},
+"#esinfoLabel":{
+    color: 'gray',
+    font: { fontFamily:'Arial', fontSize: '11dp' },
+    left: '60dp', 
+    top: '25dp'
+}

@@ -13,5 +13,7 @@ $.index.addEventListener('focus',function(e)
  		Ti.App.fireEvent('sitespopulate');
  	if (e.index == 3)
  		Ti.App.fireEvent('activitiespopulate');
+ 	if (e.index == 4)
+ 		Ti.App.fireEvent('searchinit');
 });
 

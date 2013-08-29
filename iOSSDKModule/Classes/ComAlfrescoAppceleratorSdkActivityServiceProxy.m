@@ -8,7 +8,8 @@
 
 #import "ComAlfrescoAppceleratorSdkActivityServiceProxy.h"
 #import "ComAlfrescoAppceleratorSdkSiteProxy.h"
-#import "ComAlfrescoAppceleratorSdkListingContext.h"
+#import "ComAlfrescoAppceleratorSdkListingContextProxy.h"
+#import "SDKUtil.h"
 
 
 @implementation ComAlfrescoAppceleratorSdkActivityServiceProxy
@@ -44,17 +45,6 @@
 }
 
 
--(void)createEventWithPagingResult:(AlfrescoPagingResult*)pagingResult
-{
-    NSDictionary *values = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [NSNumber numberWithBool:pagingResult.hasMoreItems], @"hasmoreitems",
-                            [NSNumber numberWithBool:pagingResult.totalItems], @"totalitems",
-                            nil];
-    
-    [self fireEvent:@"pagingresult" withObject:values];
-}
-
-
 -(void)retrieveActivityStream:(id)noargs
 {
     ENSURE_UI_THREAD_0_ARGS
@@ -72,9 +62,9 @@
 - (void)retrieveActivityStreamWithListingContext:(id)arg
 {
     ENSURE_UI_THREAD_1_ARG(arg)
-    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkListingContext)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkListingContextProxy)
     
-    ComAlfrescoAppceleratorSdkListingContext* listingContextProxy = arg;
+    ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = arg;
     AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
 
     [service retrieveActivityStreamWithListingContext:listingContext completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
@@ -84,7 +74,7 @@
             [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
         }
          
-        [self createEventWithPagingResult:pagingResult];
+        [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
     }];
 }
 
@@ -108,7 +98,7 @@
 -(void)retrieveActivityStreamForPersonWithListingContext:(id)args
 {
     NSString* person = [args objectAtIndex:0];
-    ComAlfrescoAppceleratorSdkListingContext* listingContextProxy = [args objectAtIndex:1];
+    ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
     
     AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
     NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:listingContext, @"listingContext",
@@ -136,7 +126,7 @@
              [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
          }
          
-         [self createEventWithPagingResult:pagingResult];
+         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
     }];
 }
 
@@ -162,7 +152,7 @@
 -(void)retrieveActivityStreamForSiteWithListingContext:(id)args
 {
     ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [args objectAtIndex:0];
-    ComAlfrescoAppceleratorSdkListingContext* listingContextProxy = [args objectAtIndex:1];
+    ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
 
     AlfrescoSite* site = siteProxy.currentSite;
 
@@ -192,7 +182,7 @@
              [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
          }
          
-         [self createEventWithPagingResult:pagingResult];
+         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
      }];
 }
 

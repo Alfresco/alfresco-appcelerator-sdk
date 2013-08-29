@@ -28,7 +28,7 @@
 		
 		<Tab id="searchTab" title="Search" icon="KS_nav_search.png">
 			
-			<Window/>
+			<Require src="searchTab" id="searchtab">
 				
 		</Tab> 
 		

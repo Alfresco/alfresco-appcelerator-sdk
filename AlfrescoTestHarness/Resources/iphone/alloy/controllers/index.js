@@ -55,14 +55,13 @@ function Controller() {
         icon: "KS_nav_ui.png"
     });
     __alloyId26.push($.__views.activitiesTab);
-    $.__views.__alloyId30 = Ti.UI.createWindow({
-        backgroundColor: "white",
-        separatorColor: "white",
-        navBarHidden: true,
-        id: "__alloyId30"
+    $.__views.searchtab = Alloy.createController("searchTab", {
+        id: "searchtab"
     });
     $.__views.searchTab = Ti.UI.createTab({
-        window: $.__views.__alloyId30,
+        window: $.__views.searchtab.getViewEx({
+            recurse: true
+        }),
         id: "searchTab",
         title: "Search",
         icon: "KS_nav_search.png"
@@ -82,6 +81,7 @@ function Controller() {
     $.index.addEventListener("focus", function(e) {
         1 == e.index ? Ti.App.fireEvent("repopopulate") : 2 == e.index && Ti.App.fireEvent("sitespopulate");
         3 == e.index && Ti.App.fireEvent("activitiespopulate");
+        4 == e.index && Ti.App.fireEvent("searchinit");
     });
     _.extend($, exports);
 }

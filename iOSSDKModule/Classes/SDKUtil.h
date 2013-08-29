@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TiProxy.h"
+#import "AlfrescoNode.h"
+#import "AlfrescoPagingResult.h"
+
 
 @interface SDKUtil : NSObject
+
++(void)createEventWithNode:(AlfrescoNode*)node proxyObject:(TiProxy*)proxyObj;
+
++(void)createEventWithPagingResult:(AlfrescoPagingResult*)pagingResult  proxyObject:(TiProxy*)proxyObj;
 
 @end

@@ -10,7 +10,7 @@
 #include "AlfrescoListingContext.h"
 
 
-@interface ComAlfrescoAppceleratorSdkListingContext : TiProxy
+@interface ComAlfrescoAppceleratorSdkListingContextProxy : TiProxy
 
 @property (nonatomic, strong) AlfrescoListingContext* listingContext;
 

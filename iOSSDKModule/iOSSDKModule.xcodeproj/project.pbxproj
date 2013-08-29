@@ -40,10 +40,14 @@
 		05AFDCC9175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05AFDCBD175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.m */; };
 		05C303D817C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C303D617C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.h */; };
 		05C303D917C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C303D717C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.m */; };
-		05C303DC17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C303DA17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h */; };
-		05C303DD17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C303DB17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m */; };
-		05C303E117C6365B004C78C0 /* ComAlfrescoAppceleratorSdkListingContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C303DF17C6365A004C78C0 /* ComAlfrescoAppceleratorSdkListingContext.h */; };
-		05C303E217C6365B004C78C0 /* ComAlfrescoAppceleratorSdkListingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C303E017C6365B004C78C0 /* ComAlfrescoAppceleratorSdkListingContext.m */; };
+		05C303E517CCA5D4004C78C0 /* ComAlfrescoAppceleratorSdkSearchServiceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C303E317CCA5D4004C78C0 /* ComAlfrescoAppceleratorSdkSearchServiceProxy.h */; };
+		05C303E617CCA5D4004C78C0 /* ComAlfrescoAppceleratorSdkSearchServiceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C303E417CCA5D4004C78C0 /* ComAlfrescoAppceleratorSdkSearchServiceProxy.m */; };
+		05C303EC17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkListingContextProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C303E817CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkListingContextProxy.h */; };
+		05C303ED17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkListingContextProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C303E917CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkListingContextProxy.m */; };
+		05C303EE17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C303EA17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h */; };
+		05C303EF17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C303EB17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m */; };
+		05C303F317CF4FB6004C78C0 /* ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05C303F117CF4FB5004C78C0 /* ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.h */; };
+		05C303F417CF4FB6004C78C0 /* ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C303F217CF4FB6004C78C0 /* ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.m */; };
 		05EAFE72177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EAFE6E177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.h */; };
 		05EAFE73177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05EAFE6F177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.m */; };
 		05EAFE74177C383D006E0D6F /* ComAlfrescoAppceleratorSdkFolderProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 05EAFE70177C383D006E0D6F /* ComAlfrescoAppceleratorSdkFolderProxy.h */; };
@@ -399,10 +403,14 @@
 		05AFDCBD175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkSessionProxy.m; path = Classes/ComAlfrescoAppceleratorSdkSessionProxy.m; sourceTree = "<group>"; };
 		05C303D617C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkActivityServiceProxy.h; path = Classes/ComAlfrescoAppceleratorSdkActivityServiceProxy.h; sourceTree = "<group>"; };
 		05C303D717C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkActivityServiceProxy.m; path = Classes/ComAlfrescoAppceleratorSdkActivityServiceProxy.m; sourceTree = "<group>"; };
-		05C303DA17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAlfrescoAppceleratorSdkSiteProxy.h; sourceTree = "<group>"; };
-		05C303DB17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComAlfrescoAppceleratorSdkSiteProxy.m; sourceTree = "<group>"; };
-		05C303DF17C6365A004C78C0 /* ComAlfrescoAppceleratorSdkListingContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAlfrescoAppceleratorSdkListingContext.h; sourceTree = "<group>"; };
-		05C303E017C6365B004C78C0 /* ComAlfrescoAppceleratorSdkListingContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComAlfrescoAppceleratorSdkListingContext.m; sourceTree = "<group>"; };
+		05C303E317CCA5D4004C78C0 /* ComAlfrescoAppceleratorSdkSearchServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkSearchServiceProxy.h; path = Classes/ComAlfrescoAppceleratorSdkSearchServiceProxy.h; sourceTree = "<group>"; };
+		05C303E417CCA5D4004C78C0 /* ComAlfrescoAppceleratorSdkSearchServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkSearchServiceProxy.m; path = Classes/ComAlfrescoAppceleratorSdkSearchServiceProxy.m; sourceTree = "<group>"; };
+		05C303E817CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkListingContextProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkListingContextProxy.h; path = Classes/ComAlfrescoAppceleratorSdkListingContextProxy.h; sourceTree = "<group>"; };
+		05C303E917CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkListingContextProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkListingContextProxy.m; path = Classes/ComAlfrescoAppceleratorSdkListingContextProxy.m; sourceTree = "<group>"; };
+		05C303EA17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkSiteProxy.h; path = Classes/ComAlfrescoAppceleratorSdkSiteProxy.h; sourceTree = "<group>"; };
+		05C303EB17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkSiteProxy.m; path = Classes/ComAlfrescoAppceleratorSdkSiteProxy.m; sourceTree = "<group>"; };
+		05C303F117CF4FB5004C78C0 /* ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.h; path = Classes/ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.h; sourceTree = "<group>"; };
+		05C303F217CF4FB6004C78C0 /* ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.m; path = Classes/ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.m; sourceTree = "<group>"; };
 		05EAFE6E177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkDocumentProxy.h; path = Classes/ComAlfrescoAppceleratorSdkDocumentProxy.h; sourceTree = "<group>"; };
 		05EAFE6F177C383D006E0D6F /* ComAlfrescoAppceleratorSdkDocumentProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkDocumentProxy.m; path = Classes/ComAlfrescoAppceleratorSdkDocumentProxy.m; sourceTree = "<group>"; };
 		05EAFE70177C383D006E0D6F /* ComAlfrescoAppceleratorSdkFolderProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkFolderProxy.h; path = Classes/ComAlfrescoAppceleratorSdkFolderProxy.h; sourceTree = "<group>"; };
@@ -1285,14 +1293,18 @@
 				05EAFE71177C383D006E0D6F /* ComAlfrescoAppceleratorSdkFolderProxy.m */,
 				0505DF1C17BB7AE9001F9349 /* ComAlfrescoAppceleratorSdkSiteServiceProxy.h */,
 				0505DF1B17BB7AE9001F9349 /* ComAlfrescoAppceleratorSdkSiteServiceProxy.m */,
-				05C303DA17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h */,
-				05C303DB17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m */,
+				05C303EA17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h */,
+				05C303EB17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m */,
+				05C303E317CCA5D4004C78C0 /* ComAlfrescoAppceleratorSdkSearchServiceProxy.h */,
+				05C303E417CCA5D4004C78C0 /* ComAlfrescoAppceleratorSdkSearchServiceProxy.m */,
+				05C303F117CF4FB5004C78C0 /* ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.h */,
+				05C303F217CF4FB6004C78C0 /* ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.m */,
 				05C303D617C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.h */,
 				05C303D717C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.m */,
 				054AA1BC17A130EE000D7083 /* ComAlfrescoAppceleratorSdkContentFileProxy.h */,
 				054AA1BD17A13164000D7083 /* ComAlfrescoAppceleratorSdkContentFileProxy.m */,
-				05C303DF17C6365A004C78C0 /* ComAlfrescoAppceleratorSdkListingContext.h */,
-				05C303E017C6365B004C78C0 /* ComAlfrescoAppceleratorSdkListingContext.m */,
+				05C303E817CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkListingContextProxy.h */,
+				05C303E917CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkListingContextProxy.m */,
 				05AFDCB6175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkRequestProxy.h */,
 				05AFDCB7175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkRequestProxy.m */,
 				05AFDCBA175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkSessionCompletionBlockProxy.h */,
@@ -1504,8 +1516,10 @@
 				0505DF1E17BB7AE9001F9349 /* ComAlfrescoAppceleratorSdkSiteServiceProxy.h in Headers */,
 				0505DF2117BB8B43001F9349 /* SDKUtil.h in Headers */,
 				05C303D817C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.h in Headers */,
-				05C303DC17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h in Headers */,
-				05C303E117C6365B004C78C0 /* ComAlfrescoAppceleratorSdkListingContext.h in Headers */,
+				05C303E517CCA5D4004C78C0 /* ComAlfrescoAppceleratorSdkSearchServiceProxy.h in Headers */,
+				05C303EC17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkListingContextProxy.h in Headers */,
+				05C303EE17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.h in Headers */,
+				05C303F317CF4FB6004C78C0 /* ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1736,8 +1750,10 @@
 				0505DF1D17BB7AE9001F9349 /* ComAlfrescoAppceleratorSdkSiteServiceProxy.m in Sources */,
 				0505DF2217BB8B43001F9349 /* SDKUtil.m in Sources */,
 				05C303D917C21405004C78C0 /* ComAlfrescoAppceleratorSdkActivityServiceProxy.m in Sources */,
-				05C303DD17C21894004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m in Sources */,
-				05C303E217C6365B004C78C0 /* ComAlfrescoAppceleratorSdkListingContext.m in Sources */,
+				05C303E617CCA5D4004C78C0 /* ComAlfrescoAppceleratorSdkSearchServiceProxy.m in Sources */,
+				05C303ED17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkListingContextProxy.m in Sources */,
+				05C303EF17CCD01A004C78C0 /* ComAlfrescoAppceleratorSdkSiteProxy.m in Sources */,
+				05C303F417CF4FB6004C78C0 /* ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
