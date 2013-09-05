@@ -33,7 +33,7 @@ Alloy.Globals.modelListeners = function(service, mainSection) {
     });
     service.addEventListener("foldernode", function(e) {
         var folder = e.folder;
-        var folderName = folder.getFolderName();
+        var folderName = folder.getName();
         Ti.API.info("FOLDER: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ". Folder name from object: " + folderName);
         var modified = new String() + e.modifiedAt;
         modified = modified.substr(0, 21);
@@ -140,6 +140,9 @@ Alloy.Globals.activitiesModelListener = function(service, section, sitetype) {
 };
 
 Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument) {
+    service.addEventListener("retrievedpermissions", function(p) {
+        Alloy.Globals.recursePropertiesAndAlert("Permissions", p);
+    });
     view.folderList.addEventListener("itemclick", function(e) {
         var mainSection = e.section;
         var item = e.section.getItemAt(e.itemIndex);
@@ -147,7 +150,8 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
         if (item.properties.folder > 0) {
             var folder;
             if (2 == item.properties.folder) folder = parentFolders.pop(); else {
-                Alloy.Globals.recursePropertiesAndAlert(item.properties.data);
+                Alloy.Globals.recursePropertiesAndAlert("Folder properties", item.properties.data);
+                service.retrievePermissionsOfNode(item.properties.folderobject);
                 parentFolders.push(service.getCurrentFolder());
                 folder = item.properties.folderobject;
             }
@@ -173,18 +177,19 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
                 mainDataSet.push(data);
                 mainSection.appendItems(mainDataSet);
             }
-            view.folderLabel.text = " " + folder.getFolderName();
+            view.folderLabel.text = " " + folder.getName();
             onFolder(folder);
         } else {
-            Alloy.Globals.recursePropertiesAndAlert(item.properties.data);
+            Alloy.Globals.recursePropertiesAndAlert("Document properties", item.properties.data);
+            service.retrievePermissionsOfNode(item.properties.docobject);
             onDocument(item.properties.docobject);
         }
     });
 };
 
-Alloy.Globals.recursePropertiesAndAlert = function recurseProperties(properties) {
+Alloy.Globals.recursePropertiesAndAlert = function recurseProperties(title, properties) {
     if (Alloy.Globals.showProperties) {
-        var alertString = "";
+        var alertString = title + ":\r\n\r\n";
         Alloy.Globals.recurseProperties(properties, "", function(name, value) {
             alertString += name + " = " + value + "\r\n\r\n";
         });

@@ -62,7 +62,7 @@ Alloy.Globals.modelListeners = function(service, mainSection)
   	service.addEventListener('foldernode',function(e)
   	{
   		var folder = e.folder;
-  		var folderName = folder.getFolderName();
+  		var folderName = folder.getName();
   		
   	 	Ti.API.info("FOLDER: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ". Folder name from object: "+ folderName);
   	 	
@@ -160,6 +160,11 @@ Alloy.Globals.activitiesModelListener = function(service, section, sitetype)
 
 Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument)
 {
+	service.addEventListener('retrievedpermissions', function(p)
+	{
+		Alloy.Globals.recursePropertiesAndAlert ("Permissions", p);
+	});
+	
 	view.folderList.addEventListener('itemclick', function(e)
 	{
 		var mainSection = e.section;
@@ -175,7 +180,9 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	        }
 	        else
 	        {
-	        	Alloy.Globals.recursePropertiesAndAlert (item.properties.data);
+	        	Alloy.Globals.recursePropertiesAndAlert ("Folder properties", item.properties.data);
+	        	
+	        	service.retrievePermissionsOfNode(item.properties.folderobject);       	
 	        	
 	        	parentFolders.push(service.getCurrentFolder());     	
 	        	folder = item.properties.folderobject;
@@ -191,24 +198,26 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 		  	 	mainSection.appendItems(mainDataSet);
 		  	}
 		  	 	 	
-		  	view.folderLabel.text = " " + folder.getFolderName();
+		  	view.folderLabel.text = " " + folder.getName();
 		  	
 		  	onFolder(folder);
 	    }    
 	    else
 	    {
-	    	Alloy.Globals.recursePropertiesAndAlert (item.properties.data);
+	    	Alloy.Globals.recursePropertiesAndAlert ("Document properties", item.properties.data);
 	    	
+	    	service.retrievePermissionsOfNode(item.properties.docobject);
+    	
 	    	onDocument(item.properties.docobject);	    	
 	   	}
 	});
 }
 
-Alloy.Globals.recursePropertiesAndAlert = function recurseProperties (properties)
+Alloy.Globals.recursePropertiesAndAlert = function recurseProperties (title, properties)
 {
 	if (Alloy.Globals.showProperties)
 	{
-		var alertString="";
+		var alertString = title + ":\r\n\r\n";
 		
 		Alloy.Globals.recurseProperties(properties, "", function(name,value)
 	 	{
@@ -216,7 +225,7 @@ Alloy.Globals.recursePropertiesAndAlert = function recurseProperties (properties
 	 	});
 	 	
 	 	alert (alertString);
-	 }
+	}
 }
 
 Alloy.Globals.recurseProperties = function recurseProperties (properties, propertiesName, callForEachProperty)

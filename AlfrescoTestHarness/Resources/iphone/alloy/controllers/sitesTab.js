@@ -198,7 +198,7 @@ function Controller() {
             $.siteList.addEventListener("itemclick", function(e) {
                 var item = e.section.getItemAt(e.itemIndex);
                 var name = item.properties.name;
-                Alloy.Globals.recursePropertiesAndAlert(item.properties.data);
+                Alloy.Globals.recursePropertiesAndAlert("Site properties", item.properties.data);
                 siteService.retrieveDocumentLibraryFolderForSite(name);
             });
             siteService.addEventListener("retrievedDocumentFolder", function(e) {

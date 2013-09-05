@@ -16,24 +16,26 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.014116 seconds on emulator to get ready
+[DEBUG] waited 0.014788 seconds on emulator to get ready
 [DEBUG] com.alfresco.appcelerator.ui installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
 [INFO] Detected change in tiapp.xml, or assets deleted. Forcing full re-build...
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/backbone.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/backbone.js
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/CFG.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/CFG.js
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/controllers/BaseController.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/controllers/BaseController.js
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/controllers/index.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/controllers/index.js
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/localStorage.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/localStorage.js
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/properties.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/properties.js
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/sql.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/sql.js
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/sync/util.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/util.js
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/underscore.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/underscore.js
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy/widget.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/widget.js
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/alloy.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy.js
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alfresco_logo_large.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alfresco_logo_large.png
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/backbone.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/backbone.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/CFG.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/CFG.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/constants.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/constants.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/controllers/BaseController.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/controllers/BaseController.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/controllers/index.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/controllers/index.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/styles/index.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/styles/index.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/sync/localStorage.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/localStorage.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/sync/properties.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/properties.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/sync/sql.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/sync/sql.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/underscore.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/underscore.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy/widget.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy/widget.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/alloy.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/alloy.js
+[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/app.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/app.js
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/appicon.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/appicon.png
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default-568h@2x.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default-568h@2x.png
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/Default-Landscape.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/Default-Landscape.png
@@ -55,7 +57,6 @@ Logfile initialized
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-notlong-port-hdpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-notlong-port-hdpi/default.png
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-notlong-port-ldpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-notlong-port-ldpi/default.png
 [TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/android/ximages/res-notlong-port-mdpi/default.png => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/ximages/res-notlong-port-mdpi/default.png
-[TRACE] COPYING CREATED FILE: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/Resources/app.js => /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/assets/Resources/app.js
 [DEBUG] LiveView not enabled
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
@@ -75,12 +76,13 @@ Logfile initialized
 [DEBUG] creating unsigned apk: /Users/ljagger/Documents/Titanium_Studio_Workspace/Alfresco/AlfrescoUI/build/android/bin/app-unsigned.apk
 [DEBUG] from resource zip => assets/Resources/alloy/controllers/BaseController.js
 [DEBUG] from resource zip => assets/Resources/alloy/controllers/index.js
+[DEBUG] from resource zip => assets/Resources/alloy/styles/index.js
 [DEBUG] from resource zip => assets/Resources/alloy/sync/localStorage.js
 [DEBUG] from resource zip => assets/Resources/alloy/sync/properties.js
 [DEBUG] from resource zip => assets/Resources/alloy/sync/sql.js
-[DEBUG] from resource zip => assets/Resources/alloy/sync/util.js
 [DEBUG] from resource zip => assets/Resources/alloy/CFG.js
 [DEBUG] from resource zip => assets/Resources/alloy/backbone.js
+[DEBUG] from resource zip => assets/Resources/alloy/constants.js
 [DEBUG] from resource zip => assets/Resources/alloy/underscore.js
 [DEBUG] from resource zip => assets/Resources/alloy/widget.js
 [DEBUG] from resource zip => assets/Resources/ximages/res-long-land-hdpi/default.png
@@ -153,7 +155,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.018503 seconds on emulator to get ready
+[DEBUG] waited 0.014234 seconds on emulator to get ready
 [INFO] Installing application on emulator
 [INFO] Launching application ... AlfrescoUI
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.alfresco.appcelerator.ui/.AlfrescouiActivity }

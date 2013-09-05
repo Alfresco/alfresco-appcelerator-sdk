@@ -1,7 +1,6 @@
 function Controller() {
     function searchButtonClick() {
         listingContext.initWithMaxItemsAndSkipCount(5, skipCount);
-        skipCount += 5;
         var searchTerm = "SELECT * FROM cmis:document WHERE cmis:name LIKE '%" + $.searchEdit.value + "%'";
         parentFolders = new Array();
         mainSection.deleteItemsAt(0, mainSection.getItems().length);
