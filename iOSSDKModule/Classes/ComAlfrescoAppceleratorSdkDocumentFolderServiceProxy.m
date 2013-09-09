@@ -26,6 +26,7 @@
 //
 //
 
+
 #import "ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h"
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 #import "ComAlfrescoAppceleratorSdkFolderProxy.h"
@@ -109,8 +110,6 @@
     {
         NSLog(@"[INFO] Number of nodes: %d", array.count);
         
-        folders = [[NSMutableDictionary alloc] init];
-        
         for (int i = 0;  i < array.count;  i++)
         {
             [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
@@ -133,8 +132,6 @@
                       completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
      {
          NSLog(@"[INFO] Number of nodes: %d", pagingResult.objects.count);
-         
-         folders = [[NSMutableDictionary alloc] init];
          
          if (error != NULL)
              NSLog(@"[INFO] Error %@", error.description);
@@ -207,7 +204,7 @@
     NSString* path = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:1];
     NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:path, @"path",
-                                    folderProxy, @"folderProxy",
+                                    folderProxy.node, @"folder",
                                     nil];
     
     [self internalRetrieveNodeWithFolderPathRelative:internalParams];
@@ -224,7 +221,7 @@
     ENSURE_UI_THREAD_1_ARG(dictionary)
     ENSURE_SINGLE_ARG(dictionary,NSDictionary)
    
-    [service retrieveNodeWithFolderPath:[dictionary objectForKey:@"path"] relativeToFolder:[dictionary objectForKey:@"folderProxy"]
+    [service retrieveNodeWithFolderPath:[dictionary objectForKey:@"path"] relativeToFolder:[dictionary objectForKey:@"folder"]
                         completionBlock:^(AlfrescoNode* node, NSError* error)
      {
          [SDKUtil createEventWithNode:node proxyObject:self];
@@ -252,7 +249,7 @@
 {
     ComAlfrescoAppceleratorSdkNodeProxy* nodeProxy = [args objectAtIndex:0];
     NSString* name = [args objectAtIndex:1];
-    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:nodeProxy, @"nodeProxy", name, @"name", nil];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:nodeProxy.node, @"node", name, @"name", nil];
                                     
     [self internalRetrieveRenditionOfNode:internalParams];
 }
@@ -268,7 +265,7 @@
     ENSURE_UI_THREAD_1_ARG(dictionary)
     ENSURE_SINGLE_ARG(dictionary,NSDictionary)
     
-    [service retrieveRenditionOfNode:[dictionary objectForKey:@"nodeProxy"] renditionName:[dictionary objectForKey:@"name"]
+    [service retrieveRenditionOfNode:[dictionary objectForKey:@"node"] renditionName:[dictionary objectForKey:@"name"]
      completionBlock:^(AlfrescoContentFile *contentFile, NSError *error)
      {
          NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -276,6 +273,122 @@
                                 nil];
          
          [self fireEvent:@"retrievedrendition" withObject:event];
+     }];
+}
+
+
+-(void)retrieveDocumentsInFolder:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkFolderProxy)
+
+    ComAlfrescoAppceleratorSdkFolderProxy* proxy = arg;
+    AlfrescoFolder* folder = (AlfrescoFolder*)proxy.node;
+    
+    NSLog(@"[INFO] folder object in use: %@", folder.name);
+    
+    [service retrieveDocumentsInFolder:folder
+                      completionBlock:^(NSArray* array, NSError* error)
+     {
+         NSLog(@"[INFO] Number of nodes: %d", array.count);
+         
+         for (int i = 0;  i < array.count;  i++)
+         {
+             [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+         }
+     }];    
+}
+
+
+-(void)retrieveDocumentsInFolderWithListingContext:(id)args
+{
+    ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:0];
+    ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy.node, @"folder", listingContextProxy.listingContext, @"listingContext", nil];
+
+    [self internalRetrieveDocumentsInFolderWithListingContext:internalParams];
+}
+
+
+//
+//This allows us to use multiple arguments on the JS interface for user-friendliness, but pass them on as an NSDictionary in order
+//to ensure the ENSURE_UI_THREAD_1_ARG is called (a quirk for the iOS Module creation, that we must be on the UI thread initially,
+//even if we then create further threads for the completionBlock).
+//
+-(void)internalRetrieveDocumentsInFolderWithListingContext:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,NSDictionary)
+    
+    [service retrieveDocumentsInFolder:[arg objectForKey:@"folder"] listingContext:[arg objectForKey:@"listingContext"]
+        completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
+     {
+         NSLog(@"[INFO] Number of nodes: %d", pagingResult.objects.count);
+         
+         for (int i = 0;  i < pagingResult.objects.count;  i++)
+         {
+             [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+         }
+         
+         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+     }];
+}
+
+
+-(void)retrieveFoldersInFolder:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkFolderProxy)
+    
+    ComAlfrescoAppceleratorSdkFolderProxy* proxy = arg;
+    AlfrescoFolder* folder = (AlfrescoFolder*)proxy.node;
+    
+    NSLog(@"[INFO] folder object in use: %@", folder.name);
+    
+    [service retrieveFoldersInFolder:folder
+                       completionBlock:^(NSArray* array, NSError* error)
+     {
+         NSLog(@"[INFO] Number of nodes: %d", array.count);
+         
+         for (int i = 0;  i < array.count;  i++)
+         {
+             [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+         }
+     }];    
+}
+
+
+-(void)retrieveFoldersInFolderWithListingContext:(id)args
+{
+    ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:0];
+    ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy.node, @"folder", listingContextProxy.listingContext, @"listingContext", nil];
+    
+    [self internalRetrieveFoldersInFolderWithListingContext:internalParams];
+}
+
+
+//
+//This allows us to use multiple arguments on the JS interface for user-friendliness, but pass them on as an NSDictionary in order
+//to ensure the ENSURE_UI_THREAD_1_ARG is called (a quirk for the iOS Module creation, that we must be on the UI thread initially,
+//even if we then create further threads for the completionBlock).
+//
+-(void)internalRetrieveFoldersInFolderWithListingContext:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,NSDictionary)
+    
+    [service retrieveFoldersInFolder:[arg objectForKey:@"folder"] listingContext:[arg objectForKey:@"listingContext"]
+                       completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
+     {
+         NSLog(@"[INFO] Number of nodes: %d", pagingResult.objects.count);
+         
+         for (int i = 0;  i < pagingResult.objects.count;  i++)
+         {
+             [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+         }
+         
+         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
      }];
 }
 
@@ -304,6 +417,5 @@
             [self fireEvent:@"progresseddocument" withObject:event];
         }];
 }
-
 
 @end

@@ -35,7 +35,6 @@
     AlfrescoDocumentFolderService* service;
     AlfrescoFolder* currentFolder;
     NSError* errorCode;
-   __strong NSMutableDictionary* folders;
 }
 
 -(void)initWithSession:(id)arg;
@@ -66,20 +65,14 @@
 
 -(void)retrieveRenditionOfNode:(id)args;
 
+-(void)retrieveDocumentsInFolder:(id)args;
 
-/*
-- (AlfrescoRequest *)retrieveDocumentsInFolder:(AlfrescoFolder *)folder
-                                listingContext:(AlfrescoListingContext *)listingContext
-                               completionBlock:(AlfrescoPagingResultCompletionBlock)completionBlock;
+-(void)retrieveDocumentsInFolderWithListingContext:(id)args;
 
-- (AlfrescoRequest *)retrieveFoldersInFolder:(AlfrescoFolder *)folder
-                             completionBlock:(AlfrescoArrayCompletionBlock)completionBlock;
+-(void)retrieveFoldersInFolder:(id)arg;
 
-- (AlfrescoRequest *)retrieveFoldersInFolder:(AlfrescoFolder *)folder
-                              listingContext:(AlfrescoListingContext *)listingContext
-                             completionBlock:(AlfrescoPagingResultCompletionBlock)completionBlock;
+-(void)retrieveFoldersInFolderWithListingContext:(id)args;
 
-*/
 
 
 //Internal
@@ -87,5 +80,9 @@
 -(void)internalRetrieveNodeWithFolderPathRelative:(id)dictionary;
 
 -(void)internalRetrieveRenditionOfNode:(id)dictionary;
+
+-(void)internalRetrieveDocumentsInFolderWithListingContext:(id)arg;
+
+-(void)internalRetrieveFoldersInFolderWithListingContext:(id)arg;
 
 @end
