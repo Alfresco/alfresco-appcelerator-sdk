@@ -50,7 +50,7 @@
 -(void)initWithFolder:(id)args
 {
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:0];
-    AlfrescoFolder* folder = (AlfrescoFolder*)folderProxy.node;
+    AlfrescoFolder* folder = (AlfrescoFolder*)folderProxy->node;
     BOOL includeDescendants = [args objectAtIndex:1];
     
     searchOptions = [[AlfrescoKeywordSearchOptions alloc]initWithFolder:folder includeDescendants:includeDescendants];
@@ -62,7 +62,7 @@
     BOOL exactMatch = [args objectAtIndex:0];
     BOOL includeContent = [args objectAtIndex:1];
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:2];
-    AlfrescoFolder* folder = (AlfrescoFolder*)folderProxy.node;
+    AlfrescoFolder* folder = (AlfrescoFolder*)folderProxy->node;
     BOOL includeDescendants = [args objectAtIndex:3];
     
     searchOptions = [[AlfrescoKeywordSearchOptions alloc]initWithExactMatch:exactMatch includeContent:includeContent folder:folder includeDescendants:includeDescendants];

@@ -31,11 +31,16 @@
 #import "ComAlfrescoAppceleratorSdkSiteProxy.h"
 
 @implementation ComAlfrescoAppceleratorSdkSiteProxy
-@synthesize currentSite;
 
 - (id)initWithSite:(AlfrescoSite *)site
 {
     currentSite = site;
+    
+    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
+    NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
+    
+    [self setValuesForKeysWithDictionary:values];
+    
     return self;
 }
 

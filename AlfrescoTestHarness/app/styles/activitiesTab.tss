@@ -21,7 +21,7 @@
 },
 "#infoLabel":{
 	color: 'black',
-    font: { fontFamily:'Arial', fontSize: '16dp', fontWeight:'bold'},
+    font: { fontFamily:'Arial', fontSize: '14dp', fontWeight:'bold'},
 	left: '60dp', 
 	top: 7
 },

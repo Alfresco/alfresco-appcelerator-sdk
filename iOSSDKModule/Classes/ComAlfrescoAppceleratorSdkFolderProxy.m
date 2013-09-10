@@ -33,7 +33,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"[INFO] FolderProxy object %@ being deallocated", self.node.name);
+    NSLog(@"[INFO] FolderProxy object %@ being deallocated", self->node.name);
 }
 
 @end

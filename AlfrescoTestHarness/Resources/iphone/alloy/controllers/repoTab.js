@@ -1,9 +1,12 @@
 function Controller() {
+    function viewButtonChange() {
+        allNodeTypes = !allNodeTypes;
+    }
     function getFolder(repoSesh) {
         documentFolderService.initWithSession(repoSesh);
         documentFolderService.retrieveRootFolder();
         documentFolderService.addEventListener("retrievedfolder", function() {
-            $.folderLabel.text = " " + documentFolderService.getCurrentFolder().getFolderName();
+            $.folderLabel.text = " " + documentFolderService.getCurrentFolder().getName();
             documentFolderService.retrieveChildrenInFolder();
             Alloy.Globals.modelListeners(documentFolderService, mainSection);
         });
@@ -15,6 +18,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.repoTab = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
@@ -33,11 +37,20 @@ function Controller() {
         backgroundColor: "#336699",
         top: 0,
         left: 0,
-        width: Ti.UI.FILL,
+        width: "60%",
         height: "40dp",
         id: "folderLabel"
     });
     $.__views.repoTab.add($.__views.folderLabel);
+    $.__views.viewButton = Ti.UI.createSwitch({
+        top: 0,
+        left: "60%",
+        width: "40%",
+        backgroundColor: "#336699",
+        id: "viewButton"
+    });
+    $.__views.repoTab.add($.__views.viewButton);
+    viewButtonChange ? $.__views.viewButton.addEventListener("change", viewButtonChange) : __defers["$.__views.viewButton!change!viewButtonChange"] = true;
     var __alloyId30 = {};
     var __alloyId33 = [];
     var __alloyId34 = {
@@ -108,6 +121,7 @@ function Controller() {
     var mainSection = $.mainSection;
     var documentFolderService;
     var parentFolders = new Array();
+    var allNodeTypes = true;
     Ti.App.addEventListener("cleartabs", function() {
         parentFolders = new Array();
         mainSection.deleteItemsAt(0, mainSection.getItems().length);
@@ -116,14 +130,20 @@ function Controller() {
         if (null != Alloy.Globals.repositorySession && 0 == $.mainSection.getItems().length) {
             documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
             Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders, function(folder) {
-                documentFolderService.setFolder(folder);
-                documentFolderService.retrieveChildrenInFolder();
+                if (allNodeTypes) {
+                    documentFolderService.setFolder(folder);
+                    documentFolderService.retrieveChildrenInFolder();
+                } else {
+                    documentFolderService.setFolder(folder);
+                    documentFolderService.retrieveDocumentsInFolder(folder);
+                }
             }, function(document) {
                 documentFolderService.saveDocument(document);
             });
             getFolder(Alloy.Globals.repositorySession);
         }
     });
+    __defers["$.__views.viewButton!change!viewButtonChange"] && $.__views.viewButton.addEventListener("change", viewButtonChange);
     _.extend($, exports);
 }
 

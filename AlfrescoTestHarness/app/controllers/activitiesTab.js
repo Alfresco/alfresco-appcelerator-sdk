@@ -17,7 +17,7 @@ Ti.App.addEventListener('activitiespopulate',function()
 			activityService.initWithSession(Alloy.Globals.repositorySession);
 			
 			activityService.retrieveActivityStream();
-			Alloy.Globals.activitiesModelListener(activityService, $.activities, 'activitynode');
+			Alloy.Globals.activitiesModelListener(activityService, $.activities);
 						 
 			$.activityList.addEventListener('itemclick', function(e)
 			{

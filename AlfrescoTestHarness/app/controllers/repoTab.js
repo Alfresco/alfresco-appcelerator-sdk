@@ -1,12 +1,19 @@
 var mainSection = $.mainSection;
 var documentFolderService;
 var parentFolders = new Array();
- 
+var allNodeTypes = true;
+
+
 Ti.App.addEventListener('cleartabs', function()
 {
 	parentFolders = new Array();
 	mainSection.deleteItemsAt(0, mainSection.getItems().length);
 });
+
+function viewButtonChange()
+{
+	allNodeTypes = !allNodeTypes;
+}
 
 Ti.App.addEventListener('repopopulate', function()
 {
@@ -18,9 +25,17 @@ Ti.App.addEventListener('repopopulate', function()
 		Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders,
 											function(folder)
 											{
-												documentFolderService.setFolder(folder);
-										        documentFolderService.retrieveChildrenInFolder();
-										        //Will result in an event fired to re-populate.
+												if (allNodeTypes)
+												{
+													documentFolderService.setFolder(folder);
+											        documentFolderService.retrieveChildrenInFolder();
+											        //Will result in an event fired to re-populate.
+											   	}
+											   	else
+											   	{
+											   		documentFolderService.setFolder(folder);
+											   		documentFolderService.retrieveDocumentsInFolder(folder);
+											   	}
 										    },    
 										    function(document)
 										    {
@@ -33,7 +48,6 @@ Ti.App.addEventListener('repopopulate', function()
 });
 										
 
-
 function getFolder(repoSesh)
 {	
 	documentFolderService.initWithSession(repoSesh);
@@ -41,7 +55,7 @@ function getFolder(repoSesh)
 
 	documentFolderService.addEventListener('retrievedfolder',function(e)
 	{
-		$.folderLabel.text = " " + documentFolderService.getCurrentFolder().getFolderName();
+		$.folderLabel.text = " " + documentFolderService.getCurrentFolder().getName();
 		
 		documentFolderService.retrieveChildrenInFolder();
 		

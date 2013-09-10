@@ -33,6 +33,7 @@
 #import "ComAlfrescoAppceleratorSdkDocumentProxy.h"
 #import "ComAlfrescoAppceleratorSdkContentFileProxy.h"
 #import "ComAlfrescoAppceleratorSdkListingContextProxy.h"
+#import "ComAlfrescoAppceleratorSdkPermissionsProxy.h"
 
 #import "AlfrescoFolder.h"
 #import <objc/runtime.h>
@@ -87,9 +88,9 @@
     NSLog(@"[INFO] folder arg object: %@", arg);
     ComAlfrescoAppceleratorSdkFolderProxy* folder = arg;
     
-    NSLog(@"[INFO] folder object set: %@ (name: %@)", folder, folder.node.name);
+    NSLog(@"[INFO] folder object set: %@ (name: %@)", folder, folder->node.name);
     
-    currentFolder = (AlfrescoFolder*)folder.node;
+    currentFolder = (AlfrescoFolder*)folder->node;
 }
 
 
@@ -152,17 +153,17 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkNodeProxy)
     
     ComAlfrescoAppceleratorSdkNodeProxy* proxy = arg;
-    AlfrescoNode* node = proxy.node;
+    AlfrescoNode* node = proxy->node;
     
     NSLog(@"[INFO] Node name for permissions: %@, %@)", node.name, node);
     
     [service retrievePermissionsOfNode:node
     completionBlock:^(AlfrescoPermissions *permissions, NSError *error)
     {
-        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"canEdit", @"canDelete", @"canAddChildren", @"canComment", @"canGetContent", @"canSetContent", @"canGetProperties", @"canGetAllVersions", @"canGetChildren", nil];
-        NSMutableDictionary* values = [[permissions dictionaryWithValuesForKeys:keys] mutableCopy];
+        ComAlfrescoAppceleratorSdkPermissionsProxy* permissionsProxy = [[ComAlfrescoAppceleratorSdkPermissionsProxy alloc]initWithPermissions:permissions];
+        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:permissionsProxy, @"permissions", nil];
         
-        [self fireEvent:@"retrievedpermissions" withObject:values];
+        [self fireEvent:@"retrievedpermissions" withObject:event];
     }];
 }
 
@@ -204,7 +205,7 @@
     NSString* path = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:1];
     NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:path, @"path",
-                                    folderProxy.node, @"folder",
+                                    folderProxy->node, @"folder",
                                     nil];
     
     [self internalRetrieveNodeWithFolderPathRelative:internalParams];
@@ -235,7 +236,7 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkNodeProxy)
     
     ComAlfrescoAppceleratorSdkNodeProxy* proxy = arg;
-    AlfrescoNode* node = proxy.node;
+    AlfrescoNode* node = proxy->node;
     
     [service retrieveParentFolderOfNode:node
      completionBlock:^(AlfrescoFolder* folder, NSError* error)
@@ -249,7 +250,7 @@
 {
     ComAlfrescoAppceleratorSdkNodeProxy* nodeProxy = [args objectAtIndex:0];
     NSString* name = [args objectAtIndex:1];
-    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:nodeProxy.node, @"node", name, @"name", nil];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:nodeProxy->node, @"node", name, @"name", nil];
                                     
     [self internalRetrieveRenditionOfNode:internalParams];
 }
@@ -283,7 +284,7 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkFolderProxy)
 
     ComAlfrescoAppceleratorSdkFolderProxy* proxy = arg;
-    AlfrescoFolder* folder = (AlfrescoFolder*)proxy.node;
+    AlfrescoFolder* folder = (AlfrescoFolder*)proxy->node;
     
     NSLog(@"[INFO] folder object in use: %@", folder.name);
     
@@ -304,7 +305,7 @@
 {
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
-    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy.node, @"folder", listingContextProxy.listingContext, @"listingContext", nil];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy->node, @"folder", listingContextProxy.listingContext, @"listingContext", nil];
 
     [self internalRetrieveDocumentsInFolderWithListingContext:internalParams];
 }
@@ -341,7 +342,7 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkFolderProxy)
     
     ComAlfrescoAppceleratorSdkFolderProxy* proxy = arg;
-    AlfrescoFolder* folder = (AlfrescoFolder*)proxy.node;
+    AlfrescoFolder* folder = (AlfrescoFolder*)proxy->node;
     
     NSLog(@"[INFO] folder object in use: %@", folder.name);
     
@@ -362,7 +363,7 @@
 {
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
-    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy.node, @"folder", listingContextProxy.listingContext, @"listingContext", nil];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy->node, @"folder", listingContextProxy.listingContext, @"listingContext", nil];
     
     [self internalRetrieveFoldersInFolderWithListingContext:internalParams];
 }
@@ -400,7 +401,7 @@
   
     ComAlfrescoAppceleratorSdkDocumentProxy* document = arg;
     
-    [service retrieveContentOfDocument:(AlfrescoDocument*)document.node
+    [service retrieveContentOfDocument:(AlfrescoDocument*)document->node
         completionBlock:^(AlfrescoContentFile *contentFile, NSError *error)
         {
             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:

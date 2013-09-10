@@ -59,14 +59,11 @@
 
 -(void)createEventWithSite:(AlfrescoSite*)site context:(NSString*)context
 {
-    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
-    
-    NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
-    
     ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [[ComAlfrescoAppceleratorSdkSiteProxy alloc]initWithSite:site];
-    [values setValue:siteProxy forKey:@"site"];
     
-    [self fireEvent:context withObject:values];
+    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:siteProxy, @"site", nil];
+                           
+    [self fireEvent:context withObject:event];
 }
 
 

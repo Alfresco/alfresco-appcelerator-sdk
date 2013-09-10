@@ -35,31 +35,23 @@
 
 +(void)createEventWithNode:(AlfrescoNode*)node proxyObject:(TiProxy*)proxyObj
 {
-    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"name", @"title", @"summary", @"type", @"createdBy", @"createdAt", @"modifiedBy", @"modifiedAt", nil];
-    
     if (node.isFolder)
     {
         NSLog(@"[INFO] ** Folder node: %@", node.name);
         
-        NSMutableDictionary* values = [[node dictionaryWithValuesForKeys:keys] mutableCopy];
-        
         ComAlfrescoAppceleratorSdkFolderProxy *thisFolder = [[ComAlfrescoAppceleratorSdkFolderProxy alloc] initWithNode:node];
-        [values setValue:thisFolder forKey:@"folder"];
+        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:thisFolder, @"folder", nil];
         
-        [proxyObj fireEvent:@"foldernode" withObject:values];
+        [proxyObj fireEvent:@"foldernode" withObject:event];
     }
     else
     {
         NSLog(@"[INFO] ** Document node: %@", node.name);
         
-        [keys addObjectsFromArray:[[NSArray alloc] initWithObjects:@"contentMimeType", @"contentLength", @"versionLabel", @"versionComment", @"isLatestVersion", nil]];
-        
-        NSMutableDictionary* values = [[node dictionaryWithValuesForKeys:keys] mutableCopy];
-        
         ComAlfrescoAppceleratorSdkDocumentProxy *thisDocument = [[ComAlfrescoAppceleratorSdkDocumentProxy alloc] initWithNode:node];
-        [values setValue:thisDocument forKey:@"document"];
+        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:thisDocument, @"document", nil];
         
-        [proxyObj fireEvent:@"documentnode" withObject:values];
+        [proxyObj fireEvent:@"documentnode" withObject:event];
     }
 }
 

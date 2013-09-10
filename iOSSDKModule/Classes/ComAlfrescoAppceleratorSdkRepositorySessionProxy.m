@@ -27,10 +27,7 @@
 //
 
 #import "ComAlfrescoAppceleratorSdkRepositorySessionProxy.h"
-#import "ComAlfrescoAppceleratorSdkSessionCompletionBlockProxy.h"
-
 #import "AlfrescoRepositorySession.h"
-
 #import "TiUtils.h"
 
 @implementation ComAlfrescoAppceleratorSdkRepositorySessionProxy

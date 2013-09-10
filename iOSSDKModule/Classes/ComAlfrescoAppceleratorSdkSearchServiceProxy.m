@@ -68,6 +68,7 @@
     [self internalSearchWithStatement:internalParams];
 }
 
+
 -(void)searchWithStatement:(id)arg
 {
     ENSURE_SINGLE_ARG(arg,NSString)

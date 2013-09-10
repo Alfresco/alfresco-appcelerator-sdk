@@ -33,7 +33,7 @@ function Controller() {
             color: "black",
             font: {
                 fontFamily: "Arial",
-                fontSize: "16dp",
+                fontSize: "14dp",
                 fontWeight: "bold"
             },
             left: "60dp",
@@ -100,7 +100,7 @@ function Controller() {
             color: "black",
             font: {
                 fontFamily: "Arial",
-                fontSize: "16dp",
+                fontSize: "14dp",
                 fontWeight: "bold"
             },
             left: "60dp",
@@ -158,7 +158,7 @@ function Controller() {
             var activityService = Alloy.Globals.SDKModule.createActivityService();
             activityService.initWithSession(Alloy.Globals.repositorySession);
             activityService.retrieveActivityStream();
-            Alloy.Globals.activitiesModelListener(activityService, $.activities, "activitynode");
+            Alloy.Globals.activitiesModelListener(activityService, $.activities);
             $.activityList.addEventListener("itemclick", function(e) {
                 var item = e.section.getItemAt(e.itemIndex);
                 var mainDataSet = [];

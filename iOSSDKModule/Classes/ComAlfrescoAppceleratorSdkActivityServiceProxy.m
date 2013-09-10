@@ -29,6 +29,8 @@
 #import "ComAlfrescoAppceleratorSdkActivityServiceProxy.h"
 #import "ComAlfrescoAppceleratorSdkSiteProxy.h"
 #import "ComAlfrescoAppceleratorSdkListingContextProxy.h"
+#import "ComAlfrescoAppceleratorSdkActivityProxy.h"
+
 #import "SDKUtil.h"
 
 
@@ -56,12 +58,10 @@
 
 -(void)createEventWithActivityEntry:(AlfrescoActivityEntry*)entry
 {
-    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"createdAt", @"createdBy",
-                                                                   @"siteShortName", @"type", @"data", nil];
+    ComAlfrescoAppceleratorSdkActivityProxy* activityProxy = [[ComAlfrescoAppceleratorSdkActivityProxy alloc]initWithActivityEntry:entry];
+    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:activityProxy, @"activity", nil];
     
-    NSMutableDictionary* values = [[entry dictionaryWithValuesForKeys:keys] mutableCopy];
-    
-    [self fireEvent:@"activitynode" withObject:values];
+    [self fireEvent:@"activitynode" withObject:event];
 }
 
 
@@ -157,7 +157,7 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSiteProxy)
     
     ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = arg;
-    AlfrescoSite* site = siteProxy.currentSite;
+    AlfrescoSite* site = siteProxy->currentSite;
     
     [service retrieveActivityStreamForSite:site completionBlock:^(NSArray* array, NSError* error)
     {
@@ -174,7 +174,7 @@
     ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
 
-    AlfrescoSite* site = siteProxy.currentSite;
+    AlfrescoSite* site = siteProxy->currentSite;
 
     AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
     NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:listingContext, @"listingContext",

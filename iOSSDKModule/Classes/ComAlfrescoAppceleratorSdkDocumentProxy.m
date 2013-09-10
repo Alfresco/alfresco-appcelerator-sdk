@@ -32,7 +32,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"[INFO] DocumentProxy object %@ being deallocated", self.node.name);
+    NSLog(@"[INFO] DocumentProxy object %@ being deallocated", self->node.name);
 }
 
 @end

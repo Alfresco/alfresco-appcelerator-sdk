@@ -10,8 +10,14 @@
 	backgroundColor: '#336699', 
 	top: 0, 
 	left: 0, 
-	width: Ti.UI.FILL, 
+	width: '60%', 
 	height: '40dp'
+},
+"#viewButton":{
+	top: 0,
+	left: '60%',
+	width: '40%',
+	backgroundColor: '#336699'
 },
 "#folderList":{
 	top: '40dp', 

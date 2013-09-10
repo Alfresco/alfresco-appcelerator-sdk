@@ -30,15 +30,28 @@
 
 @implementation ComAlfrescoAppceleratorSdkNodeProxy
 
--(id)initWithNode:(AlfrescoNode *)node
+-(id)initWithNode:(AlfrescoNode *)n
 {
-    self.node = node;
+    self->node = n;
+    
+    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"name", @"title", @"summary", @"type", @"createdBy", @"createdAt", @"modifiedBy", @"modifiedAt", nil];
+
+    if (node.isDocument)
+    {
+        [keys addObjectsFromArray:[[NSArray alloc] initWithObjects:@"contentMimeType", @"contentLength", @"versionLabel", @"versionComment", @"isLatestVersion", nil]];
+    }
+    
+    NSMutableDictionary* values = [[node dictionaryWithValuesForKeys:keys] mutableCopy];
+    
+    [self setValuesForKeysWithDictionary:values];
+    
     return self;
 }
 
+
 - (id)getName:(id)noargs
 {
-    return self.node.name;
+    return self->node.name;
 }
 
 @end

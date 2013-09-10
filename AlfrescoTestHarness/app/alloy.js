@@ -12,49 +12,51 @@ Alloy.Globals.modelListeners = function(service, mainSection)
 {
 	service.addEventListener('documentnode',function(e)
   	{
-  	 	Ti.API.info("DOCUMENT: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ", MIME type = " + e.contentMimeType);	
+  		var doc = e.document;
+  		
+  	 	Ti.API.info("DOCUMENT: name = " + doc.name + ", title = " + doc.title + ", summary = " + doc.summary + ", MIME type = " + doc.contentMimeType);	
   	 	
   	 	var icon = "mime_txt.png";
   	 	
-  	 	if (e.contentMimeType != null)
+  	 	if (doc.contentMimeType != null)
   	 	{
-	  	 	if (e.contentMimeType.indexOf("text/") !== -1)
+	  	 	if (doc.contentMimeType.indexOf("text/") !== -1)
 	  	 	{
-	  	 		if (e.contentMimeType.indexOf("/plain") !== -1)
+	  	 		if (doc.contentMimeType.indexOf("/plain") !== -1)
 	  	 			icon = "mime_txt.png";
 	  	 		else
 	  	 			icon = "mime_doc.png";
 	  	 	}
 	  	 	else	
-	  	 	if (e.contentMimeType.indexOf("application/") !== -1)
+	  	 	if (doc.contentMimeType.indexOf("application/") !== -1)
 	  	 	{
-	  	 		if (e.contentMimeType.indexOf("/msword") !== -1  || 
-	  	 			e.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.wordprocessingml") !== -1)
+	  	 		if (doc.contentMimeType.indexOf("/msword") !== -1  || 
+	  	 			doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.wordprocessingml") !== -1)
 	  	 		{
 	  	 			icon = "mime_doc.png";
 	  	 		}
 	  	 		else
-	  	 		if (e.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.spreadsheetml") !== -1)
+	  	 		if (doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.spreadsheetml") !== -1)
 	  	 		{
 	  	 			//Spreadsheet
 	  	 		}
 	  	 	}
 	  	 	else
-	  	 	if (e.contentMimeType.indexOf("image/") !== -1)
+	  	 	if (doc.contentMimeType.indexOf("image/") !== -1)
 	  	 		icon="mime_img.png";
 	  	}
 	  	 		
-  	 	var modified = new String + e.modifiedAt;
+  	 	var modified = new String + doc.modifiedAt;
   	 	modified = modified.substr(0,21);
   	 	
-  	 	var truncText = e.name;
+  	 	var truncText = doc.name;
   	 	var len  = truncText.length;
   	 	
   	 	if (len > 22)
-  	 		truncText = e.name.substr(0, 22) + "...";
+  	 		truncText = doc.name.substr(0, 22) + "...";
   	 		
   	 	var mainDataSet = [];
-  	 	var data = {info: {text: truncText}, es_info: {text: modified}, pic: {image: icon},  properties: {data: e, folder: 0, name: e.name, docobject: e.document} };	 	  	 		
+  	 	var data = {info: {text: truncText}, es_info: {text: modified}, pic: {image: icon},  properties: {data: doc, folder: 0, name: doc.name, docobject: doc} };	 	  	 		
   	 	mainDataSet.push(data);
   	 	mainSection.appendItems(mainDataSet);	
   	});
@@ -64,13 +66,13 @@ Alloy.Globals.modelListeners = function(service, mainSection)
   		var folder = e.folder;
   		var folderName = folder.getName();
   		
-  	 	Ti.API.info("FOLDER: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ". Folder name from object: "+ folderName);
+  	 	Ti.API.info("FOLDER: name = " + folder.name + ", title = " + folder.title + ", summary = " + folder.summary + ". Folder name from object: "+ folderName);
   	 	
-  	 	var modified = new String + e.modifiedAt;
+  	 	var modified = new String + folder.modifiedAt;
   	 	modified = modified.substr(0,21);
   	 	
   	 	var mainDataSet = [];
-  	 	var data = {info: {text: e.name}, es_info: {text: modified}, pic: {image: 'folder@2x.png'},  properties: {data: e, folder: 1, name: e.name, folderobject: e.folder} };
+  	 	var data = {info: {text: folder.name}, es_info: {text: modified}, pic: {image: 'folder@2x.png'},  properties: {data: folder, folder: 1, name: folder.name, folderobject: folder} };
         		
   	 	mainDataSet.push(data);
   	 	mainSection.appendItems(mainDataSet);
@@ -122,10 +124,12 @@ Alloy.Globals.sitesModelListener = function(service, section, sitetype)
 {
 	service.addEventListener(sitetype,function(e)
 	{
-  	 	Ti.API.info(sitetype.toUpperCase() + ": name = " + e.shortName + ", title = " + e.title + ", summary = " + e.summary);
+		var site = e.site;
+		
+  	 	Ti.API.info(sitetype.toUpperCase() + ": name = " + site.shortName + ", title = " + site.title + ", summary = " + site.summary);
   	 	
   	 	var mainDataSet = [];
-  	 	var data = {info: {text: e.shortName}, es_info: {text: e.title}, pic: {image: 'folder@2x.png'},  properties: {data: e, name: e.shortName, siteObject: e.site} };
+  	 	var data = {info: {text: site.shortName}, es_info: {text: site.title}, pic: {image: 'folder@2x.png'},  properties: {data: site, name: site.shortName, siteObject: site} };
         		
   	 	mainDataSet.push(data);
   	 	section.appendItems(mainDataSet);
@@ -133,24 +137,25 @@ Alloy.Globals.sitesModelListener = function(service, section, sitetype)
 }
 
 
-Alloy.Globals.activitiesModelListener = function(service, section, sitetype)
+Alloy.Globals.activitiesModelListener = function(service, section)
 {
-	service.addEventListener(sitetype,function(e)
+	service.addEventListener('activitynode',function(e)
 	{
-		var title = e.data.title;
-		var siteName = e.siteShortName;
+		var activity = e.activity;
+		var title = activity.type;
+		var siteName = activity.siteShortName;
 		
 		if (siteName.length == 0)
 			name = "No site name present in this field";
 			
-  	 	Ti.API.info(sitetype.toUpperCase() + ": title = " + title + ", type = " + e.type + ", created by = " + e.createdBy);
+  	 	Ti.API.info("ACTIVITY: title = " + title + ", type = " + activity.type + ", created by = " + activity.createdBy);
   	 	
-  	 	var creationDate = new String + e.createdAt;
+  	 	var creationDate = new String + activity.createdAt;
   	 	creationDate = creationDate.substr(0,21);
   	 	
   	 	var mainDataSet = [];
-  	 	var data = {info: {text: title}, es_info: {text: creationDate + " by " + e.createdBy}, pic: {image: 'default_entry_icon.png'}, 
-  	 				 properties: {data: e.data, title: title, siteShortName: siteName, identifier: e.identifier, createdAt: e.createdAt, createdBy: e.createdBy, type: e.type} };
+  	 	var data = {info: {text: title}, es_info: {text: creationDate + " by " + activity.createdBy}, pic: {image: 'default_entry_icon.png'}, 
+  	 				 properties: {data: activity.data, title: title, siteShortName: siteName, identifier: activity.identifier, createdAt: activity.createdAt, createdBy: activity.createdBy, type: activity.type} };
         		
   	 	mainDataSet.push(data);
   	 	section.appendItems(mainDataSet);
@@ -160,9 +165,9 @@ Alloy.Globals.activitiesModelListener = function(service, section, sitetype)
 
 Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument)
 {
-	service.addEventListener('retrievedpermissions', function(p)
+	service.addEventListener('retrievedpermissions', function(e)
 	{
-		Alloy.Globals.recursePropertiesAndAlert ("Permissions", p);
+		Alloy.Globals.recursePropertiesAndAlert ("Permissions", e.permissions);
 	});
 	
 	view.folderList.addEventListener('itemclick', function(e)
@@ -241,8 +246,8 @@ Alloy.Globals.recurseProperties = function recurseProperties (properties, proper
 			var valueAsString = new String;
 			valueAsString += propertyValue;
 			
-			//Filter out our internal properties, and JS internal properties
-			if (valueAsString.indexOf("ComAlfresco") >= 0  ||  propertyName.toUpperCase().indexOf("BUBBLE") >= 0)	
+			//Filter out JS internal properties
+			if (propertyName.toUpperCase().indexOf("BUBBLE") >= 0)	
 				continue;
 				
 			var subName;
