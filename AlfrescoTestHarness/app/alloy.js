@@ -189,6 +189,8 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	        	
 	        	service.retrievePermissionsOfNode(item.properties.folderobject);       	
 	        	
+	        	Alloy.Globals.retrieveCommentsAndAlert(item.properties.folderobject);
+	        	
 	        	parentFolders.push(service.getCurrentFolder());     	
 	        	folder = item.properties.folderobject;
 	        }        
@@ -209,9 +211,11 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	    }    
 	    else
 	    {
-	    	Alloy.Globals.recursePropertiesAndAlert ("Document properties", item.properties.data);
+	    	Alloy.Globals.recursePropertiesAndAlert ("Document properties", item.properties.docobject);
 	    	
 	    	service.retrievePermissionsOfNode(item.properties.docobject);
+    	
+    		Alloy.Globals.retrieveCommentsAndAlert(item.properties.docobject);
     	
 	    	onDocument(item.properties.docobject);	    	
 	   	}
@@ -259,5 +263,22 @@ Alloy.Globals.recurseProperties = function recurseProperties (properties, proper
 					
 			callForEachProperty(subName, propertyValue);
 		}
+	}
+}
+
+
+Alloy.Globals.retrieveCommentsAndAlert = function(docobject)
+{
+	if (Alloy.Globals.showProperties)
+	{
+		var commentService = Alloy.Globals.SDKModule.createCommentService();
+		
+		commentService.initWithSession(Alloy.Globals.repositorySession);
+		
+		commentService.retrieveCommentsForNode(docobject);
+		commentService.addEventListener('commentnode', function(e)
+		{
+			Alloy.Globals.recursePropertiesAndAlert ("Comment", e.comment);
+		});
 	}
 }

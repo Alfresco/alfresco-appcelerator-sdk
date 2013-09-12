@@ -71,6 +71,7 @@
 
 -(void)searchWithStatement:(id)arg
 {
+    ENSURE_UI_THREAD_1_ARG(arg)
     ENSURE_SINGLE_ARG(arg,NSString)
     
     [service searchWithStatement:(NSString *)arg language:AlfrescoSearchLanguageCMIS completionBlock:^(NSArray* array, NSError* error)
