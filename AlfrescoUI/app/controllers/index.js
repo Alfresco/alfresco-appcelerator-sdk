@@ -255,39 +255,41 @@ function getFolder(repoSesh)
 	
 	  	documentFolderService.addEventListener('documentnode',function(e)
 	  	{
-	  	 	Ti.API.info("DOCUMENT: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ", MIME type = " + e.contentMimeType);	
+	  		var doc = e.document;
+	  		
+	  	 	Ti.API.info("DOCUMENT: name = " + doc.name + ", title = " + doc.title + ", summary = " + doc.summary + ", MIME type = " + doc.contentMimeType);	
 	  	 	
 	  	 	var icon = "mime_txt.png";
-	  	 	if (e.contentMimeType.indexOf("text/") !== -1)
+	  	 	if (doc.contentMimeType.indexOf("text/") !== -1)
 	  	 	{
-	  	 		if (e.contentMimeType.indexOf("/plain") !== -1)
+	  	 		if (doc.contentMimeType.indexOf("/plain") !== -1)
 	  	 			icon = "mime_txt.png";
 	  	 		else
 	  	 			icon = "mime_doc.png";
 	  	 	}
 	  	 	else	
-	  	 	if (e.contentMimeType.indexOf("application/") !== -1)
+	  	 	if (doc.contentMimeType.indexOf("application/") !== -1)
 	  	 	{
-	  	 		if (e.contentMimeType.indexOf("/msword") !== -1  || 
-	  	 			e.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.wordprocessingml") !== -1)
+	  	 		if (doc.contentMimeType.indexOf("/msword") !== -1  || 
+	  	 			doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.wordprocessingml") !== -1)
 	  	 		{
 	  	 			icon = "mime_doc.png";
 	  	 		}
 	  	 		else
-	  	 		if (e.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.spreadsheetml") !== -1)
+	  	 		if (doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.spreadsheetml") !== -1)
 	  	 		{
 	  	 			//Spreadsheet
 	  	 		}
 	  	 	}
 	  	 	else
-	  	 	if (e.contentMimeType.indexOf("image/") !== -1)
+	  	 	if (doc.contentMimeType.indexOf("image/") !== -1)
 	  	 		icon="mime_img.png";
 	  	 		
 	  	 	var modified = new String + e.modifiedAt;
 	  	 	modified = modified.substr(0,21);
 	  	 	
 	  	 	var mainDataSet = [];
-	  	 	var data = {info: {text: e.name}, es_info: {text: modified}, pic: {image: icon},  properties: {folder: 0, name: e.name, docobject: e.document} };	 	  	 		
+	  	 	var data = {info: {text: doc.name}, es_info: {text: modified}, pic: {image: icon},  properties: {folder: 0, name: doc.name, docobject: doc} };	 	  	 		
 	  	 	mainDataSet.push(data);
 	  	 	mainSection.appendItems(mainDataSet);	
 	  	});
@@ -297,13 +299,13 @@ function getFolder(repoSesh)
 	  		var folder = e.folder;
 	  		var folderName = folder.getName();
 	  		
-	  	 	Ti.API.info("FOLDER: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ". Folder name from object: "+ folderName);
+	  	 	Ti.API.info("FOLDER: name = " + folder.name + ", title = " + folder.title + ", summary = " + folder.summary + ". Folder name from object: "+ folderName);
 	  	 	
-	  	 	var modified = new String + e.modifiedAt;
+	  	 	var modified = new String + folder.modifiedAt;
 	  	 	modified = modified.substr(0,21);
 	  	 	
 	  	 	var mainDataSet = [];
-	  	 	var data = {info: {text: e.name}, es_info: {text: modified}, pic: {image: 'folder@2x.png'},  properties: {folder: 1, name: e.name, folderobject: e.folder} };
+	  	 	var data = {info: {text: folder.name}, es_info: {text: modified}, pic: {image: 'folder@2x.png'},  properties: {folder: 1, name: folder.name, folderobject: folder} };
             		
 	  	 	mainDataSet.push(data);
 	  	 	mainSection.appendItems(mainDataSet);

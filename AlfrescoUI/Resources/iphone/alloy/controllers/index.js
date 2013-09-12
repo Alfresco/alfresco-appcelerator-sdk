@@ -331,15 +331,16 @@ function Controller() {
             folderLabel.text = " " + documentFolderService.getCurrentFolder().getName();
             documentFolderService.retrieveChildrenInFolder();
             documentFolderService.addEventListener("documentnode", function(e) {
-                Ti.API.info("DOCUMENT: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ", MIME type = " + e.contentMimeType);
+                var doc = e.document;
+                Ti.API.info("DOCUMENT: name = " + doc.name + ", title = " + doc.title + ", summary = " + doc.summary + ", MIME type = " + doc.contentMimeType);
                 var icon = "mime_txt.png";
-                -1 !== e.contentMimeType.indexOf("text/") ? icon = -1 !== e.contentMimeType.indexOf("/plain") ? "mime_txt.png" : "mime_doc.png" : -1 !== e.contentMimeType.indexOf("application/") ? -1 !== e.contentMimeType.indexOf("/msword") || -1 !== e.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.wordprocessingml") ? icon = "mime_doc.png" : -1 !== e.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.spreadsheetml") : -1 !== e.contentMimeType.indexOf("image/") && (icon = "mime_img.png");
+                -1 !== doc.contentMimeType.indexOf("text/") ? icon = -1 !== doc.contentMimeType.indexOf("/plain") ? "mime_txt.png" : "mime_doc.png" : -1 !== doc.contentMimeType.indexOf("application/") ? -1 !== doc.contentMimeType.indexOf("/msword") || -1 !== doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.wordprocessingml") ? icon = "mime_doc.png" : -1 !== doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.spreadsheetml") : -1 !== doc.contentMimeType.indexOf("image/") && (icon = "mime_img.png");
                 var modified = new String() + e.modifiedAt;
                 modified = modified.substr(0, 21);
                 var mainDataSet = [];
                 var data = {
                     info: {
-                        text: e.name
+                        text: doc.name
                     },
                     es_info: {
                         text: modified
@@ -349,8 +350,8 @@ function Controller() {
                     },
                     properties: {
                         folder: 0,
-                        name: e.name,
-                        docobject: e.document
+                        name: doc.name,
+                        docobject: doc
                     }
                 };
                 mainDataSet.push(data);
@@ -359,13 +360,13 @@ function Controller() {
             documentFolderService.addEventListener("foldernode", function(e) {
                 var folder = e.folder;
                 var folderName = folder.getName();
-                Ti.API.info("FOLDER: name = " + e.name + ", title = " + e.title + ", summary = " + e.summary + ". Folder name from object: " + folderName);
-                var modified = new String() + e.modifiedAt;
+                Ti.API.info("FOLDER: name = " + folder.name + ", title = " + folder.title + ", summary = " + folder.summary + ". Folder name from object: " + folderName);
+                var modified = new String() + folder.modifiedAt;
                 modified = modified.substr(0, 21);
                 var mainDataSet = [];
                 var data = {
                     info: {
-                        text: e.name
+                        text: folder.name
                     },
                     es_info: {
                         text: modified
@@ -375,8 +376,8 @@ function Controller() {
                     },
                     properties: {
                         folder: 1,
-                        name: e.name,
-                        folderobject: e.folder
+                        name: folder.name,
+                        folderobject: folder
                     }
                 };
                 mainDataSet.push(data);
