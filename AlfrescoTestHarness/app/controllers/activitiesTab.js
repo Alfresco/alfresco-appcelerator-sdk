@@ -8,28 +8,7 @@ Ti.App.addEventListener('cleartabs', function()
 
 
 Ti.App.addEventListener('activitiespopulate',function()
-{
-	var activityCreatorIndex;
-	
-	var personService = Alloy.Globals.SDKModule.createPersonService();		 
-	personService.initWithSession(Alloy.Globals.repositorySession);						
-	personService.addEventListener('personnode', function(e)
-	{
-		var person = e.person;
-		Ti.API.info("Person: " + person.fullName);
-		
-		personService.retrieveAvatarForPerson(person);
-		personService.addEventListener('retrievedavatar', function(e)
-		{
-			var contentFile = e.contentfile;			
-			Ti.API.info("Image: " + contentFile.getPath());
-			
-			var item = $.properties.getItemAt(activityCreatorIndex);
-			item.pic.image = contentFile.getPath();
-			$.properties.updateItemAt(activityCreatorIndex, item); 
- 		});
-	});
-	
+{	
 	if (Alloy.Globals.AlfrescoSDKVersion >= 1.0)
 	{
 		if (Alloy.Globals.repositorySession != null  &&  $.activities.getItems().length == 0)
@@ -39,26 +18,50 @@ Ti.App.addEventListener('activitiespopulate',function()
 			
 			activityService.retrieveActivityStream();
 			Alloy.Globals.activitiesModelListener(activityService, $.activities);
+			
+			var personService = Alloy.Globals.SDKModule.createPersonService();		 
+			personService.initWithSession(Alloy.Globals.repositorySession);		
 					
 			$.activityList.addEventListener('itemclick', function(e)
 			{
 				var item = e.section.getItemAt(e.itemIndex);
 				var mainDataSet = [];
+				var activityCreatorIndex;
 				
 				$.properties.deleteItemsAt(0,$.properties.getItems().length);			
 				activityCreatorImage = "";	
-	
+								
+				personService.addEventListener('personnode', personnodeFunc = function(e)
+				{
+					var person = e.person;
+					Ti.API.info("Person: " + person.fullName);
+					
+					personService.retrieveAvatarForPerson(person);
+					personService.addEventListener('retrievedavatar', retrievedavatarFunc = function(e)
+					{
+						var contentFile = e.contentfile;			
+						Ti.API.info("Image: " + contentFile.getPath());
+						
+						var item = $.properties.getItemAt(activityCreatorIndex);
+						item.pic.image = contentFile.getPath();
+						$.properties.updateItemAt(activityCreatorIndex, item); 
+						
+						personService.removeEventListener('personnode', personnodeFunc);
+						personService.removeEventListener('retrievedavatar', retrievedavatarFunc);
+			 		});
+				});			
+				
 				Alloy.Globals.recurseProperties (item.properties, "", function(name,value)
 		  	 	{
+		  	 		data = {info: {text: name + ":"}, es_info: {text: value}, pic: {image: "default_entry_icon.png"}};
+		  	 		mainDataSet.push(data);
+		  	 		
 		  	 		if (name=='createdBy')
 		  	 		{
 		  	 			Ti.API.info("Person id: " + value);	  	 			
 		  	 			personService.retrievePersonWithIdentifier(value);
 		  	 			activityCreatorIndex = mainDataSet.length;
 		  	 		}
-		  	 		
-				   	data = {info: {text: name + ":"}, es_info: {text: value}, pic: {image: "default_entry_icon.png"}};
-		  	 		mainDataSet.push(data);
 				});
 	 		
 		  	 	$.properties.appendItems(mainDataSet);
