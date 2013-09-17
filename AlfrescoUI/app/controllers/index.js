@@ -314,28 +314,21 @@ function getFolder(repoSesh)
 	  	documentFolderService.addEventListener('retrieveddocument',function(e)
 		{
 			var contentFile = e.contentfile;
-			
-			//Move the file into the app's temporary folder, as it needs to be within the app's folders to be openable as an Intent.
-			//The new temporary file will get deleted as the app shuts down.
-			var file = Ti.Filesystem.getFile("file:/" + contentFile.getPath());
-			var newFile = Ti.Filesystem.getFile(Ti.Filesystem.tempDirectory, contentFile.getName());
-			newFile.write(file.read());
-			file.deleteFile();
 		
 			if (Ti.Platform.name == 'iPhone OS')
 			{
-				//Using DocumentViewer available from SmartAccess at https://marketplace.appcelerator.com/apps/3820?897323448
-				//This is due to the fact that OpenURL() functionality does not work under iOS 6> for local files, and the Appcelerator DocumentViewer
-				//will currently only open resource documents, not file system based documents.
-				var documentviewer = require('es.smartaccess.documentviewer');
-				var documentViewerProxy = require('es.smartaccess.documentviewer');		
-
-				documentViewer = documentViewerProxy.createDocumentViewer({url: newFile.getNativePath()});
-				documentViewer.show();
+				Ti.UI.iOS.createDocumentViewer({url:contentFile.getPath()}).show();
 			}
 			else
 			if (Ti.Platform.name == 'android')
 			{
+				//Move the file into the app's temporary folder, as it needs to be within the app's folders to be openable as an Intent.
+				//The new temporary file will get deleted as the app shuts down.
+				var file = Ti.Filesystem.getFile("file:/" + contentFile.getPath());
+				var newFile = Ti.Filesystem.getFile(Ti.Filesystem.tempDirectory, contentFile.getName());
+				newFile.write(file.read());
+				file.deleteFile();
+				
 				Ti.Android.currentActivity.startActivity(Ti.Android.createIntent( { action: Ti.Android.ACTION_VIEW, type: contentFile.getMIMEType(), data: newFile.getNativePath() } ));
 			}
    		});

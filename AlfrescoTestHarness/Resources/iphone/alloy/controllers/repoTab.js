@@ -37,7 +37,7 @@ function Controller() {
         backgroundColor: "#336699",
         top: 0,
         left: 0,
-        width: "60%",
+        width: "100%",
         height: "40dp",
         id: "folderLabel"
     });
@@ -45,7 +45,7 @@ function Controller() {
     $.__views.viewButton = Ti.UI.createSwitch({
         top: 0,
         left: "60%",
-        width: "40%",
+        width: "0%",
         backgroundColor: "#336699",
         id: "viewButton"
     });

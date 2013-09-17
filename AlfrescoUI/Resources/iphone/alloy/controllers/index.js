@@ -385,16 +385,9 @@ function Controller() {
             });
             documentFolderService.addEventListener("retrieveddocument", function(e) {
                 var contentFile = e.contentfile;
-                var file = Ti.Filesystem.getFile("file:/" + contentFile.getPath());
-                var newFile = Ti.Filesystem.getFile(Ti.Filesystem.tempDirectory, contentFile.getName());
-                newFile.write(file.read());
-                file.deleteFile();
-                require("es.smartaccess.documentviewer");
-                var documentViewerProxy = require("es.smartaccess.documentviewer");
-                documentViewer = documentViewerProxy.createDocumentViewer({
-                    url: newFile.getNativePath()
-                });
-                documentViewer.show();
+                Ti.UI.iOS.createDocumentViewer({
+                    url: contentFile.getPath()
+                }).show();
             });
             documentFolderService.addEventListener("progresseddocument", function(e) {
                 e.bytes;

@@ -58,6 +58,5 @@
     <modules>
         <module platform="iphone" version="1.0">com.alfresco.appcelerator.module.sdk</module>
         <module platform="android" version="1.0">com.alfresco.appcelerator.module.sdk</module>
-        <module platform="iphone">es.smartaccess.documentviewer</module>
     </modules>
 </ti:app>

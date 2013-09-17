@@ -47,7 +47,6 @@ This project uses the free DocumentViewer available from SmartAccess at https://
     <modules>
         <module platform="iphone">com.alfresco.appcelerator.module.sdk</module>
         <module platform="android">com.alfresco.appcelerator.module.sdk</module>
-        <module platform="iphone">es.smartaccess.documentviewer</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>

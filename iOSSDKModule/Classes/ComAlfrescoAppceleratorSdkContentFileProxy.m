@@ -65,13 +65,15 @@
 
 -(id)getPath:(id)args
 {
-    return contentFile.fileUrl.path;
+    NSMutableString* appceleratorPath = [[NSMutableString alloc]initWithString:@"file://localhost"];
+    [appceleratorPath appendString:contentFile.fileUrl.path];
+    return [appceleratorPath stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
 }
 
 
 -(id)getFile:(id)args
 {
-    return [[TiFile alloc] initWithPath:contentFile.fileUrl.path];
+    return [[TiFile alloc] initWithPath:[self getPath:NULL]];
 }
 
 @end
