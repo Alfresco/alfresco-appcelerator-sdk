@@ -33,6 +33,14 @@
 
 @implementation SDKUtil
 
+
++createErrorEvent:(NSError*)error proxyObject:(TiProxy*)proxyObj
+{
+    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:error.code], @"errorcode", error.description, @"errorstring", nil];
+    [proxyObj fireEvent:@"error" withObject:event];
+}
+
+
 +(void)createEventWithNode:(AlfrescoNode*)node proxyObject:(TiProxy*)proxyObj
 {
     if (node.isFolder)

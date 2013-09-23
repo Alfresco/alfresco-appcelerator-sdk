@@ -37,6 +37,7 @@ Ti.App.addEventListener('activitiespopulate',function()
 					Ti.API.info("Person: " + person.fullName);
 					
 					personService.retrieveAvatarForPerson(person);
+					
 					personService.addEventListener('retrievedavatar', retrievedavatarFunc = function(e)
 					{
 						var contentFile = e.contentfile;			

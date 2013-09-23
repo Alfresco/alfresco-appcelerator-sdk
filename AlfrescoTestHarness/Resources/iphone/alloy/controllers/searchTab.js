@@ -12,6 +12,9 @@ function Controller() {
                 documentFolderService.saveDocument(document);
             });
             Alloy.Globals.modelListeners(searchService, mainSection);
+            searchService.addEventListener("error", function(e) {
+                alert(e.errorString);
+            });
             searchService.searchWithStatementAndListingContext(searchTerm, listingContext);
         }
     }

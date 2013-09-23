@@ -77,11 +77,13 @@
     [service searchWithStatement:(NSString *)arg language:AlfrescoSearchLanguageCMIS completionBlock:^(NSArray* array, NSError* error)
      {
          if (error != NULL)
-             NSLog(@"[INFO] Error %@", error.description);
-         
-         for (int i = 0;  i < array.count;  i++)
+              [SDKUtil createErrorEvent:error proxyObject:self];
+         else
          {
-             [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+             }
          }
      }];
 }
@@ -134,14 +136,16 @@
                     completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
          {
              if (error != NULL)
-                 NSLog(@"[INFO] Error %@", error.description);
-             
-             for (int i = 0;  i < pagingResult.objects.count;  i++)
+                  [SDKUtil createErrorEvent:error proxyObject:self];
+             else
              {
-                 [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
-             }
+                 for (int i = 0;  i < pagingResult.objects.count;  i++)
+                 {
+                     [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+                 }
              
-             [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+                 [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+             }
          }];
     }
     else
@@ -150,11 +154,13 @@
         completionBlock:^(NSArray* array, NSError* error)
          {
              if (error != NULL)
-                 NSLog(@"[INFO] Error %@", error.description);
-             
-             for (int i = 0;  i < array.count;  i++)
+                 [SDKUtil createErrorEvent:error proxyObject:self];
+             else
              {
-                 [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+                 for (int i = 0;  i < array.count;  i++)
+                 {
+                     [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+                 }
              }
          }];
     }
@@ -176,14 +182,16 @@
     completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
     {
         if (error != NULL)
-            NSLog(@"[INFO] Error %@", error.description);
-        
-         for (int i = 0;  i < pagingResult.objects.count;  i++)
-         {
-             [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
-         }
-         
-         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+             [SDKUtil createErrorEvent:error proxyObject:self];
+        else
+        {
+             for (int i = 0;  i < pagingResult.objects.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+             }
+             
+             [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+        }
     }];
 }
 

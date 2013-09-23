@@ -34,6 +34,8 @@
 
 @interface SDKUtil : NSObject
 
++createErrorEvent:(NSError*)error proxyObject:(TiProxy*)proxyObj;
+
 +(void)createEventWithNode:(AlfrescoNode*)node proxyObject:(TiProxy*)proxyObj;
 
 +(void)createEventWithPagingResult:(AlfrescoPagingResult*)pagingResult  proxyObject:(TiProxy*)proxyObj;

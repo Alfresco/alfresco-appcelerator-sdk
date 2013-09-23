@@ -13,6 +13,8 @@ Ti.App.addEventListener('searchinit',function()
 		documentFolderService.initWithSession(Alloy.Globals.repositorySession);
 	
 		searchService = Alloy.Globals.SDKModule.createSearchService();
+		searchService.addEventListener('error', function(e) { alert(e.errorstring); });
+		
 		searchService.initWithSession(Alloy.Globals.repositorySession);
 		
 		listingContext = Alloy.Globals.SDKModule.createListingContext();
@@ -55,6 +57,7 @@ function searchButtonClick()
 
 		Alloy.Globals.modelListeners(searchService, mainSection);
 				
-		searchService.searchWithStatementAndListingContext(searchTerm, listingContext);
+		searchService.searchWithStatement(searchTerm);
+		//searchService.searchWithStatementAndListingContext(searchTerm, listingContext);
 	}			
 }					

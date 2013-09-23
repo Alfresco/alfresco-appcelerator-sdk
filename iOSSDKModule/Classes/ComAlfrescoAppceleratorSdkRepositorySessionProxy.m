@@ -29,6 +29,8 @@
 #import "ComAlfrescoAppceleratorSdkRepositorySessionProxy.h"
 #import "AlfrescoRepositorySession.h"
 #import "TiUtils.h"
+#include "SDKUtil.h"
+
 
 @implementation ComAlfrescoAppceleratorSdkRepositorySessionProxy
 
@@ -41,14 +43,6 @@
     NSString *user = [self valueForKey:@"serverUsername"];
     NSString *pwd = [self valueForKey:@"serverPassword"];
     
-    if (url == nil  ||  user == nil  ||  pwd == nil)
-    {
-        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"errorcode", nil];
-        [self fireEvent:@"paramerror" withObject:event];
-        
-        return;
-    } 
-    
     AlfrescoRequest* request;
     ComAlfrescoAppceleratorSdkRepositorySessionProxy *weakSelf = self;
   
@@ -57,10 +51,8 @@
                                                         {
                                                             if (nil == session)
                                                             {
-                                                                self.error = error;
-                                                                
-                                                                NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:error.code], @"errorcode", @"", @"errorstring", nil];
-                                                                [weakSelf fireEvent:@"error" withObject:event];
+                                                                self.error = error;                                                                
+                                                                [SDKUtil createErrorEvent:error proxyObject:weakSelf];
                                                             }
                                                             else
                                                             {
