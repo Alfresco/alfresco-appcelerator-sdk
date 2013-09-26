@@ -1,3 +1,23 @@
+/*
+ ******************************************************************************
+ * Copyright (C) 2005-2013 Alfresco Software Limited.
+ *
+ * This file is part of the Alfresco Mobile SDK.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *****************************************************************************
+ */
+
 
 /*
  createServiceListeners
@@ -158,11 +178,6 @@ Alloy.Globals.activitiesModelListener = function(service, section)
 
 Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument)
 {
-	service.addEventListener('retrievedpermissions', function(e)
-	{
-		Alloy.Globals.recursePropertiesAndAlert ("Permissions", e.permissions);
-	});
-	
 	view.folderList.addEventListener('itemclick', function(e)
 	{
 		var mainSection = e.section;
@@ -178,16 +193,11 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	        }
 	        else
 	        {
-	        	Alloy.Globals.recursePropertiesAndAlert ("Folder properties", item.properties.data);
+	        	folder = item.properties.folderobject;
 	        	
-	        	service.retrievePermissionsOfNode(item.properties.folderobject);       	
-	        	
-	        	Alloy.Globals.retrieveCommentsAndAlert(item.properties.folderobject);
-	        	
-	        	Alloy.Globals.retrieveTagsAndAlert(item.properties.folderobject);
+	        	Alloy.Globals.currentNode = folder;	 
 	        	
 	        	parentFolders.push(service.getCurrentFolder());     	
-	        	folder = item.properties.folderobject;
 	        }        
 	        
 	        //Empty the list and add 'Back' item if we're not at root folder.
@@ -206,15 +216,11 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	    }    
 	    else
 	    {
-	    	Alloy.Globals.recursePropertiesAndAlert ("Document properties", item.properties.docobject);
+	    	var doc = item.properties.docobject;
 	    	
-	    	service.retrievePermissionsOfNode(item.properties.docobject);
-    	
-    		Alloy.Globals.retrieveCommentsAndAlert(item.properties.docobject);
-    	
-    		Alloy.Globals.retrieveTagsAndAlert(item.properties.folderobject);
+	    	Alloy.Globals.currentNode = doc;
     		
-	    	onDocument(item.properties.docobject);	    	
+	    	onDocument(doc);	    	
 	   	}
 	});
 }
@@ -260,39 +266,5 @@ Alloy.Globals.recurseProperties = function recurseProperties (properties, proper
 					
 			callForEachProperty(subName, propertyValue);
 		}
-	}
-}
-
-
-Alloy.Globals.retrieveCommentsAndAlert = function(docobject)
-{
-	if (Alloy.Globals.showProperties)
-	{
-		var commentService = Alloy.Globals.SDKModule.createCommentService();
-		
-		commentService.initWithSession(Alloy.Globals.repositorySession);
-		
-		commentService.retrieveCommentsForNode(docobject);
-		commentService.addEventListener('commentnode', function(e)
-		{
-			Alloy.Globals.recursePropertiesAndAlert ("Comment", e.comment);
-		});
-	}
-}
-
-
-Alloy.Globals.retrieveTagsAndAlert = function(docobject)
-{
-	if (Alloy.Globals.showProperties)
-	{
-		var taggingService = Alloy.Globals.SDKModule.createTaggingService();
-		
-		taggingService.initWithSession(Alloy.Globals.repositorySession);
-		
-		taggingService.retrieveTagsForNode(docobject);
-		taggingService.addEventListener('tagnode', function(e)
-		{
-			Alloy.Globals.recursePropertiesAndAlert ("Tag", e.tag);
-		});
 	}
 }

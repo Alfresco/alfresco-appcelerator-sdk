@@ -35,7 +35,7 @@
     AlfrescoPersonService* service;
 }
 
--(void)initWithSession:(id)arg;
+-(void)initialiseWithSession:(id)arg;
 
 -(void)retrievePersonWithIdentifier:(id)arg;
 

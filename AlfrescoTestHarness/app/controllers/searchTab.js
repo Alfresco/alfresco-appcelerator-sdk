@@ -1,3 +1,23 @@
+/*
+ ******************************************************************************
+ * Copyright (C) 2005-2013 Alfresco Software Limited.
+ *
+ * This file is part of the Alfresco Mobile SDK.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *****************************************************************************
+ */
+
 var mainSection = $.mainSection;
 var documentFolderService;
 var searchService;
@@ -10,12 +30,12 @@ Ti.App.addEventListener('searchinit',function()
 	if (Alloy.Globals.repositorySession != null)
 	{ 
 		documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
-		documentFolderService.initWithSession(Alloy.Globals.repositorySession);
+		documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 	
 		searchService = Alloy.Globals.SDKModule.createSearchService();
 		searchService.addEventListener('error', function(e) { alert(e.errorstring); });
 		
-		searchService.initWithSession(Alloy.Globals.repositorySession);
+		searchService.initialiseWithSession(Alloy.Globals.repositorySession);
 		
 		listingContext = Alloy.Globals.SDKModule.createListingContext();
 	}
@@ -31,7 +51,7 @@ Ti.App.addEventListener('cleartabs', function()
 
 function searchButtonClick()
 {
-	listingContext.initWithMaxItemsAndSkipCount(5, skipCount);
+	listingContext.initialiseWithMaxItemsAndSkipCount(5, skipCount);
 	//skipCount += 5;
 	
 	var searchTerm = "SELECT * FROM cmis:document WHERE cmis:name LIKE '%" + $.searchEdit.value + "%'";

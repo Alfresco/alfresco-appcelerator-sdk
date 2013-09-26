@@ -32,6 +32,12 @@
 				
 		</Tab> 
 		
+		<Tab id="propsTab" title="Properties" icon="KS_nav_ui.png">
+			
+			<Require src="propertiesTab" id="propstab">
+				
+		</Tab> 
+		
 	</TabGroup>
 	
 </Alloy>

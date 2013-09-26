@@ -33,12 +33,12 @@
 
 @property (nonatomic, strong) AlfrescoKeywordSearchOptions* searchOptions;
 
--(void)init:(id)noargs;
+-(void)initialise:(id)noargs;
 
--(void)initWithExactMatch:(id)args;
+-(void)initialiseWithExactMatch:(id)args;
 
--(void)initWithFolder:(id)args;
+-(void)initialiseWithFolder:(id)args;
 
--(void)initWithExactMatchAndFolder:(id)args;
+-(void)initialiseWithExactMatchAndFolder:(id)args;
 
 @end

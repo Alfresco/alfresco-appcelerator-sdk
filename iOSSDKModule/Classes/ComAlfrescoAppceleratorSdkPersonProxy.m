@@ -28,17 +28,26 @@
 
 #import "ComAlfrescoAppceleratorSdkPersonProxy.h"
 
+@interface ComAlfrescoAppceleratorSdkPersonProxy()
+@property (nonatomic,strong) AlfrescoPerson *person;
+@end
+
 @implementation ComAlfrescoAppceleratorSdkPersonProxy
 
--(id)initWithPerson:(AlfrescoPerson *)p
+-(id)initWithPerson:(AlfrescoPerson *)person
 {
-    self->person = p;
+    self = [super init];
     
-    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"firstName", @"lastName", @"fullName", @"avatarIdentifier", nil];
-    
-    NSMutableDictionary* values = [[person dictionaryWithValuesForKeys:keys] mutableCopy];
-    
-    [self setValuesForKeysWithDictionary:values];
+    if (self)
+    {
+        self.person = person;
+
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"firstName", @"lastName", @"fullName", @"avatarIdentifier", nil];
+
+        NSMutableDictionary* values = [[self.person dictionaryWithValuesForKeys:keys] mutableCopy];
+
+        [self setValuesForKeysWithDictionary:values];
+    }
     
     return self;
 }

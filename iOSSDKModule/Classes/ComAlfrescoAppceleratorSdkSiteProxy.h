@@ -30,10 +30,6 @@
 #import "AlfrescoSite.h"
 
 @interface ComAlfrescoAppceleratorSdkSiteProxy : TiProxy
-{
-    @public
-    AlfrescoSite* currentSite;
-}
 
 - (id)initWithSite:(AlfrescoSite *)site;
 - (id)getSiteName:(id)args;

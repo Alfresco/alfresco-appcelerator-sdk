@@ -36,7 +36,7 @@
     NSError* errorCode;
 }
 
--(void)initWithSession:(id)arg;
+-(void)initialiseWithSession:(id)arg;
 
 -(void)retrieveCommentsForNode:(id)arg;
 

@@ -34,14 +34,14 @@
 
 @property (nonatomic, strong) AlfrescoListingContext* listingContext;
 
--(void)init:(id)noargs;
+-(void)initialise:(id)noargs;
 
--(void)initWithMaxItems:(id)arg;
+-(void)initialiseWithMaxItems:(id)arg;
 
--(void)initWithMaxItemsAndSkipCount:(id)args;
+-(void)initialiseWithMaxItemsAndSkipCount:(id)args;
 
--(void)initWithSortProperty:(id)args;
+-(void)initialiseWithSortProperty:(id)args;
 
--(void)initWithMaxItems:(id)args;
+-(void)initialiseWithMaxItems:(id)args;
 
 @end

@@ -136,9 +136,6 @@ Alloy.Globals.activitiesModelListener = function(service, section) {
 };
 
 Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument) {
-    service.addEventListener("retrievedpermissions", function(e) {
-        Alloy.Globals.recursePropertiesAndAlert("Permissions", e.permissions);
-    });
     view.folderList.addEventListener("itemclick", function(e) {
         var mainSection = e.section;
         var item = e.section.getItemAt(e.itemIndex);
@@ -146,12 +143,9 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
         if (item.properties.folder > 0) {
             var folder;
             if (2 == item.properties.folder) folder = parentFolders.pop(); else {
-                Alloy.Globals.recursePropertiesAndAlert("Folder properties", item.properties.data);
-                service.retrievePermissionsOfNode(item.properties.folderobject);
-                Alloy.Globals.retrieveCommentsAndAlert(item.properties.folderobject);
-                Alloy.Globals.retrieveTagsAndAlert(item.properties.folderobject);
-                parentFolders.push(service.getCurrentFolder());
                 folder = item.properties.folderobject;
+                Alloy.Globals.currentNode = folder;
+                parentFolders.push(service.getCurrentFolder());
             }
             mainSection.deleteItemsAt(0, mainSection.getItems().length);
             if (parentFolders.length > 0) {
@@ -178,11 +172,9 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
             view.folderLabel.text = " " + folder.getName();
             onFolder(folder);
         } else {
-            Alloy.Globals.recursePropertiesAndAlert("Document properties", item.properties.docobject);
-            service.retrievePermissionsOfNode(item.properties.docobject);
-            Alloy.Globals.retrieveCommentsAndAlert(item.properties.docobject);
-            Alloy.Globals.retrieveTagsAndAlert(item.properties.folderobject);
-            onDocument(item.properties.docobject);
+            var doc = item.properties.docobject;
+            Alloy.Globals.currentNode = doc;
+            onDocument(doc);
         }
     });
 };
@@ -208,28 +200,6 @@ Alloy.Globals.recurseProperties = function recurseProperties(properties, propert
             subName = propertiesName.length > 0 ? propertiesName + "." + propertyName : propertyName;
             callForEachProperty(subName, propertyValue);
         }
-    }
-};
-
-Alloy.Globals.retrieveCommentsAndAlert = function(docobject) {
-    if (Alloy.Globals.showProperties) {
-        var commentService = Alloy.Globals.SDKModule.createCommentService();
-        commentService.initWithSession(Alloy.Globals.repositorySession);
-        commentService.retrieveCommentsForNode(docobject);
-        commentService.addEventListener("commentnode", function(e) {
-            Alloy.Globals.recursePropertiesAndAlert("Comment", e.comment);
-        });
-    }
-};
-
-Alloy.Globals.retrieveTagsAndAlert = function(docobject) {
-    if (Alloy.Globals.showProperties) {
-        var taggingService = Alloy.Globals.SDKModule.createTaggingService();
-        taggingService.initWithSession(Alloy.Globals.repositorySession);
-        taggingService.retrieveTagsForNode(docobject);
-        taggingService.addEventListener("tagnode", function(e) {
-            Alloy.Globals.recursePropertiesAndAlert("Tag", e.tag);
-        });
     }
 };
 

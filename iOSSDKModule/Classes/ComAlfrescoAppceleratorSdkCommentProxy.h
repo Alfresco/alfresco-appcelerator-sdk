@@ -30,11 +30,7 @@
 #import "AlfrescoComment.h"
 
 @interface ComAlfrescoAppceleratorSdkCommentProxy : TiProxy
-{
-    @public
-    AlfrescoComment* comment;
-}
 
--(id)initWithComment:(AlfrescoComment *)c;
+-(id)initWithComment:(AlfrescoComment *)comment;
 
 @end

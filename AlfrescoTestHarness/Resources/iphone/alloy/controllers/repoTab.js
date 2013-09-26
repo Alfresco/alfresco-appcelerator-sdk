@@ -3,7 +3,7 @@ function Controller() {
         allNodeTypes = !allNodeTypes;
     }
     function getFolder(repoSesh) {
-        documentFolderService.initWithSession(repoSesh);
+        documentFolderService.initialiseWithSession(repoSesh);
         documentFolderService.retrieveRootFolder();
         documentFolderService.addEventListener("retrievedfolder", function() {
             $.folderLabel.text = " " + documentFolderService.getCurrentFolder().getName();
@@ -51,9 +51,9 @@ function Controller() {
     });
     $.__views.repoTab.add($.__views.viewButton);
     viewButtonChange ? $.__views.viewButton.addEventListener("change", viewButtonChange) : __defers["$.__views.viewButton!change!viewButtonChange"] = true;
-    var __alloyId30 = {};
-    var __alloyId33 = [];
-    var __alloyId34 = {
+    var __alloyId43 = {};
+    var __alloyId46 = [];
+    var __alloyId47 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -63,8 +63,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId33.push(__alloyId34);
-    var __alloyId35 = {
+    __alloyId46.push(__alloyId47);
+    var __alloyId48 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -79,8 +79,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId33.push(__alloyId35);
-    var __alloyId36 = {
+    __alloyId46.push(__alloyId48);
+    var __alloyId49 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -94,24 +94,24 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId33.push(__alloyId36);
-    var __alloyId32 = {
+    __alloyId46.push(__alloyId49);
+    var __alloyId45 = {
         properties: {
             name: "repoTemplate"
         },
-        childTemplates: __alloyId33
+        childTemplates: __alloyId46
     };
-    __alloyId30["repoTemplate"] = __alloyId32;
-    var __alloyId37 = [];
+    __alloyId43["repoTemplate"] = __alloyId45;
+    var __alloyId50 = [];
     $.__views.mainSection = Ti.UI.createListSection({
         id: "mainSection"
     });
-    __alloyId37.push($.__views.mainSection);
+    __alloyId50.push($.__views.mainSection);
     $.__views.folderList = Ti.UI.createListView({
         top: "40dp",
         left: 0,
-        sections: __alloyId37,
-        templates: __alloyId30,
+        sections: __alloyId50,
+        templates: __alloyId43,
         id: "folderList",
         defaultItemTemplate: "repoTemplate"
     });
@@ -129,6 +129,9 @@ function Controller() {
     Ti.App.addEventListener("repopopulate", function() {
         if (null != Alloy.Globals.repositorySession && 0 == $.mainSection.getItems().length) {
             documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
+            documentFolderService.addEventListener("error", function(e) {
+                alert(e.errorstring);
+            });
             Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders, function(folder) {
                 if (allNodeTypes) {
                     documentFolderService.setFolder(folder);

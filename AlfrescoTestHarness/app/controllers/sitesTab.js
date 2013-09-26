@@ -1,3 +1,23 @@
+/*
+ ******************************************************************************
+ * Copyright (C) 2005-2013 Alfresco Software Limited.
+ *
+ * This file is part of the Alfresco Mobile SDK.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *****************************************************************************
+ */
+
 var documentFolderService;
 var parentFolders = new Array();
 
@@ -18,7 +38,8 @@ Ti.App.addEventListener('sitespopulate',function()
 		if (Alloy.Globals.repositorySession != null  &&  $.allSites.getItems().length == 0)
 		{
 			var siteService = Alloy.Globals.SDKModule.createSiteService();
-			siteService.initWithSession(Alloy.Globals.repositorySession);
+			siteService.addEventListener('error', function(e) { alert(e.errorstring); });
+			siteService.initialiseWithSession(Alloy.Globals.repositorySession);
 			
 			siteService.retrieveSites();
 			Alloy.Globals.sitesModelListener(siteService, $.mySites, 'mysitesnode');
@@ -30,7 +51,8 @@ Ti.App.addEventListener('sitespopulate',function()
 			Alloy.Globals.sitesModelListener(siteService, $.favSites, 'favsitesnode');
 			
 			documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
-			documentFolderService.initWithSession(Alloy.Globals.repositorySession);
+			documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
+			documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 			Alloy.Globals.modelListeners(documentFolderService, $.repo);
 			 
 			$.siteList.addEventListener('itemclick', function(e)

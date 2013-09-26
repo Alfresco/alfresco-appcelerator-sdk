@@ -1,0 +1,23 @@
+<Alloy>
+	
+	<Window>
+			
+		<ListView id="propList" defaultItemTemplate="propsTemplate">
+			
+			 <Templates>
+                <ItemTemplate name="propsTemplate">
+    				<ImageView id="picImage" bindId="pic"/>
+    				<Label id="infoLabel" bindId="info"/>
+    				<Label id="esinfoLabel" bindId="es_info"/>
+                </ItemTemplate>
+            </Templates>
+            
+            <ListSection headerTitle="Properties" id="properties"/>
+            <ListSection headerTitle="Permissions" id="permissions"/>
+            <ListSection headerTitle="Comments" id="comments"/>
+            <ListSection headerTitle="Tags" id="tags"/>
+            
+		</ListView>
+	</Window>
+
+</Alloy>

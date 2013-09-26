@@ -34,6 +34,12 @@
 
 @interface SDKUtil : NSObject
 
++createEnumerationEndEvent:(TiProxy*)proxyObj;
+
++createParamErrorEvent:(TiProxy*)proxyObj;
+
++createErrorEvent:(int)errorCode description:(NSString*)errorString proxyObject:(TiProxy*)proxyObj;
+
 +createErrorEvent:(NSError*)error proxyObject:(TiProxy*)proxyObj;
 
 +(void)createEventWithNode:(AlfrescoNode*)node proxyObject:(TiProxy*)proxyObj;

@@ -37,16 +37,26 @@
 
 - (id)initWithContentFile:(AlfrescoContentFile *)cf
 {
-    contentFile = cf;
-    humanReadableName = cf.fileUrl.lastPathComponent;
+    self = [super init];
+    
+    if (self)
+    {
+        contentFile = cf;
+        humanReadableName = cf.fileUrl.lastPathComponent;
+    }
     return self;
 }
 
 
 - (id)initWithContentFile:(AlfrescoContentFile *)cf name:(NSString*)name
 {
-    contentFile = cf;
-    humanReadableName = name;
+    self = [super init];
+    
+    if (self)
+    {
+        contentFile = cf;
+        humanReadableName = name;
+    }
     return self;
 }
 

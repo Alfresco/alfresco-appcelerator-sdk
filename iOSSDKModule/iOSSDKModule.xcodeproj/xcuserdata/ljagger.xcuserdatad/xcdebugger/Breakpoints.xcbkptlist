@@ -53,18 +53,5 @@
          startingLineNumber = "19"
          endingLineNumber = "19">
       </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Classes/ComAlfrescoAppceleratorSdkActivityServiceProxy.m"
-         timestampString = "400501061.914554"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "174"
-         endingLineNumber = "174"
-         landmarkName = "-retrieveActivityStreamForSiteWithListingContext:"
-         landmarkType = "5">
-      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

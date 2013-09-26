@@ -36,7 +36,7 @@
 
 @implementation ComAlfrescoAppceleratorSdkActivityServiceProxy
 
--(void)initWithSession:(id)arg
+-(void)initialiseWithSession:(id)arg
 {
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSessionProxy)
     
@@ -44,9 +44,7 @@
     
     if (sessionProxy == nil || sessionProxy.session == nil)
     {
-        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"errorcode", nil];
-        [self fireEvent:@"paramerror" withObject:event];
-        
+        [SDKUtil createParamErrorEvent:self];
         return;
     }
     
@@ -71,9 +69,16 @@
     
     [service retrieveActivityStreamWithCompletionBlock:^(NSArray* array, NSError* error)
     {
-        for (int i = 0;  i < array.count;  i++)
+        if (error != NULL)
         {
-            [self createEventWithActivityEntry:[array objectAtIndex:i]];
+            [SDKUtil createErrorEvent:error proxyObject:self];
+        }
+        else
+        {
+            for (int i = 0;  i < array.count;  i++)
+            {
+                [self createEventWithActivityEntry:[array objectAtIndex:i]];
+            }
         }
     }];
 }
@@ -89,12 +94,19 @@
 
     [service retrieveActivityStreamWithListingContext:listingContext completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
     {
-        for (int i = 0;  i < pagingResult.objects.count;  i++)
+        if (error != NULL)
         {
-            [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
+            [SDKUtil createErrorEvent:error proxyObject:self];
         }
-         
-        [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+        else
+        {
+            for (int i = 0;  i < pagingResult.objects.count;  i++)
+            {
+                [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
+            }
+             
+            [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+        }
     }];
 }
 
@@ -107,9 +119,16 @@
 
     [service retrieveActivityStreamForPerson:person completionBlock:^(NSArray* array, NSError* error)
     {
-        for (int i = 0;  i < array.count;  i++)
+        if (error != NULL)
         {
-            [self createEventWithActivityEntry:[array objectAtIndex:i]];
+            [SDKUtil createErrorEvent:error proxyObject:self];
+        }
+        else
+        {
+            for (int i = 0;  i < array.count;  i++)
+            {
+                [self createEventWithActivityEntry:[array objectAtIndex:i]];
+            }
         }
     }];
 }
@@ -141,12 +160,19 @@
     [service retrieveActivityStreamForPerson:[arg objectForKey:@"person"] listingContext:[arg objectForKey:@"listingContext"]
     completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
     {
-         for (int i = 0;  i < pagingResult.objects.count;  i++)
-         {
-             [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
-         }
-         
-         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+        if (error != NULL)
+        {
+            [SDKUtil createErrorEvent:error proxyObject:self];
+        }
+        else
+        {
+            for (int i = 0;  i < pagingResult.objects.count;  i++)
+            {
+                [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
+            }
+
+            [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+        }
     }];
 }
 
@@ -157,13 +183,20 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSiteProxy)
     
     ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = arg;
-    AlfrescoSite* site = siteProxy->currentSite;
+    AlfrescoSite* site = [siteProxy performSelector:NSSelectorFromString(@"currentSite")];
     
     [service retrieveActivityStreamForSite:site completionBlock:^(NSArray* array, NSError* error)
     {
-        for (int i = 0;  i < array.count;  i++)
+        if (error != NULL)
         {
-            [self createEventWithActivityEntry:[array objectAtIndex:i]];
+            [SDKUtil createErrorEvent:error proxyObject:self];
+        }
+        else
+        {
+            for (int i = 0;  i < array.count;  i++)
+            {
+                [self createEventWithActivityEntry:[array objectAtIndex:i]];
+            }
         }
     }];
 }
@@ -174,7 +207,7 @@
     ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
 
-    AlfrescoSite* site = siteProxy->currentSite;
+    AlfrescoSite* site = [siteProxy performSelector:NSSelectorFromString(@"currentSite")];
 
     AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
     NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:listingContext, @"listingContext",
@@ -195,15 +228,22 @@
     ENSURE_SINGLE_ARG(arg,NSDictionary)
     
     [service retrieveActivityStreamForSite:[arg objectForKey:@"site"] listingContext:[arg objectForKey:@"listingContext"]
-                             completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
-     {
-         for (int i = 0;  i < pagingResult.objects.count;  i++)
-         {
-             [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
-         }
+     completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
+    {
+        if (error != NULL)
+        {
+            [SDKUtil createErrorEvent:error proxyObject:self];
+        }
+        else
+        {
+            for (int i = 0;  i < pagingResult.objects.count;  i++)
+            {
+                [self createEventWithActivityEntry:[pagingResult.objects objectAtIndex:i]];
+            }
          
-         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
-     }];
+            [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+        }
+    }];
 }
 
 @end

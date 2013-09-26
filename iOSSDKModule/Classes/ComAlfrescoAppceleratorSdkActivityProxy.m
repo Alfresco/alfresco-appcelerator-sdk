@@ -28,17 +28,26 @@
 
 #import "ComAlfrescoAppceleratorSdkActivityProxy.h"
 
+@interface ComAlfrescoAppceleratorSdkActivityProxy()
+@property(nonatomic,strong) AlfrescoActivityEntry *entry;
+@end
+
 @implementation ComAlfrescoAppceleratorSdkActivityProxy
 
--(id)initWithActivityEntry:(AlfrescoActivityEntry*)e
+-(id)initWithActivityEntry:(AlfrescoActivityEntry*)entry
 {
-    self->entry = e;
+    self = [super init];
     
-    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"createdAt", @"createdBy",
-                            @"siteShortName", @"type", @"data", nil];
-    NSMutableDictionary* values = [[entry dictionaryWithValuesForKeys:keys] mutableCopy];
-    
-    [self setValuesForKeysWithDictionary:values];
+    if (self)
+    {
+        self.entry = entry;
+        
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"createdAt", @"createdBy",
+                                @"siteShortName", @"type", @"data", nil];
+        NSMutableDictionary* values = [[self.entry dictionaryWithValuesForKeys:keys] mutableCopy];
+        
+        [self setValuesForKeysWithDictionary:values];
+    }
     
     return self;
 }

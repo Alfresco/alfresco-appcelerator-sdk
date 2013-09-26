@@ -44,7 +44,7 @@
 @implementation ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy
 
 
--(void)initWithSession:(id)arg
+-(void)initialiseWithSession:(id)arg
 { 
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSessionProxy)
     
@@ -52,9 +52,7 @@
     
     if (sessionProxy == nil || sessionProxy.session == nil)
     {
-        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"errorcode", nil];
-        [self fireEvent:@"paramerror" withObject:event];
-        
+        [SDKUtil createParamErrorEvent:self];
         return;
     }
     
@@ -74,9 +72,15 @@
     {
         currentFolder = folder;
         errorCode = error;
-        
-        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:folder.name, @"folder", nil];
-        [self fireEvent:@"retrievedfolder" withObject:event];
+        if (error != NULL)
+        {
+            [SDKUtil createErrorEvent:error proxyObject:self];
+        }
+        else
+        {
+            NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:folder.name, @"folder", nil];
+            [self fireEvent:@"retrievedfolder" withObject:event];
+        }
     }];
 }
 
@@ -87,10 +91,9 @@
     
     NSLog(@"[INFO] folder arg object: %@", arg);
     ComAlfrescoAppceleratorSdkFolderProxy* folder = arg;
-    
-    NSLog(@"[INFO] folder object set: %@ (name: %@)", folder, folder->node.name);
-    
-    currentFolder = (AlfrescoFolder*)folder->node;
+
+    currentFolder = [folder performSelector:NSSelectorFromString(@"node")];
+    NSLog(@"[INFO] folder object set: %@ (name: %@)", folder, currentFolder.name);
 }
 
 
@@ -109,11 +112,18 @@
     [service retrieveChildrenInFolder:currentFolder
     completionBlock:^(NSArray* array, NSError* error)
     {
-        NSLog(@"[INFO] Number of nodes: %d", array.count);
-        
-        for (int i = 0;  i < array.count;  i++)
+        if (error != NULL)
         {
-            [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+            [SDKUtil createErrorEvent:error proxyObject:self];
+        }
+        else
+        {
+            NSLog(@"[INFO] Number of nodes: %d", array.count);
+            
+            for (int i = 0;  i < array.count;  i++)
+            {
+                [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+            }
         }
     }];
 }
@@ -132,14 +142,18 @@
     [service retrieveChildrenInFolder:currentFolder listingContext:listingContext
                       completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
      {
-         NSLog(@"[INFO] Number of nodes: %d", pagingResult.objects.count);
-         
          if (error != NULL)
-             NSLog(@"[INFO] Error %@", error.description);
-         
-         for (int i = 0;  i < pagingResult.objects.count;  i++)
          {
-             [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             NSLog(@"[INFO] Number of nodes: %d", pagingResult.objects.count);
+             
+             for (int i = 0;  i < pagingResult.objects.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+             }
          }
          
          [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
@@ -153,17 +167,24 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkNodeProxy)
     
     ComAlfrescoAppceleratorSdkNodeProxy* proxy = arg;
-    AlfrescoNode* node = proxy->node;
+    AlfrescoNode* node = [proxy performSelector:NSSelectorFromString(@"node")];
     
     NSLog(@"[INFO] Node name for permissions: %@, %@)", node.name, node);
     
     [service retrievePermissionsOfNode:node
     completionBlock:^(AlfrescoPermissions *permissions, NSError *error)
     {
-        ComAlfrescoAppceleratorSdkPermissionsProxy* permissionsProxy = [[ComAlfrescoAppceleratorSdkPermissionsProxy alloc]initWithPermissions:permissions];
-        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:permissionsProxy, @"permissions", nil];
-        
-        [self fireEvent:@"retrievedpermissions" withObject:event];
+        if (error != NULL)
+        {
+            [SDKUtil createErrorEvent:error proxyObject:self];
+        }
+        else
+        {
+            ComAlfrescoAppceleratorSdkPermissionsProxy* permissionsProxy = [[ComAlfrescoAppceleratorSdkPermissionsProxy alloc]initWithPermissions:permissions];
+            NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:permissionsProxy, @"permissions", nil];
+            
+            [self fireEvent:@"retrievedpermissions" withObject:event];
+        }
     }];
 }
 
@@ -177,9 +198,16 @@
     NSString* identifier = arg;
     
     [service retrieveNodeWithIdentifier:identifier
-    completionBlock:^(AlfrescoNode* node, NSError* error)
+     completionBlock:^(AlfrescoNode* node, NSError* error)
      {
-         [SDKUtil createEventWithNode:node proxyObject:self];
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [SDKUtil createEventWithNode:node proxyObject:self];
+         }
      }];
 }
 
@@ -192,11 +220,17 @@
     NSString* path = arg;
     
     [service retrieveNodeWithFolderPath:path
-                        completionBlock:^(AlfrescoNode* node, NSError* error)
+     completionBlock:^(AlfrescoNode* node, NSError* error)
      {
-         [SDKUtil createEventWithNode:node proxyObject:self];
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [SDKUtil createEventWithNode:node proxyObject:self];
+         }
      }];
-    
 }
 
 
@@ -205,8 +239,7 @@
     NSString* path = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:1];
     NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:path, @"path",
-                                    folderProxy->node, @"folder",
-                                    nil];
+                                    [folderProxy performSelector:NSSelectorFromString(@"node")] , @"folder", nil];
     
     [self internalRetrieveNodeWithFolderPathRelative:internalParams];
 }
@@ -225,7 +258,14 @@
     [service retrieveNodeWithFolderPath:[dictionary objectForKey:@"path"] relativeToFolder:[dictionary objectForKey:@"folder"]
                         completionBlock:^(AlfrescoNode* node, NSError* error)
      {
-         [SDKUtil createEventWithNode:node proxyObject:self];
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [SDKUtil createEventWithNode:node proxyObject:self];
+         }
      }];
 }
 
@@ -236,12 +276,20 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkNodeProxy)
     
     ComAlfrescoAppceleratorSdkNodeProxy* proxy = arg;
-    AlfrescoNode* node = proxy->node;
+    AlfrescoNode* node = [proxy performSelector:NSSelectorFromString(@"node")];
+
     
     [service retrieveParentFolderOfNode:node
      completionBlock:^(AlfrescoFolder* folder, NSError* error)
      {
-         [SDKUtil createEventWithNode:folder proxyObject:self];
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [SDKUtil createEventWithNode:folder proxyObject:self];
+         }
      }];
 }
 
@@ -250,7 +298,7 @@
 {
     ComAlfrescoAppceleratorSdkNodeProxy* nodeProxy = [args objectAtIndex:0];
     NSString* name = [args objectAtIndex:1];
-    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:nodeProxy->node, @"node", name, @"name", nil];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:[nodeProxy performSelector:NSSelectorFromString(@"node")], @"node", name, @"name", nil];
                                     
     [self internalRetrieveRenditionOfNode:internalParams];
 }
@@ -269,11 +317,18 @@
     [service retrieveRenditionOfNode:[dictionary objectForKey:@"node"] renditionName:[dictionary objectForKey:@"name"]
      completionBlock:^(AlfrescoContentFile *contentFile, NSError *error)
      {
-         NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [[ComAlfrescoAppceleratorSdkContentFileProxy alloc] initWithContentFile:contentFile], @"contentfile",
-                                nil];
-         
-         [self fireEvent:@"retrievedrendition" withObject:event];
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [[ComAlfrescoAppceleratorSdkContentFileProxy alloc] initWithContentFile:contentFile], @"contentfile",
+                                    nil];
+             
+             [self fireEvent:@"retrievedrendition" withObject:event];
+         }
      }];
 }
 
@@ -284,20 +339,27 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkFolderProxy)
 
     ComAlfrescoAppceleratorSdkFolderProxy* proxy = arg;
-    AlfrescoFolder* folder = (AlfrescoFolder*)proxy->node;
+    AlfrescoFolder* folder = [proxy performSelector:NSSelectorFromString(@"node")];
     
     NSLog(@"[INFO] folder object in use: %@", folder.name);
     
     [service retrieveDocumentsInFolder:folder
                       completionBlock:^(NSArray* array, NSError* error)
      {
-         NSLog(@"[INFO] Number of nodes: %d", array.count);
-         
-         for (int i = 0;  i < array.count;  i++)
+         if (error != NULL)
          {
-             [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+             [SDKUtil createErrorEvent:error proxyObject:self];
          }
-     }];    
+         else
+         {
+             NSLog(@"[INFO] Number of nodes: %d", array.count);
+             
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+             }
+         }
+     }];
 }
 
 
@@ -305,7 +367,7 @@
 {
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
-    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy->node, @"folder", listingContextProxy.listingContext, @"listingContext", nil];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:[folderProxy performSelector:NSSelectorFromString(@"node")], @"folder", listingContextProxy.listingContext, @"listingContext", nil];
 
     [self internalRetrieveDocumentsInFolderWithListingContext:internalParams];
 }
@@ -324,14 +386,21 @@
     [service retrieveDocumentsInFolder:[arg objectForKey:@"folder"] listingContext:[arg objectForKey:@"listingContext"]
         completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
      {
-         NSLog(@"[INFO] Number of nodes: %d", pagingResult.objects.count);
-         
-         for (int i = 0;  i < pagingResult.objects.count;  i++)
+         if (error != NULL)
          {
-             [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+             [SDKUtil createErrorEvent:error proxyObject:self];
          }
-         
-         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         else
+         {
+             NSLog(@"[INFO] Number of nodes: %d", pagingResult.objects.count);
+             
+             for (int i = 0;  i < pagingResult.objects.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+             }
+             
+             [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         }
      }];
 }
 
@@ -342,20 +411,28 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkFolderProxy)
     
     ComAlfrescoAppceleratorSdkFolderProxy* proxy = arg;
-    AlfrescoFolder* folder = (AlfrescoFolder*)proxy->node;
+    AlfrescoFolder* folder = [proxy performSelector:NSSelectorFromString(@"node")];
+
     
     NSLog(@"[INFO] folder object in use: %@", folder.name);
     
     [service retrieveFoldersInFolder:folder
-                       completionBlock:^(NSArray* array, NSError* error)
+     completionBlock:^(NSArray* array, NSError* error)
      {
-         NSLog(@"[INFO] Number of nodes: %d", array.count);
-         
-         for (int i = 0;  i < array.count;  i++)
+         if (error != NULL)
          {
-             [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+             [SDKUtil createErrorEvent:error proxyObject:self];
          }
-     }];    
+         else
+         {
+             NSLog(@"[INFO] Number of nodes: %d", array.count);
+             
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+             }
+         }
+     }];
 }
 
 
@@ -363,7 +440,7 @@
 {
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
-    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy->node, @"folder", listingContextProxy.listingContext, @"listingContext", nil];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:[folderProxy performSelector:NSSelectorFromString(@"node")], @"folder", listingContextProxy.listingContext, @"listingContext", nil];
     
     [self internalRetrieveFoldersInFolderWithListingContext:internalParams];
 }
@@ -382,14 +459,21 @@
     [service retrieveFoldersInFolder:[arg objectForKey:@"folder"] listingContext:[arg objectForKey:@"listingContext"]
                        completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
      {
-         NSLog(@"[INFO] Number of nodes: %d", pagingResult.objects.count);
-         
-         for (int i = 0;  i < pagingResult.objects.count;  i++)
+         if (error != NULL)
          {
-             [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+             [SDKUtil createErrorEvent:error proxyObject:self];
          }
-         
-         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         else
+         {
+             NSLog(@"[INFO] Number of nodes: %d", pagingResult.objects.count);
+             
+             for (int i = 0;  i < pagingResult.objects.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+             }
+             
+             [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         }
      }];
 }
 
@@ -401,14 +485,21 @@
   
     ComAlfrescoAppceleratorSdkDocumentProxy* document = arg;
     
-    [service retrieveContentOfDocument:(AlfrescoDocument*)document->node
+    [service retrieveContentOfDocument:[document performSelector:NSSelectorFromString(@"node")]
         completionBlock:^(AlfrescoContentFile *contentFile, NSError *error)
         {
-            NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [[ComAlfrescoAppceleratorSdkContentFileProxy alloc] initWithContentFile:contentFile], @"contentfile",
-                                   nil];
-            
-            [self fireEvent:@"retrieveddocument" withObject:event];
+            if (error != NULL)
+            {
+                [SDKUtil createErrorEvent:error proxyObject:self];
+            }
+            else
+            {
+                NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       [[ComAlfrescoAppceleratorSdkContentFileProxy alloc] initWithContentFile:contentFile], @"contentfile",
+                                       nil];
+                
+                [self fireEvent:@"retrieveddocument" withObject:event];
+            }
         }
         progressBlock:^(unsigned long long bytesTransferred, unsigned long long bytesTotal)
         {

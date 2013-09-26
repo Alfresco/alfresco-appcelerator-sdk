@@ -30,51 +30,49 @@
 
 @implementation ComAlfrescoAppceleratorSdkListingContextProxy
 
-@synthesize listingContext;
 
-
--(void)init:(id)noargs
+-(void)initialise:(id)noargs
 {
-    listingContext = [[AlfrescoListingContext alloc]init];
+    self.listingContext = [[AlfrescoListingContext alloc]init];
 }
 
 
--(void)initWithMaxItems:(id)arg
+-(void)initialiseWithMaxItems:(id)arg
 {
     ENSURE_SINGLE_ARG(arg,NSNumber)
 
     NSNumber* maxItems = arg;
     
-    listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems];
+    self.listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems];
 }
 
 
--(void)initWithMaxItemsAndSkipCount:(id)args
+-(void)initialiseWithMaxItemsAndSkipCount:(id)args
 {
     NSNumber* maxItems = [args objectAtIndex:0];
     NSNumber* skipCount = [args objectAtIndex:1];
     
-    listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems skipCount:skipCount];
+    self.listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems skipCount:skipCount];
 }
 
 
--(void)initWithSortProperty:(id)args
+-(void)initialiseWithSortProperty:(id)args
 {
     NSString* sortProperty = [args objectAtIndex:0];
     BOOL sortAscending = ([args objectAtIndex:1] > 0);
     
-    listingContext = [[AlfrescoListingContext alloc]initWithSortProperty:sortProperty sortAscending:sortAscending];
+    self.listingContext = [[AlfrescoListingContext alloc]initWithSortProperty:sortProperty sortAscending:sortAscending];
 }
 
 
-- (id)initWithAllParams:(id)args
+- (id)initialiseWithAllParams:(id)args
 {
     NSNumber* maxItems = [args objectAtIndex:0];
     NSNumber* skipCount = [args objectAtIndex:1];
     NSString* sortProperty = [args objectAtIndex:2];
     BOOL sortAscending = ([args objectAtIndex:3] > 0);
     
-    listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems skipCount:skipCount sortProperty:sortProperty
+    self.listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems skipCount:skipCount sortProperty:sortProperty
                                                                      sortAscending:sortAscending];
 }
 

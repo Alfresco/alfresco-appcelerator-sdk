@@ -30,10 +30,6 @@
 #import "AlfrescoNode.h"
 
 @interface ComAlfrescoAppceleratorSdkNodeProxy : TiProxy
-{
-    @public
-    AlfrescoNode* node;
-}
 
 -(id)initWithNode:(AlfrescoNode *)node;
 

@@ -33,6 +33,4 @@
 
 @interface ComAlfrescoAppceleratorSdkDocumentProxy : ComAlfrescoAppceleratorSdkNodeProxy
 
-- (void)dealloc;
-
 @end

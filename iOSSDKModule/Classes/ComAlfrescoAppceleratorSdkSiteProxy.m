@@ -30,28 +30,37 @@
 #import "AlfrescoSite.h"
 #import "ComAlfrescoAppceleratorSdkSiteProxy.h"
 
+@interface ComAlfrescoAppceleratorSdkSiteProxy()
+@property(nonatomic,strong) AlfrescoSite *currentSite;
+@end
+
 @implementation ComAlfrescoAppceleratorSdkSiteProxy
 
 - (id)initWithSite:(AlfrescoSite *)site
 {
-    currentSite = site;
+    self = [super init];
     
-    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
-    NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
-    
-    [self setValuesForKeysWithDictionary:values];
+    if (self)
+    {
+        self.currentSite = site;
+        
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"shortName", @"title", @"summary", @"identifier", @"GUID", @"isMember", @"isPendingMember", @"isFavorite", @"visibility", nil];
+        NSMutableDictionary* values = [[site dictionaryWithValuesForKeys:keys] mutableCopy];
+        
+        [self setValuesForKeysWithDictionary:values];
+    }
     
     return self;
 }
 
 - (id)getSiteName:(id)args
 {
-    return currentSite.shortName;
+    return self.currentSite.shortName;
 }
 
 - (void)dealloc
 {
-    NSLog(@"[INFO] SiteProxy object %@ being deallocated", currentSite.shortName);
+    NSLog(@"[INFO] SiteProxy object %@ being deallocated", _currentSite.shortName);
 }
 
 @end

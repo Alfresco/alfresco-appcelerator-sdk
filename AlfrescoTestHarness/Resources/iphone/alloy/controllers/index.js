@@ -67,6 +67,18 @@ function Controller() {
         icon: "KS_nav_search.png"
     });
     __alloyId26.push($.__views.searchTab);
+    $.__views.propstab = Alloy.createController("propertiesTab", {
+        id: "propstab"
+    });
+    $.__views.propsTab = Ti.UI.createTab({
+        window: $.__views.propstab.getViewEx({
+            recurse: true
+        }),
+        id: "propsTab",
+        title: "Properties",
+        icon: "KS_nav_ui.png"
+    });
+    __alloyId26.push($.__views.propsTab);
     $.__views.index = Ti.UI.createTabGroup({
         tabs: __alloyId26,
         id: "index"
@@ -77,11 +89,12 @@ function Controller() {
     Alloy.Globals.AlfrescoSDKVersion = 1;
     Alloy.Globals.SDKModule = require("com.alfresco.appcelerator.module.sdk");
     Alloy.Globals.tabGroup = $.index;
+    Alloy.Globals.currentNode = null;
     $.index.open();
     $.index.addEventListener("focus", function(e) {
         1 == e.index ? Ti.App.fireEvent("repopopulate") : 2 == e.index && Ti.App.fireEvent("sitespopulate");
         3 == e.index && Ti.App.fireEvent("activitiespopulate");
-        4 == e.index && Ti.App.fireEvent("searchinit");
+        4 == e.index ? Ti.App.fireEvent("searchinit") : 5 == e.index && Ti.App.fireEvent("propspopulate");
     });
     _.extend($, exports);
 }

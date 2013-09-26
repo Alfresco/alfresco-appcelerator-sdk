@@ -34,6 +34,26 @@
 @implementation SDKUtil
 
 
++createEnumerationEndEvent:(TiProxy*)proxyObj
+{
+    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
+    [proxyObj fireEvent:@"endenumeration" withObject:event];
+}
+
+
++createParamErrorEvent:(TiProxy*)proxyObj
+{
+    [SDKUtil createErrorEvent:0 description:@"Parameter error" proxyObject:proxyObj];
+}
+
+
++createErrorEvent:(int)errorCode description:(NSString*)errorString proxyObject:(TiProxy*)proxyObj
+{
+    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:errorCode], @"errorcode", errorString, @"errorstring", nil];
+    [proxyObj fireEvent:@"error" withObject:event];
+}
+
+
 +createErrorEvent:(NSError*)error proxyObject:(TiProxy*)proxyObj
 {
     NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:error.code], @"errorcode", error.description, @"errorstring", nil];

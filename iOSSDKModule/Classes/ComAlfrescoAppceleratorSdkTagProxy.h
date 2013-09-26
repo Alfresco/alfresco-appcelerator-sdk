@@ -31,11 +31,7 @@
 
 
 @interface ComAlfrescoAppceleratorSdkTagProxy : TiProxy
-{
-    @public
-    AlfrescoTag* tag;
-}
 
-- (id)initWithTag:(AlfrescoTag *)t;
+- (id)initWithTag:(AlfrescoTag *)tag;
 
 @end

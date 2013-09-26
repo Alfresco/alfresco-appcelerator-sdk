@@ -31,10 +31,6 @@
 
 
 @interface ComAlfrescoAppceleratorSdkPermissionsProxy : TiProxy
-{
-    @public
-    AlfrescoPermissions* permissions;
-}
 
 -(id)init;
 

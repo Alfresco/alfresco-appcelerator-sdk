@@ -28,17 +28,26 @@
 
 #import "ComAlfrescoAppceleratorSdkCommentProxy.h"
 
+@interface ComAlfrescoAppceleratorSdkCommentProxy()
+@property(nonatomic,strong) AlfrescoComment *comment;
+@end
+
 @implementation ComAlfrescoAppceleratorSdkCommentProxy
 
--(id)initWithComment:(AlfrescoComment*)c
+-(id)initWithComment:(AlfrescoComment*)comment
 {
-    comment = c;
+    self = [super init];
     
-    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"name", @"title", @"createdAt", @"modifiedAt", @"content", @"createdBy", @"isEdited", @"canEdit", @"canDelete", nil];
+    if (self)
+    {
+        self.comment = comment;
         
-    NSMutableDictionary* values = [[comment dictionaryWithValuesForKeys:keys] mutableCopy];
-    
-    [self setValuesForKeysWithDictionary:values];
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"name", @"title", @"createdAt", @"modifiedAt", @"content", @"createdBy", @"isEdited", @"canEdit", @"canDelete", nil];
+            
+        NSMutableDictionary* values = [[comment dictionaryWithValuesForKeys:keys] mutableCopy];
+        
+        [self setValuesForKeysWithDictionary:values];
+    }
     
     return self;
 }

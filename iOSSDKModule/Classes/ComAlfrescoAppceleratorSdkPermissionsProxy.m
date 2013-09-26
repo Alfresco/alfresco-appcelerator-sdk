@@ -28,16 +28,25 @@
 
 #import "ComAlfrescoAppceleratorSdkPermissionsProxy.h"
 
+@interface ComAlfrescoAppceleratorSdkPermissionsProxy()
+@property (nonatomic,strong) AlfrescoPermissions *permissions;
+@end
+
 @implementation ComAlfrescoAppceleratorSdkPermissionsProxy
 
--(id)initWithPermissions:(AlfrescoPermissions*)p
+-(id)initWithPermissions:(AlfrescoPermissions*)permissions
 {
-    self->permissions = p;
+    self = [super init];
     
-    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"canEdit", @"canDelete", @"canAddChildren", @"canComment", @"canGetContent", @"canSetContent", @"canGetProperties", @"canGetAllVersions", @"canGetChildren", nil];
-    NSMutableDictionary* values = [[permissions dictionaryWithValuesForKeys:keys] mutableCopy];
-    
-    [self setValuesForKeysWithDictionary:values];
+    if (self)
+    {
+        self.permissions = permissions;
+        
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"canEdit", @"canDelete", @"canAddChildren", @"canComment", @"canGetContent", @"canSetContent", @"canGetProperties", @"canGetAllVersions", @"canGetChildren", nil];
+        NSMutableDictionary* values = [[permissions dictionaryWithValuesForKeys:keys] mutableCopy];
+        
+        [self setValuesForKeysWithDictionary:values];
+    }
     
     return self;
 }
@@ -45,20 +54,25 @@
 
 -(id)init
 {
-    self->permissions = [[AlfrescoPermissions alloc]init];
+    self = [super init];
     
-    //
-    // TODO: Incoming properties will need mapping to AlfrescoProperties when R/W properties implemented:
-    //
-    //[self valueForKey:@"canEdit"];
-    //[self valueForKey:@"canDelete"];
-    //[self valueForKey:@"canAddChildren"];
-    //[self valueForKey:@"canComment;"];
-    //[self valueForKey:@"canGetContent"];
-    //[self valueForKey:@"canSetContent"];
-    //[self valueForKey:@"canGetProperties"];
-    //[self valueForKey:@"canGetChildren"];
-    //[self valueForKey:@"canGetAllVersions"];
+    if (self)
+    {
+        self.permissions = [[AlfrescoPermissions alloc]init];
+        
+        //
+        // TODO: Incoming properties will need mapping to AlfrescoProperties when R/W properties implemented:
+        //
+        //[self valueForKey:@"canEdit"];
+        //[self valueForKey:@"canDelete"];
+        //[self valueForKey:@"canAddChildren"];
+        //[self valueForKey:@"canComment;"];
+        //[self valueForKey:@"canGetContent"];
+        //[self valueForKey:@"canSetContent"];
+        //[self valueForKey:@"canGetProperties"];
+        //[self valueForKey:@"canGetChildren"];
+        //[self valueForKey:@"canGetAllVersions"];
+    }
     
     return self;
 }

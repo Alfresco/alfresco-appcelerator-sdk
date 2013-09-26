@@ -241,7 +241,7 @@ function getFolder(repoSesh)
 {
 	documentFolderService = SDKModule.createDocumentFolderService();
 	
-	documentFolderService.initWithSession(repoSesh);
+	documentFolderService.initialiseWithSession(repoSesh);
 
 	documentFolderService.retrieveRootFolder();
 

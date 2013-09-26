@@ -35,7 +35,7 @@
 
 @implementation ComAlfrescoAppceleratorSdkSearchServiceProxy
 
--(void)initWithSession:(id)arg
+-(void)initialiseWithSession:(id)arg
 {
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSessionProxy)
     
@@ -43,9 +43,7 @@
     
     if (sessionProxy == nil || sessionProxy.session == nil)
     {
-        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"errorcode", nil];
-        [self fireEvent:@"paramerror" withObject:event];
-        
+        [SDKUtil createParamErrorEvent:self];
         return;
     }
     
@@ -77,7 +75,9 @@
     [service searchWithStatement:(NSString *)arg language:AlfrescoSearchLanguageCMIS completionBlock:^(NSArray* array, NSError* error)
      {
          if (error != NULL)
-              [SDKUtil createErrorEvent:error proxyObject:self];
+         {
+            [SDKUtil createErrorEvent:error proxyObject:self];
+         }
          else
          {
              for (int i = 0;  i < array.count;  i++)
@@ -136,7 +136,9 @@
                     completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
          {
              if (error != NULL)
+             {
                   [SDKUtil createErrorEvent:error proxyObject:self];
+             }
              else
              {
                  for (int i = 0;  i < pagingResult.objects.count;  i++)
@@ -154,7 +156,9 @@
         completionBlock:^(NSArray* array, NSError* error)
          {
              if (error != NULL)
+             {
                  [SDKUtil createErrorEvent:error proxyObject:self];
+             }
              else
              {
                  for (int i = 0;  i < array.count;  i++)
@@ -182,7 +186,9 @@
     completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
     {
         if (error != NULL)
+        {
              [SDKUtil createErrorEvent:error proxyObject:self];
+        }
         else
         {
              for (int i = 0;  i < pagingResult.objects.count;  i++)

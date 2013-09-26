@@ -1,0 +1,26 @@
+"Window":{
+	backgroundColor: 'black',
+	navBarHidden:true
+}, 
+"#propsList":{
+	top: 0, 
+	left: 0,
+	height: '45%' 
+},
+"#picImage":{
+	width: '35dp', 
+	height: '35dp',
+	left: 5,
+	top: 7
+},
+"#infoLabel":{
+	color: 'black',
+    font: { fontFamily:'Arial', fontSize: '14dp', fontWeight:'bold'},
+	left: '60dp', 
+	top: 7
+},
+"#esinfoLabel":{
+    font: { fontFamily:'Arial', fontSize: '16dp'},
+    left: '60dp', 
+    top: '25dp'
+}

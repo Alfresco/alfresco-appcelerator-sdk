@@ -31,11 +31,11 @@
 #import "ComAlfrescoAppceleratorSdkNodeProxy.h"
 #import "ComAlfrescoAppceleratorSdkTagProxy.h"
 #import "AlfrescoTag.h"
-
+#import "SDKUtil.h"
 
 @implementation ComAlfrescoAppceleratorSdkTaggingServiceProxy
 
--(void)initWithSession:(id)arg
+-(void)initialiseWithSession:(id)arg
 {
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSessionProxy)
     
@@ -43,9 +43,7 @@
     
     if (sessionProxy == nil || sessionProxy.session == nil)
     {
-        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"errorcode", nil];
-        [self fireEvent:@"paramerror" withObject:event];
-        
+        [SDKUtil createParamErrorEvent:self];
         return;
     }
     
@@ -63,19 +61,25 @@
      ^(NSArray* array, NSError* error)
      {
          if (error != NULL)
-             NSLog(@"[INFO] Error %@", error.description);
-         
-         for (int i = 0;  i < array.count;  i++)
          {
-             AlfrescoTag* tag = [array objectAtIndex:i];
-             
-             NSLog(@"[INFO] tag %@", tag.identifier);
-             
-             ComAlfrescoAppceleratorSdkTagProxy* tagProxy = [[ComAlfrescoAppceleratorSdkTagProxy alloc]initWithTag:tag];
-             
-             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:tagProxy, @"tag", nil];
-             [self fireEvent:@"tagnode" withObject:event];
+             [SDKUtil createErrorEvent:error proxyObject:self];
          }
+         else
+         {
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 AlfrescoTag* tag = [array objectAtIndex:i];
+                 
+                 NSLog(@"[INFO] tag %@", tag.identifier);
+                 
+                 ComAlfrescoAppceleratorSdkTagProxy* tagProxy = [[ComAlfrescoAppceleratorSdkTagProxy alloc]initWithTag:tag];
+                 
+                 NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:tagProxy, @"tag", nil];
+                 [self fireEvent:@"tagnode" withObject:event];
+             }
+         }
+         
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 }
 
@@ -86,24 +90,30 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkNodeProxy)
     
     ComAlfrescoAppceleratorSdkNodeProxy* nodeProxy = arg;
-    
-    [service retrieveTagsForNode:nodeProxy->node
+
+    [service retrieveTagsForNode:[nodeProxy performSelector:NSSelectorFromString(@"node")]
      completionBlock:^(NSArray* array, NSError* error)
      {
          if (error != NULL)
-             NSLog(@"[INFO] Error %@", error.description);
-         
-         for (int i = 0;  i < array.count;  i++)
          {
-             AlfrescoTag* tag = [array objectAtIndex:i];
-             
-             NSLog(@"[INFO] tag %@", tag.identifier);
-             
-             ComAlfrescoAppceleratorSdkTagProxy* tagProxy = [[ComAlfrescoAppceleratorSdkTagProxy alloc]initWithTag:tag];
-             
-             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:tagProxy, @"tag", nil];
-             [self fireEvent:@"tagnode" withObject:event];
+             [SDKUtil createErrorEvent:error proxyObject:self];
          }
+         else
+         {
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 AlfrescoTag* tag = [array objectAtIndex:i];
+                 
+                 NSLog(@"[INFO] tag %@", tag.identifier);
+                 
+                 ComAlfrescoAppceleratorSdkTagProxy* tagProxy = [[ComAlfrescoAppceleratorSdkTagProxy alloc]initWithTag:tag];
+                 
+                 NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:tagProxy, @"tag", nil];
+                 [self fireEvent:@"tagnode" withObject:event];
+             }
+         }
+         
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 }
 @end

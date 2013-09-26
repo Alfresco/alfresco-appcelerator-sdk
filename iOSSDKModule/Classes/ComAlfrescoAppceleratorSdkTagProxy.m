@@ -28,16 +28,25 @@
 
 #import "ComAlfrescoAppceleratorSdkTagProxy.h"
 
+@interface ComAlfrescoAppceleratorSdkTagProxy()
+@property(nonatomic,strong) AlfrescoTag *tag;
+@end
+
 @implementation ComAlfrescoAppceleratorSdkTagProxy
 
-- (id)initWithTag:(AlfrescoTag *)t
+- (id)initWithTag:(AlfrescoTag *)tag
 {
-    self->tag = t;
+    self = [super init];
     
-    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"value", nil];
-    NSMutableDictionary* values = [[tag dictionaryWithValuesForKeys:keys] mutableCopy];
+    if (self)
+    {
+        self.tag = tag;
+        
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"value", nil];
+        NSMutableDictionary* values = [[tag dictionaryWithValuesForKeys:keys] mutableCopy];
 
-    [self setValuesForKeysWithDictionary:values];
+        [self setValuesForKeysWithDictionary:values];
+    }
     
     return self;
 }

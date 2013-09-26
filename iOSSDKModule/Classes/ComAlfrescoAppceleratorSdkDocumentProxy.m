@@ -30,10 +30,5 @@
 
 @implementation ComAlfrescoAppceleratorSdkDocumentProxy
 
-- (void)dealloc
-{
-    NSLog(@"[INFO] DocumentProxy object %@ being deallocated", self->node.name);
-}
-
 @end
  

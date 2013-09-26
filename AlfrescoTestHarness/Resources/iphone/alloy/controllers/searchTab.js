@@ -1,6 +1,6 @@
 function Controller() {
     function searchButtonClick() {
-        listingContext.initWithMaxItemsAndSkipCount(5, skipCount);
+        listingContext.initialiseWithMaxItemsAndSkipCount(5, skipCount);
         var searchTerm = "SELECT * FROM cmis:document WHERE cmis:name LIKE '%" + $.searchEdit.value + "%'";
         parentFolders = new Array();
         mainSection.deleteItemsAt(0, mainSection.getItems().length);
@@ -12,10 +12,7 @@ function Controller() {
                 documentFolderService.saveDocument(document);
             });
             Alloy.Globals.modelListeners(searchService, mainSection);
-            searchService.addEventListener("error", function(e) {
-                alert(e.errorString);
-            });
-            searchService.searchWithStatementAndListingContext(searchTerm, listingContext);
+            searchService.searchWithStatement(searchTerm);
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -33,15 +30,15 @@ function Controller() {
         id: "searchWindow"
     });
     $.__views.searchWindow && $.addTopLevelView($.__views.searchWindow);
-    $.__views.__alloyId39 = Ti.UI.createTableViewSection({
-        id: "__alloyId39"
+    $.__views.__alloyId52 = Ti.UI.createTableViewSection({
+        id: "__alloyId52"
     });
-    var __alloyId40 = [];
-    __alloyId40.push($.__views.__alloyId39);
-    $.__views.__alloyId41 = Ti.UI.createTableViewRow({
-        id: "__alloyId41"
+    var __alloyId53 = [];
+    __alloyId53.push($.__views.__alloyId52);
+    $.__views.__alloyId54 = Ti.UI.createTableViewRow({
+        id: "__alloyId54"
     });
-    $.__views.__alloyId39.add($.__views.__alloyId41);
+    $.__views.__alloyId52.add($.__views.__alloyId54);
     $.__views.searchBarWindow = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
@@ -50,7 +47,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         id: "searchBarWindow"
     });
-    $.__views.__alloyId41.add($.__views.searchBarWindow);
+    $.__views.__alloyId54.add($.__views.searchBarWindow);
     $.__views.searchEdit = Ti.UI.createTextField({
         value: "",
         font: {
@@ -83,10 +80,10 @@ function Controller() {
     });
     $.__views.searchBarWindow.add($.__views.searchButton);
     searchButtonClick ? $.__views.searchButton.addEventListener("click", searchButtonClick) : __defers["$.__views.searchButton!click!searchButtonClick"] = true;
-    $.__views.__alloyId42 = Ti.UI.createTableViewRow({
-        id: "__alloyId42"
+    $.__views.__alloyId55 = Ti.UI.createTableViewRow({
+        id: "__alloyId55"
     });
-    $.__views.__alloyId39.add($.__views.__alloyId42);
+    $.__views.__alloyId52.add($.__views.__alloyId55);
     $.__views.resultsWindow = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
@@ -95,14 +92,14 @@ function Controller() {
         width: Ti.UI.FILL,
         id: "resultsWindow"
     });
-    $.__views.__alloyId42.add($.__views.resultsWindow);
+    $.__views.__alloyId55.add($.__views.resultsWindow);
     $.__views.folderLabel = Ti.UI.createLabel({
         id: "folderLabel"
     });
     $.__views.resultsWindow.add($.__views.folderLabel);
-    var __alloyId43 = {};
-    var __alloyId46 = [];
-    var __alloyId47 = {
+    var __alloyId56 = {};
+    var __alloyId59 = [];
+    var __alloyId60 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -112,8 +109,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId46.push(__alloyId47);
-    var __alloyId48 = {
+    __alloyId59.push(__alloyId60);
+    var __alloyId61 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -128,8 +125,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId46.push(__alloyId48);
-    var __alloyId49 = {
+    __alloyId59.push(__alloyId61);
+    var __alloyId62 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -143,24 +140,24 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId46.push(__alloyId49);
-    var __alloyId45 = {
+    __alloyId59.push(__alloyId62);
+    var __alloyId58 = {
         properties: {
             name: "repoTemplate"
         },
-        childTemplates: __alloyId46
+        childTemplates: __alloyId59
     };
-    __alloyId43["repoTemplate"] = __alloyId45;
-    var __alloyId50 = [];
+    __alloyId56["repoTemplate"] = __alloyId58;
+    var __alloyId63 = [];
     $.__views.mainSection = Ti.UI.createListSection({
         id: "mainSection"
     });
-    __alloyId50.push($.__views.mainSection);
+    __alloyId63.push($.__views.mainSection);
     $.__views.folderList = Ti.UI.createListView({
         top: 0,
         left: 0,
-        sections: __alloyId50,
-        templates: __alloyId43,
+        sections: __alloyId63,
+        templates: __alloyId56,
         id: "folderList",
         defaultItemTemplate: "repoTemplate"
     });
@@ -172,7 +169,7 @@ function Controller() {
         height: "96%",
         backgroundColor: "white",
         separatorColor: "white",
-        data: __alloyId40,
+        data: __alloyId53,
         id: "searchTable"
     });
     $.__views.searchWindow.add($.__views.searchTable);
@@ -187,9 +184,12 @@ function Controller() {
     Ti.App.addEventListener("searchinit", function() {
         if (null != Alloy.Globals.repositorySession) {
             documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
-            documentFolderService.initWithSession(Alloy.Globals.repositorySession);
+            documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
             searchService = Alloy.Globals.SDKModule.createSearchService();
-            searchService.initWithSession(Alloy.Globals.repositorySession);
+            searchService.addEventListener("error", function(e) {
+                alert(e.errorstring);
+            });
+            searchService.initialiseWithSession(Alloy.Globals.repositorySession);
             listingContext = Alloy.Globals.SDKModule.createListingContext();
         }
     });

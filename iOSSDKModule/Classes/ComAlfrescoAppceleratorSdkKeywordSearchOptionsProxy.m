@@ -32,13 +32,13 @@
 @implementation ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy
 @synthesize searchOptions;
 
--(void)init:(id)noargs
+-(void)initialise:(id)noargs
 {
     searchOptions = [[AlfrescoKeywordSearchOptions alloc]init];
 }
 
 
--(void)initWithExactMatch:(id)args
+-(void)initialiseWithExactMatch:(id)args
 {
     BOOL exactMatch = [args objectAtIndex:0];
     BOOL includeContent = [args objectAtIndex:1];
@@ -47,22 +47,22 @@
 }
 
 
--(void)initWithFolder:(id)args
+-(void)initialiseWithFolder:(id)args
 {
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:0];
-    AlfrescoFolder* folder = (AlfrescoFolder*)folderProxy->node;
+    AlfrescoFolder* folder = [folderProxy performSelector:NSSelectorFromString(@"node")];
     BOOL includeDescendants = [args objectAtIndex:1];
     
     searchOptions = [[AlfrescoKeywordSearchOptions alloc]initWithFolder:folder includeDescendants:includeDescendants];
 }
 
 
--(void)initWithExactMatchAndFolder:(id)args
+-(void)initialiseWithExactMatchAndFolder:(id)args
 {
     BOOL exactMatch = [args objectAtIndex:0];
     BOOL includeContent = [args objectAtIndex:1];
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:2];
-    AlfrescoFolder* folder = (AlfrescoFolder*)folderProxy->node;
+    AlfrescoFolder* folder = [folderProxy performSelector:NSSelectorFromString(@"node")];
     BOOL includeDescendants = [args objectAtIndex:3];
     
     searchOptions = [[AlfrescoKeywordSearchOptions alloc]initWithExactMatch:exactMatch includeContent:includeContent folder:folder includeDescendants:includeDescendants];

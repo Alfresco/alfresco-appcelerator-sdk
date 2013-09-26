@@ -28,22 +28,31 @@
 
 #import "ComAlfrescoAppceleratorSDkNodeProxy.h"
 
+@interface ComAlfrescoAppceleratorSdkNodeProxy()
+@property(nonatomic,strong) AlfrescoNode *node;
+@end
+
 @implementation ComAlfrescoAppceleratorSdkNodeProxy
 
--(id)initWithNode:(AlfrescoNode *)n
+-(id)initWithNode:(AlfrescoNode *)node
 {
-    self->node = n;
+    self = [super init];
     
-    NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"name", @"title", @"summary", @"type", @"createdBy", @"createdAt", @"modifiedBy", @"modifiedAt", nil];
-
-    if (node.isDocument)
+    if (self)
     {
-        [keys addObjectsFromArray:[[NSArray alloc] initWithObjects:@"contentMimeType", @"contentLength", @"versionLabel", @"versionComment", @"isLatestVersion", nil]];
+        self.node = node;
+        
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"name", @"title", @"summary", @"type", @"createdBy", @"createdAt", @"modifiedBy", @"modifiedAt", nil];
+
+        if (node.isDocument)
+        {
+            [keys addObjectsFromArray:[[NSArray alloc] initWithObjects:@"contentMimeType", @"contentLength", @"versionLabel", @"versionComment", @"isLatestVersion", nil]];
+        }
+        
+        NSMutableDictionary* values = [[node dictionaryWithValuesForKeys:keys] mutableCopy];
+        
+        [self setValuesForKeysWithDictionary:values];
     }
-    
-    NSMutableDictionary* values = [[node dictionaryWithValuesForKeys:keys] mutableCopy];
-    
-    [self setValuesForKeysWithDictionary:values];
     
     return self;
 }
@@ -51,7 +60,7 @@
 
 - (id)getName:(id)noargs
 {
-    return self->node.name;
+    return self.node.name;
 }
 
 @end

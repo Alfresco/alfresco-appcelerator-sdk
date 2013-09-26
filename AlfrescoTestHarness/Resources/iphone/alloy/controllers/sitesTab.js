@@ -12,9 +12,9 @@ function Controller() {
         id: "sitesTab"
     });
     $.__views.sitesTab && $.addTopLevelView($.__views.sitesTab);
-    var __alloyId52 = {};
-    var __alloyId55 = [];
-    var __alloyId56 = {
+    var __alloyId65 = {};
+    var __alloyId68 = [];
+    var __alloyId69 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -24,8 +24,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId55.push(__alloyId56);
-    var __alloyId57 = {
+    __alloyId68.push(__alloyId69);
+    var __alloyId70 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -40,8 +40,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId55.push(__alloyId57);
-    var __alloyId58 = {
+    __alloyId68.push(__alloyId70);
+    var __alloyId71 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -55,36 +55,36 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId55.push(__alloyId58);
-    var __alloyId54 = {
+    __alloyId68.push(__alloyId71);
+    var __alloyId67 = {
         properties: {
             name: "siteTemplate"
         },
-        childTemplates: __alloyId55
+        childTemplates: __alloyId68
     };
-    __alloyId52["siteTemplate"] = __alloyId54;
-    var __alloyId59 = [];
+    __alloyId65["siteTemplate"] = __alloyId67;
+    var __alloyId72 = [];
     $.__views.mySites = Ti.UI.createListSection({
         headerTitle: "My Sites",
         id: "mySites"
     });
-    __alloyId59.push($.__views.mySites);
+    __alloyId72.push($.__views.mySites);
     $.__views.allSites = Ti.UI.createListSection({
         headerTitle: "All Sites",
         id: "allSites"
     });
-    __alloyId59.push($.__views.allSites);
+    __alloyId72.push($.__views.allSites);
     $.__views.favSites = Ti.UI.createListSection({
         headerTitle: "Favourite Sites",
         id: "favSites"
     });
-    __alloyId59.push($.__views.favSites);
+    __alloyId72.push($.__views.favSites);
     $.__views.siteList = Ti.UI.createListView({
         top: 0,
         left: 0,
         height: "45%",
-        sections: __alloyId59,
-        templates: __alloyId52,
+        sections: __alloyId72,
+        templates: __alloyId65,
         id: "siteList",
         defaultItemTemplate: "siteTemplate"
     });
@@ -104,9 +104,9 @@ function Controller() {
         id: "folderLabel"
     });
     $.__views.sitesTab.add($.__views.folderLabel);
-    var __alloyId63 = {};
-    var __alloyId66 = [];
-    var __alloyId67 = {
+    var __alloyId76 = {};
+    var __alloyId79 = [];
+    var __alloyId80 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -116,8 +116,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId66.push(__alloyId67);
-    var __alloyId68 = {
+    __alloyId79.push(__alloyId80);
+    var __alloyId81 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -132,8 +132,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId66.push(__alloyId68);
-    var __alloyId69 = {
+    __alloyId79.push(__alloyId81);
+    var __alloyId82 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -147,27 +147,27 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId66.push(__alloyId69);
-    var __alloyId65 = {
+    __alloyId79.push(__alloyId82);
+    var __alloyId78 = {
         properties: {
             name: "repoTemplate"
         },
-        childTemplates: __alloyId66
+        childTemplates: __alloyId79
     };
-    __alloyId63["repoTemplate"] = __alloyId65;
-    var __alloyId70 = [];
+    __alloyId76["repoTemplate"] = __alloyId78;
+    var __alloyId83 = [];
     $.__views.repo = Ti.UI.createListSection({
         headerTitle: "Repository",
         id: "repo"
     });
-    __alloyId70.push($.__views.repo);
+    __alloyId83.push($.__views.repo);
     $.__views.folderList = Ti.UI.createListView({
         backgroundColor: "#DDDDDD",
         top: "55%",
         left: 0,
         height: "45%",
-        sections: __alloyId70,
-        templates: __alloyId63,
+        sections: __alloyId83,
+        templates: __alloyId76,
         id: "folderList",
         defaultItemTemplate: "repoTemplate"
     });
@@ -185,7 +185,10 @@ function Controller() {
     Ti.App.addEventListener("sitespopulate", function() {
         if (Alloy.Globals.AlfrescoSDKVersion >= 1 && null != Alloy.Globals.repositorySession && 0 == $.allSites.getItems().length) {
             var siteService = Alloy.Globals.SDKModule.createSiteService();
-            siteService.initWithSession(Alloy.Globals.repositorySession);
+            siteService.addEventListener("error", function(e) {
+                alert(e.errorstring);
+            });
+            siteService.initialiseWithSession(Alloy.Globals.repositorySession);
             siteService.retrieveSites();
             Alloy.Globals.sitesModelListener(siteService, $.mySites, "mysitesnode");
             siteService.retrieveAllSites();
@@ -193,7 +196,10 @@ function Controller() {
             siteService.retrieveFavoriteSites();
             Alloy.Globals.sitesModelListener(siteService, $.favSites, "favsitesnode");
             documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
-            documentFolderService.initWithSession(Alloy.Globals.repositorySession);
+            documentFolderService.addEventListener("error", function(e) {
+                alert(e.errorstring);
+            });
+            documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
             Alloy.Globals.modelListeners(documentFolderService, $.repo);
             $.siteList.addEventListener("itemclick", function(e) {
                 var item = e.section.getItemAt(e.itemIndex);

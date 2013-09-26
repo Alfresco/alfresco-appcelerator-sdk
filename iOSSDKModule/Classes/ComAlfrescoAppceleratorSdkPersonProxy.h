@@ -31,10 +31,6 @@
 
 
 @interface ComAlfrescoAppceleratorSdkPersonProxy : TiProxy
-{
-    @public
-    AlfrescoPerson* person;
-}
 
 -(id)initWithPerson:(AlfrescoPerson *)person;
 

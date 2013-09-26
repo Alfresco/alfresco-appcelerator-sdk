@@ -43,6 +43,12 @@
     NSString *user = [self valueForKey:@"serverUsername"];
     NSString *pwd = [self valueForKey:@"serverPassword"];
     
+    if (url == nil  ||  user == nil  ||  pwd == nil)
+    {
+        [SDKUtil createParamErrorEvent:self];
+        return;
+    } 
+    
     AlfrescoRequest* request;
     ComAlfrescoAppceleratorSdkRepositorySessionProxy *weakSelf = self;
   

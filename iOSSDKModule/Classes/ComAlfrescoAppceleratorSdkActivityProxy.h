@@ -30,11 +30,7 @@
 #import "AlfrescoActivityEntry.h"
 
 @interface ComAlfrescoAppceleratorSdkActivityProxy : TiProxy
-{
-    @public
-    AlfrescoActivityEntry* entry;
-}
 
--(id)initWithActivityEntry:(AlfrescoActivityEntry*)e;
+-(id)initWithActivityEntry:(AlfrescoActivityEntry*)entry;
 
 @end

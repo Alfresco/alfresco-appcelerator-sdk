@@ -36,7 +36,7 @@
     NSError* errorCode;
 }
 
--(void)initWithSession:(id)arg;
+-(void)initialiseWithSession:(id)arg;
 
 -(void)retrieveAllSites:(id)noargs;
 -(void)retrieveSites:(id)noargs;

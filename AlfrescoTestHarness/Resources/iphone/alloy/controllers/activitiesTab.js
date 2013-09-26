@@ -156,11 +156,17 @@ function Controller() {
     Ti.App.addEventListener("activitiespopulate", function() {
         if (Alloy.Globals.AlfrescoSDKVersion >= 1 && null != Alloy.Globals.repositorySession && 0 == $.activities.getItems().length) {
             var activityService = Alloy.Globals.SDKModule.createActivityService();
-            activityService.initWithSession(Alloy.Globals.repositorySession);
+            activityService.addEventListener("error", function(e) {
+                alert(e.errorstring);
+            });
+            activityService.initialiseWithSession(Alloy.Globals.repositorySession);
             activityService.retrieveActivityStream();
             Alloy.Globals.activitiesModelListener(activityService, $.activities);
             var personService = Alloy.Globals.SDKModule.createPersonService();
-            personService.initWithSession(Alloy.Globals.repositorySession);
+            personService.addEventListener("error", function(e) {
+                alert(e.errorstring);
+            });
+            personService.initialiseWithSession(Alloy.Globals.repositorySession);
             $.activityList.addEventListener("itemclick", function(e) {
                 var item = e.section.getItemAt(e.itemIndex);
                 var mainDataSet = [];
@@ -197,7 +203,7 @@ function Controller() {
                     if ("createdBy" == name) {
                         Ti.API.info("Person id: " + value);
                         personService.retrievePersonWithIdentifier(value);
-                        activityCreatorIndex = mainDataSet.length;
+                        activityCreatorIndex = mainDataSet.length - 1;
                     }
                 });
                 $.properties.appendItems(mainDataSet);

@@ -30,6 +30,7 @@
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 #import "ComAlfrescoAppceleratorSdkSiteProxy.h"
 #import "ComAlfrescoAppceleratorSdkFolderProxy.h"
+#import "SDKUtil.h"
 
 #import "AlfrescoFolder.h"
 #import <objc/runtime.h>
@@ -37,7 +38,7 @@
 
 @implementation ComAlfrescoAppceleratorSdkSiteServiceProxy
 
--(void)initWithSession:(id)arg
+-(void)initialiseWithSession:(id)arg
 { 
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSessionProxy)
     
@@ -45,9 +46,7 @@
     
     if (sessionProxy == nil || sessionProxy.session == nil)
     {
-        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"errorcode", nil];
-        [self fireEvent:@"paramerror" withObject:event];
-        
+        [SDKUtil createParamErrorEvent:self];
         return;
     }
     
@@ -73,9 +72,16 @@
     
     [service retrieveAllSitesWithCompletionBlock:^(NSArray* array, NSError* error)
      {
-         for (int i = 0;  i < array.count;  i++)
+         if (error != NULL)
          {
-             [self createEventWithSite:[array objectAtIndex:i] context:@"allsitesnode"];
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 [self createEventWithSite:[array objectAtIndex:i] context:@"allsitesnode"];
+             }
          }
      }];
 }
@@ -87,9 +93,16 @@
     
     [service retrieveSitesWithCompletionBlock:^(NSArray* array, NSError* error)
      {
-         for (int i = 0;  i < array.count;  i++)
+         if (error != NULL)
          {
-             [self createEventWithSite:[array objectAtIndex:i] context:@"mysitesnode"];
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 [self createEventWithSite:[array objectAtIndex:i] context:@"mysitesnode"];
+             }
          }
      }];
 }
@@ -101,9 +114,16 @@
     
     [service retrieveFavoriteSitesWithCompletionBlock:^(NSArray* array, NSError* error)
      {
-         for (int i = 0;  i < array.count;  i++)
+         if (error != NULL)
          {
-             [self createEventWithSite:[array objectAtIndex:i] context:@"favsitesnode"];
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 [self createEventWithSite:[array objectAtIndex:i] context:@"favsitesnode"];
+             }
          }
      }];
 } 
@@ -118,7 +138,14 @@
     
     [service retrieveSiteWithShortName:shortName completionBlock:^(AlfrescoSite* site, NSError* error)
      {
-         [self createEventWithSite:site context:@"sitenode"];
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [self createEventWithSite:site context:@"sitenode"];
+         }
      }];
 }
 
@@ -130,10 +157,17 @@
     
     [service retrieveDocumentLibraryFolderForSite:arg completionBlock:^(AlfrescoFolder* folder, NSError* error)
      {
-         ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [[ComAlfrescoAppceleratorSdkFolderProxy alloc]initWithNode:folder];
-         NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy, @"folder", nil];
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [[ComAlfrescoAppceleratorSdkFolderProxy alloc]initWithNode:folder];
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy, @"folder", nil];
 
-         [self fireEvent:@"retrievedDocumentFolder" withObject:event];
+             [self fireEvent:@"retrievedDocumentFolder" withObject:event];
+         }
      }];
 }
 

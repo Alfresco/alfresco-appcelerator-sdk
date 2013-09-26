@@ -30,11 +30,12 @@
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 #import "ComAlfrescoAppceleratorSdkPersonProxy.h"
 #import "ComAlfrescoAppceleratorSdkContentFileProxy.h"
+#import "SDKUtil.h"
 
 
 @implementation ComAlfrescoAppceleratorSdkPersonServiceProxy
 
--(void)initWithSession:(id)arg
+-(void)initialiseWithSession:(id)arg
 {
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSessionProxy)
     
@@ -42,9 +43,7 @@
     
     if (sessionProxy == nil || sessionProxy.session == nil)
     {
-        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"errorcode", nil];
-        [self fireEvent:@"paramerror" withObject:event];
-        
+        [SDKUtil createParamErrorEvent:self];
         return;
     }
     
@@ -59,11 +58,20 @@
     
     [service retrievePersonWithIdentifier:arg completionBlock:^(AlfrescoPerson* person, NSError* error)
      {
-         ComAlfrescoAppceleratorSdkPersonProxy* personProxy = [[ComAlfrescoAppceleratorSdkPersonProxy alloc]initWithPerson:person];
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             ComAlfrescoAppceleratorSdkPersonProxy* personProxy = [[ComAlfrescoAppceleratorSdkPersonProxy alloc]initWithPerson:person];
+             
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:personProxy, @"person", nil];
+             
+             [self fireEvent:@"personnode" withObject:event];
+         }
          
-         NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:personProxy, @"person", nil];
-         
-         [self fireEvent:@"personnode" withObject:event];
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 }
 
@@ -73,14 +81,25 @@
     ENSURE_UI_THREAD_1_ARG(arg)
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkPersonProxy)
     
-    [service retrieveAvatarForPerson:((ComAlfrescoAppceleratorSdkPersonProxy*)arg)->person
+    ComAlfrescoAppceleratorSdkPersonProxy* person = arg;
+    
+    [service retrieveAvatarForPerson:[person performSelector:NSSelectorFromString(@"person")]
      completionBlock:^(AlfrescoContentFile* contentFile, NSError* error)
      {
-         NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [[ComAlfrescoAppceleratorSdkContentFileProxy alloc] initWithContentFile:contentFile], @"contentfile",
-                                nil];
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [[ComAlfrescoAppceleratorSdkContentFileProxy alloc] initWithContentFile:contentFile], @"contentfile",
+                                    nil];
+             
+             [self fireEvent:@"retrievedavatar" withObject:event];
+         }
          
-         [self fireEvent:@"retrievedavatar" withObject:event];
+         [SDKUtil createEnumerationEndEvent:self];
     }];
 }
 

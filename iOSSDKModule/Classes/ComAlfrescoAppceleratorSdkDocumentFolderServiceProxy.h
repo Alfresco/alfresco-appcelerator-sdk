@@ -37,7 +37,7 @@
     NSError* errorCode;
 }
 
--(void)initWithSession:(id)arg;
+-(void)initialiseWithSession:(id)arg;
 
 -(void)retrieveRootFolder:(id)noargs;
 
