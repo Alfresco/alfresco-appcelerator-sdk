@@ -72,86 +72,17 @@ function Controller() {
     $.__views.activityList = Ti.UI.createListView({
         top: 0,
         left: 0,
-        height: "45%",
+        height: "100%",
         sections: __alloyId14,
         templates: __alloyId7,
         id: "activityList",
         defaultItemTemplate: "activityTemplate"
     });
     $.__views.activitiesTab.add($.__views.activityList);
-    var __alloyId16 = {};
-    var __alloyId19 = [];
-    var __alloyId20 = {
-        type: "Ti.UI.ImageView",
-        bindId: "pic",
-        properties: {
-            width: "35dp",
-            height: "35dp",
-            left: 5,
-            top: 7,
-            bindId: "pic"
-        }
-    };
-    __alloyId19.push(__alloyId20);
-    var __alloyId21 = {
-        type: "Ti.UI.Label",
-        bindId: "info",
-        properties: {
-            color: "black",
-            font: {
-                fontFamily: "Arial",
-                fontSize: "14dp",
-                fontWeight: "bold"
-            },
-            left: "60dp",
-            top: 7,
-            bindId: "info"
-        }
-    };
-    __alloyId19.push(__alloyId21);
-    var __alloyId22 = {
-        type: "Ti.UI.Label",
-        bindId: "es_info",
-        properties: {
-            font: {
-                fontFamily: "Arial",
-                fontSize: "16dp"
-            },
-            left: "60dp",
-            top: "25dp",
-            bindId: "es_info"
-        }
-    };
-    __alloyId19.push(__alloyId22);
-    var __alloyId18 = {
-        properties: {
-            name: "activityPropertiesTemplate"
-        },
-        childTemplates: __alloyId19
-    };
-    __alloyId16["activityPropertiesTemplate"] = __alloyId18;
-    var __alloyId23 = [];
-    $.__views.properties = Ti.UI.createListSection({
-        headerTitle: "Properties",
-        id: "properties"
-    });
-    __alloyId23.push($.__views.properties);
-    $.__views.activityProperties = Ti.UI.createListView({
-        backgroundColor: "#DDDDDD",
-        top: "55%",
-        left: 0,
-        height: "45%",
-        sections: __alloyId23,
-        templates: __alloyId16,
-        id: "activityProperties",
-        defaultItemTemplate: "activityPropertiesTemplate"
-    });
-    $.__views.activitiesTab.add($.__views.activityProperties);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.App.addEventListener("cleartabs", function() {
         $.activities.deleteItemsAt(0, $.activities.getItems().length);
-        $.properties.deleteItemsAt(0, $.properties.getItems().length);
     });
     Ti.App.addEventListener("activitiespopulate", function() {
         if (Alloy.Globals.AlfrescoSDKVersion >= 1 && null != Alloy.Globals.repositorySession && 0 == $.activities.getItems().length) {
@@ -162,51 +93,10 @@ function Controller() {
             activityService.initialiseWithSession(Alloy.Globals.repositorySession);
             activityService.retrieveActivityStream();
             Alloy.Globals.activitiesModelListener(activityService, $.activities);
-            var personService = Alloy.Globals.SDKModule.createPersonService();
-            personService.addEventListener("error", function(e) {
-                alert(e.errorstring);
-            });
-            personService.initialiseWithSession(Alloy.Globals.repositorySession);
             $.activityList.addEventListener("itemclick", function(e) {
                 var item = e.section.getItemAt(e.itemIndex);
-                var mainDataSet = [];
-                var activityCreatorIndex;
-                $.properties.deleteItemsAt(0, $.properties.getItems().length);
-                activityCreatorImage = "";
-                personService.addEventListener("personnode", personnodeFunc = function(e) {
-                    var person = e.person;
-                    Ti.API.info("Person: " + person.fullName);
-                    personService.retrieveAvatarForPerson(person);
-                    personService.addEventListener("retrievedavatar", retrievedavatarFunc = function(e) {
-                        var contentFile = e.contentfile;
-                        Ti.API.info("Image: " + contentFile.getPath());
-                        var item = $.properties.getItemAt(activityCreatorIndex);
-                        item.pic.image = contentFile.getPath();
-                        $.properties.updateItemAt(activityCreatorIndex, item);
-                        personService.removeEventListener("personnode", personnodeFunc);
-                        personService.removeEventListener("retrievedavatar", retrievedavatarFunc);
-                    });
-                });
-                Alloy.Globals.recurseProperties(item.properties, "", function(name, value) {
-                    data = {
-                        info: {
-                            text: name + ":"
-                        },
-                        es_info: {
-                            text: value
-                        },
-                        pic: {
-                            image: "default_entry_icon.png"
-                        }
-                    };
-                    mainDataSet.push(data);
-                    if ("createdBy" == name) {
-                        Ti.API.info("Person id: " + value);
-                        personService.retrievePersonWithIdentifier(value);
-                        activityCreatorIndex = mainDataSet.length - 1;
-                    }
-                });
-                $.properties.appendItems(mainDataSet);
+                Alloy.Globals.currentNode = item.properties;
+                Alloy.Globals.nodeJustProperties = true;
             });
         }
     });

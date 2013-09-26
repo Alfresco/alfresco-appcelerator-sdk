@@ -145,6 +145,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
             if (2 == item.properties.folder) folder = parentFolders.pop(); else {
                 folder = item.properties.folderobject;
                 Alloy.Globals.currentNode = folder;
+                Alloy.Globals.nodeJustProperties = false;
                 parentFolders.push(service.getCurrentFolder());
             }
             mainSection.deleteItemsAt(0, mainSection.getItems().length);
@@ -174,19 +175,18 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
         } else {
             var doc = item.properties.docobject;
             Alloy.Globals.currentNode = doc;
+            Alloy.Globals.nodeJustProperties = false;
             onDocument(doc);
         }
     });
 };
 
 Alloy.Globals.recursePropertiesAndAlert = function recurseProperties(title, properties) {
-    if (Alloy.Globals.showProperties) {
-        var alertString = title + ":\r\n\r\n";
-        Alloy.Globals.recurseProperties(properties, "", function(name, value) {
-            alertString += name + " = " + value + "\r\n\r\n";
-        });
-        alert(alertString);
-    }
+    var alertString = title + ":\r\n\r\n";
+    Alloy.Globals.recurseProperties(properties, "", function(name, value) {
+        alertString += name + " = " + value + "\r\n\r\n";
+    });
+    alert(alertString);
 };
 
 Alloy.Globals.recurseProperties = function recurseProperties(properties, propertiesName, callForEachProperty) {

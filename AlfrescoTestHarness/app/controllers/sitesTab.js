@@ -60,9 +60,10 @@ Ti.App.addEventListener('sitespopulate',function()
 				var item = e.section.getItemAt(e.itemIndex);
 				var name = item.properties.name;
 				
-				Alloy.Globals.recursePropertiesAndAlert ("Site properties", item.properties.data);
-				
-			    siteService.retrieveDocumentLibraryFolderForSite(name);
+				Alloy.Globals.currentNode = item.properties.data;
+	    		Alloy.Globals.nodeJustProperties = true;
+	    		
+				siteService.retrieveDocumentLibraryFolderForSite(name);
 			});
 			
 			siteService.addEventListener('retrievedDocumentFolder', function(e)

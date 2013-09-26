@@ -196,7 +196,8 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	        	folder = item.properties.folderobject;
 	        	
 	        	Alloy.Globals.currentNode = folder;	 
-	        	
+				Alloy.Globals.nodeJustProperties = false;
+				
 	        	parentFolders.push(service.getCurrentFolder());     	
 	        }        
 	        
@@ -219,6 +220,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	    	var doc = item.properties.docobject;
 	    	
 	    	Alloy.Globals.currentNode = doc;
+	    	Alloy.Globals.nodeJustProperties = false;
     		
 	    	onDocument(doc);	    	
 	   	}
@@ -227,17 +229,14 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 
 Alloy.Globals.recursePropertiesAndAlert = function recurseProperties (title, properties)
 {
-	if (Alloy.Globals.showProperties)
-	{
-		var alertString = title + ":\r\n\r\n";
-		
-		Alloy.Globals.recurseProperties(properties, "", function(name,value)
-	 	{
-	 		alertString += name + " = " + value + "\r\n\r\n";
-	 	});
-	 	
-	 	alert (alertString);
-	}
+	var alertString = title + ":\r\n\r\n";
+	
+	Alloy.Globals.recurseProperties(properties, "", function(name,value)
+ 	{
+ 		alertString += name + " = " + value + "\r\n\r\n";
+ 	});
+ 	
+ 	alert (alertString);
 }
 
 Alloy.Globals.recurseProperties = function recurseProperties (properties, propertiesName, callForEachProperty)

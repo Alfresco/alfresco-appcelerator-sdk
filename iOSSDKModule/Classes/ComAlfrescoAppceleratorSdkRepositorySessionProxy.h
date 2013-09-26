@@ -30,8 +30,21 @@
 #import "ComAlfrescoAppceleratorSdkRequestProxy.h"
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 
+/** RepositorySession
+
+Javascript example:
+ var SDKModule = require('com.alfresco.appcelerator.module.sdk');
+ SDKModule.createRepositorySession({serverUrl: "http://localhost:8080/alfresco", serverUsername: "admin", serverPassword: "pwd"});
+ SDKModule.connect();
+ 
+ @since v1.0
+*/
 @interface ComAlfrescoAppceleratorSdkRepositorySessionProxy : ComAlfrescoAppceleratorSdkSessionProxy
 
+/** Connect to the repository using the properties set at creation
+ @param none
+ @since v1.0
+*/
 -(void)connect:(id)noargs;
 
 @end

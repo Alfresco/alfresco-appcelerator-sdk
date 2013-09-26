@@ -102,9 +102,9 @@ function Controller() {
         id: "propertiesTab"
     });
     $.__views.propertiesTab && $.addTopLevelView($.__views.propertiesTab);
-    var __alloyId31 = {};
-    var __alloyId34 = [];
-    var __alloyId35 = {
+    var __alloyId22 = {};
+    var __alloyId25 = [];
+    var __alloyId26 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -115,8 +115,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId34.push(__alloyId35);
-    var __alloyId36 = {
+    __alloyId25.push(__alloyId26);
+    var __alloyId27 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -131,8 +131,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId34.push(__alloyId36);
-    var __alloyId37 = {
+    __alloyId25.push(__alloyId27);
+    var __alloyId28 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -145,38 +145,38 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId34.push(__alloyId37);
-    var __alloyId33 = {
+    __alloyId25.push(__alloyId28);
+    var __alloyId24 = {
         properties: {
             name: "propsTemplate"
         },
-        childTemplates: __alloyId34
+        childTemplates: __alloyId25
     };
-    __alloyId31["propsTemplate"] = __alloyId33;
-    var __alloyId38 = [];
+    __alloyId22["propsTemplate"] = __alloyId24;
+    var __alloyId29 = [];
     $.__views.properties = Ti.UI.createListSection({
         headerTitle: "Properties",
         id: "properties"
     });
-    __alloyId38.push($.__views.properties);
+    __alloyId29.push($.__views.properties);
     $.__views.permissions = Ti.UI.createListSection({
         headerTitle: "Permissions",
         id: "permissions"
     });
-    __alloyId38.push($.__views.permissions);
+    __alloyId29.push($.__views.permissions);
     $.__views.comments = Ti.UI.createListSection({
         headerTitle: "Comments",
         id: "comments"
     });
-    __alloyId38.push($.__views.comments);
+    __alloyId29.push($.__views.comments);
     $.__views.tags = Ti.UI.createListSection({
         headerTitle: "Tags",
         id: "tags"
     });
-    __alloyId38.push($.__views.tags);
+    __alloyId29.push($.__views.tags);
     $.__views.propList = Ti.UI.createListView({
-        sections: __alloyId38,
-        templates: __alloyId31,
+        sections: __alloyId29,
+        templates: __alloyId22,
         id: "propList",
         defaultItemTemplate: "propsTemplate"
     });
@@ -205,7 +205,7 @@ function Controller() {
     });
     Ti.App.addEventListener("propspopulate", function() {
         if (null == Alloy.Globals.currentNode) return;
-        if (null != lastNode && lastNode.name == Alloy.Globals.currentNode.name) return;
+        if (null != lastNode && lastNode == Alloy.Globals.currentNode) return;
         init();
         inUseCounter = 4;
         lastNode = Alloy.Globals.currentNode;
@@ -237,9 +237,48 @@ function Controller() {
                 creatorIndex = $.properties.getItems().length - 1;
             }
         });
-        documentFolderService.retrievePermissionsOfNode(node);
-        commentService.retrieveCommentsForNode(node);
-        taggingService.retrieveTagsForNode(node);
+        if (false == Alloy.Globals.nodeJustProperties) {
+            documentFolderService.retrievePermissionsOfNode(node);
+            commentService.retrieveCommentsForNode(node);
+            taggingService.retrieveTagsForNode(node);
+        } else {
+            permissionsDataSet.push({
+                info: {
+                    text: "Not applicable"
+                },
+                es_info: {
+                    text: ""
+                },
+                pic: {
+                    image: ""
+                }
+            });
+            $.permissions.appendItems(permissionsDataSet);
+            commentsDataSet.push({
+                info: {
+                    text: "Not applicable"
+                },
+                es_info: {
+                    text: ""
+                },
+                pic: {
+                    image: ""
+                }
+            });
+            $.comments.appendItems(commentsDataSet);
+            tagsDataSet.push({
+                info: {
+                    text: "Not applicable"
+                },
+                es_info: {
+                    text: ""
+                },
+                pic: {
+                    image: ""
+                }
+            });
+            $.tags.appendItems(tagsDataSet);
+        }
     });
     _.extend($, exports);
 }

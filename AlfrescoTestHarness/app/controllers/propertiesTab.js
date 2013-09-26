@@ -42,12 +42,13 @@ Ti.App.addEventListener('cleartabs', function()
 	tagsDataSet = [];
 });
 
+
 Ti.App.addEventListener('propspopulate',function()
 {
 	if (Alloy.Globals.currentNode == null)
 		return;
 	
-	if (lastNode != null  &&  lastNode.name == Alloy.Globals.currentNode.name)
+	if (lastNode != null  &&  lastNode == Alloy.Globals.currentNode)
 		return;
 	
 	init();
@@ -80,11 +81,23 @@ Ti.App.addEventListener('propspopulate',function()
  		}
 	});
    	    	
-	documentFolderService.retrievePermissionsOfNode(node);
-	
-	commentService.retrieveCommentsForNode(node);
-	
-	taggingService.retrieveTagsForNode(node);
+   	if (Alloy.Globals.nodeJustProperties == false)
+   	{
+		documentFolderService.retrievePermissionsOfNode(node);	
+		commentService.retrieveCommentsForNode(node);
+		taggingService.retrieveTagsForNode(node);
+	}
+	else
+	{
+		permissionsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
+		$.permissions.appendItems(permissionsDataSet);
+		
+		commentsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
+		$.comments.appendItems(commentsDataSet);
+		
+		tagsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
+		$.tags.appendItems(tagsDataSet);
+	}
 }); 
 
 

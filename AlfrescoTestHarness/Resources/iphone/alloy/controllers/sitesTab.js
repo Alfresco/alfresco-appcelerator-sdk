@@ -12,9 +12,9 @@ function Controller() {
         id: "sitesTab"
     });
     $.__views.sitesTab && $.addTopLevelView($.__views.sitesTab);
-    var __alloyId65 = {};
-    var __alloyId68 = [];
-    var __alloyId69 = {
+    var __alloyId56 = {};
+    var __alloyId59 = [];
+    var __alloyId60 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -24,8 +24,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId68.push(__alloyId69);
-    var __alloyId70 = {
+    __alloyId59.push(__alloyId60);
+    var __alloyId61 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -40,8 +40,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId68.push(__alloyId70);
-    var __alloyId71 = {
+    __alloyId59.push(__alloyId61);
+    var __alloyId62 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -55,36 +55,36 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId68.push(__alloyId71);
-    var __alloyId67 = {
+    __alloyId59.push(__alloyId62);
+    var __alloyId58 = {
         properties: {
             name: "siteTemplate"
         },
-        childTemplates: __alloyId68
+        childTemplates: __alloyId59
     };
-    __alloyId65["siteTemplate"] = __alloyId67;
-    var __alloyId72 = [];
+    __alloyId56["siteTemplate"] = __alloyId58;
+    var __alloyId63 = [];
     $.__views.mySites = Ti.UI.createListSection({
         headerTitle: "My Sites",
         id: "mySites"
     });
-    __alloyId72.push($.__views.mySites);
+    __alloyId63.push($.__views.mySites);
     $.__views.allSites = Ti.UI.createListSection({
         headerTitle: "All Sites",
         id: "allSites"
     });
-    __alloyId72.push($.__views.allSites);
+    __alloyId63.push($.__views.allSites);
     $.__views.favSites = Ti.UI.createListSection({
         headerTitle: "Favourite Sites",
         id: "favSites"
     });
-    __alloyId72.push($.__views.favSites);
+    __alloyId63.push($.__views.favSites);
     $.__views.siteList = Ti.UI.createListView({
         top: 0,
         left: 0,
         height: "45%",
-        sections: __alloyId72,
-        templates: __alloyId65,
+        sections: __alloyId63,
+        templates: __alloyId56,
         id: "siteList",
         defaultItemTemplate: "siteTemplate"
     });
@@ -104,9 +104,9 @@ function Controller() {
         id: "folderLabel"
     });
     $.__views.sitesTab.add($.__views.folderLabel);
-    var __alloyId76 = {};
-    var __alloyId79 = [];
-    var __alloyId80 = {
+    var __alloyId67 = {};
+    var __alloyId70 = [];
+    var __alloyId71 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -116,8 +116,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId79.push(__alloyId80);
-    var __alloyId81 = {
+    __alloyId70.push(__alloyId71);
+    var __alloyId72 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -132,8 +132,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId79.push(__alloyId81);
-    var __alloyId82 = {
+    __alloyId70.push(__alloyId72);
+    var __alloyId73 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -147,27 +147,27 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId79.push(__alloyId82);
-    var __alloyId78 = {
+    __alloyId70.push(__alloyId73);
+    var __alloyId69 = {
         properties: {
             name: "repoTemplate"
         },
-        childTemplates: __alloyId79
+        childTemplates: __alloyId70
     };
-    __alloyId76["repoTemplate"] = __alloyId78;
-    var __alloyId83 = [];
+    __alloyId67["repoTemplate"] = __alloyId69;
+    var __alloyId74 = [];
     $.__views.repo = Ti.UI.createListSection({
         headerTitle: "Repository",
         id: "repo"
     });
-    __alloyId83.push($.__views.repo);
+    __alloyId74.push($.__views.repo);
     $.__views.folderList = Ti.UI.createListView({
         backgroundColor: "#DDDDDD",
         top: "55%",
         left: 0,
         height: "45%",
-        sections: __alloyId83,
-        templates: __alloyId76,
+        sections: __alloyId74,
+        templates: __alloyId67,
         id: "folderList",
         defaultItemTemplate: "repoTemplate"
     });
@@ -204,7 +204,8 @@ function Controller() {
             $.siteList.addEventListener("itemclick", function(e) {
                 var item = e.section.getItemAt(e.itemIndex);
                 var name = item.properties.name;
-                Alloy.Globals.recursePropertiesAndAlert("Site properties", item.properties.data);
+                Alloy.Globals.currentNode = item.properties.data;
+                Alloy.Globals.nodeJustProperties = true;
                 siteService.retrieveDocumentLibraryFolderForSite(name);
             });
             siteService.addEventListener("retrievedDocumentFolder", function(e) {

@@ -6,7 +6,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __alloyId26 = [];
+    var __alloyId17 = [];
     $.__views.logintab = Alloy.createController("accountTab", {
         id: "logintab"
     });
@@ -18,7 +18,7 @@ function Controller() {
         title: "Account",
         icon: "KS_nav_login.png"
     });
-    __alloyId26.push($.__views.loginTab);
+    __alloyId17.push($.__views.loginTab);
     $.__views.repotab = Alloy.createController("repoTab", {
         id: "repotab"
     });
@@ -30,7 +30,7 @@ function Controller() {
         title: "Repository",
         icon: "KS_nav_folder.png"
     });
-    __alloyId26.push($.__views.repoTab);
+    __alloyId17.push($.__views.repoTab);
     $.__views.sitestab = Alloy.createController("sitesTab", {
         id: "sitestab"
     });
@@ -42,7 +42,7 @@ function Controller() {
         title: "Sites",
         icon: "KS_nav_sites.png"
     });
-    __alloyId26.push($.__views.sitesTab);
+    __alloyId17.push($.__views.sitesTab);
     $.__views.activitiestab = Alloy.createController("activitiesTab", {
         id: "activitiestab"
     });
@@ -54,7 +54,7 @@ function Controller() {
         title: "Activities",
         icon: "KS_nav_ui.png"
     });
-    __alloyId26.push($.__views.activitiesTab);
+    __alloyId17.push($.__views.activitiesTab);
     $.__views.searchtab = Alloy.createController("searchTab", {
         id: "searchtab"
     });
@@ -66,7 +66,7 @@ function Controller() {
         title: "Search",
         icon: "KS_nav_search.png"
     });
-    __alloyId26.push($.__views.searchTab);
+    __alloyId17.push($.__views.searchTab);
     $.__views.propstab = Alloy.createController("propertiesTab", {
         id: "propstab"
     });
@@ -78,9 +78,9 @@ function Controller() {
         title: "Properties",
         icon: "KS_nav_ui.png"
     });
-    __alloyId26.push($.__views.propsTab);
+    __alloyId17.push($.__views.propsTab);
     $.__views.index = Ti.UI.createTabGroup({
-        tabs: __alloyId26,
+        tabs: __alloyId17,
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
@@ -90,6 +90,7 @@ function Controller() {
     Alloy.Globals.SDKModule = require("com.alfresco.appcelerator.module.sdk");
     Alloy.Globals.tabGroup = $.index;
     Alloy.Globals.currentNode = null;
+    Alloy.Globals.nodeJustProperties = false;
     $.index.open();
     $.index.addEventListener("focus", function(e) {
         1 == e.index ? Ti.App.fireEvent("repopopulate") : 2 == e.index && Ti.App.fireEvent("sitespopulate");

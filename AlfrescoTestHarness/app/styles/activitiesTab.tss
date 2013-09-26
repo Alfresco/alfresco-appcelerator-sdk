@@ -5,13 +5,7 @@
 "#activityList":{
 	top: 0, 
 	left: 0,
-	height: '45%' 
-},
-"#activityProperties":{
-	backgroundColor: '#DDDDDD',
-	top: '55%', 
-	left: 0,
-	height: '45%'
+	height: '100%' 
 },
 "#picImage":{
 	width: '35dp', 
