@@ -20,7 +20,6 @@ function Controller() {
                     });
                 });
                 $.permissions.appendItems(permissionsDataSet);
-                --inUseCounter;
             });
             commentService = Alloy.Globals.SDKModule.createCommentService();
             commentService.addEventListener("error", function(e) {
@@ -28,7 +27,6 @@ function Controller() {
             });
             commentService.addEventListener("endenumeration", function() {
                 $.comments.appendItems(commentsDataSet);
-                --inUseCounter;
             });
             commentService.addEventListener("commentnode", function(e) {
                 commentsDataSet.push({
@@ -49,7 +47,6 @@ function Controller() {
             });
             taggingService.addEventListener("endenumeration", function() {
                 $.tags.appendItems(tagsDataSet);
-                --inUseCounter;
             });
             taggingService.addEventListener("tagnode", function(e) {
                 tagsDataSet.push({
@@ -68,9 +65,7 @@ function Controller() {
             personService.addEventListener("error", function(e) {
                 alert("personService:\r\n" + e.errorstring);
             });
-            personService.addEventListener("endenumeration", function() {
-                --inUseCounter;
-            });
+            personService.addEventListener("endenumeration", function() {});
             personService.addEventListener("personnode", function(e) {
                 var person = e.person;
                 Ti.API.info("Person: " + person.fullName);
@@ -83,10 +78,20 @@ function Controller() {
                 item.pic.image = contentFile.getPath();
                 $.properties.updateItemAt(creatorIndex, item);
             });
+            versionService = Alloy.Globals.SDKModule.createVersionService();
+            Alloy.Globals.modelListeners(versionService, $.folderList);
+            $.propList.addEventListener("itemclick", function(e) {
+                e.section == $.folderList;
+            });
+            versionService.addEventListener("error", function(e) {
+                alert("versionService:\r\n" + e.errorstring);
+            });
+            versionService.addEventListener("endenumeration", function() {});
             documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
             personService.initialiseWithSession(Alloy.Globals.repositorySession);
             commentService.initialiseWithSession(Alloy.Globals.repositorySession);
             taggingService.initialiseWithSession(Alloy.Globals.repositorySession);
+            versionService.initialiseWithSession(Alloy.Globals.repositorySession);
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -174,6 +179,11 @@ function Controller() {
         id: "tags"
     });
     __alloyId29.push($.__views.tags);
+    $.__views.folderList = Ti.UI.createListSection({
+        headerTitle: "Versions",
+        id: "folderList"
+    });
+    __alloyId29.push($.__views.folderList);
     $.__views.propList = Ti.UI.createListView({
         sections: __alloyId29,
         templates: __alloyId22,
@@ -184,7 +194,6 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var creatorIndex;
-    var inUseCounter = 0;
     var documentFolderService = null;
     var commentService;
     var taggingService;
@@ -193,11 +202,13 @@ function Controller() {
     var commentsDataSet = [];
     var tagsDataSet = [];
     var lastNode = null;
+    new Array();
     Ti.App.addEventListener("cleartabs", function() {
         $.properties.deleteItemsAt(0, $.properties.getItems().length);
         $.permissions.deleteItemsAt(0, $.permissions.getItems().length);
         $.comments.deleteItemsAt(0, $.comments.getItems().length);
         $.tags.deleteItemsAt(0, $.tags.getItems().length);
+        $.folderList.deleteItemsAt(0, $.folderList.getItems().length);
         propertiesDataSet = [];
         permissionsDataSet = [];
         commentsDataSet = [];
@@ -207,13 +218,14 @@ function Controller() {
         if (null == Alloy.Globals.currentNode) return;
         if (null != lastNode && lastNode == Alloy.Globals.currentNode) return;
         init();
-        inUseCounter = 4;
         lastNode = Alloy.Globals.currentNode;
         var node = lastNode;
         $.properties.deleteItemsAt(0, $.properties.getItems().length);
         $.permissions.deleteItemsAt(0, $.permissions.getItems().length);
         $.comments.deleteItemsAt(0, $.comments.getItems().length);
         $.tags.deleteItemsAt(0, $.tags.getItems().length);
+        $.folderList.deleteItemsAt(0, $.folderList.getItems().length);
+        propertiesDataSet = [];
         permissionsDataSet = [];
         commentsDataSet = [];
         tagsDataSet = [];
@@ -241,6 +253,21 @@ function Controller() {
             documentFolderService.retrievePermissionsOfNode(node);
             commentService.retrieveCommentsForNode(node);
             taggingService.retrieveTagsForNode(node);
+            if (node.isDocument) versionService.retrieveAllVersionsOfDocument(node); else {
+                var versionsDataSet = [];
+                versionsDataSet.push({
+                    info: {
+                        text: "Not applicable"
+                    },
+                    es_info: {
+                        text: ""
+                    },
+                    pic: {
+                        image: ""
+                    }
+                });
+                $.folderList.appendItems(versionsDataSet);
+            }
         } else {
             permissionsDataSet.push({
                 info: {
@@ -278,6 +305,19 @@ function Controller() {
                 }
             });
             $.tags.appendItems(tagsDataSet);
+            var versionsDataSet = [];
+            versionsDataSet.push({
+                info: {
+                    text: "Not applicable"
+                },
+                es_info: {
+                    text: ""
+                },
+                pic: {
+                    image: ""
+                }
+            });
+            $.folderList.appendItems(versionsDataSet);
         }
     });
     _.extend($, exports);

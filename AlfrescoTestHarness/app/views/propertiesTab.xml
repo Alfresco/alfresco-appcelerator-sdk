@@ -16,6 +16,7 @@
             <ListSection headerTitle="Permissions" id="permissions"/>
             <ListSection headerTitle="Comments" id="comments"/>
             <ListSection headerTitle="Tags" id="tags"/>
+            <ListSection headerTitle="Versions" id="folderList"/>
             
 		</ListView>
 	</Window>

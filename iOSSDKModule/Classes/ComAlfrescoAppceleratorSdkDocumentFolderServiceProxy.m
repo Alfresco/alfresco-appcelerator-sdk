@@ -125,6 +125,8 @@
                 [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
             }
         }
+        
+        [SDKUtil createEnumerationEndEvent:self];
     }];
 }
 
@@ -157,6 +159,7 @@
          }
          
          [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 }
 
@@ -359,6 +362,8 @@
                  [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
              }
          }
+         
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 }
 
@@ -401,6 +406,8 @@
              
              [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
          }
+         
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 }
 
@@ -432,6 +439,8 @@
                  [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
              }
          }
+         
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 }
 
@@ -474,6 +483,8 @@
              
              [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
          }
+         
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 }
 

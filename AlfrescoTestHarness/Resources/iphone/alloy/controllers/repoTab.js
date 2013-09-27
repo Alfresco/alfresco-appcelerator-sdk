@@ -51,9 +51,9 @@ function Controller() {
     });
     $.__views.repoTab.add($.__views.viewButton);
     viewButtonChange ? $.__views.viewButton.addEventListener("change", viewButtonChange) : __defers["$.__views.viewButton!change!viewButtonChange"] = true;
-    var __alloyId34 = {};
-    var __alloyId37 = [];
-    var __alloyId38 = {
+    var __alloyId35 = {};
+    var __alloyId38 = [];
+    var __alloyId39 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -63,8 +63,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId37.push(__alloyId38);
-    var __alloyId39 = {
+    __alloyId38.push(__alloyId39);
+    var __alloyId40 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -79,8 +79,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId37.push(__alloyId39);
-    var __alloyId40 = {
+    __alloyId38.push(__alloyId40);
+    var __alloyId41 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -94,24 +94,24 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId37.push(__alloyId40);
-    var __alloyId36 = {
+    __alloyId38.push(__alloyId41);
+    var __alloyId37 = {
         properties: {
             name: "repoTemplate"
         },
-        childTemplates: __alloyId37
+        childTemplates: __alloyId38
     };
-    __alloyId34["repoTemplate"] = __alloyId36;
-    var __alloyId41 = [];
+    __alloyId35["repoTemplate"] = __alloyId37;
+    var __alloyId42 = [];
     $.__views.mainSection = Ti.UI.createListSection({
         id: "mainSection"
     });
-    __alloyId41.push($.__views.mainSection);
+    __alloyId42.push($.__views.mainSection);
     $.__views.folderList = Ti.UI.createListView({
         top: "40dp",
         left: 0,
-        sections: __alloyId41,
-        templates: __alloyId34,
+        sections: __alloyId42,
+        templates: __alloyId35,
         id: "folderList",
         defaultItemTemplate: "repoTemplate"
     });

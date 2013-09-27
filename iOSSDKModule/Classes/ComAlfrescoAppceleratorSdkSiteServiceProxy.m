@@ -83,6 +83,8 @@
                  [self createEventWithSite:[array objectAtIndex:i] context:@"allsitesnode"];
              }
          }
+         
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 }
 
@@ -104,6 +106,8 @@
                  [self createEventWithSite:[array objectAtIndex:i] context:@"mysitesnode"];
              }
          }
+         
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 }
 
@@ -125,6 +129,8 @@
                  [self createEventWithSite:[array objectAtIndex:i] context:@"favsitesnode"];
              }
          }
+         
+         [SDKUtil createEnumerationEndEvent:self];
      }];
 } 
 

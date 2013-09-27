@@ -30,15 +30,15 @@ function Controller() {
         id: "searchWindow"
     });
     $.__views.searchWindow && $.addTopLevelView($.__views.searchWindow);
-    $.__views.__alloyId43 = Ti.UI.createTableViewSection({
-        id: "__alloyId43"
+    $.__views.__alloyId44 = Ti.UI.createTableViewSection({
+        id: "__alloyId44"
     });
-    var __alloyId44 = [];
-    __alloyId44.push($.__views.__alloyId43);
-    $.__views.__alloyId45 = Ti.UI.createTableViewRow({
-        id: "__alloyId45"
+    var __alloyId45 = [];
+    __alloyId45.push($.__views.__alloyId44);
+    $.__views.__alloyId46 = Ti.UI.createTableViewRow({
+        id: "__alloyId46"
     });
-    $.__views.__alloyId43.add($.__views.__alloyId45);
+    $.__views.__alloyId44.add($.__views.__alloyId46);
     $.__views.searchBarWindow = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
@@ -47,7 +47,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         id: "searchBarWindow"
     });
-    $.__views.__alloyId45.add($.__views.searchBarWindow);
+    $.__views.__alloyId46.add($.__views.searchBarWindow);
     $.__views.searchEdit = Ti.UI.createTextField({
         value: "",
         font: {
@@ -80,10 +80,10 @@ function Controller() {
     });
     $.__views.searchBarWindow.add($.__views.searchButton);
     searchButtonClick ? $.__views.searchButton.addEventListener("click", searchButtonClick) : __defers["$.__views.searchButton!click!searchButtonClick"] = true;
-    $.__views.__alloyId46 = Ti.UI.createTableViewRow({
-        id: "__alloyId46"
+    $.__views.__alloyId47 = Ti.UI.createTableViewRow({
+        id: "__alloyId47"
     });
-    $.__views.__alloyId43.add($.__views.__alloyId46);
+    $.__views.__alloyId44.add($.__views.__alloyId47);
     $.__views.resultsWindow = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
@@ -92,14 +92,14 @@ function Controller() {
         width: Ti.UI.FILL,
         id: "resultsWindow"
     });
-    $.__views.__alloyId46.add($.__views.resultsWindow);
+    $.__views.__alloyId47.add($.__views.resultsWindow);
     $.__views.folderLabel = Ti.UI.createLabel({
         id: "folderLabel"
     });
     $.__views.resultsWindow.add($.__views.folderLabel);
-    var __alloyId47 = {};
-    var __alloyId50 = [];
-    var __alloyId51 = {
+    var __alloyId48 = {};
+    var __alloyId51 = [];
+    var __alloyId52 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -109,8 +109,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId50.push(__alloyId51);
-    var __alloyId52 = {
+    __alloyId51.push(__alloyId52);
+    var __alloyId53 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -125,8 +125,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId50.push(__alloyId52);
-    var __alloyId53 = {
+    __alloyId51.push(__alloyId53);
+    var __alloyId54 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -140,24 +140,24 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId50.push(__alloyId53);
-    var __alloyId49 = {
+    __alloyId51.push(__alloyId54);
+    var __alloyId50 = {
         properties: {
             name: "repoTemplate"
         },
-        childTemplates: __alloyId50
+        childTemplates: __alloyId51
     };
-    __alloyId47["repoTemplate"] = __alloyId49;
-    var __alloyId54 = [];
+    __alloyId48["repoTemplate"] = __alloyId50;
+    var __alloyId55 = [];
     $.__views.mainSection = Ti.UI.createListSection({
         id: "mainSection"
     });
-    __alloyId54.push($.__views.mainSection);
+    __alloyId55.push($.__views.mainSection);
     $.__views.folderList = Ti.UI.createListView({
         top: 0,
         left: 0,
-        sections: __alloyId54,
-        templates: __alloyId47,
+        sections: __alloyId55,
+        templates: __alloyId48,
         id: "folderList",
         defaultItemTemplate: "repoTemplate"
     });
@@ -169,7 +169,7 @@ function Controller() {
         height: "96%",
         backgroundColor: "white",
         separatorColor: "white",
-        data: __alloyId44,
+        data: __alloyId45,
         id: "searchTable"
     });
     $.__views.searchWindow.add($.__views.searchTable);

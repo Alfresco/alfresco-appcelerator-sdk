@@ -12,9 +12,9 @@ function Controller() {
         id: "sitesTab"
     });
     $.__views.sitesTab && $.addTopLevelView($.__views.sitesTab);
-    var __alloyId56 = {};
-    var __alloyId59 = [];
-    var __alloyId60 = {
+    var __alloyId57 = {};
+    var __alloyId60 = [];
+    var __alloyId61 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -24,8 +24,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId59.push(__alloyId60);
-    var __alloyId61 = {
+    __alloyId60.push(__alloyId61);
+    var __alloyId62 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -40,8 +40,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId59.push(__alloyId61);
-    var __alloyId62 = {
+    __alloyId60.push(__alloyId62);
+    var __alloyId63 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -55,36 +55,36 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId59.push(__alloyId62);
-    var __alloyId58 = {
+    __alloyId60.push(__alloyId63);
+    var __alloyId59 = {
         properties: {
             name: "siteTemplate"
         },
-        childTemplates: __alloyId59
+        childTemplates: __alloyId60
     };
-    __alloyId56["siteTemplate"] = __alloyId58;
-    var __alloyId63 = [];
+    __alloyId57["siteTemplate"] = __alloyId59;
+    var __alloyId64 = [];
     $.__views.mySites = Ti.UI.createListSection({
         headerTitle: "My Sites",
         id: "mySites"
     });
-    __alloyId63.push($.__views.mySites);
+    __alloyId64.push($.__views.mySites);
     $.__views.allSites = Ti.UI.createListSection({
         headerTitle: "All Sites",
         id: "allSites"
     });
-    __alloyId63.push($.__views.allSites);
+    __alloyId64.push($.__views.allSites);
     $.__views.favSites = Ti.UI.createListSection({
         headerTitle: "Favourite Sites",
         id: "favSites"
     });
-    __alloyId63.push($.__views.favSites);
+    __alloyId64.push($.__views.favSites);
     $.__views.siteList = Ti.UI.createListView({
         top: 0,
         left: 0,
         height: "45%",
-        sections: __alloyId63,
-        templates: __alloyId56,
+        sections: __alloyId64,
+        templates: __alloyId57,
         id: "siteList",
         defaultItemTemplate: "siteTemplate"
     });
@@ -104,9 +104,9 @@ function Controller() {
         id: "folderLabel"
     });
     $.__views.sitesTab.add($.__views.folderLabel);
-    var __alloyId67 = {};
-    var __alloyId70 = [];
-    var __alloyId71 = {
+    var __alloyId68 = {};
+    var __alloyId71 = [];
+    var __alloyId72 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -116,8 +116,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId70.push(__alloyId71);
-    var __alloyId72 = {
+    __alloyId71.push(__alloyId72);
+    var __alloyId73 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -132,8 +132,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId70.push(__alloyId72);
-    var __alloyId73 = {
+    __alloyId71.push(__alloyId73);
+    var __alloyId74 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -147,27 +147,27 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId70.push(__alloyId73);
-    var __alloyId69 = {
+    __alloyId71.push(__alloyId74);
+    var __alloyId70 = {
         properties: {
             name: "repoTemplate"
         },
-        childTemplates: __alloyId70
+        childTemplates: __alloyId71
     };
-    __alloyId67["repoTemplate"] = __alloyId69;
-    var __alloyId74 = [];
+    __alloyId68["repoTemplate"] = __alloyId70;
+    var __alloyId75 = [];
     $.__views.repo = Ti.UI.createListSection({
         headerTitle: "Repository",
         id: "repo"
     });
-    __alloyId74.push($.__views.repo);
+    __alloyId75.push($.__views.repo);
     $.__views.folderList = Ti.UI.createListView({
         backgroundColor: "#DDDDDD",
         top: "55%",
         left: 0,
         height: "45%",
-        sections: __alloyId74,
-        templates: __alloyId67,
+        sections: __alloyId75,
+        templates: __alloyId68,
         id: "folderList",
         defaultItemTemplate: "repoTemplate"
     });

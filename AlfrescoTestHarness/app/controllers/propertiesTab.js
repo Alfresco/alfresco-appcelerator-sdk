@@ -19,7 +19,6 @@
  */
 
 var creatorIndex;
-var inUseCounter = 0;
 var documentFolderService = null;
 var commentService;
 var taggingService;
@@ -28,6 +27,7 @@ var permissionsDataSet = [];
 var commentsDataSet = [];
 var tagsDataSet = [];
 var lastNode = null;
+var parentFolders = new Array();
 
 
 Ti.App.addEventListener('cleartabs', function()
@@ -36,6 +36,7 @@ Ti.App.addEventListener('cleartabs', function()
 	$.permissions.deleteItemsAt(0,$.permissions.getItems().length);
 	$.comments.deleteItemsAt(0,$.comments.getItems().length);
 	$.tags.deleteItemsAt(0,$.tags.getItems().length);
+	$.folderList.deleteItemsAt(0,$.folderList.getItems().length);
 	propertiesDataSet = [];
 	permissionsDataSet = [];	
 	commentsDataSet = [];
@@ -52,8 +53,7 @@ Ti.App.addEventListener('propspopulate',function()
 		return;
 	
 	init();
-	
-	inUseCounter = 4;
+		
 	lastNode = Alloy.Globals.currentNode;
 	
 	var node = lastNode;	
@@ -62,7 +62,8 @@ Ti.App.addEventListener('propspopulate',function()
 	$.permissions.deleteItemsAt(0,$.permissions.getItems().length);
 	$.comments.deleteItemsAt(0,$.comments.getItems().length);
 	$.tags.deleteItemsAt(0,$.tags.getItems().length);
-	
+	$.folderList.deleteItemsAt(0,$.folderList.getItems().length);
+	propertiesDataSet = [];
 	permissionsDataSet = [];	
 	commentsDataSet = [];
 	tagsDataSet = [];
@@ -86,6 +87,15 @@ Ti.App.addEventListener('propspopulate',function()
 		documentFolderService.retrievePermissionsOfNode(node);	
 		commentService.retrieveCommentsForNode(node);
 		taggingService.retrieveTagsForNode(node);
+		
+		if (node.isDocument)
+			versionService.retrieveAllVersionsOfDocument(node);
+		else
+		{
+			var versionsDataSet = [];
+			versionsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
+			$.folderList.appendItems(versionsDataSet);
+		}
 	}
 	else
 	{
@@ -97,6 +107,10 @@ Ti.App.addEventListener('propspopulate',function()
 		
 		tagsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
 		$.tags.appendItems(tagsDataSet);
+		
+		var versionsDataSet = [];
+		versionsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
+		$.folderList.appendItems(versionsDataSet);
 	}
 }); 
 
@@ -115,7 +129,6 @@ function init()
 			});
 			
 			$.permissions.appendItems(permissionsDataSet);
-			--inUseCounter;
 		});  
 		
 		commentService = Alloy.Globals.SDKModule.createCommentService();
@@ -123,7 +136,6 @@ function init()
 		commentService.addEventListener('endenumeration', function(e)
 		{
 			$.comments.appendItems(commentsDataSet);
-			--inUseCounter; 
 		});
 		commentService.addEventListener('commentnode', function(e)
 		{
@@ -135,7 +147,6 @@ function init()
 		taggingService.addEventListener('endenumeration', function(e)
 		{
 			$.tags.appendItems(tagsDataSet);
-			--inUseCounter; 
 		});
 		taggingService.addEventListener('tagnode', function(e)
 		{
@@ -146,7 +157,6 @@ function init()
 		personService.addEventListener('error', function(e) { alert("personService:\r\n" + e.errorstring); });		
 		personService.addEventListener('endenumeration', function(e)
 		{
-			--inUseCounter; 
 		}); 
 		personService.addEventListener('personnode', function(e)
 		{
@@ -165,9 +175,27 @@ function init()
 			$.properties.updateItemAt(creatorIndex, item); 
 		});
 		
+		versionService = Alloy.Globals.SDKModule.createVersionService();
+		Alloy.Globals.modelListeners(versionService,$.folderList);
+		$.propList.addEventListener('itemclick', function(e)
+		{
+			if (e.section == $.folderList)
+			{
+				//Alloy.Globals.currentNode = e.section.getItemAt(e.itemIndex).properties.docobject;
+				//Alloy.Globals.nodeJustProperties = false;
+				//Ti.App.fireEvent('propspopulate');
+			}
+		});
+		versionService.addEventListener('error', function(e) { alert("versionService:\r\n" + e.errorstring); });
+		versionService.addEventListener('endenumeration', function(e)
+		{
+		});	
+
+		
 		documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 		personService.initialiseWithSession(Alloy.Globals.repositorySession);
 		commentService.initialiseWithSession(Alloy.Globals.repositorySession);
 		taggingService.initialiseWithSession(Alloy.Globals.repositorySession);
+		versionService.initialiseWithSession(Alloy.Globals.repositorySession);
 	}
 }
