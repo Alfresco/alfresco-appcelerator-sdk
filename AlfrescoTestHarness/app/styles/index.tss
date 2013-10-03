@@ -1,7 +1,9 @@
 "Window":{
 	backgroundColor:"white",
 	separatorColor:"white",
-	navBarHidden:true
+	navBarHidden:true,
+	fullscreen:true,
+	translucent:false
 },
 "loginTab":{
 	navBarHidden:true

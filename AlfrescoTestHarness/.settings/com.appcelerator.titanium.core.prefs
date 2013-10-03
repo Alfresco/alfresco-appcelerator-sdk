@@ -1,4 +1,10 @@
 eclipse.preferences.version=1
+provisioning_profiles/adhoc/9F3F3B42-0DF7-46B6-A80E-F360C5849836/appid=com.alfresco.*
+provisioning_profiles/adhoc/9F3F3B42-0DF7-46B6-A80E-F360C5849836/name=Alfresco Ad Hoc Provisioning Profile
+provisioning_profiles/adhoc/9F3F3B42-0DF7-46B6-A80E-F360C5849836/uuid=9F3F3B42-0DF7-46B6-A80E-F360C5849836
+provisioning_profiles/adhoc/FA1B4756-10EC-4D2B-AF03-0914E39FAAA6/appid=com.alfresco.*
+provisioning_profiles/adhoc/FA1B4756-10EC-4D2B-AF03-0914E39FAAA6/name=Alfresco App Store Provisioning Profile
+provisioning_profiles/adhoc/FA1B4756-10EC-4D2B-AF03-0914E39FAAA6/uuid=FA1B4756-10EC-4D2B-AF03-0914E39FAAA6
 provisioning_profiles/development/24AC3672-B70F-4496-AA87-0CE93E4E0461/appid=*
 provisioning_profiles/development/24AC3672-B70F-4496-AA87-0CE93E4E0461/name=iOS Team Provisioning Profile\: *
 provisioning_profiles/development/24AC3672-B70F-4496-AA87-0CE93E4E0461/uuid=24AC3672-B70F-4496-AA87-0CE93E4E0461

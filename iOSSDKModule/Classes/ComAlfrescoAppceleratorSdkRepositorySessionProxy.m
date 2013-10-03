@@ -49,10 +49,9 @@
         return;
     } 
     
-    AlfrescoRequest* request;
     ComAlfrescoAppceleratorSdkRepositorySessionProxy *weakSelf = self;
   
-    request = [AlfrescoRepositorySession connectWithUrl:url username:user password:pwd
+    [AlfrescoRepositorySession connectWithUrl:url username:user password:pwd
                                                         completionBlock:^(id<AlfrescoSession> session, NSError *error)
                                                         {
                                                             if (nil == session)

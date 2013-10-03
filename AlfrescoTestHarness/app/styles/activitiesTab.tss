@@ -22,5 +22,5 @@
 "#esinfoLabel":{
     font: { fontFamily:'Arial', fontSize: '16dp'},
     left: '60dp', 
-    top: '25dp'
+    top: '50dp'
 }

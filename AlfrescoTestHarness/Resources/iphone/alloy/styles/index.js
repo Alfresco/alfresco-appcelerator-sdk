@@ -1,1 +1,0 @@
-module.exports = [{"isApi":true,"priority":1000.0024,"key":"Window","style":{backgroundColor:"white",separatorColor:"white",navBarHidden:true,}},{"isApi":true,"priority":1000.0025,"key":"loginTab","style":{navBarHidden:true,}},{"isApi":true,"priority":1000.0026,"key":"repoTab","style":{navBarHidden:true,}}];
