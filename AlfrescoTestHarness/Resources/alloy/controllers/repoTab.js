@@ -23,6 +23,7 @@ function Controller() {
         backgroundColor: "white",
         separatorColor: "white",
         navBarHidden: true,
+        fullscreen: true,
         id: "repoTab"
     });
     $.__views.repoTab && $.addTopLevelView($.__views.repoTab);
@@ -51,9 +52,9 @@ function Controller() {
     });
     $.__views.repoTab.add($.__views.viewButton);
     viewButtonChange ? $.__views.viewButton.addEventListener("change", viewButtonChange) : __defers["$.__views.viewButton!change!viewButtonChange"] = true;
-    var __alloyId34 = {};
-    var __alloyId37 = [];
-    var __alloyId38 = {
+    var __alloyId27 = {};
+    var __alloyId30 = [];
+    var __alloyId31 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -63,8 +64,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId37.push(__alloyId38);
-    var __alloyId39 = {
+    __alloyId30.push(__alloyId31);
+    var __alloyId32 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -79,8 +80,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId37.push(__alloyId39);
-    var __alloyId40 = {
+    __alloyId30.push(__alloyId32);
+    var __alloyId33 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -94,24 +95,24 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId37.push(__alloyId40);
-    var __alloyId36 = {
+    __alloyId30.push(__alloyId33);
+    var __alloyId29 = {
         properties: {
             name: "repoTemplate"
         },
-        childTemplates: __alloyId37
+        childTemplates: __alloyId30
     };
-    __alloyId34["repoTemplate"] = __alloyId36;
-    var __alloyId41 = [];
+    __alloyId27["repoTemplate"] = __alloyId29;
+    var __alloyId34 = [];
     $.__views.mainSection = Ti.UI.createListSection({
         id: "mainSection"
     });
-    __alloyId41.push($.__views.mainSection);
+    __alloyId34.push($.__views.mainSection);
     $.__views.folderList = Ti.UI.createListView({
         top: "40dp",
         left: 0,
-        sections: __alloyId41,
-        templates: __alloyId34,
+        sections: __alloyId34,
+        templates: __alloyId27,
         id: "folderList",
         defaultItemTemplate: "repoTemplate"
     });

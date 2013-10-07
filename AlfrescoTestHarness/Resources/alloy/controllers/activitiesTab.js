@@ -9,12 +9,13 @@ function Controller() {
     $.__views.activitiesTab = Ti.UI.createWindow({
         backgroundColor: "black",
         navBarHidden: true,
+        fullscreen: true,
         id: "activitiesTab"
     });
     $.__views.activitiesTab && $.addTopLevelView($.__views.activitiesTab);
-    var __alloyId7 = {};
-    var __alloyId10 = [];
-    var __alloyId11 = {
+    var __alloyId0 = {};
+    var __alloyId3 = [];
+    var __alloyId4 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -25,8 +26,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId10.push(__alloyId11);
-    var __alloyId12 = {
+    __alloyId3.push(__alloyId4);
+    var __alloyId5 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -41,8 +42,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId10.push(__alloyId12);
-    var __alloyId13 = {
+    __alloyId3.push(__alloyId5);
+    var __alloyId6 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -55,26 +56,26 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId10.push(__alloyId13);
-    var __alloyId9 = {
+    __alloyId3.push(__alloyId6);
+    var __alloyId2 = {
         properties: {
             name: "activityTemplate"
         },
-        childTemplates: __alloyId10
+        childTemplates: __alloyId3
     };
-    __alloyId7["activityTemplate"] = __alloyId9;
-    var __alloyId14 = [];
+    __alloyId0["activityTemplate"] = __alloyId2;
+    var __alloyId7 = [];
     $.__views.activities = Ti.UI.createListSection({
         headerTitle: "Activities",
         id: "activities"
     });
-    __alloyId14.push($.__views.activities);
+    __alloyId7.push($.__views.activities);
     $.__views.activityList = Ti.UI.createListView({
         top: 0,
         left: 0,
         height: "100%",
-        sections: __alloyId14,
-        templates: __alloyId7,
+        sections: __alloyId7,
+        templates: __alloyId0,
         id: "activityList",
         defaultItemTemplate: "activityTemplate"
     });

@@ -32,51 +32,28 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.loginWindow = Ti.UI.createWindow({
+    $.__views.loginContent = Ti.UI.createWindow({
         backgroundColor: "white",
         separatorColor: "white",
         navBarHidden: true,
-        id: "loginWindow"
-    });
-    $.__views.loginWindow && $.addTopLevelView($.__views.loginWindow);
-    $.__views.__alloyId0 = Ti.UI.createTableViewSection({
-        id: "__alloyId0"
-    });
-    var __alloyId1 = [];
-    __alloyId1.push($.__views.__alloyId0);
-    $.__views.__alloyId2 = Ti.UI.createTableViewRow({
-        id: "__alloyId2"
-    });
-    $.__views.__alloyId0.add($.__views.__alloyId2);
-    $.__views.logoWindow = Ti.UI.createWindow({
-        backgroundColor: "white",
-        separatorColor: "white",
-        navBarHidden: true,
-        width: "80%",
-        height: Ti.UI.SIZE,
-        id: "logoWindow"
-    });
-    $.__views.__alloyId2.add($.__views.logoWindow);
-    $.__views.logoImage = Ti.UI.createImageView({
+        fullscreen: true,
+        top: 0,
         left: 0,
         width: Ti.UI.FILL,
+        height: Ti.UI.FILL,
+        layout: "vertical",
+        id: "loginContent"
+    });
+    $.__views.loginContent && $.addTopLevelView($.__views.loginContent);
+    $.__views.logoImage = Ti.UI.createImageView({
+        top: 0,
+        left: "2%",
+        width: "80%",
         height: Ti.UI.SIZE,
         image: "alfresco_logo_large.png",
         id: "logoImage"
     });
-    $.__views.logoWindow.add($.__views.logoImage);
-    $.__views.__alloyId3 = Ti.UI.createTableViewRow({
-        id: "__alloyId3"
-    });
-    $.__views.__alloyId0.add($.__views.__alloyId3);
-    $.__views.serverWindow = Ti.UI.createWindow({
-        backgroundColor: "white",
-        separatorColor: "white",
-        navBarHidden: true,
-        height: Ti.UI.SIZE,
-        id: "serverWindow"
-    });
-    $.__views.__alloyId3.add($.__views.serverWindow);
+    $.__views.loginContent.add($.__views.logoImage);
     $.__views.serverLabel = Ti.UI.createLabel({
         text: "Server address:",
         font: {
@@ -85,12 +62,12 @@ function Controller() {
             fontWeight: "bold"
         },
         top: 0,
-        left: 0,
-        width: Ti.UI.FILL,
+        left: "2%",
+        width: "96%",
         height: "40dp",
         id: "serverLabel"
     });
-    $.__views.serverWindow.add($.__views.serverLabel);
+    $.__views.loginContent.add($.__views.serverLabel);
     $.__views.serverEdit = Ti.UI.createTextField({
         value: "",
         font: {
@@ -100,25 +77,13 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#336699",
-        top: "40dp",
-        left: 0,
-        width: Ti.UI.FILL,
+        top: 0,
+        left: "2%",
+        width: "96%",
         height: "40dp",
         id: "serverEdit"
     });
-    $.__views.serverWindow.add($.__views.serverEdit);
-    $.__views.__alloyId4 = Ti.UI.createTableViewRow({
-        id: "__alloyId4"
-    });
-    $.__views.__alloyId0.add($.__views.__alloyId4);
-    $.__views.usernameWindow = Ti.UI.createWindow({
-        backgroundColor: "white",
-        separatorColor: "white",
-        navBarHidden: true,
-        height: Ti.UI.SIZE,
-        id: "usernameWindow"
-    });
-    $.__views.__alloyId4.add($.__views.usernameWindow);
+    $.__views.loginContent.add($.__views.serverEdit);
     $.__views.usernameLabel = Ti.UI.createLabel({
         text: "User name:",
         font: {
@@ -126,13 +91,13 @@ function Controller() {
             fontSize: "18dp",
             fontWeight: "bold"
         },
-        top: 0,
-        left: 0,
-        width: Ti.UI.FILL,
+        top: 20,
+        left: "2%",
+        width: "96%",
         height: "40dp",
         id: "usernameLabel"
     });
-    $.__views.usernameWindow.add($.__views.usernameLabel);
+    $.__views.loginContent.add($.__views.usernameLabel);
     $.__views.usernameEdit = Ti.UI.createTextField({
         value: "admin",
         font: {
@@ -142,25 +107,13 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#336699",
-        top: "40dp",
-        left: 0,
-        width: Ti.UI.FILL,
+        top: 0,
+        left: "2%",
+        width: "96%",
         height: "40dp",
         id: "usernameEdit"
     });
-    $.__views.usernameWindow.add($.__views.usernameEdit);
-    $.__views.__alloyId5 = Ti.UI.createTableViewRow({
-        id: "__alloyId5"
-    });
-    $.__views.__alloyId0.add($.__views.__alloyId5);
-    $.__views.passwordWindow = Ti.UI.createWindow({
-        backgroundColor: "white",
-        separatorColor: "white",
-        navBarHidden: true,
-        height: Ti.UI.SIZE,
-        id: "passwordWindow"
-    });
-    $.__views.__alloyId5.add($.__views.passwordWindow);
+    $.__views.loginContent.add($.__views.usernameEdit);
     $.__views.passwordLabel = Ti.UI.createLabel({
         text: "Password:",
         font: {
@@ -168,13 +121,13 @@ function Controller() {
             fontSize: "18dp",
             fontWeight: "bold"
         },
-        top: 0,
-        left: 0,
-        width: Ti.UI.FILL,
+        top: 20,
+        left: "2%",
+        width: "96%",
         height: "40dp",
         id: "passwordLabel"
     });
-    $.__views.passwordWindow.add($.__views.passwordLabel);
+    $.__views.loginContent.add($.__views.passwordLabel);
     $.__views.passwordEdit = Ti.UI.createTextField({
         value: "password",
         passwordMask: true,
@@ -185,24 +138,13 @@ function Controller() {
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         color: "#336699",
-        top: "40dp",
-        left: 0,
-        width: Ti.UI.FILL,
+        top: 0,
+        left: "2%",
+        width: "96%",
         height: "40dp",
         id: "passwordEdit"
     });
-    $.__views.passwordWindow.add($.__views.passwordEdit);
-    $.__views.__alloyId6 = Ti.UI.createTableViewRow({
-        id: "__alloyId6"
-    });
-    $.__views.__alloyId0.add($.__views.__alloyId6);
-    $.__views.buttonWindow = Ti.UI.createWindow({
-        backgroundColor: "white",
-        separatorColor: "white",
-        navBarHidden: true,
-        id: "buttonWindow"
-    });
-    $.__views.__alloyId6.add($.__views.buttonWindow);
+    $.__views.loginContent.add($.__views.passwordEdit);
     $.__views.loginButton = Ti.UI.createButton({
         style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
         font: {
@@ -210,25 +152,14 @@ function Controller() {
             fontSize: "18dp",
             fontWeight: "bold"
         },
-        left: 0,
-        top: 50,
-        width: 100,
+        top: 40,
+        left: "2%",
+        width: "96%",
         title: "Log in",
         id: "loginButton"
     });
-    $.__views.buttonWindow.add($.__views.loginButton);
+    $.__views.loginContent.add($.__views.loginButton);
     loginButtonClick ? $.__views.loginButton.addEventListener("click", loginButtonClick) : __defers["$.__views.loginButton!click!loginButtonClick"] = true;
-    $.__views.loginTable = Ti.UI.createTableView({
-        top: "2%",
-        left: "2%",
-        width: "96%",
-        height: "96%",
-        backgroundColor: "white",
-        separatorColor: "white",
-        data: __alloyId1,
-        id: "loginTable"
-    });
-    $.__views.loginWindow.add($.__views.loginTable);
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.serverEdit.value = "google_sdk" == Titanium.Platform.model || "Simulator" == Titanium.Platform.model ? "http://localhost:8080/alfresco" : "http://192.168.1.91:8080/alfresco";

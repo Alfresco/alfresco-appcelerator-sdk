@@ -104,12 +104,13 @@ function Controller() {
     $.__views.propertiesTab = Ti.UI.createWindow({
         backgroundColor: "black",
         navBarHidden: true,
+        fullscreen: true,
         id: "propertiesTab"
     });
     $.__views.propertiesTab && $.addTopLevelView($.__views.propertiesTab);
-    var __alloyId21 = {};
-    var __alloyId24 = [];
-    var __alloyId25 = {
+    var __alloyId14 = {};
+    var __alloyId17 = [];
+    var __alloyId18 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -120,8 +121,8 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId24.push(__alloyId25);
-    var __alloyId26 = {
+    __alloyId17.push(__alloyId18);
+    var __alloyId19 = {
         type: "Ti.UI.Label",
         bindId: "info",
         properties: {
@@ -136,8 +137,8 @@ function Controller() {
             bindId: "info"
         }
     };
-    __alloyId24.push(__alloyId26);
-    var __alloyId27 = {
+    __alloyId17.push(__alloyId19);
+    var __alloyId20 = {
         type: "Ti.UI.Label",
         bindId: "es_info",
         properties: {
@@ -150,43 +151,43 @@ function Controller() {
             bindId: "es_info"
         }
     };
-    __alloyId24.push(__alloyId27);
-    var __alloyId23 = {
+    __alloyId17.push(__alloyId20);
+    var __alloyId16 = {
         properties: {
             name: "propsTemplate"
         },
-        childTemplates: __alloyId24
+        childTemplates: __alloyId17
     };
-    __alloyId21["propsTemplate"] = __alloyId23;
-    var __alloyId28 = [];
+    __alloyId14["propsTemplate"] = __alloyId16;
+    var __alloyId21 = [];
     $.__views.properties = Ti.UI.createListSection({
         headerTitle: "Properties",
         id: "properties"
     });
-    __alloyId28.push($.__views.properties);
+    __alloyId21.push($.__views.properties);
     $.__views.permissions = Ti.UI.createListSection({
         headerTitle: "Permissions",
         id: "permissions"
     });
-    __alloyId28.push($.__views.permissions);
+    __alloyId21.push($.__views.permissions);
     $.__views.comments = Ti.UI.createListSection({
         headerTitle: "Comments",
         id: "comments"
     });
-    __alloyId28.push($.__views.comments);
+    __alloyId21.push($.__views.comments);
     $.__views.tags = Ti.UI.createListSection({
         headerTitle: "Tags",
         id: "tags"
     });
-    __alloyId28.push($.__views.tags);
+    __alloyId21.push($.__views.tags);
     $.__views.folderList = Ti.UI.createListSection({
         headerTitle: "Versions",
         id: "folderList"
     });
-    __alloyId28.push($.__views.folderList);
+    __alloyId21.push($.__views.folderList);
     $.__views.propList = Ti.UI.createListView({
-        sections: __alloyId28,
-        templates: __alloyId21,
+        sections: __alloyId21,
+        templates: __alloyId14,
         id: "propList",
         defaultItemTemplate: "propsTemplate"
     });

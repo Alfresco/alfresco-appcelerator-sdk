@@ -1,38 +1,30 @@
 "Window":{
 	backgroundColor:"white",
 	separatorColor:"white",
-	navBarHidden:true
+	navBarHidden:true,
+	fullscreen:true
 },
-"#loginTable":{
-	top: '2%',
-	left: '2%',
-	width:'96%',
-	height:'96%',
+"#loginContent":{
+	top: 0,
+	left: 0,
+	width:Ti.UI.FILL,
+	height:Ti.UI.FILL,
 	backgroundColor:"white",
-	separatorColor:"white"
-},
-"#loginWindow":{
-	backgroundColor:"white"
-},
-"#logoWindow":{
-	width:'80%',
-	height:Ti.UI.SIZE
+	separatorColor:"white",
+	layout:'vertical'
 },
 "#logoImage":{
-	left: 0, 
-	width: Ti.UI.FILL, 
+	top:0,left: '2%', 
+	width:'80%',
 	height: Ti.UI.SIZE, 
 	image:"alfresco_logo_large.png"
-},
-"#serverWindow":{
-	height:Ti.UI.SIZE
 },
 "#serverLabel":{
 	text: "Server address:",
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
 	top: 0,
-	left: 0,
-	width: Ti.UI.FILL,
+	left: '2%',
+	width: '96%',
 	height: '40dp'
 },
 "#serverEdit":{
@@ -40,20 +32,16 @@
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, 
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, 
 	color: '#336699', 
-	top: '40dp', 
-	left: 0, 
-	width: Ti.UI.FILL, 
+	top:0,left: '2%', 
+	width: '96%', 
 	height: '40dp'
-},
-"#usernameWindow":{
-	height:Ti.UI.SIZE
 },
 "#usernameLabel":{
 	text: "User name:",
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
-	top: 0,
-	left: 0,
-	width: Ti.UI.FILL,
+	top: 20,
+	left: '2%',
+	width: '96%',
 	height: '40dp'
 },
 "#usernameEdit":{
@@ -61,20 +49,16 @@
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, 
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, 
 	color: '#336699', 
-	top: '40dp', 
-	left: 0, 
-	width: Ti.UI.FILL, 
+	top:0,left: '2%',
+	width: '96%', 
 	height: '40dp'
-},
-"#passwordWindow":{
-	height:Ti.UI.SIZE
 },
 "#passwordLabel":{
 	text: "Password:",
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
-	top: 0,
-	left: 0,
-	width: Ti.UI.FILL,
+	top: 20,
+	left: '2%',
+	width: '96%',
 	height: '40dp'
 },
 "#passwordEdit":{
@@ -83,17 +67,15 @@
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, 
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, 
 	color: '#336699', 
-	top: '40dp', 
-	left: 0, 
-	width: Ti.UI.FILL, 
+	top:0,left: '2%', 
+	width: '96%', 
 	height: '40dp'
 },
 "#loginButton":{
 	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
-	left: 0, 
-	top: 50, 
-	width: 100, 
+	top:40,left: '2%', 
+	width: '96%', 
 	title: "Log in"
 }
 

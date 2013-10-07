@@ -1,48 +1,19 @@
 <Alloy>
 	
-	<Window id="loginWindow">
-		
-		<TableView id="loginTable">
-			
-			<TableViewSection>
-				
-				<TableViewRow>
-					<Window id="logoWindow">	
-						<ImageView id="logoImage"/>	
-					</Window>
-				</TableViewRow>
-	
-				<TableViewRow>
-					<Window id="serverWindow">	
-						<Label id="serverLabel">
-						<TextField id="serverEdit">
-					</Window>
-				</TableViewRow>
-	
-				<TableViewRow>
-					<Window id="usernameWindow">	
-						<Label id="usernameLabel">
-						<TextField id="usernameEdit">
-					</Window>
-				</TableViewRow>
-				
-				<TableViewRow>
-					<Window id="passwordWindow">	
-						<Label id="passwordLabel">
-						<TextField id="passwordEdit">
-					</Window>
-				</TableViewRow>
-				
-				<TableViewRow>
-					<Window id="buttonWindow">	
-						<Button id="loginButton" onClick="loginButtonClick">
-					</Window>
-				</TableViewRow>
-					
-			</TableViewSection>
-		
-		</TableView>
-		
-	</Window>
+	<Window id="loginContent">
 
+		<ImageView id="logoImage"/>
+				
+		<Label id="serverLabel">
+		<TextField id="serverEdit">
+		
+		<Label id="usernameLabel">
+		<TextField id="usernameEdit">
+	
+		<Label id="passwordLabel">
+		<TextField id="passwordEdit">
+	
+		<Button id="loginButton" onClick="loginButtonClick">
+	
+	</Window>
 </Alloy>

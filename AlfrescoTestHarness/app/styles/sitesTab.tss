@@ -1,6 +1,7 @@
 "Window":{
 	backgroundColor: 'black',
-	navBarHidden:true
+	navBarHidden:true,
+	fullscreen:true
 }, 
 "#siteList":{
 	top: 0, 
