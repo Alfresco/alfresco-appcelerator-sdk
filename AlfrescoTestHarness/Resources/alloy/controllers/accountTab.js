@@ -41,10 +41,18 @@ function Controller() {
         left: 0,
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
-        layout: "vertical",
         id: "loginContent"
     });
     $.__views.loginContent && $.addTopLevelView($.__views.loginContent);
+    $.__views.scroller = Ti.UI.createScrollView({
+        layout: "vertical",
+        top: 0,
+        left: 0,
+        width: Ti.UI.FILL,
+        height: Ti.UI.FILL,
+        id: "scroller"
+    });
+    $.__views.loginContent.add($.__views.scroller);
     $.__views.logoImage = Ti.UI.createImageView({
         top: 0,
         left: "2%",
@@ -53,7 +61,7 @@ function Controller() {
         image: "alfresco_logo_large.png",
         id: "logoImage"
     });
-    $.__views.loginContent.add($.__views.logoImage);
+    $.__views.scroller.add($.__views.logoImage);
     $.__views.serverLabel = Ti.UI.createLabel({
         text: "Server address:",
         font: {
@@ -67,7 +75,7 @@ function Controller() {
         height: "40dp",
         id: "serverLabel"
     });
-    $.__views.loginContent.add($.__views.serverLabel);
+    $.__views.scroller.add($.__views.serverLabel);
     $.__views.serverEdit = Ti.UI.createTextField({
         value: "",
         font: {
@@ -83,7 +91,7 @@ function Controller() {
         height: "40dp",
         id: "serverEdit"
     });
-    $.__views.loginContent.add($.__views.serverEdit);
+    $.__views.scroller.add($.__views.serverEdit);
     $.__views.usernameLabel = Ti.UI.createLabel({
         text: "User name:",
         font: {
@@ -97,7 +105,7 @@ function Controller() {
         height: "40dp",
         id: "usernameLabel"
     });
-    $.__views.loginContent.add($.__views.usernameLabel);
+    $.__views.scroller.add($.__views.usernameLabel);
     $.__views.usernameEdit = Ti.UI.createTextField({
         value: "admin",
         font: {
@@ -113,7 +121,7 @@ function Controller() {
         height: "40dp",
         id: "usernameEdit"
     });
-    $.__views.loginContent.add($.__views.usernameEdit);
+    $.__views.scroller.add($.__views.usernameEdit);
     $.__views.passwordLabel = Ti.UI.createLabel({
         text: "Password:",
         font: {
@@ -127,7 +135,7 @@ function Controller() {
         height: "40dp",
         id: "passwordLabel"
     });
-    $.__views.loginContent.add($.__views.passwordLabel);
+    $.__views.scroller.add($.__views.passwordLabel);
     $.__views.passwordEdit = Ti.UI.createTextField({
         value: "password",
         passwordMask: true,
@@ -144,7 +152,7 @@ function Controller() {
         height: "40dp",
         id: "passwordEdit"
     });
-    $.__views.loginContent.add($.__views.passwordEdit);
+    $.__views.scroller.add($.__views.passwordEdit);
     $.__views.loginButton = Ti.UI.createButton({
         style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
         font: {
@@ -158,11 +166,59 @@ function Controller() {
         title: "Log in",
         id: "loginButton"
     });
-    $.__views.loginContent.add($.__views.loginButton);
+    $.__views.scroller.add($.__views.loginButton);
+    loginButtonClick ? $.__views.loginButton.addEventListener("click", loginButtonClick) : __defers["$.__views.loginButton!click!loginButtonClick"] = true;
+    $.__views.loginButton = Ti.UI.createButton({
+        style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+        font: {
+            fontFamily: "Arial",
+            fontSize: "18dp",
+            fontWeight: "bold"
+        },
+        top: 40,
+        left: "2%",
+        width: "96%",
+        title: "Log in",
+        id: "loginButton"
+    });
+    $.__views.scroller.add($.__views.loginButton);
+    loginButtonClick ? $.__views.loginButton.addEventListener("click", loginButtonClick) : __defers["$.__views.loginButton!click!loginButtonClick"] = true;
+    $.__views.loginButton = Ti.UI.createButton({
+        style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+        font: {
+            fontFamily: "Arial",
+            fontSize: "18dp",
+            fontWeight: "bold"
+        },
+        top: 40,
+        left: "2%",
+        width: "96%",
+        title: "Log in",
+        id: "loginButton"
+    });
+    $.__views.scroller.add($.__views.loginButton);
+    loginButtonClick ? $.__views.loginButton.addEventListener("click", loginButtonClick) : __defers["$.__views.loginButton!click!loginButtonClick"] = true;
+    $.__views.loginButton = Ti.UI.createButton({
+        style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+        font: {
+            fontFamily: "Arial",
+            fontSize: "18dp",
+            fontWeight: "bold"
+        },
+        top: 40,
+        left: "2%",
+        width: "96%",
+        title: "Log in",
+        id: "loginButton"
+    });
+    $.__views.scroller.add($.__views.loginButton);
     loginButtonClick ? $.__views.loginButton.addEventListener("click", loginButtonClick) : __defers["$.__views.loginButton!click!loginButtonClick"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.serverEdit.value = "google_sdk" == Titanium.Platform.model || "Simulator" == Titanium.Platform.model ? "http://localhost:8080/alfresco" : "http://192.168.1.91:8080/alfresco";
+    __defers["$.__views.loginButton!click!loginButtonClick"] && $.__views.loginButton.addEventListener("click", loginButtonClick);
+    __defers["$.__views.loginButton!click!loginButtonClick"] && $.__views.loginButton.addEventListener("click", loginButtonClick);
+    __defers["$.__views.loginButton!click!loginButtonClick"] && $.__views.loginButton.addEventListener("click", loginButtonClick);
     __defers["$.__views.loginButton!click!loginButtonClick"] && $.__views.loginButton.addEventListener("click", loginButtonClick);
     _.extend($, exports);
 }

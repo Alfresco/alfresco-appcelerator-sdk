@@ -11,8 +11,14 @@
 	height:Ti.UI.FILL,
 	backgroundColor:"white",
 	separatorColor:"white",
-	layout:'vertical'
 },
+"#scroller":{
+	layout:'vertical',
+	top: 0,
+	left: 0,
+	width:Ti.UI.FILL,
+	height:Ti.UI.FILL,
+}
 "#logoImage":{
 	top:0,left: '2%', 
 	width:'80%',

@@ -1,7 +1,9 @@
 <Alloy>
-	
+		
 	<Window id="loginContent">
 
+	<ScrollView id="scroller">
+		
 		<ImageView id="logoImage"/>
 				
 		<Label id="serverLabel">
@@ -15,5 +17,8 @@
 	
 		<Button id="loginButton" onClick="loginButtonClick">
 	
+	</ScrollView>
+	
 	</Window>
+	
 </Alloy>
