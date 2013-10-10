@@ -1,8 +1,28 @@
-tmp
-bin
-build
-*.zip
-androidsdkmodule/dist/androidsdkmodule.jar
-androidsdkmodule/libs/armeabi-v7a/libcom.alfresco.appcelerator.module.sdk.so
-androidsdkmodule/libs/armeabi/libcom.alfresco.appcelerator.module.sdk.so
-androidsdkmodule/libs/x86/libcom.alfresco.appcelerator.module.sdk.so
+# Global Ignores
+.DS_Store
+
+# Generated Help Files
+AlfrescoAppceleratorSDKHelp/
+
+# AlfrescoTestHarness (Appcelerator)
+AlfrescoTestHarness/build.log
+AlfrescoTestHarness/build/
+AlfrescoTestHarness/Resources/
+
+# AlfrescoUI (Appcelerator)
+AlfrescoUI/build.log
+AlfrescoUI/build/
+AlfrescoUI/Resources/
+
+# AndroidSDKModule (Android)
+AndroidSDKModule/*.zip
+AndroidSDKModule/build/
+AndroidSDKModule/dist/
+
+# iOSSDKModule (iOS)
+iOSSDKModule/build/
+iOSSDKModule/xcuserdata
+iOSSDKModule/*.xccheckout
+iOSSDKModule/*.zip
+iOSSDKModule/ComAlfrescoAppceleratorModuleIosSdk.h
+iOSSDKModule/ComAlfrescoAppceleratorModuleIosSdk.m
