@@ -1,1 +1,0 @@
-module.exports = [{"isApi":true,"priority":1000.0003,"key":"Label","style":{width:Ti.UI.SIZE,height:100,top:0,color:"#000",}},{"isClass":true,"priority":10000.0002,"key":"container","style":{backgroundColor:"white",}}];
