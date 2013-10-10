@@ -168,57 +168,9 @@ function Controller() {
     });
     $.__views.scroller.add($.__views.loginButton);
     loginButtonClick ? $.__views.loginButton.addEventListener("click", loginButtonClick) : __defers["$.__views.loginButton!click!loginButtonClick"] = true;
-    $.__views.loginButton = Ti.UI.createButton({
-        style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
-        font: {
-            fontFamily: "Arial",
-            fontSize: "18dp",
-            fontWeight: "bold"
-        },
-        top: 40,
-        left: "2%",
-        width: "96%",
-        title: "Log in",
-        id: "loginButton"
-    });
-    $.__views.scroller.add($.__views.loginButton);
-    loginButtonClick ? $.__views.loginButton.addEventListener("click", loginButtonClick) : __defers["$.__views.loginButton!click!loginButtonClick"] = true;
-    $.__views.loginButton = Ti.UI.createButton({
-        style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
-        font: {
-            fontFamily: "Arial",
-            fontSize: "18dp",
-            fontWeight: "bold"
-        },
-        top: 40,
-        left: "2%",
-        width: "96%",
-        title: "Log in",
-        id: "loginButton"
-    });
-    $.__views.scroller.add($.__views.loginButton);
-    loginButtonClick ? $.__views.loginButton.addEventListener("click", loginButtonClick) : __defers["$.__views.loginButton!click!loginButtonClick"] = true;
-    $.__views.loginButton = Ti.UI.createButton({
-        style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
-        font: {
-            fontFamily: "Arial",
-            fontSize: "18dp",
-            fontWeight: "bold"
-        },
-        top: 40,
-        left: "2%",
-        width: "96%",
-        title: "Log in",
-        id: "loginButton"
-    });
-    $.__views.scroller.add($.__views.loginButton);
-    loginButtonClick ? $.__views.loginButton.addEventListener("click", loginButtonClick) : __defers["$.__views.loginButton!click!loginButtonClick"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.serverEdit.value = "google_sdk" == Titanium.Platform.model || "Simulator" == Titanium.Platform.model ? "http://localhost:8080/alfresco" : "http://192.168.1.91:8080/alfresco";
-    __defers["$.__views.loginButton!click!loginButtonClick"] && $.__views.loginButton.addEventListener("click", loginButtonClick);
-    __defers["$.__views.loginButton!click!loginButtonClick"] && $.__views.loginButton.addEventListener("click", loginButtonClick);
-    __defers["$.__views.loginButton!click!loginButtonClick"] && $.__views.loginButton.addEventListener("click", loginButtonClick);
     __defers["$.__views.loginButton!click!loginButtonClick"] && $.__views.loginButton.addEventListener("click", loginButtonClick);
     _.extend($, exports);
 }

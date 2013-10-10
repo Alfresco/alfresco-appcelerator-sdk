@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ComAlfrescoAppceleratorSdkListingContextProxy.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorSdkListingContextProxy</TokenIdentifier>
+			<Abstract type="html">ListingContext</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkListingContextProxy.h</DeclaredIn>
+            
+			
+			<NodeRef refid="10"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkListingContextProxy/initialiseWithMaxItems:</TokenIdentifier>
+			<Abstract type="html">Initialise with maximum number of items to deliver at one time</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkListingContextProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)initialiseWithMaxItems:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>int</Name>
+					<Abstract type="html">maxItems</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initialiseWithMaxItems:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkListingContextProxy/initialiseWithMaxItemsAndSkipCount:</TokenIdentifier>
+			<Abstract type="html">Initialise with maximum number of items, and skip count</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkListingContextProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)initialiseWithMaxItemsAndSkipCount:(id)args</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>int</Name>
+					<Abstract type="html">maxItems</Abstract>
+				</Parameter><Parameter>
+					<Name>int</Name>
+					<Abstract type="html">skipCount</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initialiseWithMaxItemsAndSkipCount:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkListingContextProxy/initialiseWithSortProperty:</TokenIdentifier>
+			<Abstract type="html">Initialise with sort property</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkListingContextProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)initialiseWithSortProperty:(id)args</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">sortProperty</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initialiseWithSortProperty:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+        
+	</File>
+</Tokens>

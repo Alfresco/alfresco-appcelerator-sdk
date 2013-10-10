@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ComAlfrescoAppceleratorSdkTaggingServiceProxy.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorSdkTaggingServiceProxy</TokenIdentifier>
+			<Abstract type="html">TaggingService</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkTaggingServiceProxy.h</DeclaredIn>
+            
+			
+			<NodeRef refid="20"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkTaggingServiceProxy/initialiseWithSession:</TokenIdentifier>
+			<Abstract type="html">Initialise the service</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkTaggingServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)initialiseWithSession:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>RepositorySession</Name>
+					<Abstract type="html">session</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initialiseWithSession:</Anchor>
+            <NodeRef refid="20"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkTaggingServiceProxy/retrieveAllTags:</TokenIdentifier>
+			<Abstract type="html">Retrieve all tags</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkTaggingServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveAllTags:(id)noargs</Declaration>
+			
+			
+			<Anchor>//api/name/retrieveAllTags:</Anchor>
+            <NodeRef refid="20"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkTaggingServiceProxy/retrieveTagsForNode:</TokenIdentifier>
+			<Abstract type="html">Retrieve all tags</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkTaggingServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveTagsForNode:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Folder</Name>
+					<Abstract type="html">or Document object</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveTagsForNode:</Anchor>
+            <NodeRef refid="20"/>
+		</Token>
+		
+        
+	</File>
+</Tokens>

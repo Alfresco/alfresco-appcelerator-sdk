@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/ComAlfrescoAppceleratorModuleSdkModule.html">
+	<File path="Classes/ComAlfrescoAppceleratorSdkActivityProxy.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorModuleSdkModule</TokenIdentifier>
-			<Abstract type="html">Your Copyright Here</Abstract>
-			<DeclaredIn>ComAlfrescoAppceleratorModuleSdkModule.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorSdkActivityProxy</TokenIdentifier>
+			<Abstract type="html">Activity</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkActivityProxy.h</DeclaredIn>
             
 			
 			<NodeRef refid="1"/>

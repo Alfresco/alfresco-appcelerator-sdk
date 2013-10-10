@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ComAlfrescoAppceleratorSdkPermissionsProxy.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorSdkPermissionsProxy</TokenIdentifier>
+			<Abstract type="html">Permissions</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkPermissionsProxy.h</DeclaredIn>
+            
+			
+			<NodeRef refid="12"/>
+		</Token>
+		
+		
+        
+	</File>
+</Tokens>

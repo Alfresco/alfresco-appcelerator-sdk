@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ComAlfrescoAppceleratorSdkSiteServiceProxy.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorSdkSiteServiceProxy</TokenIdentifier>
+			<Abstract type="html">SiteService</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkSiteServiceProxy.h</DeclaredIn>
+            <Availability type="html">(
+    &quot;v1.0&quot;
+)</Availability>
+			
+			<NodeRef refid="18"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkSiteServiceProxy/initialiseWithSession:</TokenIdentifier>
+			<Abstract type="html">Initialise the service</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkSiteServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)initialiseWithSession:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>RepositorySession</Name>
+					<Abstract type="html">session</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initialiseWithSession:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkSiteServiceProxy/retrieveAllSites:</TokenIdentifier>
+			<Abstract type="html">Retrieve all sites</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkSiteServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveAllSites:(id)noargs</Declaration>
+			
+			
+			<Anchor>//api/name/retrieveAllSites:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkSiteServiceProxy/retrieveSites:</TokenIdentifier>
+			<Abstract type="html">Retrieve users sites</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkSiteServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveSites:(id)noargs</Declaration>
+			
+			
+			<Anchor>//api/name/retrieveSites:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkSiteServiceProxy/retrieveFavoriteSites:</TokenIdentifier>
+			<Abstract type="html">Retrieve favorite sites.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkSiteServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveFavoriteSites:(id)noargs</Declaration>
+			
+			
+			<Anchor>//api/name/retrieveFavoriteSites:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkSiteServiceProxy/retrieveSiteWithShortName:</TokenIdentifier>
+			<Abstract type="html">Retrieve a site object from site name.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkSiteServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveSiteWithShortName:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">siteName</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveSiteWithShortName:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkSiteServiceProxy/retrieveDocumentLibraryFolderForSite:</TokenIdentifier>
+			<Abstract type="html">Retrieve document library folder object for site.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkSiteServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveDocumentLibraryFolderForSite:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Site</Name>
+					<Abstract type="html">siteObject</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveDocumentLibraryFolderForSite:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkSiteServiceProxy/clearSitesCache:</TokenIdentifier>
+			<Abstract type="html">Clear sites cahce</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkSiteServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)clearSitesCache:(id)noargs</Declaration>
+			
+			
+			<Anchor>//api/name/clearSitesCache:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+        
+	</File>
+</Tokens>

@@ -1,0 +1,690 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>ComAlfrescoAppceleratorSdkSiteServiceProxy Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">AlfrescoAppceleratorSDK </a></h1>
+				<a id="developerHome" href="../index.html">Alfresco</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">ComAlfrescoAppceleratorSdkSiteServiceProxy Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/clearSitesCache:">&nbsp;&nbsp;&nbsp;&nbsp;- clearSitesCache:</option>
+	
+	<option value="//api/name/initialiseWithSession:">&nbsp;&nbsp;&nbsp;&nbsp;- initialiseWithSession:</option>
+	
+	<option value="//api/name/retrieveAllSites:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveAllSites:</option>
+	
+	<option value="//api/name/retrieveDocumentLibraryFolderForSite:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveDocumentLibraryFolderForSite:</option>
+	
+	<option value="//api/name/retrieveFavoriteSites:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveFavoriteSites:</option>
+	
+	<option value="//api/name/retrieveSiteWithShortName:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveSiteWithShortName:</option>
+	
+	<option value="//api/name/retrieveSites:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveSites:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clearSitesCache:">clearSitesCache:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initialiseWithSession:">initialiseWithSession:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveAllSites:">retrieveAllSites:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveDocumentLibraryFolderForSite:">retrieveDocumentLibraryFolderForSite:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveFavoriteSites:">retrieveFavoriteSites:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveSiteWithShortName:">retrieveSiteWithShortName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveSites:">retrieveSites:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="ComAlfrescoAppceleratorSdkSiteServiceProxy Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">ComAlfrescoAppceleratorSdkSiteServiceProxy Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">TiProxy</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">ComAlfrescoAppceleratorSdkSiteServiceProxy.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>SiteService</p>
+
+<p>Javascript events:
+&lsquo;error&rsquo; (Properties: string errorstring, int errorcode)
+&lsquo;sitesnode&rsquo; (Properties: Site site)
+&lsquo;allsitesnode&rsquo; (Properties: Site site)
+&lsquo;mysitesnode&rsquo; (Properties: Site site)
+&lsquo;favsitesnode&rsquo; (Properties: Site site)
+&lsquo;pagingresult&rsquo; (Properties: int hasmoreitems, int totalitems)
+&lsquo;endenumeration&rsquo;</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initialiseWithSession:">&ndash;&nbsp;initialiseWithSession:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveAllSites:">&ndash;&nbsp;retrieveAllSites:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveSites:">&ndash;&nbsp;retrieveSites:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveFavoriteSites:">&ndash;&nbsp;retrieveFavoriteSites:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveSiteWithShortName:">&ndash;&nbsp;retrieveSiteWithShortName:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveDocumentLibraryFolderForSite:">&ndash;&nbsp;retrieveDocumentLibraryFolderForSite:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clearSitesCache:">&ndash;&nbsp;clearSitesCache:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/clearSitesCache:" title="clearSitesCache:"></a>
+	<h3 class="subsubtitle method-title">clearSitesCache:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Clear sites cahce</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)clearSitesCache:(id)<em>noargs</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Clear sites cahce</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkSiteServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initialiseWithSession:" title="initialiseWithSession:"></a>
+	<h3 class="subsubtitle method-title">initialiseWithSession:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialise the service</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)initialiseWithSession:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>RepositorySession</em></dt>
+			<dd><p>session</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initialise the service</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkSiteServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveAllSites:" title="retrieveAllSites:"></a>
+	<h3 class="subsubtitle method-title">retrieveAllSites:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve all sites</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveAllSites:(id)<em>noargs</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve all sites</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkSiteServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveDocumentLibraryFolderForSite:" title="retrieveDocumentLibraryFolderForSite:"></a>
+	<h3 class="subsubtitle method-title">retrieveDocumentLibraryFolderForSite:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve document library folder object for site.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveDocumentLibraryFolderForSite:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Site</em></dt>
+			<dd><p>siteObject</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve document library folder object for site.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkSiteServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveFavoriteSites:" title="retrieveFavoriteSites:"></a>
+	<h3 class="subsubtitle method-title">retrieveFavoriteSites:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve favorite sites.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveFavoriteSites:(id)<em>noargs</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve favorite sites.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkSiteServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveSiteWithShortName:" title="retrieveSiteWithShortName:"></a>
+	<h3 class="subsubtitle method-title">retrieveSiteWithShortName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve a site object from site name.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveSiteWithShortName:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>siteName</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve a site object from site name.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkSiteServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveSites:" title="retrieveSites:"></a>
+	<h3 class="subsubtitle method-title">retrieveSites:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve users sites</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveSites:(id)<em>noargs</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve users sites</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkSiteServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Alfresco. All rights reserved. (Last updated: 2013-10-10)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,4 +1,4 @@
 Documentation set was installed to Xcode!
 
 Path: /Users/ljagger/Library/Developer/Shared/Documentation/DocSets/com.alfresco.AlfrescoAppceleratorSDK.docset
-Time: 2013-09-26 12:50:11 +0000
+Time: 2013-10-10 13:12:36 +0000

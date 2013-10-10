@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy</TokenIdentifier>
+			<Abstract type="html">DocumentFolderService</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+            <Availability type="html">(
+    &quot;v1.0&quot;
+)</Availability>
+			
+			<NodeRef refid="6"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/initialiseWithSession:</TokenIdentifier>
+			<Abstract type="html">Initialise the service</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)initialiseWithSession:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>RepositorySession</Name>
+					<Abstract type="html">session</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initialiseWithSession:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveRootFolder:</TokenIdentifier>
+			<Abstract type="html">Retrieve the root folder</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveRootFolder:(id)noargs</Declaration>
+			
+			
+			<Anchor>//api/name/retrieveRootFolder:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/setFolder:</TokenIdentifier>
+			<Abstract type="html">Set a specific folder ready for a retrieveChildrenInFolder() call.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)setFolder:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Folder</Name>
+					<Abstract type="html">folderObject</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setFolder:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveChildrenInFolder:</TokenIdentifier>
+			<Abstract type="html">Retrieve children in current folder (either root after retrieveRootFolder(), or a specific folder after a setFolder() call).</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveChildrenInFolder:(id)noargs</Declaration>
+			
+			
+			<Anchor>//api/name/retrieveChildrenInFolder:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveChildrenInFolderWithListingContext:</TokenIdentifier>
+			<Abstract type="html">Retrieve children in current folder (either root after retrieveRootFolder(), or a specific folder after a setFolder() call).
+Result event will include listing context for paged handling.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveChildrenInFolderWithListingContext:(id)arg</Declaration>
+			
+			
+			<Anchor>//api/name/retrieveChildrenInFolderWithListingContext:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/getCurrentFolder:</TokenIdentifier>
+			<Abstract type="html">Get current folder</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (id)getCurrentFolder:(id)noargs</Declaration>
+			
+			<ReturnValue><Abstract type="html">Folder object</Abstract></ReturnValue>
+			<Anchor>//api/name/getCurrentFolder:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/saveDocument:</TokenIdentifier>
+			<Abstract type="html">Save document to storage</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)saveDocument:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Document</Name>
+					<Abstract type="html">docObject</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/saveDocument:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrievePermissionsOfNode:</TokenIdentifier>
+			<Abstract type="html">Retrieve permissions of document or folder object</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrievePermissionsOfNode:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Document</Name>
+					<Abstract type="html">or Folder object</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrievePermissionsOfNode:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveNodeWithIdentifier:</TokenIdentifier>
+			<Abstract type="html">Retrieve document or folder object from its identifier</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveNodeWithIdentifier:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">identifier</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveNodeWithIdentifier:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveNodeWithFolderPath:</TokenIdentifier>
+			<Abstract type="html">Retrieve document or folder object from its folder path</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveNodeWithFolderPath:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">folderPath</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveNodeWithFolderPath:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveNodeWithFolderPathRelative:</TokenIdentifier>
+			<Abstract type="html">Retrieve document or folder object from its folder object and relative path string</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveNodeWithFolderPathRelative:(id)args</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>string</Name>
+					<Abstract type="html">relativeFolderPath</Abstract>
+				</Parameter><Parameter>
+					<Name>Folder</Name>
+					<Abstract type="html">folderObject</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveNodeWithFolderPathRelative:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveParentFolderOfNode:</TokenIdentifier>
+			<Abstract type="html">Retrieve parent folder object of node</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveParentFolderOfNode:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Document</Name>
+					<Abstract type="html">or Folder object</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveParentFolderOfNode:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveRenditionOfNode:</TokenIdentifier>
+			<Abstract type="html">Retrieve an image rendition of node</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveRenditionOfNode:(id)args</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Document</Name>
+					<Abstract type="html">or folder object</Abstract>
+				</Parameter><Parameter>
+					<Name>string</Name>
+					<Abstract type="html">type  - The type of thumbnail to be retrieved. For example &apos;doclib&apos; can be used.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveRenditionOfNode:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveDocumentsInFolder:</TokenIdentifier>
+			<Abstract type="html">Retrieve only documents in folder</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveDocumentsInFolder:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Folder</Name>
+					<Abstract type="html">folderObject</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveDocumentsInFolder:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveDocumentsInFolderWithListingContext:</TokenIdentifier>
+			<Abstract type="html">Retrieve only documents in folder, with listing context</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveDocumentsInFolderWithListingContext:(id)args</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Folder</Name>
+					<Abstract type="html">folderObject</Abstract>
+				</Parameter><Parameter>
+					<Name>ListingContext</Name>
+					<Abstract type="html">listingContextObject</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveDocumentsInFolderWithListingContext:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveFoldersInFolder:</TokenIdentifier>
+			<Abstract type="html">Retrieve only folders in folder</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveFoldersInFolder:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Folder</Name>
+					<Abstract type="html">folderObject</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveFoldersInFolder:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy/retrieveFoldersInFolderWithListingContext:</TokenIdentifier>
+			<Abstract type="html">Retrieve only folders in folder, with listing context</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveFoldersInFolderWithListingContext:(id)args</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Folder</Name>
+					<Abstract type="html">folderObject</Abstract>
+				</Parameter><Parameter>
+					<Name>ListingContext</Name>
+					<Abstract type="html">listingContextObject</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveFoldersInFolderWithListingContext:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+        
+	</File>
+</Tokens>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ComAlfrescoAppceleratorSdkPersonProxy.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorSdkPersonProxy</TokenIdentifier>
+			<Abstract type="html">Person</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkPersonProxy.h</DeclaredIn>
+            
+			
+			<NodeRef refid="13"/>
+		</Token>
+		
+		
+        
+	</File>
+</Tokens>

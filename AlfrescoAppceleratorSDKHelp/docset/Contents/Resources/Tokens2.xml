@@ -1,16 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/ComAlfrescoAppceleratorModuleSdkModuleAssets.html">
+	<File path="Classes/ComAlfrescoAppceleratorSdkActivityServiceProxy.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorModuleSdkModuleAssets</TokenIdentifier>
-			<Abstract type="html">This is a generated file. Do not edit or your changes will be lost</Abstract>
-			<DeclaredIn>ComAlfrescoAppceleratorModuleSdkModuleAssets.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorSdkActivityServiceProxy</TokenIdentifier>
+			<Abstract type="html">ActivityService</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkActivityServiceProxy.h</DeclaredIn>
             
 			
 			<NodeRef refid="2"/>
 		</Token>
 		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkActivityServiceProxy/initialiseWithSession:</TokenIdentifier>
+			<Abstract type="html">Initialises the service</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkActivityServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)initialiseWithSession:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>RepositorySession</Name>
+					<Abstract type="html">session</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initialiseWithSession:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkActivityServiceProxy/retrieveActivityStream:</TokenIdentifier>
+			<Abstract type="html">Retrieves all activities for the logged-in user.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkActivityServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveActivityStream:(id)noargs</Declaration>
+			
+			
+			<Anchor>//api/name/retrieveActivityStream:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkActivityServiceProxy/retrieveActivityStreamWithListingContext:</TokenIdentifier>
+			<Abstract type="html">Retrieves all activities for the logged-in user with listing context</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkActivityServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveActivityStreamWithListingContext:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>ListingContext</Name>
+					<Abstract type="html">listingContext</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveActivityStreamWithListingContext:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkActivityServiceProxy/retrieveActivityStreamForPerson:</TokenIdentifier>
+			<Abstract type="html">Retrieves activities for the given person.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkActivityServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveActivityStreamForPerson:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Person</Name>
+					<Abstract type="html">person</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveActivityStreamForPerson:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkActivityServiceProxy/retrieveActivityStreamForPersonWithListingContext:</TokenIdentifier>
+			<Abstract type="html">Retrieves activities for the given person, with listing context.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkActivityServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveActivityStreamForPersonWithListingContext:(id)args</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Person</Name>
+					<Abstract type="html">person</Abstract>
+				</Parameter><Parameter>
+					<Name>ListingContext</Name>
+					<Abstract type="html">listingContext</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveActivityStreamForPersonWithListingContext:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkActivityServiceProxy/retrieveActivityStreamForSite:</TokenIdentifier>
+			<Abstract type="html">Retrieves activities for the given site.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkActivityServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveActivityStreamForSite:(id)arg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Site</Name>
+					<Abstract type="html">site</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveActivityStreamForSite:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkActivityServiceProxy/retrieveActivityStreamForSiteWithListingContext:</TokenIdentifier>
+			<Abstract type="html">Retrieves activities for the given site.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkActivityServiceProxy.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveActivityStreamForSiteWithListingContext:(id)args</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>Site</Name>
+					<Abstract type="html">site</Abstract>
+				</Parameter><Parameter>
+					<Name>ListingContext</Name>
+					<Abstract type="html">listingContext</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/retrieveActivityStreamForSiteWithListingContext:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
 		
         
 	</File>

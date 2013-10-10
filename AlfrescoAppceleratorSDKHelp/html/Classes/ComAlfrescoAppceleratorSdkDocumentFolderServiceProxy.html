@@ -1,0 +1,1396 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">AlfrescoAppceleratorSDK </a></h1>
+				<a id="developerHome" href="../index.html">Alfresco</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/getCurrentFolder:">&nbsp;&nbsp;&nbsp;&nbsp;- getCurrentFolder:</option>
+	
+	<option value="//api/name/initialiseWithSession:">&nbsp;&nbsp;&nbsp;&nbsp;- initialiseWithSession:</option>
+	
+	<option value="//api/name/retrieveChildrenInFolder:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveChildrenInFolder:</option>
+	
+	<option value="//api/name/retrieveChildrenInFolderWithListingContext:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveChildrenInFolderWithListingContext:</option>
+	
+	<option value="//api/name/retrieveDocumentsInFolder:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveDocumentsInFolder:</option>
+	
+	<option value="//api/name/retrieveDocumentsInFolderWithListingContext:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveDocumentsInFolderWithListingContext:</option>
+	
+	<option value="//api/name/retrieveFoldersInFolder:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveFoldersInFolder:</option>
+	
+	<option value="//api/name/retrieveFoldersInFolderWithListingContext:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveFoldersInFolderWithListingContext:</option>
+	
+	<option value="//api/name/retrieveNodeWithFolderPath:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveNodeWithFolderPath:</option>
+	
+	<option value="//api/name/retrieveNodeWithFolderPathRelative:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveNodeWithFolderPathRelative:</option>
+	
+	<option value="//api/name/retrieveNodeWithIdentifier:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveNodeWithIdentifier:</option>
+	
+	<option value="//api/name/retrieveParentFolderOfNode:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveParentFolderOfNode:</option>
+	
+	<option value="//api/name/retrievePermissionsOfNode:">&nbsp;&nbsp;&nbsp;&nbsp;- retrievePermissionsOfNode:</option>
+	
+	<option value="//api/name/retrieveRenditionOfNode:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveRenditionOfNode:</option>
+	
+	<option value="//api/name/retrieveRootFolder:">&nbsp;&nbsp;&nbsp;&nbsp;- retrieveRootFolder:</option>
+	
+	<option value="//api/name/saveDocument:">&nbsp;&nbsp;&nbsp;&nbsp;- saveDocument:</option>
+	
+	<option value="//api/name/setFolder:">&nbsp;&nbsp;&nbsp;&nbsp;- setFolder:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getCurrentFolder:">getCurrentFolder:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initialiseWithSession:">initialiseWithSession:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveChildrenInFolder:">retrieveChildrenInFolder:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveChildrenInFolderWithListingContext:">retrieveChildrenInFolderWithListingContext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveDocumentsInFolder:">retrieveDocumentsInFolder:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveDocumentsInFolderWithListingContext:">retrieveDocumentsInFolderWithListingContext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveFoldersInFolder:">retrieveFoldersInFolder:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveFoldersInFolderWithListingContext:">retrieveFoldersInFolderWithListingContext:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveNodeWithFolderPath:">retrieveNodeWithFolderPath:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveNodeWithFolderPathRelative:">retrieveNodeWithFolderPathRelative:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveNodeWithIdentifier:">retrieveNodeWithIdentifier:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveParentFolderOfNode:">retrieveParentFolderOfNode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrievePermissionsOfNode:">retrievePermissionsOfNode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveRenditionOfNode:">retrieveRenditionOfNode:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/retrieveRootFolder:">retrieveRootFolder:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/saveDocument:">saveDocument:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setFolder:">setFolder:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">TiProxy</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>DocumentFolderService</p>
+
+<p>Javascript events:
+&lsquo;error&rsquo; (Properties: string errorstring, int errorcode)
+&lsquo;retrievedfolder&rsquo;
+&lsquo;documentnode&rsquo; (Properties: Document document)
+&lsquo;foldernode&rsquo; (Properties: Folder folder)
+&lsquo;pagingresult&rsquo; (Properties: int hasmoreitems, int totalitems)
+&lsquo;endenumeration&rsquo;
+&lsquo;progresseddocument&rsquo; (Properties: int total, int bytes)
+&lsquo;retrieveddocument&rsquo; (Properties: ContentFile contentfile)</p>
+
+<p>Javascript example:</p>
+
+<p>var documentFolderService = SDKModule.createDocumentFolderService();
+documentFolderService.addEventListener(&lsquo;error&rsquo;, function(e) { alert(e.errorstring); });</p>
+
+<p>documentFolderService.initialiseWithSession (repoSession);
+documentFolderService.retrieveRootFolder();</p>
+
+<p>documentFolderService.addEventListener(&lsquo;retrievedfolder&rsquo;, function(e) {</p>
+
+<p>   documentFolderService.addEventListener(&lsquo;documentnode&rsquo;, function(e) { var doc = e.document; &hellip; }</p>
+
+<p>   documentFolderService.addEventListener(&lsquo;foldernode&rsquo;, function(e) { var folder = e.folder; &hellip; }</p>
+
+<p>   documentFolderService.retrieveChildrenInFolder();</p>
+
+<p>});</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initialiseWithSession:">&ndash;&nbsp;initialiseWithSession:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveRootFolder:">&ndash;&nbsp;retrieveRootFolder:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setFolder:">&ndash;&nbsp;setFolder:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveChildrenInFolder:">&ndash;&nbsp;retrieveChildrenInFolder:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveChildrenInFolderWithListingContext:">&ndash;&nbsp;retrieveChildrenInFolderWithListingContext:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getCurrentFolder:">&ndash;&nbsp;getCurrentFolder:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/saveDocument:">&ndash;&nbsp;saveDocument:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrievePermissionsOfNode:">&ndash;&nbsp;retrievePermissionsOfNode:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveNodeWithIdentifier:">&ndash;&nbsp;retrieveNodeWithIdentifier:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveNodeWithFolderPath:">&ndash;&nbsp;retrieveNodeWithFolderPath:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveNodeWithFolderPathRelative:">&ndash;&nbsp;retrieveNodeWithFolderPathRelative:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveParentFolderOfNode:">&ndash;&nbsp;retrieveParentFolderOfNode:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveRenditionOfNode:">&ndash;&nbsp;retrieveRenditionOfNode:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveDocumentsInFolder:">&ndash;&nbsp;retrieveDocumentsInFolder:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveDocumentsInFolderWithListingContext:">&ndash;&nbsp;retrieveDocumentsInFolderWithListingContext:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveFoldersInFolder:">&ndash;&nbsp;retrieveFoldersInFolder:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/retrieveFoldersInFolderWithListingContext:">&ndash;&nbsp;retrieveFoldersInFolderWithListingContext:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/getCurrentFolder:" title="getCurrentFolder:"></a>
+	<h3 class="subsubtitle method-title">getCurrentFolder:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get current folder</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)getCurrentFolder:(id)<em>noargs</em></code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Folder object</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get current folder</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initialiseWithSession:" title="initialiseWithSession:"></a>
+	<h3 class="subsubtitle method-title">initialiseWithSession:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialise the service</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)initialiseWithSession:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>RepositorySession</em></dt>
+			<dd><p>session</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initialise the service</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveChildrenInFolder:" title="retrieveChildrenInFolder:"></a>
+	<h3 class="subsubtitle method-title">retrieveChildrenInFolder:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve children in current folder (either root after retrieveRootFolder(), or a specific folder after a setFolder() call).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveChildrenInFolder:(id)<em>noargs</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve children in current folder (either root after retrieveRootFolder(), or a specific folder after a setFolder() call).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveChildrenInFolderWithListingContext:" title="retrieveChildrenInFolderWithListingContext:"></a>
+	<h3 class="subsubtitle method-title">retrieveChildrenInFolderWithListingContext:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve children in current folder (either root after retrieveRootFolder(), or a specific folder after a setFolder() call).
+Result event will include listing context for paged handling.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveChildrenInFolderWithListingContext:(id)<em>arg</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve children in current folder (either root after retrieveRootFolder(), or a specific folder after a setFolder() call).
+Result event will include listing context for paged handling.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveDocumentsInFolder:" title="retrieveDocumentsInFolder:"></a>
+	<h3 class="subsubtitle method-title">retrieveDocumentsInFolder:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve only documents in folder</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveDocumentsInFolder:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Folder</em></dt>
+			<dd><p>folderObject</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve only documents in folder</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveDocumentsInFolderWithListingContext:" title="retrieveDocumentsInFolderWithListingContext:"></a>
+	<h3 class="subsubtitle method-title">retrieveDocumentsInFolderWithListingContext:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve only documents in folder, with listing context</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveDocumentsInFolderWithListingContext:(id)<em>args</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Folder</em></dt>
+			<dd><p>folderObject</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>ListingContext</em></dt>
+			<dd><p>listingContextObject</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve only documents in folder, with listing context</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveFoldersInFolder:" title="retrieveFoldersInFolder:"></a>
+	<h3 class="subsubtitle method-title">retrieveFoldersInFolder:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve only folders in folder</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveFoldersInFolder:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Folder</em></dt>
+			<dd><p>folderObject</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve only folders in folder</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveFoldersInFolderWithListingContext:" title="retrieveFoldersInFolderWithListingContext:"></a>
+	<h3 class="subsubtitle method-title">retrieveFoldersInFolderWithListingContext:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve only folders in folder, with listing context</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveFoldersInFolderWithListingContext:(id)<em>args</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Folder</em></dt>
+			<dd><p>folderObject</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>ListingContext</em></dt>
+			<dd><p>listingContextObject</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve only folders in folder, with listing context</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveNodeWithFolderPath:" title="retrieveNodeWithFolderPath:"></a>
+	<h3 class="subsubtitle method-title">retrieveNodeWithFolderPath:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve document or folder object from its folder path</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveNodeWithFolderPath:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>folderPath</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve document or folder object from its folder path</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveNodeWithFolderPathRelative:" title="retrieveNodeWithFolderPathRelative:"></a>
+	<h3 class="subsubtitle method-title">retrieveNodeWithFolderPathRelative:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve document or folder object from its folder object and relative path string</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveNodeWithFolderPathRelative:(id)<em>args</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>relativeFolderPath</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Folder</em></dt>
+			<dd><p>folderObject</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve document or folder object from its folder object and relative path string</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveNodeWithIdentifier:" title="retrieveNodeWithIdentifier:"></a>
+	<h3 class="subsubtitle method-title">retrieveNodeWithIdentifier:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve document or folder object from its identifier</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveNodeWithIdentifier:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>identifier</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve document or folder object from its identifier</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveParentFolderOfNode:" title="retrieveParentFolderOfNode:"></a>
+	<h3 class="subsubtitle method-title">retrieveParentFolderOfNode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve parent folder object of node</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveParentFolderOfNode:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Document</em></dt>
+			<dd><p>or Folder object</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve parent folder object of node</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrievePermissionsOfNode:" title="retrievePermissionsOfNode:"></a>
+	<h3 class="subsubtitle method-title">retrievePermissionsOfNode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve permissions of document or folder object</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrievePermissionsOfNode:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Document</em></dt>
+			<dd><p>or Folder object</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve permissions of document or folder object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveRenditionOfNode:" title="retrieveRenditionOfNode:"></a>
+	<h3 class="subsubtitle method-title">retrieveRenditionOfNode:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve an image rendition of node</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveRenditionOfNode:(id)<em>args</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Document</em></dt>
+			<dd><p>or folder object</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>type  - The type of thumbnail to be retrieved. For example &lsquo;doclib&rsquo; can be used.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve an image rendition of node</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/retrieveRootFolder:" title="retrieveRootFolder:"></a>
+	<h3 class="subsubtitle method-title">retrieveRootFolder:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve the root folder</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)retrieveRootFolder:(id)<em>noargs</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Retrieve the root folder</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/saveDocument:" title="saveDocument:"></a>
+	<h3 class="subsubtitle method-title">saveDocument:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Save document to storage</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)saveDocument:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Document</em></dt>
+			<dd><p>docObject</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Save document to storage</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setFolder:" title="setFolder:"></a>
+	<h3 class="subsubtitle method-title">setFolder:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set a specific folder ready for a retrieveChildrenInFolder() call.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setFolder:(id)<em>arg</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>Folder</em></dt>
+			<dd><p>folderObject</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>v1.0</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Set a specific folder ready for a retrieveChildrenInFolder() call.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Alfresco. All rights reserved. (Last updated: 2013-10-10)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

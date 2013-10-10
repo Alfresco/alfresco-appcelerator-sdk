@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ComAlfrescoAppceleratorSdkContentFileProxy.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ComAlfrescoAppceleratorSdkContentFileProxy</TokenIdentifier>
+			<Abstract type="html">ContentFile</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkContentFileProxy.h</DeclaredIn>
+            
+			
+			<NodeRef refid="5"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkContentFileProxy/getName:</TokenIdentifier>
+			<Abstract type="html">Gets a human readable name for this file</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkContentFileProxy.h</DeclaredIn>
+			
+			<Declaration>- (id)getName:(id)args</Declaration>
+			
+			<ReturnValue><Abstract type="html">string name</Abstract></ReturnValue>
+			<Anchor>//api/name/getName:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkContentFileProxy/getMIMEType:</TokenIdentifier>
+			<Abstract type="html">Gets the MIME type of this file</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkContentFileProxy.h</DeclaredIn>
+			
+			<Declaration>- (id)getMIMEType:(id)args</Declaration>
+			
+			<ReturnValue><Abstract type="html">string MIME type</Abstract></ReturnValue>
+			<Anchor>//api/name/getMIMEType:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkContentFileProxy/getPath:</TokenIdentifier>
+			<Abstract type="html">Gets the full path of this file, sanitised for Appcelerator calls.</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkContentFileProxy.h</DeclaredIn>
+			
+			<Declaration>- (id)getPath:(id)args</Declaration>
+			
+			<ReturnValue><Abstract type="html">string path</Abstract></ReturnValue>
+			<Anchor>//api/name/getPath:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ComAlfrescoAppceleratorSdkContentFileProxy/getFile:</TokenIdentifier>
+			<Abstract type="html">Gets the TiFile object associated with this object.
+NOTE:
+  this object is currently different per platform (See Appcelerator documentation for TiFile).
+  It is therefore safer to rely on the getPath() method instead of this at present (as of Appcelerator 3.1.3GA)</Abstract>
+			<DeclaredIn>ComAlfrescoAppceleratorSdkContentFileProxy.h</DeclaredIn>
+			
+			<Declaration>- (id)getFile:(id)args</Declaration>
+			
+			<ReturnValue><Abstract type="html">TiFile file</Abstract></ReturnValue>
+			<Anchor>//api/name/getFile:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+        
+	</File>
+</Tokens>

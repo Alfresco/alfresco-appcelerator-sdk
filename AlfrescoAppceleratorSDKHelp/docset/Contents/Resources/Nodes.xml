@@ -14,6 +14,24 @@
 						<NodeRef refid="1"/>
 						<NodeRef refid="2"/>
 						<NodeRef refid="3"/>
+						<NodeRef refid="4"/>
+						<NodeRef refid="5"/>
+						<NodeRef refid="6"/>
+						<NodeRef refid="7"/>
+						<NodeRef refid="8"/>
+						<NodeRef refid="9"/>
+						<NodeRef refid="10"/>
+						<NodeRef refid="11"/>
+						<NodeRef refid="12"/>
+						<NodeRef refid="13"/>
+						<NodeRef refid="14"/>
+						<NodeRef refid="15"/>
+						<NodeRef refid="16"/>
+						<NodeRef refid="17"/>
+						<NodeRef refid="18"/>
+						<NodeRef refid="19"/>
+						<NodeRef refid="20"/>
+						<NodeRef refid="21"/>
 						
 					</Subnodes>
 				</Node>
@@ -27,16 +45,230 @@
 	<Library>
 		
 		<Node id="1" type="file" documentType="reference">
-            <Name>ComAlfrescoAppceleratorModuleSdkModule</Name>
-            <Path>Classes/ComAlfrescoAppceleratorModuleSdkModule.html</Path>
+            <Name>ComAlfrescoAppceleratorSdkActivityProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkActivityProxy.html</Path>
             
         </Node>
 		<Node id="2" type="file" documentType="reference">
-            <Name>ComAlfrescoAppceleratorModuleSdkModuleAssets</Name>
-            <Path>Classes/ComAlfrescoAppceleratorModuleSdkModuleAssets.html</Path>
+            <Name>ComAlfrescoAppceleratorSdkActivityServiceProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkActivityServiceProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkActivityServiceProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkActivityServiceProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkActivityServiceProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
             
         </Node>
 		<Node id="3" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkCommentProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkCommentProxy.html</Path>
+            
+        </Node>
+		<Node id="4" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkCommentServiceProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkCommentServiceProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkCommentServiceProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkCommentServiceProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkCommentServiceProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="5" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkContentFileProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkContentFileProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkContentFileProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkContentFileProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkContentFileProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="6" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="7" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkDocumentProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkDocumentProxy.html</Path>
+            
+        </Node>
+		<Node id="8" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkFolderProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkFolderProxy.html</Path>
+            
+        </Node>
+		<Node id="9" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="10" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkListingContextProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkListingContextProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkListingContextProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkListingContextProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkListingContextProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="11" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkNodeProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkNodeProxy.html</Path>
+            
+        </Node>
+		<Node id="12" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkPermissionsProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkPermissionsProxy.html</Path>
+            
+        </Node>
+		<Node id="13" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkPersonProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkPersonProxy.html</Path>
+            
+        </Node>
+		<Node id="14" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkPersonServiceProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkPersonServiceProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkPersonServiceProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkPersonServiceProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkPersonServiceProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="15" type="file" documentType="reference">
             <Name>ComAlfrescoAppceleratorSdkRepositorySessionProxy</Name>
             <Path>Classes/ComAlfrescoAppceleratorSdkRepositorySessionProxy.html</Path>
             
@@ -56,6 +288,124 @@
                 
                 <Node type="section">
                     <Path>Classes/ComAlfrescoAppceleratorSdkRepositorySessionProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="16" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkSearchServiceProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkSearchServiceProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkSearchServiceProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkSearchServiceProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkSearchServiceProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="17" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkSiteProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkSiteProxy.html</Path>
+            
+        </Node>
+		<Node id="18" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkSiteServiceProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkSiteServiceProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkSiteServiceProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkSiteServiceProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkSiteServiceProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="19" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkTagProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkTagProxy.html</Path>
+            
+        </Node>
+		<Node id="20" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkTaggingServiceProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkTaggingServiceProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkTaggingServiceProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkTaggingServiceProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkTaggingServiceProxy.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="21" type="file" documentType="reference">
+            <Name>ComAlfrescoAppceleratorSdkVersionServiceProxy</Name>
+            <Path>Classes/ComAlfrescoAppceleratorSdkVersionServiceProxy.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkVersionServiceProxy.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkVersionServiceProxy.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/ComAlfrescoAppceleratorSdkVersionServiceProxy.html</Path>
                     <Name>Instance Methods</Name>
                     <Anchor>instance_methods</Anchor>
                 </Node>
