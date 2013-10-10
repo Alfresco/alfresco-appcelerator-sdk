@@ -30,6 +30,29 @@
 #import "AlfrescoDocument.h"
 #import "ComAlfrescoAppceleratorSdkNodeProxy.h"
 
+/**
+ Document
+ 
+ Javascript properties:
+ 
+ string identifier
+ string name
+ string title
+ string summary
+ string type
+ string createdBy
+ string createdAt
+ string modifiedBy
+ string modifiedAt
+ boolean isFolder
+ boolean isDocument
+ string contentMimeType
+ string contentLength
+ string versionLabel
+ string versionComment
+ string isLatestVersion
+ 
+ */
 
 @interface ComAlfrescoAppceleratorSdkDocumentProxy : ComAlfrescoAppceleratorSdkNodeProxy
 

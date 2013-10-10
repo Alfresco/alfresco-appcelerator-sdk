@@ -29,7 +29,15 @@
 #import "TiProxy.h"
 #import "AlfrescoTag.h"
 
+/**
+ 
+Tag
 
+Javascript properties:
+ string identifier
+ string value
+ 
+*/
 @interface ComAlfrescoAppceleratorSdkTagProxy : TiProxy
 
 - (id)initWithTag:(AlfrescoTag *)tag;

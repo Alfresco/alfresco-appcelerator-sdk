@@ -30,15 +30,39 @@
 #import "AlfrescoPersonService.h"
 
 
+/** PersonService
+ 
+ Javascript events:
+ 'error' (Properties: string errorstring, int errorcode)
+ 'personnode' (Properties: Person person)
+ 'endenumeration'
+ 'retrievedavatar' (Properties: ContentFile contentfile)
+ 
+ @since v1.0
+ */
 @interface ComAlfrescoAppceleratorSdkPersonServiceProxy : TiProxy
 {
     AlfrescoPersonService* service;
 }
 
+/**
+ Initialise the service
+ @param RepositorySession session
+*/
 -(void)initialiseWithSession:(id)arg;
 
+
+/**
+ Retrieve person with identifier
+ @param string identifier
+ */
 -(void)retrievePersonWithIdentifier:(id)arg;
 
+
+/**
+ Retrieve avatar for person
+ @param Person person
+ */
 -(void)retrieveAvatarForPerson:(id)arg;
 
 @end

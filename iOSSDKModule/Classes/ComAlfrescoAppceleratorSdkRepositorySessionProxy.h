@@ -32,18 +32,28 @@
 
 /** RepositorySession
 
+Javascript events:
+'error' (Properties: string errorstring, int errorcode)
+'success' (Properties: string servername)
+ 
 Javascript example:
+ 
  var SDKModule = require('com.alfresco.appcelerator.module.sdk');
- SDKModule.createRepositorySession({serverUrl: "http://localhost:8080/alfresco", serverUsername: "admin", serverPassword: "pwd"});
- SDKModule.connect();
+ var repoSession = SDKModule.createRepositorySession({serverUrl: "http://localhost:8080/alfresco", serverUsername: "admin", serverPassword: "pwd"});
+ 
+ repoSession.addEventListener('error', function(e) { alert("Cannot connect to server (" + e.errorcode + "): " + e.errorstring); } );
+ 
+ repoSession.addEventListener('success',function(e) { Ti.API.info("Connected to server: " + e.servername); } );
+ 
+ repoSession.connect();
  
  @since v1.0
 */
+
 @interface ComAlfrescoAppceleratorSdkRepositorySessionProxy : ComAlfrescoAppceleratorSdkSessionProxy
 
 /** Connect to the repository using the properties set at creation
- @param none
- @since v1.0
+@since v1.0
 */
 -(void)connect:(id)noargs;
 

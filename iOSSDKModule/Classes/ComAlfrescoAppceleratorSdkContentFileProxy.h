@@ -29,6 +29,11 @@
 #import "TiProxy.h"
 #import "AlfrescoContentFile.h"
 
+/**
+ContentFile
+ 
+Describes a physical file object on internal storage.  Most commonly used for temporary files that are removed on app exit.
+*/
 
 @interface ComAlfrescoAppceleratorSdkContentFileProxy : TiProxy
 
@@ -39,12 +44,36 @@
 
 -(id)initWithContentFile:(AlfrescoContentFile *)cf name:(NSString*)name;
 
+
+/**
+Gets a human readable name for this file
+ @return string name
+*/
 -(id)getName:(id)args;
 
+
+/**
+ Gets the MIME type of this file
+ @return string MIME type
+ */
 -(id)getMIMEType:(id)args;
 
+
+/**
+ Gets the full path of this file, sanitised for Appcelerator calls.
+ @return string path
+ */
 -(id)getPath:(id)args;
 
+
+/**
+ Gets the TiFile object associated with this object.
+ NOTE:
+  this object is currently different per platform (See Appcelerator documentation for TiFile).
+  It is therefore safer to rely on the getPath() method instead of this at present (as of Appcelerator 3.1.3GA)
+ 
+ @return TiFile file
+ */
 -(id)getFile:(id)args;
 
 

@@ -30,20 +30,72 @@
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 #import "AlfrescoSiteService.h"
 
+
+/** SiteService
+ 
+Javascript events:
+ 'error' (Properties: string errorstring, int errorcode)
+ 'sitesnode' (Properties: Site site)
+ 'allsitesnode' (Properties: Site site)
+ 'mysitesnode' (Properties: Site site)
+ 'favsitesnode' (Properties: Site site)
+ 'pagingresult' (Properties: int hasmoreitems, int totalitems)
+ 'endenumeration'
+ 
+ @since v1.0
+ */
+
 @interface ComAlfrescoAppceleratorSdkSiteServiceProxy : TiProxy
 {
     AlfrescoSiteService* service;
     NSError* errorCode;
 }
 
+
+/** Initialise the service
+ @param RepositorySession session
+ @since v1.0
+ */
 -(void)initialiseWithSession:(id)arg;
 
+
+/** Retrieve all sites
+ @since v1.0
+ */
 -(void)retrieveAllSites:(id)noargs;
+
+
+/** Retrieve users sites
+ @since v1.0
+ */
 -(void)retrieveSites:(id)noargs;
+
+
+/** Retrieve favorite sites.
+ @since v1.0
+ */
 -(void)retrieveFavoriteSites:(id)noargs;
+
+
+/** Retrieve a site object from site name.
+ @param string siteName
+ @since v1.0
+ */
 -(void)retrieveSiteWithShortName:(id)arg;
+
+
+/** Retrieve document library folder object for site.
+ @param Site siteObject
+ @since v1.0
+ */
 -(void)retrieveDocumentLibraryFolderForSite:(id)arg;
+
+
+/** Clear sites cahce
+ @since v1.0
+ */
 -(void)clearSitesCache:(id)noargs;
+
 
 
 //Internal

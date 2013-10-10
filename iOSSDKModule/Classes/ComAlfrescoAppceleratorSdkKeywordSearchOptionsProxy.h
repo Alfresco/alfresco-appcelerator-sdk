@@ -29,16 +29,37 @@
 #import "TiProxy.h"
 #import "AlfrescoKeywordSearchOptions.h"
 
+/** AlfrescoKeywordSearchOptions
+ 
+ The AlfrescoKeywordSearchOptions are used in Alfresco Search Service.
+ */
+
 @interface ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy : TiProxy
 
 @property (nonatomic, strong) AlfrescoKeywordSearchOptions* searchOptions;
 
 -(void)initialise:(id)noargs;
 
+/**
+ @param boolean exactMatch
+ @param boolean includeContent - searches also the content of files
+ */
 -(void)initialiseWithExactMatch:(id)args;
 
+
+/**
+ @param Folder folder - the node to be searched
+ @param boolean includeDescendants - search sub-folders as well
+ */
 -(void)initialiseWithFolder:(id)args;
 
+
+/**
+ @param boolean exactMatch
+ @param boolean includeContent - searches also the content of files
+ @param Folder folder - the node to be searched
+ @param boolean includeDescendants - search sub-folders as well
+ */
 -(void)initialiseWithExactMatchAndFolder:(id)args;
 
 @end

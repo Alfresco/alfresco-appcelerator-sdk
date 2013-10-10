@@ -30,21 +30,62 @@
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 #import "AlfrescoSearchService.h"
 
+
+/** SearchService
+ 
+Javascript events:
+ 'error' (Properties: string errorstring, int errorcode)
+ 'documentnode' (Properties: Document document)
+ 'foldernode' (Properties: Folder folder)
+ 'pagingresult' (Properties: int hasmoreitems, int totalitems)
+ 'endenumeration'
+ 
+ @since v1.0
+ */
+
 @interface ComAlfrescoAppceleratorSdkSearchServiceProxy : TiProxy
 {
     AlfrescoSearchService* service;
     NSError* errorCode;
 }
 
+
+/** Initialise the service
+ @param RepositorySession session
+ @since v1.0
+ */
 -(void)initialiseWithSession:(id)arg;
 
+
+/** Search with statement
+ @param string statementString
+ @since v1.0
+ */
 -(void)searchWithStatement:(id)arg;
 
+
+/** Search with statement and listing context
+ @param string statementString
+ @param ListingContext listingContextObject
+ @since v1.0
+ */
 -(void)searchWithStatementAndListingContext:(id)args;
 
+
+/** Search with keywords
+ @param KeywordSearchOptions searchOptionsObject
+ @since v1.0
+ */
 -(void)searchWithKeywords:(id)args;
 
+
+/** Search with keywords and listing context
+ @param KeywordSearchOptions searchOptionsObject
+ @param ListingContext listingContextObject
+ @since v1.0
+ */
 -(void)searchWithKeywordsAndListingContext:(id)args;
+
 
 
 //Internal

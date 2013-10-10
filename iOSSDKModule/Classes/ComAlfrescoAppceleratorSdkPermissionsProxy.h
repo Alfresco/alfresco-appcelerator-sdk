@@ -29,7 +29,21 @@
 #import "TiProxy.h"
 #import "AlfrescoPermissions.h"
 
+/**
+Permissions
+ 
+Javascript properties:
+ boolean canEdit
+ boolean canDelete
+ boolean canAddChildren
+ boolean canComment
+ boolean canGetContent
+ boolean canSetContent
+ boolean canGetProperties
+ boolean canGetChildren
+ boolean canGetAllVersions
 
+*/
 @interface ComAlfrescoAppceleratorSdkPermissionsProxy : TiProxy
 
 -(id)init;

@@ -29,15 +29,34 @@
 #import "TiProxy.h"
 #import "AlfrescoVersionService.h"
 
-
+/**
+ 
+ VersionService
+ 
+ Javascript events:
+ 'error' (Properties: string errorstring, int errorcode)
+ 'documentnode' (Properties: Document document)
+ 'foldernode' (Properties: Folder folder)
+ 'endenumeration'
+ 
+ */
 @interface ComAlfrescoAppceleratorSdkVersionServiceProxy : TiProxy
 {
     AlfrescoVersionService* service;
     NSError* errorCode;
 }
 
+/**
+ Initialise the service
+ @param RepositorySession session
+ */
 -(void)initialiseWithSession:(id)arg;
 
+
+/**
+ Retrieve all version of document node
+ @param Document docObject
+ */
 -(void)retrieveAllVersionsOfDocument:(id)arg;
 
 @end

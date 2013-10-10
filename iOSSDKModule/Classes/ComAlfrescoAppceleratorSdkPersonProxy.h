@@ -29,6 +29,18 @@
 #import "TiProxy.h"
 #import "AlfrescoPerson.h"
 
+/**
+ Person
+ 
+Javascript properties:
+ string identifier
+ string firstName
+ string lastName
+ string fullName
+ string avatarIdentifier
+ properties properties
+
+ */
 
 @interface ComAlfrescoAppceleratorSdkPersonProxy : TiProxy
 

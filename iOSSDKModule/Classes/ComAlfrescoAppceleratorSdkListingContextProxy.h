@@ -30,18 +30,44 @@
 #include "AlfrescoListingContext.h"
 
 
+/**
+ ListingContext
+*/
 @interface ComAlfrescoAppceleratorSdkListingContextProxy : TiProxy
 
 @property (nonatomic, strong) AlfrescoListingContext* listingContext;
 
 -(void)initialise:(id)noargs;
 
+
+/**
+ Initialise with maximum number of items to deliver at one time
+ @param int maxItems
+*/
 -(void)initialiseWithMaxItems:(id)arg;
 
+
+/**
+ Initialise with maximum number of items, and skip count
+ @param int maxItems
+ @param int skipCount
+*/
 -(void)initialiseWithMaxItemsAndSkipCount:(id)args;
 
+/**
+ Initialise with sort property
+ @param string sortProperty
+*/
 -(void)initialiseWithSortProperty:(id)args;
 
+
+/**
+ Initialise with all parameters
+ @param int maxItems
+ @param int skipCount
+ @param string sortProperty
+ @param boolean sortAscending
+*/
 -(void)initialiseWithMaxItems:(id)args;
 
 @end

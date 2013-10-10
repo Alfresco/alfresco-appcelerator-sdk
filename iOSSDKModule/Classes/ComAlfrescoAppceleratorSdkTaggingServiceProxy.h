@@ -30,16 +30,42 @@
 #import "AlfrescoTaggingService.h"
 
 
+/**
+ 
+ TaggingService
+ 
+ Javascript events:
+ 'error' (Properties: string errorstring, int errorcode)
+ 'tagnode' (Properties: Tag tag)
+ 'pagingresult' (Properties: int hasmoreitems, int totalitems)
+ 'endenumeration'
+
+*/
+
 @interface ComAlfrescoAppceleratorSdkTaggingServiceProxy : TiProxy
 {
     AlfrescoTaggingService* service;
     NSError* errorCode;
 }
 
+
+/**
+ Initialise the service
+ @param RepositorySession session
+*/
 -(void)initialiseWithSession:(id)arg;
 
--(void)retrieveAllTags:(id)arg;
 
+/**
+ Retrieve all tags
+*/
+-(void)retrieveAllTags:(id)noargs;
+
+
+/**
+ Retrieve all tags
+ @param Folder or Document object
+ */
 -(void)retrieveTagsForNode:(id)arg;
 
 @end

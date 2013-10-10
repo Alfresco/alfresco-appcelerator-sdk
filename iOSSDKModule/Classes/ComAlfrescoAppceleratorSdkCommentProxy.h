@@ -29,6 +29,22 @@
 #import "TiProxy.h"
 #import "AlfrescoComment.h"
 
+/**
+Comment
+ 
+Javascript properties:
+ string identifier
+ string name
+ string title;
+ date createdAt
+ date modifiedAt
+ string content
+ string createdBy
+ boolean isEdited
+ boolean canEdit
+ boolean canDelete
+ properties properties
+*/
 @interface ComAlfrescoAppceleratorSdkCommentProxy : TiProxy
 
 -(id)initWithComment:(AlfrescoComment *)comment;

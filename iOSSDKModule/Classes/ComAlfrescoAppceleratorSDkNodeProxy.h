@@ -29,6 +29,33 @@
 #import "TiProxy.h"
 #import "AlfrescoNode.h"
 
+/**
+ Node
+ 
+ Javascript properties:
+
+ string identifier
+ string name
+ string title
+ string summary
+ string type
+ string createdBy
+ string createdAt
+ string modifiedBy
+ string modifiedAt
+ boolean isFolder
+ boolean isDocument
+ 
+ If the node is a document, these additional properties are present:
+ 
+ string contentMimeType
+ string contentLength
+ string versionLabel
+ string versionComment
+ string isLatestVersion
+
+ */
+
 @interface ComAlfrescoAppceleratorSdkNodeProxy : TiProxy
 
 -(id)initWithNode:(AlfrescoNode *)node;

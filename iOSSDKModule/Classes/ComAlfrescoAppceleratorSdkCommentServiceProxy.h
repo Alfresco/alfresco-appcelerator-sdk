@@ -29,17 +29,42 @@
 #import "TiProxy.h"
 #import "AlfrescoCommentService.h"
 
-
+/**
+ 
+CommentService
+ 
+Javascript events:
+'error' (Properties: string errorstring, int errorcode)
+'commentnode' (Properties: Comment comment)
+'pagingresult' (Properties: int hasmoreitems, int totalitems)
+'endenumeration'
+*/
 @interface ComAlfrescoAppceleratorSdkCommentServiceProxy : TiProxy
 {
     AlfrescoCommentService* service;
     NSError* errorCode;
 }
 
+
+/** Initialise the service
+ @param RepositorySession session
+ @since v1.0
+ */
 -(void)initialiseWithSession:(id)arg;
 
+
+/** Retrieve comments for a give document or folder object
+ @param Document or Folder object
+ @since v1.0
+ */
 -(void)retrieveCommentsForNode:(id)arg;
 
+
+/** Retrieve comments for a give document or folder object, with listing context
+ @param Document or Folder object
+ @param ListingContext listingContext
+ @since v1.0
+ */
 -(void)retrieveCommentsForNodeWithListingContext:(id)args;
 
 @end

@@ -30,22 +30,66 @@
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 #import "AlfrescoActivityStreamService.h"
 
+/**
+ ActivityService
+ 
+Javascript events:
+ 'error' (Properties: string errorstring, int errorcode)
+ 'activitynode' (Properties: Activity activity)
+ 'endenumeration'
+ 'pagingresult' (Properties: int hasmoreitems, int totalitems)
+
+ */
+
 @interface ComAlfrescoAppceleratorSdkActivityServiceProxy : TiProxy
 {
     AlfrescoActivityStreamService* service;
     NSError* errorCode;
 }
 
+/** Initialises the service
+ @param RepositorySession session
+ */
 -(void)initialiseWithSession:(id)arg;
 
+
+/** Retrieves all activities for the logged-in user.
+ */
 -(void)retrieveActivityStream:(id)noargs;
+
+
+/** Retrieves all activities for the logged-in user with listing context
+ @param ListingContext listingContext
+ */
 -(void)retrieveActivityStreamWithListingContext:(id)arg;
 
+
+/** Retrieves activities for the given person.
+ @param Person person
+ */
 -(void)retrieveActivityStreamForPerson:(id)arg;
+
+
+/** Retrieves activities for the given person, with listing context.
+@param Person person
+@param ListingContext listingContext
+*/
 -(void)retrieveActivityStreamForPersonWithListingContext:(id)args;
 
+
+/** Retrieves activities for the given site.
+ @param Site site
+ */
 -(void)retrieveActivityStreamForSite:(id)arg;
+
+
+/** Retrieves activities for the given site.
+ @param Site site
+ @param ListingContext listingContext
+ */
 -(void)retrieveActivityStreamForSiteWithListingContext:(id)args;
+
+
 
 
 //Internal
