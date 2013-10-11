@@ -31,19 +31,22 @@
 #import "AlfrescoSiteService.h"
 
 
-/** SiteService
+/**
  
-Javascript events:
- 'error' (Properties: string errorstring, int errorcode)
- 'sitesnode' (Properties: Site site)
- 'allsitesnode' (Properties: Site site)
- 'mysitesnode' (Properties: Site site)
- 'favsitesnode' (Properties: Site site)
- 'pagingresult' (Properties: int hasmoreitems, int totalitems)
- 'endenumeration'
+#Javascript object:#
+<code>SiteService</code>
+
  
- @since v1.0
- */
+#Javascript events:#
+* 'error' (Properties: string errorstring, int errorcode)
+* 'sitesnode' (Properties: Site site)
+* 'allsitesnode' (Properties: Site site)
+* 'mysitesnode' (Properties: Site site)
+* 'favsitesnode' (Properties: Site site)
+* 'pagingresult' (Properties: int hasmoreitems, int totalitems)
+* 'endenumeration'
+ 
+*/
 
 @interface ComAlfrescoAppceleratorSdkSiteServiceProxy : TiProxy
 {

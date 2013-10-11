@@ -31,37 +31,45 @@
 #import "AlfrescoDocumentFolderService.h"
 
 
-/** DocumentFolderService
+/**
+
+#Javascript object:#
+<code>DocumentFolderService</code>
+
+#Javascript events:#
+* 'error' (Properties: string errorstring, int errorcode)
+* 'retrievedfolder'
+* 'documentnode' (Properties: Document document)
+* 'foldernode' (Properties: Folder folder)
+* 'pagingresult' (Properties: int hasmoreitems, int totalitems)
+* 'endenumeration'
+* 'progresseddocument' (Properties: int total, int bytes)
+* 'retrieveddocument' (Properties: ContentFile contentfile)
  
-Javascript events:
- 'error' (Properties: string errorstring, int errorcode)
- 'retrievedfolder'
- 'documentnode' (Properties: Document document)
- 'foldernode' (Properties: Folder folder)
- 'pagingresult' (Properties: int hasmoreitems, int totalitems)
- 'endenumeration'
- 'progresseddocument' (Properties: int total, int bytes)
- 'retrieveddocument' (Properties: ContentFile contentfile)
+#Javascript example:#
  
-Javascript example:
  
- var documentFolderService = SDKModule.createDocumentFolderService();
- documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
+    var documentFolderService = SDKModule.createDocumentFolderService();
  
- documentFolderService.initialiseWithSession (repoSession);
- documentFolderService.retrieveRootFolder();
+    documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
  
- documentFolderService.addEventListener('retrievedfolder', function(e) {
+    documentFolderService.initialiseWithSession (repoSession);
  
-   documentFolderService.addEventListener('documentnode', function(e) { var doc = e.document; ... }
+    documentFolderService.retrieveRootFolder();
+ 
+    documentFolderService.addEventListener('retrievedfolder', function(e)
+    {
+ 
+        documentFolderService.addEventListener('documentnode', function(e) { var doc = e.document; ... }
    
-   documentFolderService.addEventListener('foldernode', function(e) { var folder = e.folder; ... }
+        documentFolderService.addEventListener('foldernode', function(e) { var folder = e.folder; ... }
  
-   documentFolderService.retrieveChildrenInFolder();
+        documentFolderService.retrieveChildrenInFolder();
  
- });
- 
- @since v1.0
+    });
+
+
+
  */
 
 @interface ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy : TiProxy

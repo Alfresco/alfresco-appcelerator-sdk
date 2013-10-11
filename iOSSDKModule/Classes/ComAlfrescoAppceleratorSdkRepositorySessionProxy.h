@@ -30,24 +30,29 @@
 #import "ComAlfrescoAppceleratorSdkRequestProxy.h"
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 
-/** RepositorySession
+/**
+ 
+#Javascript object:#
+<code>RepositorySession</code>
 
-Javascript events:
-'error' (Properties: string errorstring, int errorcode)
-'success' (Properties: string servername)
+#Javascript events:#
+* 'error' (Properties: string errorstring, int errorcode)
+* 'success' (Properties: string servername)
  
-Javascript example:
+#Javascript example:#
  
- var SDKModule = require('com.alfresco.appcelerator.module.sdk');
- var repoSession = SDKModule.createRepositorySession({serverUrl: "http://localhost:8080/alfresco", serverUsername: "admin", serverPassword: "pwd"});
+    var SDKModule = require('com.alfresco.appcelerator.module.sdk');
  
- repoSession.addEventListener('error', function(e) { alert("Cannot connect to server (" + e.errorcode + "): " + e.errorstring); } );
+    var properties  = {serverUrl: "http://localhost:8080/alfresco",  serverUsername: "admin",  serverPassword: "pwd"};
  
- repoSession.addEventListener('success',function(e) { Ti.API.info("Connected to server: " + e.servername); } );
+    var repoSession = SDKModule.createRepositorySession(properties);
  
- repoSession.connect();
+    repoSession.addEventListener('error', function(e) { alert("Cannot connect to server (" + e.errorcode + "): " + e.errorstring); } );
  
- @since v1.0
+    repoSession.addEventListener('success',function(e) { Ti.API.info("Connected to server: " + e.servername); } );
+ 
+    repoSession.connect();
+ 
 */
 
 @interface ComAlfrescoAppceleratorSdkRepositorySessionProxy : ComAlfrescoAppceleratorSdkSessionProxy

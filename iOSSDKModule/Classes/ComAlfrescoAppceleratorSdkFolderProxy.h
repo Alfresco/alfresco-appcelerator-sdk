@@ -32,23 +32,23 @@
 
 
 /**
- Folder
+ #Javascript object:#
+ <code>Folder</code>
  
- Javascript properties:
+ #Javascript properties:#
+ * string identifier
+ * string name
+ * string title
+ * string summary
+ * string type
+ * string createdBy
+ * string createdAt
+ * string modifiedBy
+ * string modifiedAt
+ * boolean isFolder
+ * boolean isDocument
  
- string identifier
- string name
- string title
- string summary
- string type
- string createdBy
- string createdAt
- string modifiedBy
- string modifiedAt
- boolean isFolder
- boolean isDocument
- 
- */
+*/
 
 @interface ComAlfrescoAppceleratorSdkFolderProxy : ComAlfrescoAppceleratorSdkNodeProxy
 

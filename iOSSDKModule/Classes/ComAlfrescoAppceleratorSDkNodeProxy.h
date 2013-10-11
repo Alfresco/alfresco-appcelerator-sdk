@@ -30,29 +30,28 @@
 #import "AlfrescoNode.h"
 
 /**
- Node
+#Javascript object:#
+<code>Node</code>
  
- Javascript properties:
-
- string identifier
- string name
- string title
- string summary
- string type
- string createdBy
- string createdAt
- string modifiedBy
- string modifiedAt
- boolean isFolder
- boolean isDocument
+#Javascript properties:#
+* string identifier
+* string name
+* string title
+* string summary
+* string type
+* string createdBy
+* string createdAt
+* string modifiedBy
+* string modifiedAt
+* boolean isFolder
+* boolean isDocument
  
- If the node is a document, these additional properties are present:
- 
- string contentMimeType
- string contentLength
- string versionLabel
- string versionComment
- string isLatestVersion
+#Additional properties for document nodes:#
+* string contentMimeType
+* string contentLength
+* string versionLabel
+* string versionComment
+* string isLatestVersion
 
  */
 

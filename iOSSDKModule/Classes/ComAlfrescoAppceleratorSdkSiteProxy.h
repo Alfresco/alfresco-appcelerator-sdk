@@ -30,19 +30,20 @@
 #import "AlfrescoSite.h"
 
 /**
- Site
+#Javascript object:#
+<code>Site</code>
  
- Javascript properties:
+#Javascript properties:#
+* string shortName
+* string title
+* string summary
+* string identifier
+* string GUID
+* boolean isMember
+* boolean isPendingMember
+* boolean isFavorite
  
- string shortName
- string title
- string summary
- string identifier
- GUID;
- boolean isMember
- boolean isPendingMember
- boolean isFavorite;
- */
+*/
 
 @interface ComAlfrescoAppceleratorSdkSiteProxy : TiProxy
 
