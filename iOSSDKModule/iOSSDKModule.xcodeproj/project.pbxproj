@@ -137,6 +137,7 @@
 		0505DF2017BB8B43001F9349 /* SDKUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDKUtil.m; path = Classes/SDKUtil.m; sourceTree = "<group>"; };
 		054AA1BC17A130EE000D7083 /* ComAlfrescoAppceleratorSdkContentFileProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkContentFileProxy.h; path = Classes/ComAlfrescoAppceleratorSdkContentFileProxy.h; sourceTree = "<group>"; };
 		054AA1BD17A13164000D7083 /* ComAlfrescoAppceleratorSdkContentFileProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkContentFileProxy.m; path = Classes/ComAlfrescoAppceleratorSdkContentFileProxy.m; sourceTree = "<group>"; };
+		058F6D1B180802EE002E6B83 /* DocumentationIndex.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocumentationIndex.markdown; sourceTree = "<group>"; };
 		05AFDCB2175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h; path = Classes/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.h; sourceTree = "<group>"; };
 		05AFDCB3175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.m; path = Classes/ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy.m; sourceTree = "<group>"; };
 		05AFDCB4175DEB3600E9ABED /* ComAlfrescoAppceleratorSdkRepositorySessionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAlfrescoAppceleratorSdkRepositorySessionProxy.h; path = Classes/ComAlfrescoAppceleratorSdkRepositorySessionProxy.h; sourceTree = "<group>"; };
@@ -303,6 +304,7 @@
 		0867D691FE84028FC02AAC07 /* iOSSDKModule */ = {
 			isa = PBXGroup;
 			children = (
+				058F6D1B180802EE002E6B83 /* DocumentationIndex.markdown */,
 				05FF39161806DF2500900AE4 /* ComAlfrescoAppceleratorModuleSdkModule.h */,
 				05FF39171806DF2500900AE4 /* ComAlfrescoAppceleratorModuleSdkModule.m */,
 				05FF39181806DF2500900AE4 /* ComAlfrescoAppceleratorModuleSdkModuleAssets.m */,
