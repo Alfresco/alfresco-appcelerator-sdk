@@ -30,20 +30,22 @@
 #import "AlfrescoPermissions.h"
 
 /**
-Permissions
+ #Javascript object:#
+ <code>Permissions</code>
  
-Javascript properties:
- boolean canEdit
- boolean canDelete
- boolean canAddChildren
- boolean canComment
- boolean canGetContent
- boolean canSetContent
- boolean canGetProperties
- boolean canGetChildren
- boolean canGetAllVersions
+#Javascript properties:#
+* boolean canEdit
+* boolean canDelete
+* boolean canAddChildren
+* boolean canComment
+* boolean canGetContent
+* boolean canSetContent
+* boolean canGetProperties
+* boolean canGetChildren
+* boolean canGetAllVersions
 
 */
+
 @interface ComAlfrescoAppceleratorSdkPermissionsProxy : TiProxy
 
 -(id)init;

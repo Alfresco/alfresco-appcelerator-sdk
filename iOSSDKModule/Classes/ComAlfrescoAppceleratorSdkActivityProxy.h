@@ -31,18 +31,18 @@
 #import "AlfrescoActivityEntry.h"
 
 /**
-
-Activity
+#Javascript object:#
+<code>Activity</code>
  
-Javascript properties:
- string identifier
- date createdAt
- string createdBy
- string siteShortName
- string type
- properties data
+#Javascript properties:#
+* string identifier
+* date createdAt
+* string createdBy
+* string siteShortName
+* string type
+* properties data
  
- */
+*/
 
 @interface ComAlfrescoAppceleratorSdkActivityProxy : TiProxy
 

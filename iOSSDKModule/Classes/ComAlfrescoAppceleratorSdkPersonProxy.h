@@ -30,17 +30,18 @@
 #import "AlfrescoPerson.h"
 
 /**
- Person
+ #Javascript object:#
+ <code>Person</code>
  
-Javascript properties:
- string identifier
- string firstName
- string lastName
- string fullName
- string avatarIdentifier
- properties properties
+#Javascript properties:#
+* string identifier
+* string firstName
+* string lastName
+* string fullName
+* string avatarIdentifier
+* properties properties
 
- */
+*/
 
 @interface ComAlfrescoAppceleratorSdkPersonProxy : TiProxy
 

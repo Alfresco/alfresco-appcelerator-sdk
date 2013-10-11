@@ -30,7 +30,8 @@
 #import "AlfrescoContentFile.h"
 
 /**
-ContentFile
+ #Javascript object:#
+ <code>ContentFile</code>
  
 Describes a physical file object on internal storage.  Most commonly used for temporary files that are removed on app exit.
 */

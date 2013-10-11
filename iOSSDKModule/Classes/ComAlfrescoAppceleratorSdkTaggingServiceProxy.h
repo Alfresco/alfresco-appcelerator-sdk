@@ -28,17 +28,17 @@
 
 #import "TiProxy.h"
 #import "AlfrescoTaggingService.h"
-
+ 
 
 /**
+ #Javascript object:#
+ <code>TaggingService</code>
  
- TaggingService
- 
- Javascript events:
- 'error' (Properties: string errorstring, int errorcode)
- 'tagnode' (Properties: Tag tag)
- 'pagingresult' (Properties: int hasmoreitems, int totalitems)
- 'endenumeration'
+#Javascript events:#
+* **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
+* **'tagnode' - ** Sent for each tag node.  ***Properties:*** *Tag tag*
+* **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
 
 */
 

@@ -38,13 +38,13 @@
 
  
 #Javascript events:#
-* 'error' (Properties: string errorstring, int errorcode)
-* 'sitesnode' (Properties: Site site)
-* 'allsitesnode' (Properties: Site site)
-* 'mysitesnode' (Properties: Site site)
-* 'favsitesnode' (Properties: Site site)
-* 'pagingresult' (Properties: int hasmoreitems, int totalitems)
-* 'endenumeration'
+* **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
+* **'sitesnode' - ** Sent for each site node.  ***Properties:*** *Site site*
+* **'allsitesnode' - ** Sent for each site node.  ***Properties:*** *Site site*
+* **'mysitesnode' - ** Sent for each of current users site nodes.  ***Properties:*** *Site site*
+* **'favsitesnode' - ** Sent for each favourite site node.  ***Properties:*** *Site site*
+* **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
  
 */
 

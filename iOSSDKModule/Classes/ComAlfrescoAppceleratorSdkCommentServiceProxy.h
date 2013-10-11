@@ -30,15 +30,17 @@
 #import "AlfrescoCommentService.h"
 
 /**
+#Javascript object:#
+<code>CommentService</code>
  
-CommentService
+#Javascript events:#
+* **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
+* **'commentnode' - ** Sent for each comment node.  ***Properties:*** *Comment comment*
+* **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
  
-Javascript events:
-'error' (Properties: string errorstring, int errorcode)
-'commentnode' (Properties: Comment comment)
-'pagingresult' (Properties: int hasmoreitems, int totalitems)
-'endenumeration'
 */
+
 @interface ComAlfrescoAppceleratorSdkCommentServiceProxy : TiProxy
 {
     AlfrescoCommentService* service;

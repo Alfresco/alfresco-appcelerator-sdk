@@ -30,16 +30,19 @@
 #import "AlfrescoPersonService.h"
 
 
-/** PersonService
+/**
  
- Javascript events:
- 'error' (Properties: string errorstring, int errorcode)
- 'personnode' (Properties: Person person)
- 'endenumeration'
- 'retrievedavatar' (Properties: ContentFile contentfile)
+ #Javascript object:#
+ <code>PersonService</code>
  
- @since v1.0
- */
+#Javascript events:#
+* **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
+* **'personnode' - ** Sent for each person node. ***Properties:*** *Person person*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
+* **'retrievedavatar' - ** Sent upon retrieval of avatar. ***Properties:*** *ContentFile contentfile*
+ 
+*/
+
 @interface ComAlfrescoAppceleratorSdkPersonServiceProxy : TiProxy
 {
     AlfrescoPersonService* service;

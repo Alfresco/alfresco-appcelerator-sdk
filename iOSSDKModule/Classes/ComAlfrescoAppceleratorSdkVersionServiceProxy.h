@@ -30,16 +30,18 @@
 #import "AlfrescoVersionService.h"
 
 /**
+ #Javascript object:#
+ <code>VersionService</code>
  
- VersionService
+#Javascript events:#
+* **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
+* **'documentnode' - ** Sent for each document node.  ***Properties:*** *Document document*
+* **'foldernode' - ** Sent for each folder node.  ***Properties:*** *Folder folder*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
+
  
- Javascript events:
- 'error' (Properties: string errorstring, int errorcode)
- 'documentnode' (Properties: Document document)
- 'foldernode' (Properties: Folder folder)
- 'endenumeration'
- 
- */
+*/
+
 @interface ComAlfrescoAppceleratorSdkVersionServiceProxy : TiProxy
 {
     AlfrescoVersionService* service;

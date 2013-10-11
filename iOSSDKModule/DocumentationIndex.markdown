@@ -1,7 +1,14 @@
-An example is given here, to get you started. Additionally, please refer to the Class Reference below for full API documentation.
+An example is given here to get you started. Additionally, please refer to the Class Reference below for full API documentation.
+
+Please ignore the 'ComAlfresco...' naming convention of each object in the Class Reference, as this is an internal native representation.
+The example code shows how these are represented in Javascript, and all Appcelerator API objects are created using the SDK module, as in:
+
+    var SDKModule = require('com.alfresco.appcelerator.module.sdk');
+    SDKModule.createExampleAPIObject();
 
 There is also an Appcelerator project, 'AlfrescoUI' containing a basic HelloRepo example, and a more complete test harness, 'AlfrescoTestHarness'.
 
+ 
 #Javascript example:#
     var SDKModule = require('com.alfresco.appcelerator.module.sdk');
     var properties  = {serverUrl: "http://localhost:8080/alfresco",  serverUsername: "admin",  serverPassword: "pwd"};

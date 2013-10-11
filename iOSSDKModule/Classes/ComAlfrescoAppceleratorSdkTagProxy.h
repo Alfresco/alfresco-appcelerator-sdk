@@ -30,14 +30,15 @@
 #import "AlfrescoTag.h"
 
 /**
- 
-Tag
+ #Javascript object:#
+ <code>Tag</code>
 
-Javascript properties:
- string identifier
- string value
+#Javascript properties:#
+* string identifier
+* string value
  
 */
+
 @interface ComAlfrescoAppceleratorSdkTagProxy : TiProxy
 
 - (id)initWithTag:(AlfrescoTag *)tag;

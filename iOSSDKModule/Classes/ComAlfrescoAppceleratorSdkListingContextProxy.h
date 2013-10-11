@@ -31,8 +31,10 @@
 
 
 /**
- ListingContext
+ #Javascript object:#
+ <code>ListingContext</code>
 */
+
 @interface ComAlfrescoAppceleratorSdkListingContextProxy : TiProxy
 
 @property (nonatomic, strong) AlfrescoListingContext* listingContext;

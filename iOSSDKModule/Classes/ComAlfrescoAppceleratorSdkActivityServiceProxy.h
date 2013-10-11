@@ -31,15 +31,16 @@
 #import "AlfrescoActivityStreamService.h"
 
 /**
- ActivityService
+#Javascript object:#
+<code>ActivityService</code>
  
-Javascript events:
- 'error' (Properties: string errorstring, int errorcode)
- 'activitynode' (Properties: Activity activity)
- 'endenumeration'
- 'pagingresult' (Properties: int hasmoreitems, int totalitems)
+#Javascript events:#
+* **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
+* **'activitynode' - ** Sent for each activity node. ***Properties:*** *Activity activity*
+* **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
 
- */
+*/
 
 @interface ComAlfrescoAppceleratorSdkActivityServiceProxy : TiProxy
 {

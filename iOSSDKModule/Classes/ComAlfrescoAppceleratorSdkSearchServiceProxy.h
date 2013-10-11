@@ -31,17 +31,18 @@
 #import "AlfrescoSearchService.h"
 
 
-/** SearchService
+/**
+#Javascript object:#
+<code>SearchService</code>
  
-Javascript events:
- 'error' (Properties: string errorstring, int errorcode)
- 'documentnode' (Properties: Document document)
- 'foldernode' (Properties: Folder folder)
- 'pagingresult' (Properties: int hasmoreitems, int totalitems)
- 'endenumeration'
+#Javascript events:#
+* **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
+* **'documentnode' - ** ***Properties:*** *Document document*
+* **'foldernode' - ** ***Properties:*** *Folder folder*
+* **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
  
- @since v1.0
- */
+*/
 
 @interface ComAlfrescoAppceleratorSdkSearchServiceProxy : TiProxy
 {

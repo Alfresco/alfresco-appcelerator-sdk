@@ -29,10 +29,10 @@
 #import "TiProxy.h"
 #import "AlfrescoKeywordSearchOptions.h"
 
-/** AlfrescoKeywordSearchOptions
- 
- The AlfrescoKeywordSearchOptions are used in Alfresco Search Service.
- */
+/**
+#Javascript object:#
+<code>AlfrescoKeywordSearchOptions</code>
+*/
 
 @interface ComAlfrescoAppceleratorSdkKeywordSearchOptionsProxy : TiProxy
 

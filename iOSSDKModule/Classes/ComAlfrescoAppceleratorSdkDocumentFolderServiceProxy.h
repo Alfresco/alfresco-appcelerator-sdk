@@ -37,14 +37,14 @@
 <code>DocumentFolderService</code>
 
 #Javascript events:#
-* 'error' (Properties: string errorstring, int errorcode)
-* 'retrievedfolder'
-* 'documentnode' (Properties: Document document)
-* 'foldernode' (Properties: Folder folder)
-* 'pagingresult' (Properties: int hasmoreitems, int totalitems)
-* 'endenumeration'
-* 'progresseddocument' (Properties: int total, int bytes)
-* 'retrieveddocument' (Properties: ContentFile contentfile)
+* **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
+* **'retrievedfolder' - ** Sent when retrieveRootFolder() succeeds.  ***Properties:*** *none*
+* **'documentnode' - ** Sent for each document.  ***Properties:*** Document *document*
+* **'foldernode' - ** Sent for each folder.  ***Properties:*** *Folder folder*
+* **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
+* **'progresseddocument' - ** Sent during document retrieval progress.  ***Properties:*** *int total, int bytes*
+* **'retrieveddocument' - ** Sent when document retrieval complete.  ***Properties:*** *ContentFile contentfile*
  
 #Javascript example:#
  
@@ -67,10 +67,7 @@
         documentFolderService.retrieveChildrenInFolder();
  
     });
-
-
-
- */
+*/
 
 @interface ComAlfrescoAppceleratorSdkDocumentFolderServiceProxy : TiProxy
 {

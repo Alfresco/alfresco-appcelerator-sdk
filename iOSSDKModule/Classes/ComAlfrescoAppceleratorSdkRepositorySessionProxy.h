@@ -36,8 +36,8 @@
 <code>RepositorySession</code>
 
 #Javascript events:#
-* 'error' (Properties: string errorstring, int errorcode)
-* 'success' (Properties: string servername)
+* **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
+* **'success' - ** Sent upon successful connection.  ***Properties:*** *string serverName*
  
 #Javascript example:#
  
