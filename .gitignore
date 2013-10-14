@@ -15,6 +15,7 @@ AlfrescoUI/build/
 AlfrescoUI/Resources/
 
 # AndroidSDKModule (Android)
+AndroidSDKMobile/libs/
 AndroidSDKModule/*.zip
 AndroidSDKModule/build/
 AndroidSDKModule/dist/
