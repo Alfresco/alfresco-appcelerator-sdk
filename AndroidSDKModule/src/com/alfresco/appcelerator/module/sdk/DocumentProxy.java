@@ -20,7 +20,13 @@
 
 package com.alfresco.appcelerator.module.sdk;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+
 import org.alfresco.mobile.android.api.model.Document;
+import org.alfresco.mobile.android.api.model.Folder;
+import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 
@@ -35,9 +41,26 @@ public class DocumentProxy extends KrollProxy
 	}
 	
 	
-	DocumentProxy(Document document)
+	DocumentProxy(Document doc)
 	{
-		this.document = document;
+		this.document = doc;
+		
+		String nodeGetters[] = {"name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt"};    	
+		String docGetters[] = {"contentStreamMimeType", "contentStreamLength", "versionLabel", "versionComment", "isLatestVersion"};
+		String docPropertyNames[] = {"contentMimeType", "contentLength", null, null, null};	//For where they differ from iOS property names.
+    	
+		for (int i = 0;  i < nodeGetters.length;  i++)
+		{
+			Object value = extractProperty(doc, nodeGetters[i]);
+			if (value != null)
+				setProperty(nodeGetters[i], value);
+		}
+		for (int i = 0;  i < docGetters.length;  i++)
+		{
+			Object value = extractProperty(doc, docGetters[i]);
+			if (value != null)
+				setProperty(docPropertyNames[i] != null ? docPropertyNames[i] : docGetters[i], value);
+		}
 	}
 	
 	
@@ -45,4 +68,50 @@ public class DocumentProxy extends KrollProxy
 	{
 		return document;
 	}
+	
+	
+	Object extractProperty (Object obj, String getter)
+    {
+    	StringBuilder getterMethod = new StringBuilder(getter);	
+    	if (!getter.startsWith("is"))
+    	{
+    		getterMethod.setCharAt(0, Character.toTitleCase(getterMethod.charAt(0)));
+    		getterMethod = new StringBuilder("get" + getterMethod);
+    	}
+    	
+		java.lang.reflect.Method method;
+		try 
+		{
+			method = obj.getClass().getMethod(getterMethod.toString());
+			
+			try 
+			{
+				Object retObj = method.invoke(obj);
+				if (retObj != null)
+				{
+					if (retObj instanceof GregorianCalendar)
+						retObj = ((GregorianCalendar)retObj).getTime();
+				}
+				return retObj;
+			}
+			catch (IllegalArgumentException e) 
+			{
+			}
+			catch (IllegalAccessException e) 
+			{
+			}
+			catch (InvocationTargetException e) 
+			{
+			}
+		}
+		catch (SecurityException e) 
+		{
+		} 
+		catch (NoSuchMethodException e) 
+		{
+		}
+		
+		return null;
+    }
 }
+ 
