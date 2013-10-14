@@ -57,7 +57,8 @@
 	color: '#336699', 
 	top:0,left: '2%',
 	width: '96%', 
-	height: '40dp'
+	height: '40dp',
+	autocorrect: false
 },
 "#passwordLabel":{
 	text: "Password:",
