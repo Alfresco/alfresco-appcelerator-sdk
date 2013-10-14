@@ -130,7 +130,7 @@ Alloy.Globals.modelListeners = function(service, mainSection)
 	{
 	  	alert("Operation failed (" + e.errorcode + "): " + e.errorstring);
 	});
-}
+};
 
 
 Alloy.Globals.sitesModelListener = function(service, section, sitetype)
@@ -147,7 +147,7 @@ Alloy.Globals.sitesModelListener = function(service, section, sitetype)
   	 	mainDataSet.push(data);
   	 	section.appendItems(mainDataSet);
 	});
-}
+};
 
 
 Alloy.Globals.activitiesModelListener = function(service, section)
@@ -173,7 +173,7 @@ Alloy.Globals.activitiesModelListener = function(service, section)
   	 	mainDataSet.push(data);
   	 	section.appendItems(mainDataSet);
 	});
-}
+};
 
 
 Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument)
@@ -225,7 +225,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	    	onDocument(doc);	    	
 	   	}
 	});
-}
+};
 
 Alloy.Globals.recursePropertiesAndAlert = function recurseProperties (title, properties)
 {
@@ -237,7 +237,7 @@ Alloy.Globals.recursePropertiesAndAlert = function recurseProperties (title, pro
  	});
  	
  	alert (alertString);
-}
+};
 
 Alloy.Globals.recurseProperties = function recurseProperties (properties, propertiesName, callForEachProperty)
 {
@@ -266,4 +266,4 @@ Alloy.Globals.recurseProperties = function recurseProperties (properties, proper
 			callForEachProperty(subName, propertyValue);
 		}
 	}
-}
+};

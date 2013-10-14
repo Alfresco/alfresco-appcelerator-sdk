@@ -39,8 +39,7 @@ function loginPane()
 	if (Titanium.Platform.model == 'google_sdk' ||  Titanium.Platform.model == 'Simulator')  
   		serverDefault = "http://localhost:8080/alfresco";		//Running on Simulator/Emulator. Assume local server on the PC/Mac.
 	else
-		//serverDefault = "http://192.168.1.91:8080/alfresco";	//Running on-device. NOTE: Change to your servers IP address!
-		serverDefault = "http://10.244.51.57:8080/alfresco";
+		serverDefault = "";	//Running on-device. NOTE: Change to your servers IP address!
 		
 	var logoRow = Ti.UI.createTableViewRow({left: 0, clickName:'banner', editable:false});
 	var logoView = Ti.UI.createView({left: 0, width: '80%', height: Ti.UI.SIZE});
@@ -62,7 +61,7 @@ function loginPane()
 	var usernameRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'User', editable:false});
 	var usernameView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var usernameLabel = Ti.UI.createLabel({text: "User name:", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
-	var usernameTextField = Ti.UI.createTextField({value: "admin", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
+	var usernameTextField = Ti.UI.createTextField({value: "admin", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp', autocorrect:false});	
 	usernameView.add(usernameLabel);
 	usernameView.add(usernameTextField);
 	usernameRow.add(usernameView);
@@ -72,7 +71,7 @@ function loginPane()
 	var passwordRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'Password', editable:false});
 	var passwordView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var passwordLabel = Ti.UI.createLabel({text: "Password:", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
-	var passwordTextField = Ti.UI.createTextField({value: "password", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, passwordMask:true, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
+	var passwordTextField = Ti.UI.createTextField({value: "admin", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, passwordMask:true, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
 	passwordView.add(passwordLabel);
 	passwordView.add(passwordTextField);
 	passwordRow.add(passwordView);
@@ -285,7 +284,7 @@ function getFolder(repoSesh)
 	  	 	if (doc.contentMimeType.indexOf("image/") !== -1)
 	  	 		icon="mime_img.png";
 	  	 		
-	  	 	var modified = new String + e.modifiedAt;
+	  	 	var modified = new String + doc.modifiedAt;
 	  	 	modified = modified.substr(0,21);
 	  	 	
 	  	 	var mainDataSet = [];
