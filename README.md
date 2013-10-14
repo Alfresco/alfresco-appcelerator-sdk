@@ -1,7 +1,7 @@
 alfresco-appcelerator-sdk
 =========================
 
-Private repo for hybrid mobile project work
+Private repo for hybrid mobile project work.
 
 Project structure:
 ------------------
