@@ -56,7 +56,7 @@ public class DocumentFolderServiceProxy extends KrollProxy
     
     
     @Kroll.method
-    void initWithSession(Object[] args)
+    void initialiseWithSession(Object[] args)
     {
     	SessionProxy seshProxy = (SessionProxy) args[0];
     	
@@ -121,44 +121,18 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	        
     	        for (Node node : nodes)
     	        {
-    	        	String nodeGetters[] = {"name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt"};    	
     	        	HashMap<String, Object> map = new HashMap<String, Object>();
     	        	
     	        	if (node.isDocument())
     	        	{
-    	        		Document doc = (Document)node;
-    	        		String docGetters[] = {"contentStreamMimeType", "contentStreamLength", "versionLabel", "versionComment", "isLatestVersion"};
-    	        		String docPropertyNames[] = {"contentMimeType", "contentLength", null, null, null};	//For where they differ from iOS property names.
-    	        	
-    	        		for (int i = 0;  i < nodeGetters.length;  i++)
-    	        		{
-    	        			Object value = extractProperty(doc, nodeGetters[i]);
-    	        			if (value != null)
-    	        				map.put(nodeGetters[i], value);
-    	        		}
-    	        		for (int i = 0;  i < docGetters.length;  i++)
-    	        		{
-    	        			Object value = extractProperty(doc, docGetters[i]);
-    	        			if (value != null)
-    	        				map.put(docPropertyNames[i] != null ? docPropertyNames[i] : docGetters[i], value);
-    	        		}
-    	        		
+    	        		Document doc = (Document)node;	
     	        		DocumentProxy thiDocument = new DocumentProxy (doc);
     	        		map.put("document", thiDocument);
-    	       
     	                fireEvent("documentnode", new KrollDict(map));
     	        	}
     	        	else
     	        	{
     	        		Folder folder = (Folder)node;
-    	        		
-    	        		for (int i = 0;  i < nodeGetters.length;  i++)
-    	        		{
-    	        			Object value = extractProperty(folder, nodeGetters[i]);
-    	        			if (value != null)
-    	        				map.put(nodeGetters[i], value);
-    	        		}
-    	        		
     	        		FolderProxy thisFolder = new FolderProxy (folder);
     	                map.put("folder", thisFolder);
     	        		fireEvent("foldernode", new KrollDict(map));
@@ -203,50 +177,5 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	        fireEvent("retrieveddocument", new KrollDict(map) );
     		}
     	}.start();
-    }
-
-    
-    Object extractProperty (Object obj, String getter)
-    {
-    	StringBuilder getterMethod = new StringBuilder(getter);	
-    	if (!getter.startsWith("is"))
-    	{
-    		getterMethod.setCharAt(0, Character.toTitleCase(getterMethod.charAt(0)));
-    		getterMethod = new StringBuilder("get" + getterMethod);
-    	}
-    	
-		java.lang.reflect.Method method;
-		try 
-		{
-			method = obj.getClass().getMethod(getterMethod.toString());
-			
-			try 
-			{
-				Object retObj = method.invoke(obj);
-				if (retObj != null)
-				{
-					if (retObj instanceof GregorianCalendar)
-						retObj = ((GregorianCalendar)retObj).getTime();
-				}
-				return retObj;
-			}
-			catch (IllegalArgumentException e) 
-			{
-			}
-			catch (IllegalAccessException e) 
-			{
-			}
-			catch (InvocationTargetException e) 
-			{
-			}
-		}
-		catch (SecurityException e) 
-		{
-		} 
-		catch (NoSuchMethodException e) 
-		{
-		}
-		
-		return null;
     }
 }

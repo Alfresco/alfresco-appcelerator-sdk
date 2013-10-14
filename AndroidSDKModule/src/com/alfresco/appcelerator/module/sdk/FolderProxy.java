@@ -20,6 +20,9 @@
 
 package com.alfresco.appcelerator.module.sdk;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.GregorianCalendar;
+
 import org.alfresco.mobile.android.api.model.Folder;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
@@ -28,7 +31,7 @@ import org.appcelerator.kroll.annotations.Kroll;
 public class FolderProxy extends KrollProxy
 {
 	private Folder folder = null;
-	
+ 	
 	public FolderProxy ()
 	{
 		super();
@@ -37,6 +40,14 @@ public class FolderProxy extends KrollProxy
 	public FolderProxy (Folder folder)
 	{
 		this.folder = folder;
+		
+		String nodeGetters[] = {"name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt"};    	
+		for (int i = 0;  i < nodeGetters.length;  i++)
+		{
+			Object value = extractProperty(folder, nodeGetters[i]);
+			if (value != null)
+				setProperty(nodeGetters[i], value);
+		}
 	}
 	
 	public Folder getFolder()
@@ -49,4 +60,49 @@ public class FolderProxy extends KrollProxy
 	{
 		return folder.getName();
 	}
+	
+	
+	Object extractProperty (Object obj, String getter)
+    {
+    	StringBuilder getterMethod = new StringBuilder(getter);	
+    	if (!getter.startsWith("is"))
+    	{
+    		getterMethod.setCharAt(0, Character.toTitleCase(getterMethod.charAt(0)));
+    		getterMethod = new StringBuilder("get" + getterMethod);
+    	}
+    	
+		java.lang.reflect.Method method;
+		try 
+		{
+			method = obj.getClass().getMethod(getterMethod.toString());
+			
+			try 
+			{
+				Object retObj = method.invoke(obj);
+				if (retObj != null)
+				{
+					if (retObj instanceof GregorianCalendar)
+						retObj = ((GregorianCalendar)retObj).getTime();
+				}
+				return retObj;
+			}
+			catch (IllegalArgumentException e) 
+			{
+			}
+			catch (IllegalAccessException e) 
+			{
+			}
+			catch (InvocationTargetException e) 
+			{
+			}
+		}
+		catch (SecurityException e) 
+		{
+		} 
+		catch (NoSuchMethodException e) 
+		{
+		}
+		
+		return null;
+    }
 }
