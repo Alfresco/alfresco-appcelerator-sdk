@@ -30,7 +30,9 @@ import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 
-@Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class)
+@Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class,
+ propertyAccessors = {"name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt", 
+					  "contentMimeType", "contentLength", "versionLabel", "versionComment", "isLatestVersion"})
 public class DocumentProxy extends KrollProxy 
 {
 	private Document document;

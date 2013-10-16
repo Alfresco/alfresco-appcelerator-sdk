@@ -5,14 +5,7 @@
     <version>1.0</version>
     <publisher>ljagger</publisher>
     <url>http://www.alfresco.com</url>
-    <description>Test Harness for Alfresco Appcelerator SDK.
-
-Acknowledgements:
-
-This project uses free IconBeast icons available at http://www.iconbeast.com/free/
-
-This project uses the free DocumentViewer available from SmartAccess at https://marketplace.appcelerator.com/apps/3820?897323448
-</description>
+    <description/>
     <copyright>2013 Alfresco Ltd</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
