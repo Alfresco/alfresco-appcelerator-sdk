@@ -21,7 +21,7 @@
 $.index.open();
 
 var SDKModule = require('com.alfresco.appcelerator.module.sdk');
-					
+
 var mainSection;
 var documentFolderService;
 var parentFolders = new Array();
@@ -34,21 +34,22 @@ function loginPane()
 {
 	var data = [];
 	
-	//This provides convenient defaults while testing.
-	var serverDefault;
-	if (Titanium.Platform.model == 'google_sdk' ||  Titanium.Platform.model == 'Simulator')  
-  		serverDefault = "http://localhost:8080/alfresco";		//Running on Simulator/Emulator. Assume local server on the PC/Mac.
-	else
-		serverDefault = "";	//Running on-device. NOTE: Change to your servers IP address!
-		
+	// This provides convenient defaults while testing.
+	var serverDefault = "";
+	if (Titanium.Platform.model == 'google_sdk' ||  Titanium.Platform.model == 'Simulator')
+	{
+		// Running on Simulator/Emulator. Assume local server on the PC/Mac.
+		serverDefault = "http://localhost:8080/alfresco";
+	}
+	
 	var logoRow = Ti.UI.createTableViewRow({left: 0, clickName:'banner', editable:false});
-	var logoView = Ti.UI.createView({left: 0, width: '80%', height: Ti.UI.SIZE});
+	var logoView = Ti.UI.createView({left: '10%', width: '80%', height: Ti.UI.SIZE});
 	var logo = Ti.UI.createImageView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE, image:"alfresco_logo_large.png"});
 	logoView.add(logo);
 	logoRow.add(logoView);
 	data.push(logoRow);
 	
-	var serverRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'User', editable:false});
+	var serverRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'User', editable:false, selectionStyle:'none'});
 	var serverView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var serverLabel = Ti.UI.createLabel({text: "Server address:", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
 	var serverTextField = Ti.UI.createTextField({value: serverDefault, font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
@@ -58,7 +59,7 @@ function loginPane()
 	serverRow.classname = 'serverRow';
 	data.push(serverRow);
 	
-	var usernameRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'User', editable:false});
+	var usernameRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'User', editable:false, selectionStyle:'none'});
 	var usernameView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var usernameLabel = Ti.UI.createLabel({text: "User name:", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
 	var usernameTextField = Ti.UI.createTextField({value: "admin", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp', autocorrect:false});	
@@ -68,17 +69,17 @@ function loginPane()
 	usernameRow.classname = 'userRow';
 	data.push(usernameRow);
 	
-	var passwordRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'Password', editable:false});
+	var passwordRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'Password', editable:false, selectionStyle:'none'});
 	var passwordView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var passwordLabel = Ti.UI.createLabel({text: "Password:", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
-	var passwordTextField = Ti.UI.createTextField({value: "password", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, passwordMask:true, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
+	var passwordTextField = Ti.UI.createTextField({value: "admin", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, passwordMask:true, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
 	passwordView.add(passwordLabel);
 	passwordView.add(passwordTextField);
 	passwordRow.add(passwordView);
 	passwordRow.classname = 'pwdRow';
 	data.push(passwordRow);
 	
-	var buttonRow = Ti.UI.createTableViewRow({left: 0, clickName:'Buttons', editable:false});
+	var buttonRow = Ti.UI.createTableViewRow({left: 0, clickName:'Buttons', editable:false, selectionStyle:'none'});
 	var buttonView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var button = Ti.UI.createButton({style: Ti.UI.iPhone.SystemButtonStyle.BORDERED, font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, left: 0, top: 50, width: Ti.UI.SIZE, title: "Log in", clickName:'Login'});
 	buttonView.add(button);
@@ -97,14 +98,13 @@ function loginPane()
 		}
 		else
 		{
-			//Connect to repo and fill the Node List with nodes from the root of the repository
+			// Connect to repo and fill the Node List with nodes from the root of the repository
 			connect(svr, user, pwd);
 		}
 	});
 	
 	Ti.UI.backgroundColor = 'white';
 	var table = Ti.UI.createTableView({data: data, top: '2%', left: '2%', width: '96%', height: '96%'});
-	
 	table.separatorColor = 'white';
 	
 	$.index.add(table);
@@ -143,8 +143,8 @@ function createNodeList()
 	        }
 	    ]
 	};
-			
-	folderLabel = Ti.UI.createLabel({text: "", color: 'white', font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, backgroundColor: '#336699', top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
+	
+	folderLabel = Ti.UI.createLabel({text: "", color: 'white', font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, backgroundColor: '#336699', top: 0, left: 0, width: Ti.UI.FILL, height: '40dp' });
 	var leftpane = Ti.UI.createListView( {top: '40dp', left: 0, templates: { 'template': myTemplate }, defaultItemTemplate: 'template'} );
 	
 	mainSection = Ti.UI.createListSection({ headerTitle: ''});
@@ -158,171 +158,180 @@ function createNodeList()
 	
 	leftpane.addEventListener('itemclick', function(e)
 	{
-	    var item = e.section.getItemAt(e.itemIndex);
-	    var name = item.properties.name;
-	    
-	    if (item.properties.folder > 0)
+		var item = e.section.getItemAt(e.itemIndex);
+		var name = item.properties.name;
+		
+		if (item.properties.folder > 0)
 		{
-	        //alert("Folder clicked: " + name);
-	        
-	        var folder;
-	        if (item.properties.folder == 2)	//'Up' folder item press.
-	        {
-	        	folder = parentFolders.pop();
-	        }
-	        else
-	        {
-	        	parentFolders.push(documentFolderService.getCurrentFolder());     	
-	        	folder = item.properties.folderobject;
-	        }        
-	        
-	        Ti.API.info("Folder name from object: " + folder.getName());
-	        
-	        //Empty list, and add 'Back' item if we're not at root folder.
-	        mainSection.deleteItemsAt(0,mainSection.getItems().length);
-	        if (parentFolders.length > 0)
-	        {      
-		        var mainDataSet = [];
-		  	 	var data = {info: {text: "Back"}, es_info: {text: "Previous folder"}, pic: {image: 'wm_back.png'},  properties: {folder: 2, name: null, folderobject: null} };		
-		  	 	mainDataSet.push(data);
-		  	 	mainSection.appendItems(mainDataSet);
-		  	}
-		  	 	 	
-		  	folderLabel.text = " " + folder.getName();
-	        documentFolderService.setFolder(folder);
-	        documentFolderService.retrieveChildrenInFolder();	//Events will be fired for 'foldernode's and 'documentnode's.
-	    }    
-	    else
-	    {
-	    	var docobject = item.properties.docobject;
-	    	
-	    	documentFolderService.saveDocument (docobject);		//Event will be fired when 'retrieveddocument'	    	
-	   	}
+			var folder;
+			if (item.properties.folder == 2)
+			{
+				// 'Up' folder item press.
+				folder = parentFolders.pop();
+			}
+			else
+			{
+				parentFolders.push(documentFolderService.getCurrentFolder());
+				folder = item.properties.folderobject;
+			}
+			
+			Ti.API.info("Folder name from object: " + folder.getName());
+			
+			// Empty list, and add 'Back' item if we're not at root folder.
+			mainSection.deleteItemsAt(0,mainSection.getItems().length);
+			if (parentFolders.length > 0)
+			{
+				var mainDataSet = [];
+				var data = {info: {text: "Back"}, es_info: {text: "Previous folder"}, pic: {image: 'wm_back.png'},  properties: {folder: 2, name: null, folderobject: null} };		
+				mainDataSet.push(data);
+				mainSection.appendItems(mainDataSet);
+			}
+			
+			folderLabel.text = " " + folder.getName();
+			documentFolderService.setFolder(folder);
+			// Events will be fired for 'foldernode's and 'documentnode's.
+			documentFolderService.retrieveChildrenInFolder();
+		}
+		else
+		{
+			var docobject = item.properties.docobject;
+			// Event will be fired when 'retrieveddocument'
+			documentFolderService.saveDocument (docobject);	    	
+		}
 	});
 }
 
 
 function connect(serverUrl, serverUsername, serverPassword)
 {
-	var repositorySession = SDKModule.createRepositorySession({	serverUrl: serverUrl, serverUsername: serverUsername, serverPassword: serverPassword});
-	repositorySession.connect();
+	var repositorySession = SDKModule.createRepositorySession({serverUrl: serverUrl, serverUsername: serverUsername, serverPassword: serverPassword});
 	
-	repositorySession.addEventListener('paramerror',function(e)
+	repositorySession.addEventListener('paramerror', function(e)
 	{
-	  	Ti.API.info("Param error code: " + e.errorcode);
-	  	return 0;
+		Ti.API.info("Param error code: " + e.errorcode);
+		return 0;
 	});
 	
-	repositorySession.addEventListener('error',function(e)
+	repositorySession.addEventListener('error', function(e)
 	{
-	  	alert("Cannot connect to server (" + e.errorcode + "): " + e.errorstring);
-	  	return 0;
+		alert("Cannot connect to server (" + e.errorcode + "): " + e.errorstring);
+		return 0;
 	});
 	
-	repositorySession.addEventListener('success',function(e)
+	repositorySession.addEventListener('success', function(e)
 	{
-	  	Ti.API.info("Connected to server: " + e.servername);
-	  	
-	  	//Remove the login pane
-	  	$.index.remove($.index.children[0]);
-	  	
-	  	//Create a ListView ready for nodes.
+		Ti.API.info("Connected to server: " + e.servername);
+		
+		//Remove the login pane
+		$.index.remove($.index.children[0]);
+		
+		// Create a ListView ready for nodes.
 		createNodeList();
-			
+		
 		getFolder(repositorySession);
 		
 		return 1;
-	});    
+	});
+
+	repositorySession.connect();
 }
 
 
-function getFolder(repoSesh)
+function getFolder(repoSession)
 {
 	documentFolderService = SDKModule.createDocumentFolderService();
-	
-	documentFolderService.initialiseWithSession(repoSesh);
-
-	documentFolderService.retrieveRootFolder();
+	documentFolderService.initialiseWithSession(repoSession);
 
 	documentFolderService.addEventListener('retrievedfolder',function(e)
 	{
-		//alert ("Folder is " + e.folder);
-
 		folderLabel.text = " " + documentFolderService.getCurrentFolder().getName();
 		
 		documentFolderService.retrieveChildrenInFolder();
 	
-	  	documentFolderService.addEventListener('documentnode',function(e)
-	  	{
-	  		var doc = e.document;
-	  		
-	  	 	Ti.API.info("DOCUMENT: name = " + doc.name + ", title = " + doc.title + ", summary = " + doc.summary + ", MIME type = " + doc.contentMimeType);	
-	  	 	
-	  	 	var icon = "mime_txt.png";
-	  	 	if (doc.contentMimeType.indexOf("text/") !== -1)
-	  	 	{
-	  	 		if (doc.contentMimeType.indexOf("/plain") !== -1)
-	  	 			icon = "mime_txt.png";
-	  	 		else
-	  	 			icon = "mime_doc.png";
-	  	 	}
-	  	 	else	
-	  	 	if (doc.contentMimeType.indexOf("application/") !== -1)
-	  	 	{
-	  	 		if (doc.contentMimeType.indexOf("/msword") !== -1  || 
-	  	 			doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.wordprocessingml") !== -1)
-	  	 		{
-	  	 			icon = "mime_doc.png";
-	  	 		}
-	  	 		else
-	  	 		if (doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.spreadsheetml") !== -1)
-	  	 		{
-	  	 			//Spreadsheet
-	  	 		}
-	  	 	}
-	  	 	else
-	  	 	if (doc.contentMimeType.indexOf("image/") !== -1)
-	  	 		icon="mime_img.png";
-	  	 		
-	  	 	var modified = new String + doc.modifiedAt;
-	  	 	modified = modified.substr(0,21);
-	  	 	
-	  	 	var mainDataSet = [];
-	  	 	var data = {info: {text: doc.name}, es_info: {text: modified}, pic: {image: icon},  properties: {folder: 0, name: doc.name, docobject: doc} };	 	  	 		
-	  	 	mainDataSet.push(data);
-	  	 	mainSection.appendItems(mainDataSet);	
+		documentFolderService.addEventListener('documentnode',function(e)
+		{
+			var doc = e.document;
+			
+			Ti.API.info("DOCUMENT: name = " + doc.name + ", title = " + doc.title + ", summary = " + doc.summary + ", MIME type = " + doc.contentMimeType);
+			
+			var icon = "mime_txt.png";
+			if (doc.contentMimeType.indexOf("text/") !== -1)
+			{
+				icon = "mime_txt.png";
+			}
+			else if (doc.contentMimeType.indexOf("application/") !== -1)
+			{
+				if (doc.contentMimeType.indexOf("/msword") !== -1  ||
+					doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.wordprocessingml") !== -1)
+				{
+					icon = "mime_doc.png";
+				}
+				else if (doc.contentMimeType.indexOf("/vnd.ms-excel") !== -1  ||
+					doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.spreadsheetml.sheet") !== -1)
+				{
+					icon = "mime_xls.png";
+				}
+				else if (doc.contentMimeType.indexOf("/vnd.ms-powerpoint") !== -1  ||
+					doc.contentMimeType.indexOf("/vnd.openxmlformats-officedocument.presentationml.presentation") !== -1)
+				{
+					icon = "mime_ppt.png";
+				}
+				else if (doc.contentMimeType.indexOf("/pdf") !== -1)
+				{
+					icon = "mime_pdf.png";
+				}
+			}
+			else if (doc.contentMimeType.indexOf("image/") !== -1)
+			{
+				icon="mime_img.png";
+			}
+			else if (doc.contentMimeType.indexOf("video/") !== -1)
+			{
+				icon="mime_video.png";
+			}
+			else
+			{
+				icon="mime_generic.png";
+			}
+			
+			var modified = new String + doc.modifiedAt;
+			modified = modified.substr(0,21);
+			
+			var mainDataSet = [];
+			var data = {info: {text: doc.name}, es_info: {text: modified}, pic: {image: icon},  properties: {folder: 0, name: doc.name, docobject: doc} };
+			mainDataSet.push(data);
+			mainSection.appendItems(mainDataSet);
+		});
+		
+		documentFolderService.addEventListener('foldernode',function(e)
+		{
+			var folder = e.folder;
+			var folderName = folder.getName();
+			
+			Ti.API.info("FOLDER: name = " + folder.name + ", title = " + folder.title + ", summary = " + folder.summary + ". Folder name from object: "+ folderName);
+			
+			var modified = new String + folder.modifiedAt;
+			modified = modified.substr(0,21);
+			
+			var mainDataSet = [];
+			var data = {info: {text: folder.name}, es_info: {text: modified}, pic: {image: 'folder.png'},  properties: {folder: 1, name: folder.name, folderobject: folder} };
+			
+			mainDataSet.push(data);
+			mainSection.appendItems(mainDataSet);
 	  	});
-	  	
-	  	documentFolderService.addEventListener('foldernode',function(e)
-	  	{
-	  		var folder = e.folder;
-	  		var folderName = folder.getName();
-	  		
-	  	 	Ti.API.info("FOLDER: name = " + folder.name + ", title = " + folder.title + ", summary = " + folder.summary + ". Folder name from object: "+ folderName);
-	  	 	
-	  	 	var modified = new String + folder.modifiedAt;
-	  	 	modified = modified.substr(0,21);
-	  	 	
-	  	 	var mainDataSet = [];
-	  	 	var data = {info: {text: folder.name}, es_info: {text: modified}, pic: {image: 'folder@2x.png'},  properties: {folder: 1, name: folder.name, folderobject: folder} };
-            		
-	  	 	mainDataSet.push(data);
-	  	 	mainSection.appendItems(mainDataSet);
-	  	});
-	  	  	
-	  	documentFolderService.addEventListener('retrieveddocument',function(e)
+		
+		documentFolderService.addEventListener('retrieveddocument',function(e)
 		{
 			var contentFile = e.contentfile;
-		
+			
 			if (Ti.Platform.name == 'iPhone OS')
 			{
 				Ti.UI.iOS.createDocumentViewer({url:contentFile.getPath()}).show();
 			}
-			else
-			if (Ti.Platform.name == 'android')
+			else if (Ti.Platform.name == 'android')
 			{
-				//Move the file into the app's temporary folder, as it needs to be within the app's folders to be openable as an Intent.
-				//The new temporary file will get deleted as the app shuts down.
+				// Move the file into the app's temporary folder, as it needs to be within the app's folders to be openable as an Intent.
+				// The new temporary file will get deleted as the app shuts down.
 				var file = Ti.Filesystem.getFile("file:/" + contentFile.getPath());
 				var newFile = Ti.Filesystem.getFile(Ti.Filesystem.tempDirectory, contentFile.getName());
 				newFile.write(file.read());
@@ -330,18 +339,20 @@ function getFolder(repoSesh)
 				
 				Ti.Android.currentActivity.startActivity(Ti.Android.createIntent( { action: Ti.Android.ACTION_VIEW, type: contentFile.getMIMEType(), data: newFile.getNativePath() } ));
 			}
-   		});
-   		
-   		documentFolderService.addEventListener('progresseddocument',function(e)
+		});
+		
+		documentFolderService.addEventListener('progresseddocument',function(e)
 		{
 			var bytes = e.bytes;
 			var total = e.total;
-   		});
-   		
-   		documentFolderService.addEventListener('error',function(e)
-		{
-		  	alert("Operation failed (" + e.errorcode + "): " + e.errorstring);
 		});
-	}); 
+		
+		documentFolderService.addEventListener('error',function(e)
+		{
+			alert("Operation failed (" + e.errorcode + "): " + e.errorstring);
+		});
+	});
+	
+	documentFolderService.retrieveRootFolder();
 }
 
