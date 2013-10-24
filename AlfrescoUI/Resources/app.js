@@ -18,17 +18,29 @@
  *****************************************************************************
  */
 
-$.index.open();
-
 var SDKModule = require('com.alfresco.appcelerator.module.sdk');
 
+var window;
 var mainSection;
 var documentFolderService;
 var parentFolders = new Array();
 var folderLabel;
 
-loginPane();
+main();
 
+function main()
+{
+	window = Ti.UI.createWindow({
+		backgroundColor: 'white'
+	});
+	// Ensure status bar is given enough room on iOS newer than 6
+	if (iOSVersionNewerThan(6))
+	{
+		window.top = 20;
+	}
+
+	loginPane();
+}
 
 function loginPane()
 {
@@ -107,7 +119,8 @@ function loginPane()
 	var table = Ti.UI.createTableView({data: data, top: '2%', left: '2%', width: '96%', height: '96%'});
 	table.separatorColor = 'white';
 	
-	$.index.add(table);
+	window.add(table);
+	window.open();
 }
 
 function createNodeList()
@@ -129,7 +142,10 @@ function createNodeList()
 	            properties: {            // Sets the label properties
 	                color: 'black',
 	                font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
-	                left: '60dp', top: 0,
+	                left: '60dp', top: '1dp',
+	                height: '20dp',
+	                minimumFontSize: 18, // Workaround a label vertical offset bug in iOS 7
+	                ellipsize: true
 	            }
 	        },
 	        {                            // Subtitle
@@ -153,8 +169,8 @@ function createNodeList()
 	sections.push(mainSection);
 	leftpane.sections = sections;
 	
-	$.index.add(folderLabel);
-	$.index.add(leftpane);
+	window.add(folderLabel);
+	window.add(leftpane);
 	
 	leftpane.addEventListener('itemclick', function(e)
 	{
@@ -223,7 +239,7 @@ function connect(serverUrl, serverUsername, serverPassword)
 		Ti.API.info("Connected to server: " + e.servername);
 		
 		//Remove the login pane
-		$.index.remove($.index.children[0]);
+		window.remove(window.children[0]);
 		
 		// Create a ListView ready for nodes.
 		createNodeList();
@@ -356,3 +372,18 @@ function getFolder(repoSession)
 	documentFolderService.retrieveRootFolder();
 }
 
+// Function to test if device is iOS 7 or later
+function iOSVersionNewerThan(minimum)
+{
+	if (Titanium.Platform.name == 'iPhone OS')
+	{
+		var version = Titanium.Platform.version.split(".");
+		var major = parseInt(version[0], 10);
+
+		if (major > minimum)
+		{
+			return true;
+		}
+	}
+	return false;
+}
