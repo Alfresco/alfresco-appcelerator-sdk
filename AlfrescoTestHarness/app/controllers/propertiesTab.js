@@ -46,71 +46,74 @@ Ti.App.addEventListener('cleartabs', function()
 
 Ti.App.addEventListener('propspopulate',function()
 {
-	if (Alloy.Globals.currentNode == null)
-		return;
-	
-	if (lastNode != null  &&  lastNode == Alloy.Globals.currentNode)
-		return;
-	
-	init();
-		
-	lastNode = Alloy.Globals.currentNode;
-	
-	var node = lastNode;	
-	
-	$.properties.deleteItemsAt(0,$.properties.getItems().length);
-	$.permissions.deleteItemsAt(0,$.permissions.getItems().length);
-	$.comments.deleteItemsAt(0,$.comments.getItems().length);
-	$.tags.deleteItemsAt(0,$.tags.getItems().length);
-	$.folderList.deleteItemsAt(0,$.folderList.getItems().length);
-	propertiesDataSet = [];
-	permissionsDataSet = [];	
-	commentsDataSet = [];
-	tagsDataSet = [];
-				
-	Alloy.Globals.recurseProperties (node, "", function(name,value)
+	if (Alloy.Globals.AlfrescoSDKVersion >= 1.0)
 	{
-		var propertiesDataSet = [];
-  	 	propertiesDataSet.push({info: {text: name + ":"}, es_info: {text: value}, pic: {image: "default_entry_icon.png"}});
-  	 	$.properties.appendItems(propertiesDataSet);
-  	 	
-  	 	if (name=='createdBy')
- 		{
- 			Ti.API.info("Person id: " + value);	  	 			
- 			personService.retrievePersonWithIdentifier(value);
- 			creatorIndex = $.properties.getItems().length-1;
- 		}
-	});
-   	    	
-   	if (Alloy.Globals.nodeJustProperties == false)
-   	{
-		documentFolderService.retrievePermissionsOfNode(node);	
-		commentService.retrieveCommentsForNode(node);
-		taggingService.retrieveTagsForNode(node);
+		if (Alloy.Globals.currentNode == null)
+			return;
 		
-		if (node.isDocument)
-			versionService.retrieveAllVersionsOfDocument(node);
+		if (lastNode != null  &&  lastNode == Alloy.Globals.currentNode)
+			return;
+		
+		init();
+			
+		lastNode = Alloy.Globals.currentNode;
+		
+		var node = lastNode;	
+		
+		$.properties.deleteItemsAt(0,$.properties.getItems().length);
+		$.permissions.deleteItemsAt(0,$.permissions.getItems().length);
+		$.comments.deleteItemsAt(0,$.comments.getItems().length);
+		$.tags.deleteItemsAt(0,$.tags.getItems().length);
+		$.folderList.deleteItemsAt(0,$.folderList.getItems().length);
+		propertiesDataSet = [];
+		permissionsDataSet = [];	
+		commentsDataSet = [];
+		tagsDataSet = [];
+					
+		Alloy.Globals.recurseProperties (node, "", function(name,value)
+		{
+			var propertiesDataSet = [];
+	  	 	propertiesDataSet.push({info: {text: name + ":"}, es_info: {text: value}, pic: {image: "default_entry_icon.png"}});
+	  	 	$.properties.appendItems(propertiesDataSet);
+	  	 	
+	  	 	if (name=='createdBy')
+	 		{
+	 			Ti.API.info("Person id: " + value);	  	 			
+	 			personService.retrievePersonWithIdentifier(value);
+	 			creatorIndex = $.properties.getItems().length-1;
+	 		}
+		});
+	   	    	
+	   	if (Alloy.Globals.nodeJustProperties == false)
+	   	{
+			documentFolderService.retrievePermissionsOfNode(node);	
+			commentService.retrieveCommentsForNode(node);
+			taggingService.retrieveTagsForNode(node);
+			
+			if (node.isDocument)
+				versionService.retrieveAllVersionsOfDocument(node);
+			else
+			{
+				var versionsDataSet = [];
+				versionsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
+				$.folderList.appendItems(versionsDataSet);
+			}
+		}
 		else
 		{
+			permissionsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
+			$.permissions.appendItems(permissionsDataSet);
+			
+			commentsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
+			$.comments.appendItems(commentsDataSet);
+			
+			tagsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
+			$.tags.appendItems(tagsDataSet);
+			
 			var versionsDataSet = [];
 			versionsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
 			$.folderList.appendItems(versionsDataSet);
 		}
-	}
-	else
-	{
-		permissionsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
-		$.permissions.appendItems(permissionsDataSet);
-		
-		commentsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
-		$.comments.appendItems(commentsDataSet);
-		
-		tagsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
-		$.tags.appendItems(tagsDataSet);
-		
-		var versionsDataSet = [];
-		versionsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
-		$.folderList.appendItems(versionsDataSet);
 	}
 }); 
 

@@ -71,7 +71,7 @@ function loginPane()
 	var passwordRow = Ti.UI.createTableViewRow({left: 0, width: Ti.UI.FILL, clickName:'Password', editable:false});
 	var passwordView = Ti.UI.createView({left: 0, width: Ti.UI.FILL, height: Ti.UI.SIZE});
 	var passwordLabel = Ti.UI.createLabel({text: "Password:", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, top: 0, left: 0, width: Ti.UI.FILL, height: '40dp'});
-	var passwordTextField = Ti.UI.createTextField({value: "admin", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, passwordMask:true, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
+	var passwordTextField = Ti.UI.createTextField({value: "password", font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, passwordMask:true, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, color: '#336699', top: '40dp', left: 0, width: Ti.UI.FILL, height: '40dp'});	
 	passwordView.add(passwordLabel);
 	passwordView.add(passwordTextField);
 	passwordRow.add(passwordView);

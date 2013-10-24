@@ -27,17 +27,20 @@ var skipCount = 0;
 
 Ti.App.addEventListener('searchinit',function()
 {
-	if (Alloy.Globals.repositorySession != null)
-	{ 
-		documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
-		documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
-	
-		searchService = Alloy.Globals.SDKModule.createSearchService();
-		searchService.addEventListener('error', function(e) { alert(e.errorstring); });
+	if (Alloy.Globals.AlfrescoSDKVersion >= 1.0)
+	{
+		if (Alloy.Globals.repositorySession != null)
+		{ 
+			documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
+			documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 		
-		searchService.initialiseWithSession(Alloy.Globals.repositorySession);
-		
-		listingContext = Alloy.Globals.SDKModule.createListingContext();
+			searchService = Alloy.Globals.SDKModule.createSearchService();
+			searchService.addEventListener('error', function(e) { alert(e.errorstring); });
+			
+			searchService.initialiseWithSession(Alloy.Globals.repositorySession);
+			
+			listingContext = Alloy.Globals.SDKModule.createListingContext();
+		}
 	}
 });
 
@@ -51,33 +54,36 @@ Ti.App.addEventListener('cleartabs', function()
 
 function searchButtonClick()
 {
-	listingContext.initialiseWithMaxItemsAndSkipCount(5, skipCount);
-	//skipCount += 5;
-	
-	var searchTerm = "SELECT * FROM cmis:document WHERE cmis:name LIKE '%" + $.searchEdit.value + "%'";
-
-	parentFolders = new Array();
-	mainSection.deleteItemsAt(0, mainSection.getItems().length);
+	if (Alloy.Globals.AlfrescoSDKVersion >= 1.0)
+	{
+		listingContext.initialiseWithMaxItemsAndSkipCount(5, skipCount);
+		//skipCount += 5;
 		
-	if (Alloy.Globals.repositorySession != null)
-	{ 
-		//Set up the list's on-click functionality. 
-		Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders,
-											function(folder)
-											{
-												documentFolderService.setFolder(folder);
-										        documentFolderService.retrieveChildrenInFolder();
-										        //Will result in an event fired to re-populate.
-										    },    
-										    function(document)
-										    {
-										    	documentFolderService.saveDocument (document);
-										    	//Will result in an event fired to preview the saved file.
-										    });	
-
-		Alloy.Globals.modelListeners(searchService, mainSection);
-				
-		searchService.searchWithStatement(searchTerm);
-		//searchService.searchWithStatementAndListingContext(searchTerm, listingContext);
+		var searchTerm = "SELECT * FROM cmis:document WHERE cmis:name LIKE '%" + $.searchEdit.value + "%'";
+	
+		parentFolders = new Array();
+		mainSection.deleteItemsAt(0, mainSection.getItems().length);
+			
+		if (Alloy.Globals.repositorySession != null)
+		{ 
+			//Set up the list's on-click functionality. 
+			Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders,
+												function(folder)
+												{
+													documentFolderService.setFolder(folder);
+											        documentFolderService.retrieveChildrenInFolder();
+											        //Will result in an event fired to re-populate.
+											    },    
+											    function(document)
+											    {
+											    	documentFolderService.saveDocument (document);
+											    	//Will result in an event fired to preview the saved file.
+											    });	
+	
+			Alloy.Globals.modelListeners(searchService, mainSection);
+					
+			searchService.searchWithStatement(searchTerm);
+			//searchService.searchWithStatementAndListingContext(searchTerm, listingContext);
+		}
 	}			
 }					
