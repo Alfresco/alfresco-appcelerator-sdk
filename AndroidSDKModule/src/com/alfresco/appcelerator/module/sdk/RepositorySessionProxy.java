@@ -21,26 +21,17 @@
 package com.alfresco.appcelerator.module.sdk;
 
 import java.util.HashMap;
-import java.util.List;
 
 import org.appcelerator.kroll.KrollDict;
-import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
-import org.appcelerator.kroll.annotations.Kroll.getProperty;
 import org.appcelerator.titanium.util.TiConvert;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import org.alfresco.mobile.android.api.exceptions.AlfrescoSessionException;
-import org.alfresco.mobile.android.api.model.Folder;
-import org.alfresco.mobile.android.api.model.Node;
-import org.alfresco.mobile.android.api.model.RepositoryInfo;
-import org.alfresco.mobile.android.api.model.Site;
-import org.alfresco.mobile.android.api.services.DocumentFolderService;
-import org.alfresco.mobile.android.api.services.SiteService;
 import org.alfresco.mobile.android.api.session.RepositorySession;
-import org.alfresco.mobile.android.api.session.impl.*;
+
 
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class, propertyAccessors = { "serverUrl", "serverUsername", "serverPassword" })
 public class RepositorySessionProxy extends SessionProxy 

@@ -9,7 +9,6 @@
 package com.alfresco.appcelerator.module.sdk;
 
 import org.appcelerator.kroll.KrollDict;
-import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiC;
 import org.appcelerator.titanium.util.Log;
@@ -23,6 +22,7 @@ import android.app.Activity;
 
 
 // This proxy can be created by calling Androidsdkmodule.createExample({message: "hello world"})
+@SuppressWarnings("deprecation")
 @Kroll.proxy(creatableInModule=AndroidsdkmoduleModule.class)
 public class ExampleProxy extends TiViewProxy
 {

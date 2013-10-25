@@ -17,46 +17,36 @@
  *  limitations under the License.
  *****************************************************************************
  */
-
 package com.alfresco.appcelerator.module.sdk;
 
-import org.alfresco.mobile.android.api.model.Folder;
+import org.alfresco.mobile.android.api.model.Site;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
-import com.alfresco.appcelerator.module.sdk.SDKUtil;
 
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class, 
- propertyAccessors = { "name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt"})
-public class FolderProxy extends KrollProxy
+propertyAccessors = { "shortName", "title", "summary", "identifier", "GUID", "isMember", "isPendingMember", "isFavorite", "visibility"})
+
+public class SiteProxy extends KrollProxy
 {
-	private Folder folder = null;
+	Site site = null;
  	
-	public FolderProxy ()
+	
+	public SiteProxy ()
 	{
 		super();
 	}
 	
-	public FolderProxy (Folder folder)
+	
+	public SiteProxy (Site site)
 	{
-		this.folder = folder;
+		this.site = site;
 		
-		String nodeGetters[] = {"name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt"};    	
+		String nodeGetters[] = {"shortName", "title", "summary", "identifier", "GUID", "isMember", "isPendingMember", "isFavorite", "visibility"};    	
 		for (int i = 0;  i < nodeGetters.length;  i++)
 		{
-			Object value = SDKUtil.extractProperty(folder, nodeGetters[i]);
+			Object value = SDKUtil.extractProperty(site, nodeGetters[i]);
 			if (value != null)
 				setProperty(nodeGetters[i], value);
 		}
-	}
-	
-	public Folder getFolder()
-	{
-		return folder;
-	}
-	
-	@Kroll.method
-	public String getName()
-	{
-		return folder.getName();
 	}
 }
