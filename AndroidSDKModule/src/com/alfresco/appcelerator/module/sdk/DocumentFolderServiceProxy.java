@@ -20,18 +20,13 @@
 
 package com.alfresco.appcelerator.module.sdk;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.alfresco.mobile.android.api.model.ContentFile;
-import org.alfresco.mobile.android.api.model.Document;
 import org.alfresco.mobile.android.api.model.Folder;
 import org.alfresco.mobile.android.api.model.Node;
 import org.alfresco.mobile.android.api.services.DocumentFolderService;
-import org.alfresco.mobile.android.api.services.SiteService;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
@@ -39,14 +34,12 @@ import org.appcelerator.titanium.util.Log;
 import org.appcelerator.titanium.util.TiConvert;
 
 
+@SuppressWarnings("deprecation")
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class)
 public class DocumentFolderServiceProxy extends KrollProxy
 {
-	SiteService siteService;
-	DocumentFolderService service;
-    Folder currentFolder;
-    int errorCode;
-    Map<String, Folder> folders;
+	private DocumentFolderService service;
+	private Folder currentFolder;
     
     
     public DocumentFolderServiceProxy() 
@@ -59,8 +52,6 @@ public class DocumentFolderServiceProxy extends KrollProxy
     void initialiseWithSession(Object[] args)
     {
     	SessionProxy seshProxy = (SessionProxy) args[0];
-    	
-        siteService = seshProxy.session.getServiceRegistry().getSiteService();
         service = seshProxy.session.getServiceRegistry().getDocumentFolderService();
     }
     
@@ -121,24 +112,10 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	        
     	        for (Node node : nodes)
     	        {
-    	        	HashMap<String, Object> map = new HashMap<String, Object>();
-    	        	
-    	        	if (node.isDocument())
-    	        	{
-    	        		Document doc = (Document)node;	
-    	        		DocumentProxy thiDocument = new DocumentProxy (doc);
-    	        		map.put("document", thiDocument);
-    	                fireEvent("documentnode", new KrollDict(map));
-    	        	}
-    	        	else
-    	        	{
-    	        		Folder folder = (Folder)node;
-    	        		FolderProxy thisFolder = new FolderProxy (folder);
-    	                map.put("folder", thisFolder);
-    	        		fireEvent("foldernode", new KrollDict(map));
-    	        	}
+    	        	SDKUtil.createEventWithNode (node, DocumentFolderServiceProxy.this);
     	        }
-
+    	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this);
+    	        
     			super.run();
     		}
     	}.start();

@@ -37,35 +37,38 @@ function viewButtonChange()
 
 Ti.App.addEventListener('repopopulate', function()
 {
-	if (Alloy.Globals.repositorySession != null  &&  $.mainSection.getItems().length == 0)
-	{ 
-		documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
-		documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
-		
-		//Set up the list's on-click functionality. 
-		Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders,
-											function(folder)
-											{
-												if (allNodeTypes)
+	if (Alloy.Globals.repositorySession != null)
+	{
+		if ($.mainSection.getItems().length == 0)
+		{ 
+			documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
+			documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
+			
+			//Set up the list's on-click functionality. 
+			Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders,
+												function(folder)
 												{
-													documentFolderService.setFolder(folder);
-											        documentFolderService.retrieveChildrenInFolder();
-											        //Will result in an event fired to re-populate.
-											   	}
-											   	else
-											   	{
-											   		documentFolderService.setFolder(folder);
-											   		documentFolderService.retrieveDocumentsInFolder(folder);
-											   	}
-										    },    
-										    function(document)
-										    {
-										    	documentFolderService.saveDocument (document);
-										    	//Will result in an event fired to preview the saved file.
-										    });
-																			
-		getFolder(Alloy.Globals.repositorySession);
-	}			
+													if (allNodeTypes)
+													{
+														documentFolderService.setFolder(folder);
+												        documentFolderService.retrieveChildrenInFolder();
+												        //Will result in an event fired to re-populate.
+												   	}
+												   	else
+												   	{
+												   		documentFolderService.setFolder(folder);
+												   		documentFolderService.retrieveDocumentsInFolder(folder);
+												   	}
+											    },    
+											    function(document)
+											    {
+											    	documentFolderService.saveDocument (document);
+											    	//Will result in an event fired to preview the saved file.
+											    });
+																				
+			getFolder(Alloy.Globals.repositorySession);
+		}			
+	}
 });
 										
 
