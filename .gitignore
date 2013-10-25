@@ -12,7 +12,6 @@ AlfrescoTestHarness/Resources/
 # AlfrescoUI (Appcelerator)
 AlfrescoUI/build.log
 AlfrescoUI/build/
-AlfrescoUI/Resources/
 
 # AndroidSDKModule (Android)
 AndroidSDKMobile/libs/
