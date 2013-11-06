@@ -58,13 +58,19 @@ public class SDKUtil
 	
 	static void createEventWithNode (Node node, KrollProxy proxyObj)
 	{
+		createEventWithNode (node, proxyObj, null);
+	}
+	
+	
+	static void createEventWithNode (Node node, KrollProxy proxyObj, String eventName)
+	{
 	    if (node.isFolder())
 	    {
 	        FolderProxy thisFolder = new FolderProxy ((Folder)node);
 	        
 	        HashMap<String, Object> map = new HashMap<String, Object>();
 	        map.put("folder", thisFolder);
-	        proxyObj.fireEvent("foldernode", new KrollDict(map));
+	        proxyObj.fireEvent(eventName != null ? eventName : "foldernode", new KrollDict(map));
 	    }
 	    else
 	    {
@@ -72,7 +78,7 @@ public class SDKUtil
 	        
 	        HashMap<String, Object> map = new HashMap<String, Object>();
 	        map.put("document", thisDocument);
-	        proxyObj.fireEvent("documentnode", new KrollDict(map));
+	        proxyObj.fireEvent(eventName != null ? eventName : "documentnode", new KrollDict(map));
 	    }
 	}
 
@@ -107,6 +113,9 @@ public class SDKUtil
 				{
 					if (retObj instanceof GregorianCalendar)
 						retObj = ((GregorianCalendar)retObj).getTime();
+					else
+					if (retObj.getClass().isEnum())
+						retObj = ((Enum)retObj).ordinal();
 				}
 				return retObj;
 			}

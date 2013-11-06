@@ -228,7 +228,9 @@ public class SiteServiceProxy extends KrollProxy
 	@Kroll.method
 	void retrieveDocumentLibraryFolderForSite (Object[] arg)
 	{
-		final SiteProxy siteProxy = (SiteProxy)arg[0];
+		final String siteName = (String)arg[0];
+		
+		Log.i("Alfresco", "Site name: " + siteName);
 		
 		new Thread()
     	{
@@ -239,7 +241,11 @@ public class SiteServiceProxy extends KrollProxy
     			
     			try
     			{
-    				folder = service.getDocumentLibrary (siteProxy.site);
+    				Site site = service.getSite(siteName);
+    				Log.i("Alfresco", "Site name from object: " + site.getShortName());
+    				
+    				folder = service.getDocumentLibrary (site);
+    				Log.i("Alfresco", "Site folder: " + folder.getName());
     			}
     			catch (Exception e)
     			{
@@ -252,7 +258,7 @@ public class SiteServiceProxy extends KrollProxy
                     return;
     			}
     			
-    			SDKUtil.createEventWithNode (folder, SiteServiceProxy.this);
+    			SDKUtil.createEventWithNode (folder, SiteServiceProxy.this, "retrievedDocumentFolder");
     			
     			super.run();
     		}

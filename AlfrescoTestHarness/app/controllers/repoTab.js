@@ -19,15 +19,18 @@
  */
 
 var mainSection = $.mainSection;
-var documentFolderService;
+var documentFolderService = null;
 var parentFolders = new Array();
 var allNodeTypes = true;
 
 
 Ti.App.addEventListener('cleartabs', function()
 {
-	parentFolders = new Array();
-	mainSection.deleteItemsAt(0, mainSection.getItems().length);
+	if (documentFolderService != null)
+	{
+		parentFolders = new Array();
+		mainSection.deleteItemsAt(0, mainSection.getItems().length);
+	}
 });
 
 function viewButtonChange()
@@ -39,7 +42,7 @@ Ti.App.addEventListener('repopopulate', function()
 {
 	if (Alloy.Globals.repositorySession != null)
 	{
-		if ($.mainSection.getItems().length == 0)
+		if (documentFolderService == null)
 		{ 
 			documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
 			documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });

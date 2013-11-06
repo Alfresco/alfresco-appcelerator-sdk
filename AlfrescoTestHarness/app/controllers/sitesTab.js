@@ -20,14 +20,18 @@
 
 var documentFolderService;
 var parentFolders = new Array();
+var siteService = null;
 
 
 Ti.App.addEventListener('cleartabs', function()
 {
-	$.mySites.deleteItemsAt(0,$.mySites.getItems().length);
-	$.allSites.deleteItemsAt(0,$.allSites.getItems().length);
-	$.favSites.deleteItemsAt(0,$.favSites.getItems().length);
-	$.repo.deleteItemsAt(0,$.repo.getItems().length);
+	if (siteService != null)
+	{
+		$.mySites.deleteItemsAt(0,$.mySites.getItems().length);
+		$.allSites.deleteItemsAt(0,$.allSites.getItems().length);
+		$.favSites.deleteItemsAt(0,$.favSites.getItems().length);
+		$.repo.deleteItemsAt(0,$.repo.getItems().length);
+	}
 });
 
 
@@ -35,9 +39,9 @@ Ti.App.addEventListener('sitespopulate',function()
 {
 	if (Alloy.Globals.AlfrescoSDKVersion >= 1.0)
 	{
-		if (Alloy.Globals.repositorySession != null  &&  $.allSites.getItems().length == 0)
+		if (Alloy.Globals.repositorySession != null  &&  siteService == null)
 		{
-			var siteService = Alloy.Globals.SDKModule.createSiteService();
+			siteService = Alloy.Globals.SDKModule.createSiteService();
 			siteService.addEventListener('error', function(e) { alert(e.errorstring); });
 			siteService.initialiseWithSession(Alloy.Globals.repositorySession);
 			

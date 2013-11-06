@@ -18,11 +18,12 @@
  *****************************************************************************
  */
 
-var activityService;
+var activityService = null;
 
 Ti.App.addEventListener('cleartabs', function()
 {
-	$.activities.deleteItemsAt(0,$.activities.getItems().length);
+	if (activityService != null)
+		$.activities.deleteItemsAt(0,$.activities.getItems().length);
 });
 
 
@@ -30,9 +31,9 @@ Ti.App.addEventListener('activitiespopulate',function()
 {	
 	if (Alloy.Globals.AlfrescoSDKVersion >= 1.0)
 	{
-		if (Alloy.Globals.repositorySession != null  &&  $.activities.getItems().length == 0)
+		if (Alloy.Globals.repositorySession != null  &&  activityService == null)
 		{
-			var activityService = Alloy.Globals.SDKModule.createActivityService();
+			activityService = Alloy.Globals.SDKModule.createActivityService();
 			activityService.addEventListener('error', function(e) { alert(e.errorstring); });
 			
 			activityService.initialiseWithSession(Alloy.Globals.repositorySession);
