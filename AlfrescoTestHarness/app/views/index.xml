@@ -20,7 +20,7 @@
 				
 		</Tab>
 		
-		<Tab backgroundColor="#DDDDDD" id="activitiesTab" title="" icon="KS_nav_ui.png">
+		<Tab backgroundColor="#DDDDDD" id="activitiesTab" title="" icon="hammer.png">
 			
 			<Require src="activitiesTab" id="activitiestab">
 				
