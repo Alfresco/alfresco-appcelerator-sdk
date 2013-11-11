@@ -6,7 +6,8 @@
 "#siteList":{
 	top: 0, 
 	left: 0,
-	height: '45%' 
+	height: '45%',
+	backgroundColor: '#FFFFFF' 
 },
 "#folderLabel":{
 	text: "", 
@@ -17,7 +18,7 @@
 	left: 0, 
 	width: Ti.UI.FILL
 },
-"#folderList":{
+"#folderList":{ 
 	backgroundColor: '#DDDDDD',
 	top: '55%', 
 	left: 0,

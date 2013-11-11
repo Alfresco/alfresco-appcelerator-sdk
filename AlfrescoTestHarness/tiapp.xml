@@ -17,6 +17,16 @@
     <analytics>true</analytics>
     <guid>5b87ae1d-1d27-4e7b-895a-33c392d912ff</guid>
     <property name="ti.ui.defaultunit" type="string">system</property>
+    
+    <android xmlns:android="http://schemas.android.com/apk/res/android"> 
+		<tool-api-level>14</tool-api-level>
+		 
+		<manifest> 
+			<uses-sdk android:targetSdkVersion="14"/> 
+			<!-- other manifest entries --> 
+		</manifest> 
+	</android>
+	 
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>

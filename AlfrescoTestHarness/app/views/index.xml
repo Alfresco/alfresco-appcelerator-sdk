@@ -1,38 +1,38 @@
 <Alloy>
 
-	<TabGroup>
+	<TabGroup backgroundColor="#DDDDDD">
 
-		<Tab id="loginTab" title="Account" icon="KS_nav_login.png">
+		<Tab backgroundColor="#DDDDDD" id="loginTab" title="" icon="KS_nav_login.png">
 
 			<Require src="accountTab" id="logintab"/>
 						
 		</Tab>
 		
-		<Tab id="repoTab" title="Repository" icon="KS_nav_folder.png">
+		<Tab backgroundColor="#DDDDDD" id="repoTab" title="" icon="KS_nav_folder.png">
 			
 			<Require src="repoTab" id="repotab">
 			
 		</Tab>
 		
-		<Tab id="sitesTab" title="Sites" icon="KS_nav_sites.png">
+		<Tab backgroundColor="#DDDDDD" id="sitesTab" title="" icon="KS_nav_sites.png">
 			
 			<Require src="sitesTab" id="sitestab">
 				
 		</Tab>
 		
-		<Tab id="activitiesTab" title="Activities" icon="KS_nav_ui.png">
+		<Tab backgroundColor="#DDDDDD" id="activitiesTab" title="" icon="KS_nav_ui.png">
 			
 			<Require src="activitiesTab" id="activitiestab">
 				
 		</Tab>
 		
-		<Tab id="searchTab" title="Search" icon="KS_nav_search.png">
+		<Tab backgroundColor="#DDDDDD" id="searchTab" title="" icon="KS_nav_search.png">
 			
 			<Require src="searchTab" id="searchtab">
 				
 		</Tab> 
 		
-		<Tab id="propsTab" title="Properties" icon="KS_nav_ui.png">
+		<Tab backgroundColor="#DDDDDD" id="propsTab" title="" icon="KS_nav_ui.png">
 			
 			<Require src="propertiesTab" id="propstab">
 				

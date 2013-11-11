@@ -30,6 +30,7 @@ import org.alfresco.mobile.android.api.model.Node;
 import org.alfresco.mobile.android.api.model.PagingResult;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
+import org.appcelerator.titanium.util.Log;
 
 public class SDKUtil
 {
@@ -101,6 +102,8 @@ public class SDKUtil
     		getterMethod = new StringBuilder("get" + getterMethod);
     	}
     	
+    	//Log.i("Alfresco", "Property: " + getterMethod);
+    	
 		java.lang.reflect.Method method;
 		try
 		{
@@ -112,10 +115,16 @@ public class SDKUtil
 				if (retObj != null)
 				{
 					if (retObj instanceof GregorianCalendar)
+					{
+						Log.i("Alfresco", "Conversion of date property");
 						retObj = ((GregorianCalendar)retObj).getTime();
+					}
 					else
 					if (retObj.getClass().isEnum())
+					{
+						Log.i("Alfresco", "Conversion of enum property");
 						retObj = ((Enum)retObj).ordinal();
+					}
 				}
 				return retObj;
 			}
