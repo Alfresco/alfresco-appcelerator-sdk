@@ -99,12 +99,7 @@ public class DocumentFolderServiceProxy extends KrollProxy
     			}
     			catch (Exception e)
     			{
-    				Log.e("Alfresco", "Error retrieving child nodes: " + e.getMessage());
-    				
-    				HashMap<String, Object> map = new HashMap<String, Object>();
-                    map.put("errorcode", TiConvert.toInt(1));
-                    map.put("errorstring", "Error calling DocumentFolderService.getChildren() in Alfresco SDK: " + e.getMessage());
-                    fireEvent("error", new KrollDict(map) );
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.getChildren()", DocumentFolderServiceProxy.this);
                     return;
     			}
     			
@@ -142,11 +137,8 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	        ContentFile file = service.getContent(arg.getDocument());
     	        if (!file.getFile().exists())
     	        {
-    	        	HashMap<String, Object> map = new HashMap<String, Object>();
-        	        map.put("errorcode", 1);
-        	        map.put("errorstring", "File does not exist");
-        	        fireEvent("error", new KrollDict(map) );
-        	        return;
+    	        	SDKUtil.createErrorEventWithCode (SDKUtil.ERROR_CODE_FILE_NOT_FOUND, "File does not exist", DocumentFolderServiceProxy.this);
+    	        	return;
     	        }
     	        
     	        HashMap<String, Object> map = new HashMap<String, Object>();

@@ -31,27 +31,45 @@ import org.alfresco.mobile.android.api.model.PagingResult;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.titanium.util.Log;
+import org.appcelerator.titanium.util.TiConvert;
 
 public class SDKUtil
 {
+	static final int ERROR_CODE_SDK_METHOD_EXCEPTION = 1;
+	static final int ERROR_CODE_PARAM_ERROR = 2;
+	static final int ERROR_CODE_FILE_NOT_FOUND = 3;
+	
+	
 	static void createEnumerationEndEvent (KrollProxy proxyObj)
 	{
 		HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("code", 1);
+        map.put("code", TiConvert.toInt(1));
         proxyObj.fireEvent("endenumeration", new KrollDict(map));
 	}
 
 
 	static void createParamErrorEvent (KrollProxy proxyObj)
 	{
-		createErrorEvent (0, "Parameter error", proxyObj);
+		createErrorEventWithCode (ERROR_CODE_PARAM_ERROR, "Parameter error", proxyObj);
 	}
 
-
-	static void createErrorEvent (int errorCode, String errorString, KrollProxy proxyObj)
+	
+	static void createErrorEvent (Exception e, String methodName, KrollProxy proxyObj)
+	{
+		createErrorEventWithCode (ERROR_CODE_SDK_METHOD_EXCEPTION, "Error calling " + methodName + " in Alfresco SDK: " + e.getMessage(), proxyObj);	
+	}
+	
+	
+	static void createErrorEventWithCode (int errorCode, Exception e, String methodName, KrollProxy proxyObj)
+	{
+		createErrorEventWithCode (errorCode, "Error calling " + methodName + " in Alfresco SDK: " + e.getMessage(), proxyObj);	
+	}
+	
+	
+	static void createErrorEventWithCode (int errorCode, String errorString, KrollProxy proxyObj)
 	{
 		HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("errorcode", errorCode);
+        map.put("errorcode", TiConvert.toInt(errorCode));
         map.put("errorstring", errorString);
         proxyObj.fireEvent("error", new KrollDict(map));
 	}
