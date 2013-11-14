@@ -73,7 +73,7 @@ public class ActivityServiceProxy extends KrollProxy
 				}
 				catch(Exception e)
 				{
-					SDKUtil.createErrorEvent (e, "ActivityServiceProxy.getActivityStream()", ActivityServiceProxy.this);
+					SDKUtil.createErrorEvent (e, "ActivityStreamService.getActivityStream()", ActivityServiceProxy.this);
                     return;
 				}
 				
@@ -112,7 +112,7 @@ public class ActivityServiceProxy extends KrollProxy
 				}
 				catch(Exception e)
 				{
-					SDKUtil.createErrorEvent (e, "ActivityServiceProxy.getActivityStream()", ActivityServiceProxy.this);
+					SDKUtil.createErrorEvent (e, "ActivityStreamService.getActivityStream()", ActivityServiceProxy.this);
                     return;
 				}
 				
@@ -152,7 +152,7 @@ public class ActivityServiceProxy extends KrollProxy
 				}
 				catch(Exception e)
 				{
-					SDKUtil.createErrorEvent (e, "ActivityServiceProxy.getActivityStream()", ActivityServiceProxy.this);
+					SDKUtil.createErrorEvent (e, "ActivityStreamService.getActivityStream()", ActivityServiceProxy.this);
                     return;
 				}
 				
@@ -193,7 +193,7 @@ public class ActivityServiceProxy extends KrollProxy
 				}
 				catch(Exception e)
 				{
-					SDKUtil.createErrorEvent (e, "ActivityServiceProxy.getActivityStream()", ActivityServiceProxy.this);
+					SDKUtil.createErrorEvent (e, "ActivityStreamService.getActivityStream()", ActivityServiceProxy.this);
                     return;
 				}
 				
@@ -234,7 +234,7 @@ public class ActivityServiceProxy extends KrollProxy
 				}
 				catch(Exception e)
 				{
-					SDKUtil.createErrorEvent (e, "ActivityServiceProxy.getSiteActivityStream()", ActivityServiceProxy.this);
+					SDKUtil.createErrorEvent (e, "ActivityStreamService.getSiteActivityStream()", ActivityServiceProxy.this);
                     return;
 				}
 				
@@ -276,7 +276,7 @@ public class ActivityServiceProxy extends KrollProxy
 				}
 				catch(Exception e)
 				{
-					SDKUtil.createErrorEvent (e, "ActivityServiceProxy.getSiteActivityStream()", ActivityServiceProxy.this);
+					SDKUtil.createErrorEvent (e, "ActivityStreamService.getSiteActivityStream()", ActivityServiceProxy.this);
                     return;
 				}
 				
