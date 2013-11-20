@@ -26,6 +26,7 @@ import java.util.List;
 import org.alfresco.mobile.android.api.model.ContentFile;
 import org.alfresco.mobile.android.api.model.Folder;
 import org.alfresco.mobile.android.api.model.Node;
+import org.alfresco.mobile.android.api.model.Permissions;
 import org.alfresco.mobile.android.api.services.DocumentFolderService;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
@@ -124,6 +125,31 @@ public class DocumentFolderServiceProxy extends KrollProxy
     }
     
  
+    /** Retrieve permissions of document or folder object
+    @param Document or Folder object
+    @since v1.0
+    */
+    @Kroll.method
+    void retrievePermissionsOfNode (Object[] arg)
+    {
+    	final NodeProxy nodeProxy = (NodeProxy)arg[0];
+    	
+    	new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			Permissions permissions = service.getPermissions (nodeProxy.node);
+    	        
+    			PermissionsProxy p = new PermissionsProxy(permissions);
+    	        HashMap<String, Object> map = new HashMap<String, Object>();
+    	        map.put("permissions", p);
+    	        fireEvent("retrievedpermissions", new KrollDict(map) );
+    		}
+    	}.start();
+    }
+
+   
     @Kroll.method
     void saveDocument (final Object args[])
     {

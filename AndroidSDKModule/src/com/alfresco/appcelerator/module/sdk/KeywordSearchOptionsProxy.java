@@ -27,7 +27,7 @@ public class KeywordSearchOptionsProxy extends KrollProxy
 	@Kroll.method
 	void initialiseWithExactMatch (Object[] args)
 	{
-		searchOptions = new KeywordSearchOptions (null, true, (boolean)args[1], (boolean)args[0]);
+		searchOptions = new KeywordSearchOptions (null, true, (Boolean)args[1], (Boolean)args[0]);
 	}
 
 
@@ -40,7 +40,7 @@ public class KeywordSearchOptionsProxy extends KrollProxy
 	{
 		FolderProxy folderProxy = (FolderProxy)args[0];
 		
-		searchOptions = new KeywordSearchOptions (folderProxy.getFolder(), (boolean)args[1], false, false);
+		searchOptions = new KeywordSearchOptions (folderProxy.getFolder(), (Boolean)args[1], false, false);
 	}
 
 
@@ -55,6 +55,6 @@ public class KeywordSearchOptionsProxy extends KrollProxy
 	{
 		FolderProxy folderProxy = (FolderProxy)args[2];
 		
-		searchOptions = new KeywordSearchOptions (folderProxy.getFolder(), (boolean)args[3], (boolean)args[1], (boolean)args[0]);
+		searchOptions = new KeywordSearchOptions (folderProxy.getFolder(), (Boolean)args[3], (Boolean)args[1], (Boolean)args[0]);
 	}
 }
