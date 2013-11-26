@@ -24,6 +24,8 @@ var searchService;
 var listingContext;
 var parentFolders = new Array();
 var skipCount = 0;
+var hasMoreItems = false;
+
 
 Ti.App.addEventListener('searchinit',function()
 {
@@ -40,6 +42,32 @@ Ti.App.addEventListener('searchinit',function()
 			searchService.initialiseWithSession(Alloy.Globals.repositorySession);
 			
 			listingContext = Alloy.Globals.SDKModule.createListingContext();
+			
+			//Set up the list's on-click functionality. 
+			Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders,
+												function(folder)
+												{
+													documentFolderService.setFolder(folder);
+											        documentFolderService.retrieveChildrenInFolder();
+											        //Will result in an event fired to re-populate.
+											    },    
+											    function(document)
+											    {
+											    	documentFolderService.saveDocument (document);
+											    	//Will result in an event fired to preview the saved file.
+											    });	
+	
+			Alloy.Globals.modelListeners(searchService, mainSection);
+			
+			searchService.addEventListener('pagingresult', function(e)
+			{
+				hasMoreItems = e.hasmoreitems;
+				
+				if (hasMoreItems)
+					$.searchButton.title = "Get next ten items...";
+				else
+					$.searchButton.title = "Go";
+			});
 		}
 	}
 });
@@ -56,34 +84,22 @@ function searchButtonClick()
 {
 	if (Alloy.Globals.AlfrescoSDKVersion >= 1.0)
 	{
-		listingContext.initialiseWithMaxItemsAndSkipCount(5, skipCount);
-		//skipCount += 5;
+		if (hasMoreItems)
+		{
+			skipCount += 10;
+		}
+		else
+		{
+			skipCount = 0;
+		}
+		
+		listingContext.initialiseWithMaxItemsAndSkipCount(10, skipCount);
 		
 		var searchTerm = "SELECT * FROM cmis:document WHERE cmis:name LIKE '%" + $.searchEdit.value + "%'";
 	
 		parentFolders = new Array();
 		mainSection.deleteItemsAt(0, mainSection.getItems().length);
-			
-		if (Alloy.Globals.repositorySession != null)
-		{ 
-			//Set up the list's on-click functionality. 
-			Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders,
-												function(folder)
-												{
-													documentFolderService.setFolder(folder);
-											        documentFolderService.retrieveChildrenInFolder();
-											        //Will result in an event fired to re-populate.
-											    },    
-											    function(document)
-											    {
-											    	documentFolderService.saveDocument (document);
-											    	//Will result in an event fired to preview the saved file.
-											    });	
-	
-			Alloy.Globals.modelListeners(searchService, mainSection);
-					
-			searchService.searchWithStatement(searchTerm);
-			//searchService.searchWithStatementAndListingContext(searchTerm, listingContext);
-		}
+						
+		searchService.searchWithStatementAndListingContext(searchTerm, listingContext);
 	}			
 }					

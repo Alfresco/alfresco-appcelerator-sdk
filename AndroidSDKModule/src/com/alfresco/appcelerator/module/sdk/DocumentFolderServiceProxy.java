@@ -100,6 +100,8 @@ public class DocumentFolderServiceProxy extends KrollProxy
     			}
     			catch (Exception e)
     			{
+    				e.printStackTrace();
+    				
     				SDKUtil.createErrorEvent (e, "DocumentFolderService.getChildren()", DocumentFolderServiceProxy.this);
                     return;
     			}

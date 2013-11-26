@@ -21,7 +21,9 @@ package com.alfresco.appcelerator.module.sdk;
 
 import java.util.List;
 
+import org.alfresco.mobile.android.api.model.ListingContext;
 import org.alfresco.mobile.android.api.model.Node;
+import org.alfresco.mobile.android.api.model.PagingResult;
 import org.alfresco.mobile.android.api.model.SearchLanguage;
 import org.alfresco.mobile.android.api.services.SearchService;
 import org.appcelerator.kroll.KrollProxy;
@@ -34,7 +36,7 @@ public class SearchServiceProxy extends KrollProxy
 {
 	SearchService service;
  
-	SearchServiceProxy()
+	public SearchServiceProxy()
 	{
 		super();
 	}
@@ -101,17 +103,18 @@ public class SearchServiceProxy extends KrollProxy
 	void searchWithStatementAndListingContext (Object[] args)
 	{
 		final String searchTerm = (String)args[0];
+		final ListingContextProxy lcProxy = (ListingContextProxy)args[1];
 		
 		new Thread()
     	{
     		@Override
     		public void run() 
     		{
-    			List<Node> entries;
+    			PagingResult<Node> entries;
     			
 				try
 				{
-					entries = service.search (searchTerm, SearchLanguage.CMIS);
+					entries = service.search (searchTerm, SearchLanguage.CMIS, lcProxy.listingContext);
 				}
 				catch(Exception e)
 				{
@@ -119,12 +122,15 @@ public class SearchServiceProxy extends KrollProxy
                     return;
 				}
 				
-				Log.i("Alfresco", "Nodes: " + entries.size());
+				Log.i("Alfresco", "Nodes: " + entries.getList().size());
     	        
-    	        for (Node entry : entries)
+    	        for (Node entry : entries.getList())
     	        {
     	        	SDKUtil.createEventWithNode(entry, SearchServiceProxy.this);
     	        }
+    	        
+    	        SDKUtil.createEventWithPagingResult (entries, SearchServiceProxy.this);
+    	        
     	        SDKUtil.createEnumerationEndEvent (SearchServiceProxy.this);
     	    
     	        super.run();
