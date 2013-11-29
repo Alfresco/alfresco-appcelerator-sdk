@@ -61,12 +61,14 @@ Ti.App.addEventListener('searchinit',function()
 			
 			searchService.addEventListener('pagingresult', function(e)
 			{
+				//alert("Has more? " + e.hasmoreitems + ", total is " + e.totalitems);
+
 				hasMoreItems = e.hasmoreitems;
 				
 				if (hasMoreItems)
-					$.searchButton.title = "Get next ten items...";
+					$.searchButton.title = "Next ten...";
 				else
-					$.searchButton.title = "Go";
+					$.searchButton.title = "Get first ten results";
 			});
 		}
 	}
@@ -93,7 +95,7 @@ function searchButtonClick()
 			skipCount = 0;
 		}
 		
-		listingContext.initialiseWithMaxItemsAndSkipCount(10, skipCount);
+		listingContext.initialiseWithMaxItemsAndSkipCount (10, skipCount);
 		
 		var searchTerm = "SELECT * FROM cmis:document WHERE cmis:name LIKE '%" + $.searchEdit.value + "%'";
 	

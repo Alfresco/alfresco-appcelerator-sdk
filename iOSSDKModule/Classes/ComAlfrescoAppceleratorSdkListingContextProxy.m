@@ -43,7 +43,7 @@
 
     NSNumber* maxItems = arg;
     
-    self.listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems];
+    self.listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems.intValue];
 }
 
 
@@ -54,7 +54,7 @@
     
     NSLog(@"[INFO] ** maxItems: %d, skipCount %d", maxItems.intValue, skipCount.intValue);
     
-    self.listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems skipCount:skipCount];
+    self.listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems.intValue skipCount:skipCount.intValue];
 }
 
 
@@ -74,7 +74,7 @@
     NSString* sortProperty = [args objectAtIndex:2];
     BOOL sortAscending = ([args objectAtIndex:3] > 0);
     
-    self.listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems skipCount:skipCount sortProperty:sortProperty
+    self.listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems.intValue skipCount:skipCount.intValue sortProperty:sortProperty
                                                                      sortAscending:sortAscending];
 }
 

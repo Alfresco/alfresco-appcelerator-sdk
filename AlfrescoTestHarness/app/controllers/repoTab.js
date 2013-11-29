@@ -22,6 +22,9 @@ var mainSection = $.mainSection;
 var documentFolderService = null;
 var parentFolders = new Array();
 var allNodeTypes = true;
+var listingContext;
+var skipCount = 0;
+var hasMoreItems = false;
 
 
 Ti.App.addEventListener('cleartabs', function()
@@ -70,6 +73,16 @@ Ti.App.addEventListener('repopopulate', function()
 											    });
 																				
 			getFolder(Alloy.Globals.repositorySession);
+			
+			documentFolderService.addEventListener('pagingresult', function(e)
+			{
+				alert ("Total items = " + e.totalitems);
+				
+				hasMoreItems = e.hasmoreitems;
+				
+				if (hasMoreItems)
+					alert("There are more items available");
+			});
 		}			
 	}
 });
@@ -84,7 +97,11 @@ function getFolder(repoSesh)
 	{
 		$.folderLabel.text = " " + documentFolderService.getCurrentFolder().getName();
 		
-		documentFolderService.retrieveChildrenInFolder();
+		//listingContext = Alloy.Globals.SDKModule.createListingContext();
+		//listingContext.initialiseWithMaxItemsAndSkipCount(2, 0);
+		//documentFolderService.retrieveChildrenInFolderWithListingContext(listingContext);
+		
+		documentFolderService.retrieveChildrenInFolder(listingContext);
 		
 		Alloy.Globals.modelListeners(documentFolderService, mainSection);
 	});	

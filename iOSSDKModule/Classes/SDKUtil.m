@@ -88,7 +88,7 @@
 {
     NSDictionary *values = [NSDictionary dictionaryWithObjectsAndKeys:
                             [NSNumber numberWithBool:pagingResult.hasMoreItems], @"hasmoreitems",
-                            [NSNumber numberWithBool:pagingResult.totalItems], @"totalitems",
+                            [NSNumber numberWithInt:pagingResult.totalItems], @"totalitems",
                             nil];
     
     [proxyObj fireEvent:@"pagingresult" withObject:values];
