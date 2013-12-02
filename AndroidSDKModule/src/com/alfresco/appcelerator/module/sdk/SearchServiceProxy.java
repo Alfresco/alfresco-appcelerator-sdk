@@ -21,7 +21,6 @@ package com.alfresco.appcelerator.module.sdk;
 
 import java.util.List;
 
-import org.alfresco.mobile.android.api.model.ListingContext;
 import org.alfresco.mobile.android.api.model.Node;
 import org.alfresco.mobile.android.api.model.PagingResult;
 import org.alfresco.mobile.android.api.model.SearchLanguage;

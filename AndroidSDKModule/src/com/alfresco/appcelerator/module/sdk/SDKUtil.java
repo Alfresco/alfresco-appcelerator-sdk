@@ -17,7 +17,6 @@
  *  limitations under the License.
  *****************************************************************************
  */
-
 package com.alfresco.appcelerator.module.sdk;
 
 import java.lang.reflect.InvocationTargetException;

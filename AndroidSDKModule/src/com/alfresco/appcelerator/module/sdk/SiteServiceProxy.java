@@ -18,6 +18,7 @@
  *****************************************************************************
  */
 package com.alfresco.appcelerator.module.sdk;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,7 +29,6 @@ import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.util.Log;
-import org.appcelerator.titanium.util.TiConvert;
 
 
 @SuppressWarnings("deprecation")
@@ -210,8 +210,6 @@ public class SiteServiceProxy extends KrollProxy
 	{
 		final String siteName = (String)arg[0];
 		
-		Log.i("Alfresco", "Site name: " + siteName);
-		
 		new Thread()
     	{
     		@Override
@@ -234,7 +232,6 @@ public class SiteServiceProxy extends KrollProxy
     			try
     			{
     				folder = service.getDocumentLibrary (site);
-    				Log.i("Alfresco", "Site folder: " + folder.getName());
     			}
     			catch (Exception e)
     			{
