@@ -52,8 +52,6 @@
     NSNumber* maxItems = [args objectAtIndex:0];
     NSNumber* skipCount = [args objectAtIndex:1];
     
-    NSLog(@"[INFO] ** maxItems: %d, skipCount %d", maxItems.intValue, skipCount.intValue);
-    
     self.listingContext = [[AlfrescoListingContext alloc]initWithMaxItems:maxItems.intValue skipCount:skipCount.intValue];
 }
 
