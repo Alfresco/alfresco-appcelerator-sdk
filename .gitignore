@@ -21,8 +21,8 @@ AndroidSDKModule/dist/
 
 # iOSSDKModule (iOS)
 iOSSDKModule/build/
-iOSSDKModule/xcuserdata
-iOSSDKModule/*.xccheckout
+xcuserdata
+*.xccheckout
 iOSSDKModule/*.zip
 iOSSDKModule/ComAlfrescoAppceleratorModuleIosSdk.h
 iOSSDKModule/ComAlfrescoAppceleratorModuleIosSdk.m
