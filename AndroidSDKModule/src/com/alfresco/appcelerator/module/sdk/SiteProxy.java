@@ -41,12 +41,14 @@ public class SiteProxy extends KrollProxy
 	{
 		this.site = site;
 		
-		String nodeGetters[] = {"shortName", "title", "summary", "identifier", "GUID", "isMember", "isPendingMember", "isFavorite", "visibility"};    	
+		String nodeGetters[] = {"shortName", "title", "description", "identifier", "GUID", "isMember", "isPendingMember", "isFavorite", "visibility"};
+		String nodePropNames[] = {null, null, "summary", null, null, null, null, null, null}; //For where they differ from iOS property names.
+		
 		for (int i = 0;  i < nodeGetters.length;  i++)
 		{
 			Object value = SDKUtil.extractProperty(site, nodeGetters[i]);
 			if (value != null)
-				setProperty(nodeGetters[i], value);
+				setProperty(nodePropNames[i] != null ? nodePropNames[i] : nodeGetters[i], value);
 		}
 	}
 }

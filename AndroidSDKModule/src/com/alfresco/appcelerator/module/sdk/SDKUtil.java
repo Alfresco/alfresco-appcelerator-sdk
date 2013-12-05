@@ -162,6 +162,12 @@ public class SDKUtil
 					//Log.i("Alfresco", "Conversion of enum property");
 					retObj = ((Enum)retObj).ordinal();
 				}
+				else
+				if (retObj instanceof Boolean)
+				{
+					//To be consistent with iOS, use 1 and 0 rather than boolean.
+					retObj = ((Boolean)retObj == true) ? (Integer)1 : (Integer)0;
+				}
 			}
 			return retObj;
 		}
