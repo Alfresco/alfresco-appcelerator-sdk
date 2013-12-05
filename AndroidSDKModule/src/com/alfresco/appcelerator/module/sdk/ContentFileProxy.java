@@ -39,12 +39,14 @@ public class ContentFileProxy extends KrollProxy
 		super();
 	}
 	
+	
 	public ContentFileProxy(ContentFile file)
 	{
 		contentFile = file;
 		humanReadableName = file.getFileName();
 	}
 
+	
 	public ContentFileProxy(ContentFile file, String humanReadableName)
 	{
 		contentFile = file;
@@ -58,22 +60,26 @@ public class ContentFileProxy extends KrollProxy
 		return humanReadableName;
 	}
 	
+	
 	@Kroll.method
 	public String getMIMEType()
 	{
 		return contentFile.getMimeType();
 	}
 	
+	
 	@Kroll.method
 	public String getPath()
 	{
-		return contentFile.getFile().getPath();
+		//Appceleratorise the path...
+		return new String("file://localhost" + contentFile.getFile().getPath()).replace (" ", "%20");
 	}
+	
 	
 	@Kroll.method
 	public TiFileProxy getFile()
 	{
-		TiBaseFile tiFile = TiFileFactory.createTitaniumFile(new String[] { "file:/" + contentFile.getFile().getPath() }, false);		
+		TiBaseFile tiFile = TiFileFactory.createTitaniumFile(new String[] { getPath() }, false);		
 		return new TiFileProxy(tiFile);
 	}
 }

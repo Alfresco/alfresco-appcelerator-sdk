@@ -21,42 +21,27 @@
 package com.alfresco.appcelerator.module.sdk;
 
 import org.alfresco.mobile.android.api.model.Folder;
-import org.appcelerator.kroll.KrollProxy;
+import org.alfresco.mobile.android.api.model.Node;
 import org.appcelerator.kroll.annotations.Kroll;
-import com.alfresco.appcelerator.module.sdk.SDKUtil;
 
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class, 
  propertyAccessors = { "name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt"})
-public class FolderProxy extends KrollProxy
+public class FolderProxy extends NodeProxy
 {
-	private Folder folder = null;
- 	
 	public FolderProxy ()
 	{
 		super();
 	}
 	
-	public FolderProxy (Folder folder)
+	
+	public FolderProxy (Node node)
 	{
-		this.folder = folder;
-		
-		String nodeGetters[] = {"name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt"};    	
-		for (int i = 0;  i < nodeGetters.length;  i++)
-		{
-			Object value = SDKUtil.extractProperty(folder, nodeGetters[i]);
-			if (value != null)
-				setProperty(nodeGetters[i], value);
-		}
+		super (node);
 	}
+
 	
 	public Folder getFolder()
 	{
-		return folder;
-	}
-	
-	@Kroll.method
-	public String getName()
-	{
-		return folder.getName();
+		return (Folder)node;
 	}
 }

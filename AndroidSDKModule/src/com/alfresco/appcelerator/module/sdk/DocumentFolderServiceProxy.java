@@ -26,6 +26,7 @@ import java.util.List;
 import org.alfresco.mobile.android.api.model.ContentFile;
 import org.alfresco.mobile.android.api.model.Folder;
 import org.alfresco.mobile.android.api.model.Node;
+import org.alfresco.mobile.android.api.model.Permissions;
 import org.alfresco.mobile.android.api.services.DocumentFolderService;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
@@ -99,12 +100,9 @@ public class DocumentFolderServiceProxy extends KrollProxy
     			}
     			catch (Exception e)
     			{
-    				Log.e("Alfresco", "Error retrieving child nodes: " + e.getMessage());
+    				e.printStackTrace();
     				
-    				HashMap<String, Object> map = new HashMap<String, Object>();
-                    map.put("errorcode", TiConvert.toInt(1));
-                    map.put("errorstring", "Error calling DocumentFolderService.getChildren() in Alfresco SDK: " + e.getMessage());
-                    fireEvent("error", new KrollDict(map) );
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.getChildren()", DocumentFolderServiceProxy.this);
                     return;
     			}
     			
@@ -129,6 +127,31 @@ public class DocumentFolderServiceProxy extends KrollProxy
     }
     
  
+    /** Retrieve permissions of document or folder object
+    @param Document or Folder object
+    @since v1.0
+    */
+    @Kroll.method
+    void retrievePermissionsOfNode (Object[] arg)
+    {
+    	final NodeProxy nodeProxy = (NodeProxy)arg[0];
+    	
+    	new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			Permissions permissions = service.getPermissions (nodeProxy.node);
+    	        
+    			PermissionsProxy p = new PermissionsProxy(permissions);
+    	        HashMap<String, Object> map = new HashMap<String, Object>();
+    	        map.put("permissions", p);
+    	        fireEvent("retrievedpermissions", new KrollDict(map) );
+    		}
+    	}.start();
+    }
+
+   
     @Kroll.method
     void saveDocument (final Object args[])
     {
@@ -142,11 +165,8 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	        ContentFile file = service.getContent(arg.getDocument());
     	        if (!file.getFile().exists())
     	        {
-    	        	HashMap<String, Object> map = new HashMap<String, Object>();
-        	        map.put("errorcode", 1);
-        	        map.put("errorstring", "File does not exist");
-        	        fireEvent("error", new KrollDict(map) );
-        	        return;
+    	        	SDKUtil.createErrorEventWithCode (SDKUtil.ERROR_CODE_FILE_NOT_FOUND, "File does not exist", DocumentFolderServiceProxy.this);
+    	        	return;
     	        }
     	        
     	        HashMap<String, Object> map = new HashMap<String, Object>();

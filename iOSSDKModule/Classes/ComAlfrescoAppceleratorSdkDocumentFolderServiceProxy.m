@@ -138,6 +138,8 @@
 
     ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = arg;
     AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
+
+    NSLog(@"[INFO] ListingContext maxItems %d, skipCount %d", listingContext.maxItems, listingContext.skipCount);
     
     NSLog(@"[INFO] folder object in use: %@ (name: %@)", currentFolder, currentFolder.name);
     

@@ -109,14 +109,7 @@ Alloy.Globals.modelListeners = function(service, mainSection)
 		else
 		if (Ti.Platform.name == 'android')
 		{
-			//Move the file into the app's temporary folder, as it needs to be within the app's folders to be openable as an Intent.
-			//The new temporary file will get deleted as the app shuts down.
-			var file = Ti.Filesystem.getFile("file:/" + contentFile.getPath());
-			var newFile = Ti.Filesystem.getFile(Ti.Filesystem.tempDirectory, contentFile.getName());
-			newFile.write(file.read());
-			file.deleteFile();
-			
-			Ti.Android.currentActivity.startActivity(Ti.Android.createIntent( { action: Ti.Android.ACTION_VIEW, type: contentFile.getMIMEType(), data: newFile.getNativePath() } ));
+			Ti.Android.currentActivity.startActivity(Ti.Android.createIntent( { action: Ti.Android.ACTION_VIEW, type: contentFile.getMIMEType(), data: contentFile.getPath() } ));
 		}
 	});
 	
@@ -253,7 +246,7 @@ Alloy.Globals.recurseProperties = function recurseProperties (properties, proper
 			valueAsString += propertyValue;
 			
 			//Filter out JS internal properties
-			if (propertyName.toUpperCase().indexOf("BUBBLE") >= 0)	
+			if (propertyName.toUpperCase().indexOf("BUBBLE") >= 0  ||  propertyName.indexOf("_hasJavaListener") >= 0)	
 				continue;
 				
 			var subName;

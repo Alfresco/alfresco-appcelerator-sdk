@@ -18,6 +18,7 @@
  *****************************************************************************
  */
 package com.alfresco.appcelerator.module.sdk;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,7 +29,6 @@ import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.util.Log;
-import org.appcelerator.titanium.util.TiConvert;
 
 
 @SuppressWarnings("deprecation")
@@ -75,12 +75,7 @@ public class SiteServiceProxy extends KrollProxy
     			}
     			catch (Exception e)
     			{
-    				Log.e("Alfresco", "Error retrieving data: " + e.getMessage());
-    				
-    				HashMap<String, Object> map = new HashMap<String, Object>();
-                    map.put("errorcode", TiConvert.toInt(1));
-                    map.put("errorstring", "Error calling SiteService.getAllSites() in Alfresco SDK: " + e.getMessage());
-                    fireEvent("error", new KrollDict(map) );
+    				SDKUtil.createErrorEvent (e, "SiteService.getAllSites()", SiteServiceProxy.this);
                     return;
     			}
     			
@@ -117,12 +112,7 @@ public class SiteServiceProxy extends KrollProxy
     			}
     			catch (Exception e)
     			{
-    				Log.e("Alfresco", "Error retrieving data: " + e.getMessage());
-    				
-    				HashMap<String, Object> map = new HashMap<String, Object>();
-                    map.put("errorcode", TiConvert.toInt(1));
-                    map.put("errorstring", "Error calling SiteService.getSites() in Alfresco SDK: " + e.getMessage());
-                    fireEvent("error", new KrollDict(map) );
+    				SDKUtil.createErrorEvent (e, "SiteService.getSites()", SiteServiceProxy.this);
                     return;
     			}
     			
@@ -159,12 +149,7 @@ public class SiteServiceProxy extends KrollProxy
     			}
     			catch (Exception e)
     			{
-    				Log.e("Alfresco", "Error retrieving data: " + e.getMessage());
-    				
-    				HashMap<String, Object> map = new HashMap<String, Object>();
-                    map.put("errorcode", TiConvert.toInt(1));
-                    map.put("errorstring", "Error calling SiteService.getFavoriteSites() in Alfresco SDK: " + e.getMessage());
-                    fireEvent("error", new KrollDict(map) );
+    				SDKUtil.createErrorEvent (e, "SiteService.getFavoriteSites()", SiteServiceProxy.this);
                     return;
     			}
     			
@@ -204,13 +189,8 @@ public class SiteServiceProxy extends KrollProxy
     			}
     			catch (Exception e)
     			{
-    				Log.e("Alfresco", "Error retrieving data: " + e.getMessage());
-    				
-    				HashMap<String, Object> map = new HashMap<String, Object>();
-                    map.put("errorcode", TiConvert.toInt(1));
-                    map.put("errorstring", "Error calling SiteService.getSite() in Alfresco SDK: " + e.getMessage());
-                    fireEvent("error", new KrollDict(map) );
-                    return;
+    				SDKUtil.createErrorEvent (e, "SiteService.getSite()", SiteServiceProxy.this);
+    				return;
     			}
     			
     			createEventWithSite (site, "sitenode");
@@ -228,7 +208,7 @@ public class SiteServiceProxy extends KrollProxy
 	@Kroll.method
 	void retrieveDocumentLibraryFolderForSite (Object[] arg)
 	{
-		final SiteProxy siteProxy = (SiteProxy)arg[0];
+		final String siteName = (String)arg[0];
 		
 		new Thread()
     	{
@@ -236,23 +216,30 @@ public class SiteServiceProxy extends KrollProxy
     		public void run() 
     		{
     			Folder folder;
+    			Site site;
     			
     			try
     			{
-    				folder = service.getDocumentLibrary (siteProxy.site);
+    				site = service.getSite(siteName);
+    				Log.i("Alfresco", "Site name from object: " + site.getShortName());
     			}
-    			catch (Exception e)
+    			catch(Exception e)
     			{
-    				Log.e("Alfresco", "Error retrieving data: " + e.getMessage());
-    				
-    				HashMap<String, Object> map = new HashMap<String, Object>();
-                    map.put("errorcode", TiConvert.toInt(1));
-                    map.put("errorstring", "Error calling SiteService.getDocumentLibrary() in Alfresco SDK: " + e.getMessage());
-                    fireEvent("error", new KrollDict(map) );
+    				SDKUtil.createErrorEvent (e, "SiteService.getSite()", SiteServiceProxy.this);
                     return;
     			}
     			
-    			SDKUtil.createEventWithNode (folder, SiteServiceProxy.this);
+    			try
+    			{
+    				folder = service.getDocumentLibrary (site);
+    			}
+    			catch (Exception e)
+    			{
+    				SDKUtil.createErrorEvent (e, "SiteService.getDocumentLibrary()", SiteServiceProxy.this);
+                    return;
+    			}
+    			
+    			SDKUtil.createEventWithNode (folder, SiteServiceProxy.this, "retrievedDocumentFolder");
     			
     			super.run();
     		}

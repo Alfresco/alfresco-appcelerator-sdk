@@ -1,9 +1,10 @@
 "Window":{
-	backgroundColor: 'black',
+	backgroundColor: 'white',
 	navBarHidden:true,
 	fullscreen:true
 }, 
 "#propsList":{
+	backgroundColor: 'white',
 	top: 0, 
 	left: 0,
 	height: '45%' 

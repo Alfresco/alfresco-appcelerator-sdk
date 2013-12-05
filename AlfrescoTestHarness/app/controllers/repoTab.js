@@ -19,15 +19,21 @@
  */
 
 var mainSection = $.mainSection;
-var documentFolderService;
+var documentFolderService = null;
 var parentFolders = new Array();
 var allNodeTypes = true;
+var listingContext;
+var skipCount = 0;
+var hasMoreItems = false;
 
 
 Ti.App.addEventListener('cleartabs', function()
 {
-	parentFolders = new Array();
-	mainSection.deleteItemsAt(0, mainSection.getItems().length);
+	if (documentFolderService != null)
+	{
+		parentFolders = new Array();
+		mainSection.deleteItemsAt(0, mainSection.getItems().length);
+	}
 });
 
 function viewButtonChange()
@@ -39,7 +45,7 @@ Ti.App.addEventListener('repopopulate', function()
 {
 	if (Alloy.Globals.repositorySession != null)
 	{
-		if ($.mainSection.getItems().length == 0)
+		if (documentFolderService == null)
 		{ 
 			documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
 			documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
@@ -67,6 +73,16 @@ Ti.App.addEventListener('repopopulate', function()
 											    });
 																				
 			getFolder(Alloy.Globals.repositorySession);
+			
+			documentFolderService.addEventListener('pagingresult', function(e)
+			{
+				alert ("Total items = " + e.totalitems);
+				
+				hasMoreItems = e.hasmoreitems;
+				
+				if (hasMoreItems)
+					alert("There are more items available");
+			});
 		}			
 	}
 });
@@ -81,7 +97,11 @@ function getFolder(repoSesh)
 	{
 		$.folderLabel.text = " " + documentFolderService.getCurrentFolder().getName();
 		
-		documentFolderService.retrieveChildrenInFolder();
+		//listingContext = Alloy.Globals.SDKModule.createListingContext();
+		//listingContext.initialiseWithMaxItemsAndSkipCount(2, 0);
+		//documentFolderService.retrieveChildrenInFolderWithListingContext(listingContext);
+		
+		documentFolderService.retrieveChildrenInFolder(listingContext);
 		
 		Alloy.Globals.modelListeners(documentFolderService, mainSection);
 	});	

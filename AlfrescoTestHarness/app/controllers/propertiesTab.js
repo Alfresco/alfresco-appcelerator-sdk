@@ -32,15 +32,18 @@ var parentFolders = new Array();
 
 Ti.App.addEventListener('cleartabs', function()
 {
-	$.properties.deleteItemsAt(0,$.properties.getItems().length);
-	$.permissions.deleteItemsAt(0,$.permissions.getItems().length);
-	$.comments.deleteItemsAt(0,$.comments.getItems().length);
-	$.tags.deleteItemsAt(0,$.tags.getItems().length);
-	$.folderList.deleteItemsAt(0,$.folderList.getItems().length);
-	propertiesDataSet = [];
-	permissionsDataSet = [];	
-	commentsDataSet = [];
-	tagsDataSet = [];
+	if (Alloy.Globals.currentNode != null)
+	{
+		$.properties.deleteItemsAt(0,$.properties.getItems().length);
+		$.permissions.deleteItemsAt(0,$.permissions.getItems().length);
+		$.comments.deleteItemsAt(0,$.comments.getItems().length);
+		$.tags.deleteItemsAt(0,$.tags.getItems().length);
+		$.folderList.deleteItemsAt(0,$.folderList.getItems().length);
+		propertiesDataSet = [];
+		permissionsDataSet = [];	
+		commentsDataSet = [];
+		tagsDataSet = [];
+	}
 });
 
 
@@ -76,7 +79,7 @@ Ti.App.addEventListener('propspopulate',function()
 	  	 	propertiesDataSet.push({info: {text: name + ":"}, es_info: {text: value}, pic: {image: "default_entry_icon.png"}});
 	  	 	$.properties.appendItems(propertiesDataSet);
 	  	 	
-	  	 	if (name=='createdBy')
+	  	 	if (name == 'createdBy'  &&  value != 'System')
 	 		{
 	 			Ti.API.info("Person id: " + value);	  	 			
 	 			personService.retrievePersonWithIdentifier(value);

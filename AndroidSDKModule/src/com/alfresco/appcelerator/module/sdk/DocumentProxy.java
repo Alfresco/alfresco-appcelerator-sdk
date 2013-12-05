@@ -21,49 +21,30 @@
 package com.alfresco.appcelerator.module.sdk;
 
 import org.alfresco.mobile.android.api.model.Document;
-import org.appcelerator.kroll.KrollProxy;
+import org.alfresco.mobile.android.api.model.Node;
 import org.appcelerator.kroll.annotations.Kroll;
 
 
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class,
  propertyAccessors = {"name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt", 
 					  "contentMimeType", "contentLength", "versionLabel", "versionComment", "isLatestVersion"})
-public class DocumentProxy extends KrollProxy 
+public class DocumentProxy extends NodeProxy 
 {
-	private Document document;
-	
 	public DocumentProxy()
 	{
 		super();
 	}
 	
 	
-	public DocumentProxy(Document doc)
+	public DocumentProxy (Node node)
 	{
-		this.document = doc;
-		
-		String nodeGetters[] = {"name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt"};    	
-		String docGetters[] = {"contentStreamMimeType", "contentStreamLength", "versionLabel", "versionComment", "isLatestVersion"};
-		String docPropertyNames[] = {"contentMimeType", "contentLength", null, null, null};	//For where they differ from iOS property names.
-    	
-		for (int i = 0;  i < nodeGetters.length;  i++)
-		{
-			Object value = SDKUtil.extractProperty(doc, nodeGetters[i]);
-			if (value != null)
-				setProperty(nodeGetters[i], value);
-		}
-		for (int i = 0;  i < docGetters.length;  i++)
-		{
-			Object value = SDKUtil.extractProperty(doc, docGetters[i]);
-			if (value != null)
-				setProperty(docPropertyNames[i] != null ? docPropertyNames[i] : docGetters[i], value);
-		}
+		super (node);
 	}
 	
 	
 	Document getDocument()
 	{
-		return document;
+		return (Document)node;
 	}
 }
  

@@ -193,10 +193,14 @@
     {
         if (error != NULL)
         {
+             NSLog(@"[INFO] ** error");
+            
              [SDKUtil createErrorEvent:error proxyObject:self];
         }
         else
         {
+             NSLog(@"[INFO] ** search nodes: %d", pagingResult.objects.count);
+            
              for (int i = 0;  i < pagingResult.objects.count;  i++)
              {
                  [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
