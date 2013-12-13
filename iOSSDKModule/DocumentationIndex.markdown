@@ -28,7 +28,7 @@ There is also an Appcelerator project, 'AlfrescoUI' containing a basic HelloRepo
         {
             documentFolderService.retrieveChildrenInFolder();
             
-            documentFolderService.addEventListener('documentnode', function(e) { var doc = e.document; ... }
-            documentFolderService.addEventListener('foldernode', function(e) { var folder = e.folder; ... }
+            documentFolderService.addEventListener('documentnode', function(e) { var doc = e.document; --your code here-- } );
+            documentFolderService.addEventListener('foldernode', function(e) { var folder = e.folder; --your code here-- } );
         });
     });

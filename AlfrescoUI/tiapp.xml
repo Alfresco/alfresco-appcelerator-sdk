@@ -5,7 +5,7 @@
     <version>1.0</version>
     <publisher>Alfresco</publisher>
     <url>http://www.alfresco.com</url>
-    <description>A "Hello World" sample to demonstrate how to use the Alfresco modules.</description>
+    <description>A 'Hello World' sample to demonstrate how to use the Alfresco modules.</description>
     <copyright>2013 by Alfresco Software, Ltd.</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>

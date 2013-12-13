@@ -61,6 +61,42 @@
 }
 
 
+-(id)initialiseWithFile:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,NSString);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^(void)
+    {
+        NSURL* path = [[NSURL alloc]initWithString:arg];
+        
+        contentFile = [[AlfrescoContentFile alloc]initWithUrl:path];
+        humanReadableName = arg;
+        
+        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
+        [self fireEvent:@"initialisedFile" withObject:event];
+    });
+}
+
+
+-(id)initialiseWithPlainText:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,NSString);
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, (unsigned long)NULL), ^(void)
+    {
+        NSData *data = [arg dataUsingEncoding:NSUTF8StringEncoding];
+        
+        contentFile = [[AlfrescoContentFile alloc]initWithData:data mimeType:@"text/plain"];
+        humanReadableName = @"temp";
+        
+        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
+        [self fireEvent:@"initialisedFile" withObject:event];
+    });
+}
+
+
 -(id)getName:(id)args
 {
     return humanReadableName;

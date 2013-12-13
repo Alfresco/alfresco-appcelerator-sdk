@@ -33,6 +33,9 @@
  #Javascript object:#
  <code>ContentFile</code>
  
+ #Javascript events:#
+ * **'initialisedFile' - ** Sent upon successful file creation from initialiseWithFile and initialiseWithPlainText. ***Properties:*** *none*
+ 
 Describes a physical file object on internal storage.  Most commonly used for temporary files that are removed on app exit.
 */
 
@@ -44,6 +47,19 @@ Describes a physical file object on internal storage.  Most commonly used for te
 -(id)initWithContentFile:(AlfrescoContentFile *)cf;
 
 -(id)initWithContentFile:(AlfrescoContentFile *)cf name:(NSString*)name;
+
+
+/**
+ Initialise with the given file
+ */
+-(id)initialiseWithFile:(id)arg;
+
+
+/**
+ Initialise with the given string content
+ */
+-(id)initialiseWithPlainText:(id)arg;
+
 
 
 /**

@@ -45,7 +45,9 @@
 * **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
 * **'progresseddocument' - ** Sent during document retrieval progress.  ***Properties:*** *int total, int bytes*
 * **'retrieveddocument' - ** Sent when document retrieval complete.  ***Properties:*** *ContentFile contentfile*
- 
+* **'newdocumentnode' - ** Sent after creation of new document node.  ***Properties:*** Document *document*
+* **'newfoldernode' - ** Sent after creation of new folder node.  ***Properties:*** *Folder folder*
+
 #Javascript example:#
  
  
@@ -60,9 +62,9 @@
     documentFolderService.addEventListener('retrievedfolder', function(e)
     {
  
-        documentFolderService.addEventListener('documentnode', function(e) { var doc = e.document; ... }
+        documentFolderService.addEventListener('documentnode', function(e) { var doc = e.document; --your code here-- } );
    
-        documentFolderService.addEventListener('foldernode', function(e) { var folder = e.folder; ... }
+        documentFolderService.addEventListener('foldernode', function(e) { var folder = e.folder; --your code here-- } );
  
         documentFolderService.retrieveChildrenInFolder();
  
@@ -117,11 +119,28 @@
 -(id)getCurrentFolder:(id)noargs;
 
 
-/** Save document to storage
+/** Retrieve document content to storage (DEPRECATED - please use retrieveContentOfDocument)
  @param Document docObject
  @since v1.0
  */
 -(void)saveDocument:(id)arg;
+
+
+/** Retrieve document content to storage
+ @param Document docObject
+ @since v1.0.1
+ */
+-(void)retrieveContentOfDocument:(id)arg;
+
+
+/** Save document content to repo
+ @param String name
+ @param Folder parentFolder
+ @param ContentFile file
+ @param NodeProperties additionalProperties
+ @since v1.0.1
+ */
+-(void)createDocumentWithName:(id)arg;
 
 
 /** Retrieve permissions of document or folder object

@@ -168,9 +168,66 @@ Alloy.Globals.activitiesModelListener = function(service, section)
 	});
 };
 
+var createdFolder;
 
 Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument)
 {
+	service.addEventListener('newdocumentnode', function(e)
+	{
+		Alloy.Globals.currentNode = createdFolder;	 
+		Alloy.Globals.nodeJustProperties = false;
+		
+    	parentFolders.push(service.getCurrentFolder());     	
+        
+        view.mainSection.deleteItemsAt(0,view.mainSection.getItems().length);
+
+        var mainDataSet = [];
+  	 	var data = {info: {text: "Back"}, es_info: {text: "Previous folder"}, pic: {image: 'wm_back.png'},  properties: {folder: 2, name: null, folderobject: null} };		
+  	 	mainDataSet.push(data);
+  	 	view.mainSection.appendItems(mainDataSet);
+	  	 	 	
+	  	view.folderLabel.text = " " + createdFolder.getName();
+	  	
+	  	onFolder(createdFolder);
+	});
+	
+
+	var file = Alloy.Globals.SDKModule.createContentFile();
+	
+	file.addEventListener('initialisedFile', function(e)
+	{
+		service.createDocumentWithName('test.txt', createdFolder, file, {'cm:title' : 'test text file'});	
+	});
+	
+	
+	service.addEventListener('newfoldernode', function(e)
+	{
+		createdFolder = e.folder;
+		file.initialiseWithPlainText('The quick brown fox jumped over the lazy dog');	
+	});
+	
+	
+	view.folderList.addEventListener('doubletap', function(e)
+	{
+		var dlg = Titanium.UI.createAlertDialog({message:'What do you want to do?', buttonNames: ['Create new nodes','Delete this node', 'Cancel']});
+	  
+	  	dlg.addEventListener('click', function(ev)
+	  	{
+		    if (ev.index == 0)
+		    {
+				alert("Creating new folder and document...");
+				service.createFolderWithName('test folder', service.getCurrentFolder(), {'cm:title' : 'A new test folder'});       
+		    }
+		    else if (ev.index == 1)
+		    {
+		    	alert("Deleting this node...");
+			}
+		});
+	  
+		dlg.show();
+	});
+	
+	
 	view.folderList.addEventListener('itemclick', function(e)
 	{
 		var mainSection = e.section;

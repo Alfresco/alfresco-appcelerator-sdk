@@ -34,6 +34,7 @@
 #import "ComAlfrescoAppceleratorSdkContentFileProxy.h"
 #import "ComAlfrescoAppceleratorSdkListingContextProxy.h"
 #import "ComAlfrescoAppceleratorSdkPermissionsProxy.h"
+#import "ComAlfrescoAppceleratorSdkNodePropertiesProxy.h"
 
 #import "AlfrescoFolder.h"
 #import <objc/runtime.h>
@@ -491,7 +492,14 @@
 }
 
 
+//Deprecated in favour of retrieveContentOfDocument method.
 -(void)saveDocument:(id)arg
+{
+    [self retrieveContentOfDocument:arg];
+}
+
+
+-(void)retrieveContentOfDocument:(id)arg
 {
     ENSURE_UI_THREAD_1_ARG(arg)
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkDocumentProxy)
@@ -523,4 +531,103 @@
         }];
 }
 
+
+-(void)createDocumentWithName:(id)args
+{
+    NSString* name = [args objectAtIndex:0];
+    ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:1];
+    ComAlfrescoAppceleratorSdkContentFileProxy* fileProxy = [args objectAtIndex:2];
+    NSDictionary* nodeProperties = [args objectAtIndex:3];
+    
+    if (nodeProperties.count == 0)
+        nodeProperties = nil;
+    
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:(AlfrescoFolder*)[folderProxy performSelector:NSSelectorFromString(@"node")], @"folder", name, @"name", fileProxy.contentFile, @"contentfile", nodeProperties, @"properties", nil];
+
+    [self internalCreateDocumentWithName:internalParams];
+}
+
+
+-(void)internalCreateDocumentWithName:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,NSDictionary)
+    
+    [service createDocumentWithName:[arg objectForKey:@"name"] inParentFolder:[arg objectForKey:@"folder"] contentFile:[arg objectForKey:@"contentfile"] properties:[arg objectForKey:@"properties"]
+     completionBlock:^(AlfrescoDocument *document, NSError *error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+            [self createEventWithNewNode:document];
+         }
+     }
+     progressBlock:^(unsigned long long bytesTransferred, unsigned long long bytesTotal)
+     {
+         NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:   [NSNumber numberWithLongLong:bytesTransferred], @"bytes",
+                                [NSNumber numberWithLongLong:bytesTotal], @"total",
+                                nil];
+         [self fireEvent:@"progresseddocument" withObject:event];
+     }];
+}
+
+
+-(void)createFolderWithName:(id)args
+{
+    NSString* name = [args objectAtIndex:0];
+    ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:1];
+    NSDictionary* nodeProperties = [args objectAtIndex:2];
+    
+    if (nodeProperties.count == 0)
+        nodeProperties = nil;
+
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:(AlfrescoFolder*)[folderProxy performSelector:NSSelectorFromString(@"node")], @"folder", name, @"name", nodeProperties, @"properties", nil];
+    
+    [self internalCreateFolderWithName:internalParams];
+}
+
+
+-(void)internalCreateFolderWithName:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,NSDictionary)
+    
+    [service createFolderWithName:[arg objectForKey:@"name"] inParentFolder:[arg objectForKey:@"folder"] properties:[arg objectForKey:@"properties"] completionBlock:^(AlfrescoFolder *folder, NSError *error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [self createEventWithNewNode:folder];
+         }
+     }];
+}
+
+
+-(void)createEventWithNewNode:(AlfrescoNode*)node
+{
+    if (node.isFolder)
+    {
+        NSLog(@"[INFO] ** New Folder node: %@", node.name);
+        
+        ComAlfrescoAppceleratorSdkFolderProxy *thisFolder = [[ComAlfrescoAppceleratorSdkFolderProxy alloc] initWithNode:node];
+        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:thisFolder, @"folder", nil];
+        
+        [self fireEvent:@"newfoldernode" withObject:event];
+    }
+    else
+    {
+        NSLog(@"[INFO] ** New Document node: %@", node.name);
+        
+        ComAlfrescoAppceleratorSdkDocumentProxy *thisDocument = [[ComAlfrescoAppceleratorSdkDocumentProxy alloc] initWithNode:node];
+        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:thisDocument, @"document", nil];
+        
+        [self fireEvent:@"newdocumentnode" withObject:event];
+    }
+}
 @end
