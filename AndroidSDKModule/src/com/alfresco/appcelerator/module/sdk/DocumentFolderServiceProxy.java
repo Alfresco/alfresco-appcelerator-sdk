@@ -20,10 +20,13 @@
 
 package com.alfresco.appcelerator.module.sdk;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.alfresco.mobile.android.api.model.ContentFile;
+import org.alfresco.mobile.android.api.model.Document;
 import org.alfresco.mobile.android.api.model.Folder;
 import org.alfresco.mobile.android.api.model.Node;
 import org.alfresco.mobile.android.api.model.Permissions;
@@ -151,9 +154,17 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	}.start();
     }
 
-   
+
+    //Deprecated in favour of retrieveContentOfDocument method.
     @Kroll.method
-    void saveDocument (final Object args[])
+    void saveDocument(final Object arg[])
+    {
+        retrieveContentOfDocument(arg);
+    }
+
+
+    @Kroll.method
+    void retrieveContentOfDocument (final Object args[])
     {
     	new Thread()
     	{
@@ -172,6 +183,101 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	        HashMap<String, Object> map = new HashMap<String, Object>();
     	        map.put("contentfile", new ContentFileProxy(file, arg.getDocument().getName()));
     	        fireEvent("retrieveddocument", new KrollDict(map) );
+    		}
+    	}.start();
+    }
+    
+    
+    @Kroll.method
+    void createDocumentWithName (final Object args[])
+    {
+    	new Thread()
+    	{
+    		@SuppressWarnings({ "unchecked", "rawtypes" })
+			@Override
+    		public void run() 
+    		{
+    			String name = (String)args[0];
+    			FolderProxy folderProxy = (FolderProxy)args[1];
+			    ContentFileProxy fileProxy = (ContentFileProxy)args[2];
+			    //KrollDict nodeProperties = (KrollDict)args[3];			    
+			    Document doc;
+			    
+    			try
+    			{
+    				doc = service.createDocument (folderProxy.getFolder(), name, /*(Map)nodeProperties*/ new HashMap(), fileProxy.contentFile);  
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.createDocument()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    	        SDKUtil.createEventWithNode (doc, DocumentFolderServiceProxy.this, "newdocumentnode"); 
+    		}
+    	}.start();
+    }
+    
+    
+    @Kroll.method
+    void createFolderWithName (final Object args[])
+    {
+    	new Thread()
+    	{
+    		@SuppressWarnings({ "unchecked", "rawtypes" })
+			@Override
+    		public void run() 
+    		{
+    			String name = (String)args[0];
+    			FolderProxy folderProxy = (FolderProxy)args[1];
+			    //KrollDict nodeProperties = (KrollDict)args[3];			    
+			    Folder folder;
+			    
+    			try
+    			{
+    				folder = service.createFolder (folderProxy.getFolder(), name, new HashMap()); //, (Map)nodeProperties);  
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.createDocument()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    	        SDKUtil.createEventWithNode (folder, DocumentFolderServiceProxy.this, "newfoldernode"); 
+    		}
+    	}.start();
+    }
+    
+    
+    @Kroll.method
+    void deleteNode (final Object args[])
+    {
+    	new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			NodeProxy arg = (NodeProxy) args[0];
+    		     
+    			try
+    			{
+    				service.deleteNode(arg.node);
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.deleteNode()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    	        HashMap<String, Object> map = new HashMap<String, Object>();
+    	        map.put("code", 0);
+    	        fireEvent("deletednode", new KrollDict(map) );
     		}
     	}.start();
     }

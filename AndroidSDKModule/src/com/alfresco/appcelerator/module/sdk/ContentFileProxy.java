@@ -20,7 +20,16 @@
 
 package com.alfresco.appcelerator.module.sdk;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.alfresco.mobile.android.api.model.ContentFile;
+import org.alfresco.mobile.android.api.model.Folder;
+import org.alfresco.mobile.android.api.model.impl.ContentFileImpl;
+import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.TiFileProxy;
@@ -31,7 +40,7 @@ import org.appcelerator.titanium.io.TiFileFactory;
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class)
 public class ContentFileProxy extends KrollProxy 
 {
-	private ContentFile contentFile = null;
+	public ContentFile contentFile = null;
 	private String humanReadableName = null;
 	
 	public ContentFileProxy()
@@ -51,6 +60,71 @@ public class ContentFileProxy extends KrollProxy
 	{
 		contentFile = file;
 		this.humanReadableName = humanReadableName;
+	}
+	
+	
+	@Kroll.method
+	public void initialiseWithFile (final Object args[])
+	{
+		new Thread()
+    	{
+			@Override
+    		public void run() 
+    		{
+				try
+				{
+					File file = new File((String)args[0]);
+					contentFile = new ContentFileImpl (file);
+					humanReadableName = (String)args[0];
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "ContentFileProxy.initialiseWithFile()", ContentFileProxy.this);
+                    return;
+				}
+				
+				HashMap<String, Object> map = new HashMap<String, Object>();
+		        map.put ("code", 1);
+		        fireEvent ("initialisedfile", new KrollDict(map));
+    		}
+    	}.start();
+	}
+	
+	
+	@Kroll.method
+	public void initialiseWithPlainText (final Object args[])
+	{
+		new Thread()
+    	{
+			@Override
+    		public void run() 
+    		{
+				try
+				{
+					File file = File.createTempFile ("alfresco", "tmp");
+					
+					BufferedWriter writer = new BufferedWriter (new FileWriter(file));
+				    writer.write ((String)args[0]);
+				    writer.close();
+				    
+					contentFile = new ContentFileImpl (file, file.getPath(), "text/plain");
+					humanReadableName = "temp";
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "ContentFileProxy.initialiseWithPlainText()", ContentFileProxy.this);
+                    return;
+				}
+				
+				HashMap<String, Object> map = new HashMap<String, Object>();
+		        map.put ("code", 1);
+		        fireEvent ("initialisedfile", new KrollDict(map));
+    		}
+    	}.start();
 	}
 	
 	

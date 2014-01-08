@@ -169,26 +169,29 @@ Alloy.Globals.activitiesModelListener = function(service, section)
 };
 
 var createdFolder;
+var itemClicked;
 
 Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument)
 {
+	service.addEventListener('deletednode', function(e)
+	{
+		//Empty the list and add 'Back' item if we're not at root folder.
+	    itemClicked.section.deleteItemsAt(0,itemClicked.section.getItems().length);
+	    if (parentFolders.length > 0)
+	    {      
+	        var mainDataSet = [];
+	  	 	var data = {info: {text: "Back"}, es_info: {text: "Previous folder"}, pic: {image: 'wm_back.png'},  properties: {folder: 2, name: null, folderobject: null} };		
+	  	 	mainDataSet.push(data);
+	  	 	itemClicked.section.appendItems(mainDataSet);
+	  	}
+	  	
+		onFolder(service.getCurrentFolder());	
+	});
+	
+	
 	service.addEventListener('newdocumentnode', function(e)
 	{
-		Alloy.Globals.currentNode = createdFolder;	 
-		Alloy.Globals.nodeJustProperties = false;
-		
-    	parentFolders.push(service.getCurrentFolder());     	
-        
-        view.mainSection.deleteItemsAt(0,view.mainSection.getItems().length);
-
-        var mainDataSet = [];
-  	 	var data = {info: {text: "Back"}, es_info: {text: "Previous folder"}, pic: {image: 'wm_back.png'},  properties: {folder: 2, name: null, folderobject: null} };		
-  	 	mainDataSet.push(data);
-  	 	view.mainSection.appendItems(mainDataSet);
-	  	 	 	
-	  	view.folderLabel.text = " " + createdFolder.getName();
-	  	
-	  	onFolder(createdFolder);
+		viewNode(itemClicked);
 	});
 	
 
@@ -207,34 +210,69 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	});
 	
 	
-	view.folderList.addEventListener('doubletap', function(e)
-	{
-		var dlg = Titanium.UI.createAlertDialog({message:'What do you want to do?', buttonNames: ['Create new nodes','Delete this node', 'Cancel']});
-	  
-	  	dlg.addEventListener('click', function(ev)
-	  	{
-		    if (ev.index == 0)
-		    {
-				alert("Creating new folder and document...");
-				service.createFolderWithName('test folder', service.getCurrentFolder(), {'cm:title' : 'A new test folder'});       
-		    }
-		    else if (ev.index == 1)
-		    {
-		    	alert("Deleting this node...");
-			}
-		});
-	  
-		dlg.show();
-	});
-	
-	
 	view.folderList.addEventListener('itemclick', function(e)
 	{
 		var mainSection = e.section;
 	    var item = e.section.getItemAt(e.itemIndex);
 	    var name = item.properties.name;
+	    var isFolder = (item.properties.folder > 0);
+	    var node;
 	    
-	    if (item.properties.folder > 0)
+		itemClicked = e;
+	    
+	    if (isFolder)
+	    	node = item.properties.folderobject;
+		else
+			node = item.properties.docobject;
+			
+	    if (item.properties.folder == 2)	//'Up' folder item press.
+	    {
+	    	viewNode(e);
+	    }
+	    else
+	    {
+		    var dlg;
+		    
+		    if (isFolder)
+		    	dlg = Titanium.UI.createAlertDialog({message:'What do you want to do?', buttonNames: ['View contents','Delete contents', 'Create nodes in folder', 'Cancel']});
+		    else
+		    	dlg = Titanium.UI.createAlertDialog({message:'What do you want to do?', buttonNames: ['View document', 'Delete document', 'Cancel']});
+		  
+		  	dlg.addEventListener('click', function(ev)
+		  	{
+		  		if (ev.index == 0)
+		  		{
+		  			viewNode(e);
+				}
+				else
+				if (ev.index == 1)
+			    {
+			    	alert("Deleting this node...");
+			    	service.deleteNode(node);
+				}
+				else
+				if (ev.index == 2 && isFolder)
+			    {
+			    	var foldername = 'New ' + (new Date()).getTime();
+			    	
+					alert("Creating new folder '" + foldername + "' and document...");
+					
+					service.createFolderWithName(foldername, item.properties.folderobject, {'cm:title' : 'A new test folder'});       
+			    }
+			});
+		  
+			dlg.show();
+		}
+	});    
+	
+	
+	function viewNode(e)
+	{
+		var mainSection = e.section;
+	    var item = e.section.getItemAt(e.itemIndex);
+	    var name = item.properties.name;
+	    
+		if (item.properties.folder > 0)
 		{
 	        var folder;
 	        if (item.properties.folder == 2)	//'Up' folder item press.
@@ -271,11 +309,12 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	    	
 	    	Alloy.Globals.currentNode = doc;
 	    	Alloy.Globals.nodeJustProperties = false;
-    		
+			
 	    	onDocument(doc);	    	
 	   	}
-	});
+	}
 };
+
 
 Alloy.Globals.recursePropertiesAndAlert = function recurseProperties (title, properties)
 {

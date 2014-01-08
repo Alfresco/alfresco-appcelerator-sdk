@@ -34,7 +34,6 @@
 #import "ComAlfrescoAppceleratorSdkContentFileProxy.h"
 #import "ComAlfrescoAppceleratorSdkListingContextProxy.h"
 #import "ComAlfrescoAppceleratorSdkPermissionsProxy.h"
-#import "ComAlfrescoAppceleratorSdkNodePropertiesProxy.h"
 
 #import "AlfrescoFolder.h"
 #import <objc/runtime.h>
@@ -629,5 +628,29 @@
         
         [self fireEvent:@"newdocumentnode" withObject:event];
     }
+}
+
+-(void)deleteNode:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkNodeProxy)
+
+    ComAlfrescoAppceleratorSdkNodeProxy* nodeProxy = arg;
+
+    [service deleteNode:[nodeProxy performSelector:NSSelectorFromString(@"node")]
+    completionBlock:^(BOOL succeeded, NSError *error)
+     {
+         if (succeeded)
+         {
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
+             [self fireEvent:@"deletednode" withObject:event];
+         }
+         else
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+     }];
+
 }
 @end
