@@ -3,7 +3,6 @@
 	<Window>
 		
 		<Label id="folderLabel">
-		<Switch id="viewButton" onChange="viewButtonChange">
 				
 		<ListView id="folderList" defaultItemTemplate="repoTemplate">
 				

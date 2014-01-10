@@ -200,12 +200,12 @@ public class DocumentFolderServiceProxy extends KrollProxy
     			String name = (String)args[0];
     			FolderProxy folderProxy = (FolderProxy)args[1];
 			    ContentFileProxy fileProxy = (ContentFileProxy)args[2];
-			    //KrollDict nodeProperties = (KrollDict)args[3];			    
+			    HashMap<String,Serializable> nodeProperties = (HashMap<String,Serializable>)args[3];			    
 			    Document doc;
 			    
     			try
     			{
-    				doc = service.createDocument (folderProxy.getFolder(), name, /*(Map)nodeProperties*/ new HashMap(), fileProxy.contentFile);  
+    				doc = service.createDocument (folderProxy.getFolder(), name, nodeProperties, fileProxy.contentFile);  
     			}
     			catch (Exception e)
     			{
@@ -232,12 +232,12 @@ public class DocumentFolderServiceProxy extends KrollProxy
     		{
     			String name = (String)args[0];
     			FolderProxy folderProxy = (FolderProxy)args[1];
-			    //KrollDict nodeProperties = (KrollDict)args[3];			    
+    			HashMap<String,Serializable> nodeProperties = (HashMap<String,Serializable>)args[2];		    
 			    Folder folder;
 			    
     			try
     			{
-    				folder = service.createFolder (folderProxy.getFolder(), name, new HashMap()); //, (Map)nodeProperties);  
+    				folder = service.createFolder (folderProxy.getFolder(), name, nodeProperties);  
     			}
     			catch (Exception e)
     			{

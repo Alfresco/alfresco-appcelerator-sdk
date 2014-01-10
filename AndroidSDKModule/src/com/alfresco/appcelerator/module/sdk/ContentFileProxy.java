@@ -32,6 +32,7 @@ import org.alfresco.mobile.android.api.model.impl.ContentFileImpl;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
+import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.TiFileProxy;
 import org.appcelerator.titanium.io.TiBaseFile;
 import org.appcelerator.titanium.io.TiFileFactory;
@@ -103,10 +104,12 @@ public class ContentFileProxy extends KrollProxy
     		{
 				try
 				{
-					File file = File.createTempFile ("alfresco", "tmp");
+					TiApplication appContext = TiApplication.getInstance();
+					File file = File.createTempFile ("alfresco", "tmp", appContext.getCacheDir());
 					
 					BufferedWriter writer = new BufferedWriter (new FileWriter(file));
 				    writer.write ((String)args[0]);
+				    writer.flush();
 				    writer.close();
 				    
 					contentFile = new ContentFileImpl (file, file.getPath(), "text/plain");

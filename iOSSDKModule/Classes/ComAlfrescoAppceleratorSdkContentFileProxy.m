@@ -74,7 +74,7 @@
         humanReadableName = arg;
         
         NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
-        [self fireEvent:@"initialisedFile" withObject:event];
+        [self fireEvent:@"initialisedfile" withObject:event];
     });
 }
 
@@ -92,7 +92,7 @@
         humanReadableName = @"temp";
         
         NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
-        [self fireEvent:@"initialisedFile" withObject:event];
+        [self fireEvent:@"initialisedfile" withObject:event];
     });
 }
 

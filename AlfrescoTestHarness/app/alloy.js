@@ -197,7 +197,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 
 	var file = Alloy.Globals.SDKModule.createContentFile();
 	
-	file.addEventListener('initialisedFile', function(e)
+	file.addEventListener('initialisedfile', function(e)
 	{
 		service.createDocumentWithName('test.txt', createdFolder, file, {'cm:title' : 'test text file'});	
 	});
