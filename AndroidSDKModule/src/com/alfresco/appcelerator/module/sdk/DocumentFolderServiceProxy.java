@@ -130,10 +130,6 @@ public class DocumentFolderServiceProxy extends KrollProxy
     }
     
  
-    /** Retrieve permissions of document or folder object
-    @param Document or Folder object
-    @since v1.0
-    */
     @Kroll.method
     void retrievePermissionsOfNode (Object[] arg)
     {

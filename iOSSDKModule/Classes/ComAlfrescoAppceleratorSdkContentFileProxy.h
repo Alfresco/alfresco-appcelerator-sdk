@@ -34,7 +34,7 @@
  <code>ContentFile</code>
  
  #Javascript events:#
- * **'initialisedFile' - ** Sent upon successful file creation from initialiseWithFile and initialiseWithPlainText. ***Properties:*** *none*
+ * **'initialisedfile' - ** Sent upon successful file creation from initialiseWithFile and initialiseWithPlainText. ***Properties:*** *none*
  
 Describes a physical file object on internal storage.  Most commonly used for temporary files that are removed on app exit.
 */
@@ -51,12 +51,14 @@ Describes a physical file object on internal storage.  Most commonly used for te
 
 /**
  Initialise with the given file
+ @since v1.1
  */
 -(id)initialiseWithFile:(id)arg;
 
 
 /**
  Initialise with the given string content
+  @since v1.1
  */
 -(id)initialiseWithPlainText:(id)arg;
 

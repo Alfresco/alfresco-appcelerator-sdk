@@ -128,7 +128,7 @@
 
 /** Retrieve document content to storage
  @param Document docObject
- @since v1.0.1
+ @since v1.1
  */
 -(void)retrieveContentOfDocument:(id)arg;
 
@@ -138,7 +138,7 @@
  @param Folder parentFolder
  @param ContentFile file
  @param NodeProperties additionalProperties
- @since v1.0.1
+ @since v1.1
  */
 -(void)createDocumentWithName:(id)arg;
 
@@ -219,7 +219,7 @@
 
 /** Delete node
  @param Node folder or document object
- @since v1.0.1
+ @since v1.1
  */
 -(void)deleteNode:(id)arg;
 
