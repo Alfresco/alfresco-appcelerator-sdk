@@ -13,9 +13,13 @@ More information about Alfresco's various Mobile offerings is on our [website](h
 There are four projects within this repository. Two binary modules that you import into Appcelerator Titanium in order to access the Alfresco SDKs from your projects (`iOSSDKModule` and the `AndroidSDKModule`) and also two sample projects you can refer to to see how to call into the SDK modules (`AlfrescoUI` and `AlfrescoTestHarness`).
 
 ### AlfrescoUI
+**Important**  When running this sample app on Android platforms, **Appcelerator Titanium v3.2.0** or newer must be used due to known issues with list view classes in v3.1.3 and earlier.
+
 This is a basic "Hello Repo" example of calling the Android and iOS Modules to navigate an Alfresco repository, using standard Titanium.
 
 ### AlfrescoTestHarness
+**Important**  When running this sample app on Android platforms, **Appcelerator Titanium v3.2.0** or newer must be used due to known issues with list view classes in v3.1.3 and earlier.
+
 This project utilises the Alloy UI framework in order to refine the design (MVC architecture) and aid in the addition of future API tests.
 It is intended that this project will contain tests / example calls for most of the Alfresco API's currently implemented.
 
