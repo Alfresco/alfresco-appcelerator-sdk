@@ -66,8 +66,9 @@ Alloy.Globals.modelListeners = function(service, mainSection)
 	  	 		icon="mime_img.png";
 	  	}
 	  	 		
+	  	var version = doc.versionLabel;  	 		
   	 	var modified = new String + doc.modifiedAt;
-  	 	modified = modified.substr(0,21);
+  	 	modified = modified.substr(0,21) + ", Version: " + doc.versionLabel;
   	 	
   	 	var truncText = doc.name;
   	 	var len  = truncText.length;
@@ -234,9 +235,9 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 		    var dlg;
 		    
 		    if (isFolder)
-		    	dlg = Titanium.UI.createAlertDialog({message:'What do you want to do?', buttonNames: ['View contents','Delete contents', 'Create nodes in folder', 'Cancel']});
+		    	dlg = Titanium.UI.createAlertDialog({message:'Folder Actions', buttonNames: ['View contents','Delete contents', 'Create nodes in folder', 'Cancel']});
 		    else
-		    	dlg = Titanium.UI.createAlertDialog({message:'What do you want to do?', buttonNames: ['View document', 'Delete document', 'Cancel']});
+		    	dlg = Titanium.UI.createAlertDialog({message:'Document Actions', buttonNames: ['View document', 'Delete document', 'Cancel']});
 		  
 		  	dlg.addEventListener('click', function(ev)
 		  	{

@@ -15,6 +15,7 @@
 	height: '25dp'
 },
 "#folderList":{
+	backgroundColor: 'white',
 	top: '40dp', 
 	left: 0 
 }, 

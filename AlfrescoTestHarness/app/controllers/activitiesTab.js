@@ -31,23 +31,27 @@ Ti.App.addEventListener('activitiespopulate',function()
 {	
 	if (Alloy.Globals.AlfrescoSDKVersion >= 1.0)
 	{
-		if (Alloy.Globals.repositorySession != null  &&  activityService == null)
+		if (Alloy.Globals.repositorySession != null)
 		{
-			activityService = Alloy.Globals.SDKModule.createActivityService();
-			activityService.addEventListener('error', function(e) { alert(e.errorstring); });
-			
-			activityService.initialiseWithSession(Alloy.Globals.repositorySession);
-			
-			activityService.retrieveActivityStream();
-			Alloy.Globals.activitiesModelListener(activityService, $.activities);
-					
-			$.activityList.addEventListener('itemclick', function(e)
+			if (activityService == null)
 			{
-				var item = e.section.getItemAt(e.itemIndex);
+				activityService = Alloy.Globals.SDKModule.createActivityService();
+				activityService.addEventListener('error', function(e) { alert(e.errorstring); });
+			
+				activityService.initialiseWithSession(Alloy.Globals.repositorySession);
 				
-				Alloy.Globals.currentNode = item.properties;
-	    		Alloy.Globals.nodeJustProperties = true;
-			});
+				Alloy.Globals.activitiesModelListener(activityService, $.activities);
+				
+				$.activityList.addEventListener('itemclick', function(e)
+				{
+					var item = e.section.getItemAt(e.itemIndex);
+					
+					Alloy.Globals.currentNode = item.properties;
+		    		Alloy.Globals.nodeJustProperties = true;
+				});
+			}
+						
+			activityService.retrieveActivityStream();
 		}
 	}
 }); 

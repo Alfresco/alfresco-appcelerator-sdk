@@ -31,6 +31,7 @@
 	width:Ti.UI.FILL
 },
 "#folderList":{
+	backgroundColor: 'white',
 	top: 0, 
 	left: 0 
 }, 

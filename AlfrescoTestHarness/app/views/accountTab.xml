@@ -4,7 +4,7 @@
 
 	<ScrollView id="scroller">
 		
-		<ImageView id="logoImage"/>
+		<ImageView id="logoImage" platform='ios'/>
 				
 		<Label id="serverLabel">
 		<TextField id="serverEdit">
