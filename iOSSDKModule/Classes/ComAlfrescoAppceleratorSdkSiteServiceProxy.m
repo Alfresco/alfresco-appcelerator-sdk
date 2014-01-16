@@ -30,6 +30,7 @@
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 #import "ComAlfrescoAppceleratorSdkSiteProxy.h"
 #import "ComAlfrescoAppceleratorSdkFolderProxy.h"
+#import "ComAlfrescoAppceleratorSdkListingContextProxy.h"
 #import "SDKUtil.h"
 
 #import "AlfrescoFolder.h"
@@ -182,5 +183,157 @@
 {
     [service clear];
 }
+
+
+-(void)addFavoriteSite:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSiteProxy)
+    
+    [service addFavoriteSite:[arg performSelector:NSSelectorFromString(@"currentSite")]
+     completionBlock:^(AlfrescoSite* site, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [self createEventWithSite:site context:@"siteupdated"];
+         }
+     }];
+}
+
+
+-(void)removeFavoriteSite:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSiteProxy)
+    
+    [service removeFavoriteSite:[arg performSelector:NSSelectorFromString(@"currentSite")]
+     completionBlock:^(AlfrescoSite* site, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [self createEventWithSite:site context:@"siteupdated"];
+         }
+     }];
+}
+
+
+-(void)joinSite:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSiteProxy)
+    
+    [service joinSite:[arg performSelector:NSSelectorFromString(@"currentSite")]
+     completionBlock:^(AlfrescoSite* site, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [self createEventWithSite:site context:@"siteupdated"];
+         }
+     }];
+}
+
+
+-(void)retrievePendingSites:(id)noargs
+{
+    ENSURE_UI_THREAD_0_ARGS
+    
+    [service retrievePendingSitesWithCompletionBlock:
+     ^(NSArray* sites, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < sites.count;  i++)
+             {
+                 [self createEventWithSite:sites[i] context:@"retrievedpendingsite"];
+             }
+             
+             [SDKUtil createEnumerationEndEvent:self];
+         }
+     }];
+}
+
+
+-(void)retrievePendingSitesWithListingContext:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkListingContextProxy)
+    
+    [service retrievePendingSitesWithListingContext:((ComAlfrescoAppceleratorSdkListingContextProxy*)arg).listingContext
+     completionblock:^(AlfrescoPagingResult* results, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < results.objects.count;  i++)
+             {
+                 [self createEventWithSite:results.objects[i] context:@"retrievedpendingsite"];
+             }
+             
+             [SDKUtil createEnumerationEndEvent:self];
+             
+             [SDKUtil createEventWithPagingResult:results proxyObject:self];
+         }
+     }];
+}
+
+
+-(void)cancelPendingJoinRequestForSite:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSiteProxy)
+    
+    [service cancelPendingJoinRequestForSite:[arg performSelector:NSSelectorFromString(@"currentSite")]
+      completionBlock:^(AlfrescoSite* site, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [self createEventWithSite:site context:@"siteupdated"];
+         }
+     }];
+}
+
+
+-(void)leaveSite:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSiteProxy)
+    
+    [service leaveSite:[arg performSelector:NSSelectorFromString(@"currentSite")]
+     completionBlock:^(AlfrescoSite* site, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [self createEventWithSite:site context:@"siteupdated"];
+         }
+     }];
+}
+
 
 @end

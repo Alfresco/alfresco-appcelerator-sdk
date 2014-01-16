@@ -25,7 +25,9 @@ if (Titanium.Platform.model == 'google_sdk' ||  Titanium.Platform.model == 'Simu
 	$.serverEdit.value = "http://localhost:8080/alfresco";		//Running on Simulator/Emulator. Assume local server on the PC/Mac.
 else
 	$.serverEdit.value = "http://192.168.1.91:8080/alfresco";	//Running on-device. NOTE: Change to your servers IP address!	
-																//$.serverEdit.value = "http://192.168.1.91:8080/alfresco";
+																//Examples:
+																//  https://ts.alfresco.com/alfresco
+																//  http://192.168.1.91:8080/alfresco
 //---------------------------------------------------------------------------------------------------------------------------------
 
 
