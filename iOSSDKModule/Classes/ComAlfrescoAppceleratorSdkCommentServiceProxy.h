@@ -69,4 +69,30 @@
  */
 -(void)retrieveCommentsForNodeWithListingContext:(id)args;
 
+
+/** Adds a comment to a node.
+ @param The node to which a comments will be added.
+ @param The comment content.
+ @param The comment title.
+ @since v1.1
+ */
+-(void)addCommentToNode:(id)args;
+
+
+/** Updates a comment.
+ @param The node of the comment to be updated.
+ @param The Comment of the node to be updated
+ @param The new comment content.
+ @since v1.1
+*/
+-(void)updateCommentOnNode:(id)args;
+
+
+/** Deletes a comment.
+ @param The node of the comment to be deleted
+ @param The comment that needs to be deleted.
+ @since v1.1
+*/
+-(void)deleteCommentFromNode:(id)args;
+
 @end

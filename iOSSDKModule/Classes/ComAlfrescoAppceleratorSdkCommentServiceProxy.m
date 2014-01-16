@@ -92,4 +92,76 @@
     
 }
 
+
+-(void)createEventWithComment:(AlfrescoComment*)comment
+{
+    ComAlfrescoAppceleratorSdkCommentProxy* commentProxy = [[ComAlfrescoAppceleratorSdkCommentProxy alloc]initWithComment:comment];
+    
+    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:commentProxy, @"comment", nil];
+    
+    [self fireEvent:@"commentupdated" withObject:event];
+}
+
+
+-(void)addCommentToNode:(id)args
+{
+    ENSURE_UI_THREAD_1_ARG(args)
+    
+    [service addCommentToNode:[args[0] performSelector:NSSelectorFromString(@"node")] content:args[1] title:args[2]
+     completionBlock:^(AlfrescoComment* comment, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [self createEventWithComment:comment];
+         }
+     }];
+}
+
+
+-(void)updateCommentOnNode:(id)args
+{
+    ENSURE_UI_THREAD_1_ARG(args)
+    
+    [service updateCommentOnNode:[args[0] performSelector:NSSelectorFromString(@"node")]
+     comment:[args[1] performSelector:NSSelectorFromString(@"comment")] content:args[2]
+     completionBlock:^(AlfrescoComment* comment, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             [self createEventWithComment:comment];
+         }
+     }];
+}
+
+
+-(void)deleteCommentFromNode:(id)args
+{
+    ENSURE_UI_THREAD_1_ARG(args)
+    
+    [service deleteCommentFromNode:[args[0] performSelector:NSSelectorFromString(@"node")]
+     comment:[args[1] performSelector:NSSelectorFromString(@"comment")]
+     completionBlock:^(BOOL succeeded, NSError* error)
+     {
+         if (succeeded)
+         {
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
+             [self fireEvent:@"deletedcomment" withObject:event];
+         }
+         else
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+     }];
+}
+
+
 @end
