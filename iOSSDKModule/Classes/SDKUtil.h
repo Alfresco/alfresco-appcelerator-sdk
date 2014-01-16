@@ -31,7 +31,6 @@
 #import "AlfrescoNode.h"
 #import "AlfrescoPagingResult.h"
 
-
 @interface SDKUtil : NSObject
 
 +createEnumerationEndEvent:(TiProxy*)proxyObj;

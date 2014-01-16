@@ -100,6 +100,65 @@
 -(void)clearSitesCache:(id)noargs;
 
 
+/**
+ Marks a site as favorite and adds it to the favorite list
+ @param The site object to be added to favorites
+ @since v1.1
+ */
+-(void)addFavoriteSite:(id)arg;
+
+
+/**
+ Unmarks a site as favorite and removes it from the favorite list
+ @param The site to be added to favorites
+ @since v1.1
+ */
+-(void)removeFavoriteSite:(id)arg;
+
+
+/**
+ Creates a request to join a site. Please, note, this method works for both joining public and joining moderated sites.
+ For public sites, the same AlfrescoSite object will be returned.
+ For moderated sites, an updated AlfrescoSite object will be returned - with pending flag set to YES.
+ @param The site to join.
+ @since v1.1
+ */
+-(void)joinSite:(id)arg;
+
+
+/**
+ Retrieves a list of sites for which a join request is pending
+ @since v1.1
+ */
+-(void)retrievePendingSites:(id)noargs;
+
+
+/**
+ Retrieves a list of pending join request sites with a specified listing context
+ @param listing context
+ @since v1.1
+ */
+-(void)retrievePendingSitesWithListingContext:(id)arg;
+
+
+/**
+ Cancels a join request for a specified site
+ @param The pending site for which the join request is to be cancelled
+ @since v1.1
+ */
+-(void)cancelPendingJoinRequestForSite:(id)arg;
+
+
+/**
+ Leave a site
+ @param site
+ @since v1.1
+ */
+-(void)leaveSite:(id)arg;
+
+
+
+
 
 //Internal
 -(void)createEventWithSite:(AlfrescoSite*)site context:(NSString*)context;

@@ -26,7 +26,7 @@ import org.appcelerator.kroll.annotations.Kroll;
 import com.alfresco.appcelerator.module.sdk.SDKUtil;
 
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class, 
- propertyAccessors = { "name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt",
+ propertyAccessors = { "name", "title", "summary", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt", "isFolder", "isDocument",
 					   "contentMimeType", "contentLength", "versionLabel", "versionComment", "isLatestVersion"})
 public class NodeProxy extends KrollProxy
 {
@@ -41,8 +41,8 @@ public class NodeProxy extends KrollProxy
 	{
 		this.node = node;
 		
-		String nodeGetters[] =   {"name", "title", "description", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt"};  
-		String nodePropNames[] = {null, null, "summary", null, null, null, null, null}; //For where they differ from iOS property names.
+		String nodeGetters[] =   {"name", "title", "description", "type", "createdBy", "createdAt", "modifiedBy", "modifiedAt", "isFolder", "isDocument"};  
+		String nodePropNames[] = {null, null, "summary", null, null, null, null, null, null, null}; //For where they differ from iOS property names.
 		
 		String docGetters[] =   {"contentStreamMimeType", "contentStreamLength", "versionLabel", "versionComment", "isLatestVersion"};
 		String docPropNames[] = {"contentMimeType", "contentLength", null, null, null};	//For where they differ from iOS property names.

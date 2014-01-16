@@ -66,8 +66,9 @@ Alloy.Globals.modelListeners = function(service, mainSection)
 	  	 		icon="mime_img.png";
 	  	}
 	  	 		
+	  	var version = doc.versionLabel;  	 		
   	 	var modified = new String + doc.modifiedAt;
-  	 	modified = modified.substr(0,21);
+  	 	modified = modified.substr(0,21) + ", Version: " + doc.versionLabel;
   	 	
   	 	var truncText = doc.name;
   	 	var len  = truncText.length;
@@ -168,16 +169,111 @@ Alloy.Globals.activitiesModelListener = function(service, section)
 	});
 };
 
+var createdFolder;
+var itemClicked;
 
 Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument)
 {
+	service.addEventListener('deletednode', function(e)
+	{
+		//Empty the list and add 'Back' item if we're not at root folder.
+	    itemClicked.section.deleteItemsAt(0,itemClicked.section.getItems().length);
+	    if (parentFolders.length > 0)
+	    {      
+	        var mainDataSet = [];
+	  	 	var data = {info: {text: "Back"}, es_info: {text: "Previous folder"}, pic: {image: 'wm_back.png'},  properties: {folder: 2, name: null, folderobject: null} };		
+	  	 	mainDataSet.push(data);
+	  	 	itemClicked.section.appendItems(mainDataSet);
+	  	}
+	  	
+		onFolder(service.getCurrentFolder());	
+	});
+	
+	
+	service.addEventListener('newdocumentnode', function(e)
+	{
+		viewNode(itemClicked);
+	});
+	
+
+	var file = Alloy.Globals.SDKModule.createContentFile();
+	
+	file.addEventListener('initialisedfile', function(e)
+	{
+		service.createDocumentWithName('test.txt', createdFolder, file, {'cm:title' : 'test text file'});	
+	});
+	
+	
+	service.addEventListener('newfoldernode', function(e)
+	{
+		createdFolder = e.folder;
+		file.initialiseWithPlainText('The quick brown fox jumped over the lazy dog');	
+	});
+	
+	
 	view.folderList.addEventListener('itemclick', function(e)
 	{
 		var mainSection = e.section;
 	    var item = e.section.getItemAt(e.itemIndex);
 	    var name = item.properties.name;
+	    var isFolder = (item.properties.folder > 0);
+	    var node;
 	    
-	    if (item.properties.folder > 0)
+		itemClicked = e;
+	    
+	    if (isFolder)
+	    	node = item.properties.folderobject;
+		else
+			node = item.properties.docobject;
+			
+	    if (item.properties.folder == 2)	//'Up' folder item press.
+	    {
+	    	viewNode(e);
+	    }
+	    else
+	    {
+		    var dlg;
+		    
+		    if (isFolder)
+		    	dlg = Titanium.UI.createAlertDialog({message:'Folder Actions', buttonNames: ['View contents','Delete contents', 'Create nodes in folder', 'Cancel']});
+		    else
+		    	dlg = Titanium.UI.createAlertDialog({message:'Document Actions', buttonNames: ['View document', 'Delete document', 'Cancel']});
+		  
+		  	dlg.addEventListener('click', function(ev)
+		  	{
+		  		if (ev.index == 0)
+		  		{
+		  			viewNode(e);
+				}
+				else
+				if (ev.index == 1)
+			    {
+			    	alert("Deleting this node...");
+			    	service.deleteNode(node);
+				}
+				else
+				if (ev.index == 2 && isFolder)
+			    {
+			    	var foldername = 'New ' + (new Date()).getTime();
+			    	
+					alert("Creating new folder '" + foldername + "' and document...");
+					
+					service.createFolderWithName(foldername, item.properties.folderobject, {'cm:title' : 'A new test folder'});       
+			    }
+			});
+		  
+			dlg.show();
+		}
+	});    
+	
+	
+	function viewNode(e)
+	{
+		var mainSection = e.section;
+	    var item = e.section.getItemAt(e.itemIndex);
+	    var name = item.properties.name;
+	    
+		if (item.properties.folder > 0)
 		{
 	        var folder;
 	        if (item.properties.folder == 2)	//'Up' folder item press.
@@ -214,11 +310,12 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	    	
 	    	Alloy.Globals.currentNode = doc;
 	    	Alloy.Globals.nodeJustProperties = false;
-    		
+			
 	    	onDocument(doc);	    	
 	   	}
-	});
+	}
 };
+
 
 Alloy.Globals.recursePropertiesAndAlert = function recurseProperties (title, properties)
 {

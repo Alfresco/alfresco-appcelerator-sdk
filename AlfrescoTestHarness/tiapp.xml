@@ -2,11 +2,11 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.alfresco.appcelerator.alfrescotestharness</id>
     <name>AlfrescoTestHarness</name>
-    <version>1.0</version>
+    <version>1.1</version>
     <publisher>ljagger</publisher>
     <url>http://www.alfresco.com</url>
-    <description>undefined</description>
-    <copyright>2013 Alfresco Ltd</copyright>
+    <description>Test harness for Alfresco modules.</description>
+    <copyright>2014 Alfresco Ltd</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>
@@ -17,16 +17,13 @@
     <analytics>true</analytics>
     <guid>5b87ae1d-1d27-4e7b-895a-33c392d912ff</guid>
     <property name="ti.ui.defaultunit" type="string">system</property>
-    
-    <android xmlns:android="http://schemas.android.com/apk/res/android"> 
-		<tool-api-level>14</tool-api-level>
-		 
-		<manifest> 
-			<uses-sdk android:targetSdkVersion="14"/> 
-			<!-- other manifest entries --> 
-		</manifest> 
-	</android>
-	 
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <tool-api-level>14</tool-api-level>
+        <manifest>
+            <uses-sdk android:targetSdkVersion="14"/>
+            <!-- other manifest entries -->
+        </manifest>
+    </android>
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>
@@ -59,7 +56,7 @@
         <target device="mobileweb">false</target>
         <target device="tizen">false</target>
     </deployment-targets>
-    <sdk-version>3.1.3</sdk-version>
+    <sdk-version>3.2.0.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>

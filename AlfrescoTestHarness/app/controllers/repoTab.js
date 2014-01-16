@@ -48,7 +48,11 @@ Ti.App.addEventListener('repopopulate', function()
 		if (documentFolderService == null)
 		{ 
 			documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
+			
+			documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
+			
 			documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
+			
 			
 			//Set up the list's on-click functionality. 
 			Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders,
@@ -72,7 +76,7 @@ Ti.App.addEventListener('repopopulate', function()
 											    	//Will result in an event fired to preview the saved file.
 											    });
 																				
-			getFolder(Alloy.Globals.repositorySession);
+			Alloy.Globals.modelListeners(documentFolderService, mainSection);
 			
 			documentFolderService.addEventListener('pagingresult', function(e)
 			{
@@ -83,26 +87,23 @@ Ti.App.addEventListener('repopopulate', function()
 				if (hasMoreItems)
 					alert("There are more items available");
 			});
-		}			
+			
+			documentFolderService.addEventListener('retrievedfolder',function(e)
+			{
+				$.folderLabel.text = " " + documentFolderService.getCurrentFolder().getName();
+				
+				//listingContext = Alloy.Globals.SDKModule.createListingContext();
+				//listingContext.initialiseWithMaxItemsAndSkipCount(2, 0);
+				//documentFolderService.retrieveChildrenInFolderWithListingContext(listingContext);
+				
+				documentFolderService.retrieveChildrenInFolder(listingContext);
+			});	
+		}	
+		
+		
+		parentFolders = new Array();
+		mainSection.deleteItemsAt(0, mainSection.getItems().length);
+	
+		documentFolderService.retrieveRootFolder();	
 	}
 });
-										
-
-function getFolder(repoSesh)
-{	
-	documentFolderService.initialiseWithSession(repoSesh);
-	documentFolderService.retrieveRootFolder();
-
-	documentFolderService.addEventListener('retrievedfolder',function(e)
-	{
-		$.folderLabel.text = " " + documentFolderService.getCurrentFolder().getName();
-		
-		//listingContext = Alloy.Globals.SDKModule.createListingContext();
-		//listingContext.initialiseWithMaxItemsAndSkipCount(2, 0);
-		//documentFolderService.retrieveChildrenInFolderWithListingContext(listingContext);
-		
-		documentFolderService.retrieveChildrenInFolder(listingContext);
-		
-		Alloy.Globals.modelListeners(documentFolderService, mainSection);
-	});	
-}

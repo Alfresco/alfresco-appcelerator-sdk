@@ -35,6 +35,11 @@
 #Javascript object:#
 <code>RepositorySession</code>
 
+#Required properties:#
+* String serverUrl
+* String serverUsername
+* String serverPassword
+ 
 #Javascript events:#
 * **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
 * **'success' - ** Sent upon successful connection.  ***Properties:*** *string serverName*
