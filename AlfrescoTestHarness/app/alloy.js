@@ -248,7 +248,6 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 				else
 				if (ev.index == 1)
 			    {
-			    	alert("Deleting this node...");
 			    	service.deleteNode(node);
 				}
 				else
@@ -342,9 +341,13 @@ Alloy.Globals.recurseProperties = function recurseProperties (properties, proper
 			var valueAsString = new String;
 			valueAsString += propertyValue;
 			
-			//Filter out JS internal properties
-			if (propertyName.toUpperCase().indexOf("BUBBLE") >= 0  ||  propertyName.indexOf("_hasJavaListener") >= 0)	
+			//Filter out JS and Appcelerator internal properties
+			if (propertyName.toUpperCase().indexOf("BUBBLE") >= 0  || 
+			    propertyName.indexOf("_hasJavaListener") >= 0  ||
+			    propertyName.indexOf("apiName") >= 0)
+			{	
 				continue;
+			}
 				
 			var subName;
 			

@@ -68,4 +68,12 @@
  */
 -(void)retrieveTagsForNode:(id)arg;
 
+
+/** Adds the given tags to the given node.
+ @param Array of strings containing tags that should be added.
+ @param The node to which the tags should be added.
+ @since v1.1
+ */
+-(void)addTags:(id)args;
+
 @end
