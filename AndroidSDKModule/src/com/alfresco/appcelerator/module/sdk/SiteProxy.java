@@ -28,7 +28,7 @@ propertyAccessors = { "shortName", "title", "summary", "identifier", "GUID", "is
 
 public class SiteProxy extends KrollProxy
 {
-	Site site = null;
+	public Site site = null;
  	
 	
 	public SiteProxy ()
