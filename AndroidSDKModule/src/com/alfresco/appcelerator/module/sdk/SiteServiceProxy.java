@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.alfresco.mobile.android.api.model.Folder;
+import org.alfresco.mobile.android.api.model.ListingContext;
+import org.alfresco.mobile.android.api.model.PagingResult;
 import org.alfresco.mobile.android.api.model.Site;
 import org.alfresco.mobile.android.api.services.SiteService;
 import org.appcelerator.kroll.KrollDict;
@@ -255,6 +257,266 @@ public class SiteServiceProxy extends KrollProxy
 	{
 		service.clear();
 	}
+
+	
+	/**
+	 Marks a site as favorite and adds it to the favorite list
+	 @param The site object to be added to favorites
+	 @since v1.1
+	 */
+	@Kroll.method
+	void addFavoriteSite (Object[] arg)
+	{
+		final SiteProxy siteProxy = (SiteProxy)arg[0];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			Site site;
+    			
+    			try
+    			{
+    				site = service.addFavoriteSite (siteProxy.site);
+    				
+    			}
+    			catch(Exception e)
+    			{
+    				SDKUtil.createErrorEvent (e, "SiteService.addFavoriteSite()", SiteServiceProxy.this);
+                    return;
+    			}
+    			
+    			createEventWithSite (site, "siteupdated");
+    			
+    			super.run();
+    		}
+    	}.start();
+	}
+
+
+	/**
+	 Unmarks a site as favorite and removes it from the favorite list
+	 @param The site to be added to favorites
+	 @since v1.1
+	 */
+	@Kroll.method
+	void removeFavoriteSite(Object arg[])
+	{
+		final SiteProxy siteProxy = (SiteProxy)arg[0];
+		
+		new Thread()
+		{
+			@Override
+			public void run() 
+			{
+				Site site;
+				
+				try
+				{
+					site = service.removeFavoriteSite (siteProxy.site);
+					
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "SiteService.removeFavoriteSite()", SiteServiceProxy.this);
+	                return;
+				}
+				
+				createEventWithSite (site, "siteupdated");
+				
+				super.run();
+			}
+		}.start();
+	}
+	
+	
+	/**
+	 Creates a request to join a site. Please, note, this method works for both joining public and joining moderated sites.
+	 For public sites, the same AlfrescoSite object will be returned.
+	 For moderated sites, an updated AlfrescoSite object will be returned - with pending flag set to YES.
+	 @param The site to join.
+	 @since v1.1
+	 */
+	@Kroll.method
+	void joinSite(Object arg[])
+	{
+		final SiteProxy siteProxy = (SiteProxy)arg[0];
+		
+		new Thread()
+		{
+			@Override
+			public void run() 
+			{
+				Site site;
+				
+				try
+				{
+					site = service.joinSite (siteProxy.site);
+					
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "SiteService.joinSite()", SiteServiceProxy.this);
+	                return;
+				}
+				
+				createEventWithSite (site, "siteupdated");
+				
+				super.run();
+			}
+		}.start();
+	}
+	
+	
+	/**
+	 Retrieves a list of sites for which a join request is pending
+	 @since v1.1
+	 */
+	@Kroll.method
+	void retrievePendingSites(Object noargs[])
+	{
+		new Thread()
+		{
+			@Override
+			public void run() 
+			{
+				List<Site> sites;
+				
+				try
+				{
+					sites = service.getPendingSites();
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "SiteService.getPendingSites()", SiteServiceProxy.this);
+	                return;
+				}
+				
+				for (Site site : sites)
+				{
+					createEventWithSite (site, "retrievedpendingsite");
+				}
+				
+				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+				
+				super.run();
+			}
+		}.start();
+	}
+	
+	
+	/**
+	 Retrieves a list of pending join request sites with a specified listing context
+	 @param listing context
+	 @since v1.1
+	 */
+	@Kroll.method
+	void retrievePendingSitesWithListingContext(Object arg[])
+	{
+		final ListingContextProxy lc = (ListingContextProxy)arg[0];
+		
+		new Thread()
+		{
+			@Override
+			public void run() 
+			{
+				PagingResult<Site> sites;
+				
+				try
+				{
+					sites = service.getPendingSites (lc.listingContext);
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "SiteService.getPendingSites(ListingContext)", SiteServiceProxy.this);
+	                return;
+				}
+				
+				for (Site site : sites.getList())
+				{
+					createEventWithSite (site, "retrievedpendingsite");
+				}
+				
+				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+				SDKUtil.createEventWithPagingResult (sites, SiteServiceProxy.this);
+				
+				super.run();
+			}
+		}.start();
+	}
+	
+	
+	/**
+	 Cancels a join request for a specified site
+	 @param The pending site for which the join request is to be cancelled
+	 @since v1.1
+	 */
+	@Kroll.method
+	void cancelPendingJoinRequestForSite(Object arg[])
+	{
+		final SiteProxy siteProxy = (SiteProxy)arg[0];
+		
+		new Thread()
+		{
+			@Override
+			public void run() 
+			{
+				Site site;
+				
+				try
+				{
+					site = service.cancelRequestToJoinSite (siteProxy.site);
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "SiteService.cancelRequestToJoinSite()", SiteServiceProxy.this);
+	                return;
+				}
+				
+				createEventWithSite (site, "siteupdated");
+				
+				super.run();
+			}
+		}.start();
+	}
+	
+	
+	/**
+	 Leave a site
+	 @param site
+	 @since v1.1
+	 */
+	@Kroll.method
+	void leaveSite(Object arg[])
+	{
+		final SiteProxy siteProxy = (SiteProxy)arg[0];
+		
+		new Thread()
+		{
+			@Override
+			public void run() 
+			{
+				Site site;
+				
+				try
+				{
+					site = service.leaveSite (siteProxy.site);
+					
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "SiteService.leaveSite()", SiteServiceProxy.this);
+	                return;
+				}
+				
+				createEventWithSite (site, "siteupdated");
+				
+				super.run();
+			}
+		}.start();
+	}
+
 
 
 	//Internal
