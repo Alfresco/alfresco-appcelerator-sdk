@@ -56,15 +56,73 @@ Ti.App.addEventListener('sitespopulate',function()
 				documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 				Alloy.Globals.modelListeners(documentFolderService, $.repo);
 				 
+				siteService.addEventListener('siteupdated', function(e)
+				{
+					$.mySites.deleteItemsAt(0,$.mySites.getItems().length);
+					$.allSites.deleteItemsAt(0,$.allSites.getItems().length);
+					$.favSites.deleteItemsAt(0,$.favSites.getItems().length);
+					$.repo.deleteItemsAt(0,$.repo.getItems().length);		
+								
+					siteService.retrieveSites();
+					siteService.retrieveAllSites();
+					siteService.retrieveFavoriteSites();
+				});
+						
 				$.siteList.addEventListener('itemclick', function(e)
 				{
-					var item = e.section.getItemAt(e.itemIndex);
+		  			var item = e.section.getItemAt(e.itemIndex);
 					var name = item.properties.name;
-					
-					Alloy.Globals.currentNode = item.properties.data;
-		    		Alloy.Globals.nodeJustProperties = true;
-		    		
-					siteService.retrieveDocumentLibraryFolderForSite(name);
+					var site = item.properties.siteObject;
+		    
+		    		if (0) //e.section != $.allSites)
+		    		{
+		    			Alloy.Globals.currentNode = item.properties.data;
+			    		Alloy.Globals.nodeJustProperties = true;
+			    		
+						siteService.retrieveDocumentLibraryFolderForSite(name);
+		    		}
+		    		else
+		    		{
+					    var dlg = Titanium.UI.createAlertDialog({message:'Site Actions', buttonNames: ['View site', (site.isFavorite ? 'Unfavourite' : 'Favourite') + ' site',
+					    																							(site.isMember ? 'Leave' : 'Join') + ' site', 
+					    																							'Cancel']});
+					  	dlg.addEventListener('click', function(ev)
+					  	{
+					  		if (ev.index == 0)
+					  		{							
+								Alloy.Globals.currentNode = item.properties.data;
+					    		Alloy.Globals.nodeJustProperties = true;
+					    		
+								siteService.retrieveDocumentLibraryFolderForSite(name);
+							}
+							else
+							if (ev.index == 1)
+						    {
+						    	if (site.isFavorite)
+						    	{
+						    		siteService.removeFavoriteSite(site);
+						    	}
+						    	else
+						    	{
+						    		siteService.addFavoriteSite(site);
+						    	}
+							}
+							else
+							if (ev.index == 2)
+						    {
+						    	if (site.isMember)
+						    	{
+						    		siteService.leaveSite(site);
+						    	}
+						    	else
+						    	{
+						    		siteService.joinSite(site);
+						    	}
+						    }
+						});
+					  
+						dlg.show();
+					}
 				});
 				
 				siteService.addEventListener('retrievedDocumentFolder', function(e)

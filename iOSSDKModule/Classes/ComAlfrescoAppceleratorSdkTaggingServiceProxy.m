@@ -116,4 +116,24 @@
          [SDKUtil createEnumerationEndEvent:self];
      }];
 }
+
+-(void)addTags:(id)args
+{
+    ENSURE_UI_THREAD_1_ARG(args)
+    
+    [service addTags:args[0] toNode:[args[1] performSelector:NSSelectorFromString(@"node")]
+     completionBlock:^(BOOL succeeded, NSError *error)
+     {
+         if (succeeded)
+         {
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
+             [self fireEvent:@"addedtags" withObject:event];
+         }
+         else if (error != nil)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+     }];
+}
+
 @end
