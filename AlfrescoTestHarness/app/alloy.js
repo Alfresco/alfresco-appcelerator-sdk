@@ -260,7 +260,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 			else
 			{
 				ops = { cancel: 5,
-						options: ['View document', 'Delete document', 'Add comment', 'Add tag', ratingService.isNodeLiked(item.properties.docobject) ? 'Unlike document' : 'Like document', 'Cancel'],
+						options: ['View document', 'Delete document', 'Add comment', 'Add tag', 'Like document', 'Cancel'],
 						selectedIndex: 0,
 						destructive: 0,
 						title: 'Document Actions'
@@ -308,9 +308,9 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 				    else
 				    if (ev.index == 4)
 				    {
-				    	if (ratingService.isNodeLiked(item.properties.docobject))
-				    		ratingService.unlikeNode(item.properties.docobject);
-				    	else
+				    	//if (ratingService.isNodeLiked(item.properties.docobject))
+				    	//	ratingService.unlikeNode(item.properties.docobject);
+				    	//else
 				    		ratingService.likeNode(item.properties.docobject);
 				    }
 				}   
