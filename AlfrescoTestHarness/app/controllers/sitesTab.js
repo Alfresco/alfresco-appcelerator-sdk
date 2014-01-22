@@ -73,15 +73,25 @@ Ti.App.addEventListener('sitespopulate',function()
 		  			var item = e.section.getItemAt(e.itemIndex);
 					var name = item.properties.name;
 					var site = item.properties.siteObject;
-				    var dlg = Titanium.UI.createAlertDialog({message:'Site Actions', buttonNames: ['View site', (site.isFavorite ? 'Unfavourite' : 'Favourite') + ' site',
-				    																							(site.isMember ? 'Leave' : 'Join') + ' site', 
-				    																							'Cancel']});
+				    var ops =  {  cancel: 3,
+								  options: ['View site', 
+								  			(site.isFavorite ? 'Unfavourite' : 'Favourite') + ' site',
+											(site.isMember ? 'Leave' : 'Join') + ' site', 
+											'Cancel'],
+								  selectedIndex: 0,
+								  destructive: 0,
+								  title: 'Site Actions'
+								};
+								
+					Alloy.Globals.currentNode = item.properties.data;
+					
+				    var dlg = Ti.UI.createOptionDialog(ops);
+				    
 				  	dlg.addEventListener('click', function(ev)
 				  	{
 				  		if (ev.index == 0)
 				  		{							
-							Alloy.Globals.currentNode = item.properties.data;
-				    		Alloy.Globals.nodeJustProperties = true;
+							Alloy.Globals.nodeJustProperties = true;
 				    		
 							siteService.retrieveDocumentLibraryFolderForSite(name);
 						}
