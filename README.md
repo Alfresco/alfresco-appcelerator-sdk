@@ -40,5 +40,15 @@ The Appcelerator modules must be built at the command line with 'build.py' and '
   iOS  -  [iOS Module Development Guide](https://wiki.appcelerator.org/display/guides/iOS+Module+Development+Guide)<br />
   Android  -  [Android Module SDK](http://developer.appcelerator.com/doc/mobile/android/module_sdk)
 
-
 *Note: The zip of the module gets unpacked into the /library folder (mac). I have found that this can accumulate junk from previous builds, in particular old Jar versions from the Android Alfresco SDK import. This can result in duplicate symbols for older libraries that still get included. Make sure you remove this unpacked version if you ever need to re-build the Android Module with new libraries present. When you re-copy the resultant zip, it will get unpacked automatically on next build inside Titanium Studio.*
+
+### Licence Validation
+
+You may receive an error from the TiVerify component within Titanium, just after the line
+
+    TiVerify: (Timer-0) [3891,4995] Verifying module licenses...
+
+The error may state that a *Licence violation* has been detected. If you encounter this error you need to navigate to the Appcelerator Product Market and ensure you have downloaded the Alfresco modules (i.e. you are subscribed to them).
+- [Alfresco for iOS](https://marketplace.appcelerator.com/apps/7620#!overview) market page
+- [Alfresco for Android](https://marketplace.appcelerator.com/apps/7621#!overview) market page
+
