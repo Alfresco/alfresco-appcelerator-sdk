@@ -2,8 +2,8 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.0
-apiversion: 2
+version: 1.1
+apiversion: 3
 description: Alfresco iOS Appcelerator Module
 author: Alfresco
 license: Licensed under the Apache License, Version 2.0
@@ -15,4 +15,4 @@ name: iOSSDKModule
 moduleid: com.alfresco.appcelerator.module.sdk
 guid: 5e34c18c-db01-4c8a-ae19-ff2001b49988
 platform: iphone
-minsdk: 3.1.3.GA
+minsdk: 3.1.2.GA

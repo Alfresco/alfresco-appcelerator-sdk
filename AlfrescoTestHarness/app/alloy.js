@@ -239,8 +239,11 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	    	Alloy.Globals.currentNode = node = item.properties.folderobject;
 		else
 			Alloy.Globals.currentNode = node = item.properties.docobject;
+		
+		Alloy.Globals.nodeJustProperties = false;
 			
-	    if (item.properties.folder == 2)	//'Up' folder item press.
+	    if (item.properties.folder == 2  ||  				//'Up' folder item press.
+	    	Alloy.Globals.AlfrescoSDKVersion < 1.1)
 	    {
 	    	viewNode(e);
 	    }

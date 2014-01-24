@@ -85,7 +85,7 @@ public class CommentServiceProxy extends KrollProxy
     	        for (Comment entry : entries)
     	        {
     	        	CommentProxy commentProxy = new CommentProxy(entry);
-    	        	createEventWithComment (commentProxy);
+    	        	createEventWithComment (commentProxy, "commentnode");
     	        }
     	        SDKUtil.createEnumerationEndEvent (CommentServiceProxy.this);
     	    
@@ -127,7 +127,7 @@ public class CommentServiceProxy extends KrollProxy
     	        for (Comment entry : entries)
     	        {
     	        	CommentProxy commentProxy = new CommentProxy(entry);
-    	        	createEventWithComment (commentProxy);
+    	        	createEventWithComment (commentProxy, "commentnode");
     	        }
     	        SDKUtil.createEnumerationEndEvent (CommentServiceProxy.this);
     	    
@@ -137,10 +137,126 @@ public class CommentServiceProxy extends KrollProxy
 	}
 	
 	
-	private void createEventWithComment (CommentProxy commentProxy)
+	/** Adds a comment to a node.
+	 @param The node to which a comments will be added.
+	 @param The comment content.
+	 @param The comment title.
+	 @since v1.1
+	 */
+	@Kroll.method
+	void addCommentToNode(Object args[])
+	{
+		final NodeProxy nodeProxy = (NodeProxy)args[0];
+		final String commentString = (String)args[1];
+		final String commentTitle = (String)args[2];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			Comment comment;
+    			
+				try
+				{
+					comment = service.addComment (nodeProxy.node, commentString);
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "CommentService.addComment()", CommentServiceProxy.this);
+                    return;
+				}
+				
+				CommentProxy commentProxy = new CommentProxy (comment);
+				createEventWithComment (commentProxy, "commentupdated");
+    	        
+    	        super.run();
+    		}
+    	}.start();
+	}
+
+
+	/** Updates a comment.
+	 @param The node of the comment to be updated.
+	 @param The Comment of the node to be updated
+	 @param The new comment content.
+	 @since v1.1
+	*/
+	@Kroll.method
+	void updateCommentOnNode(Object args[])
+	{
+		final NodeProxy nodeProxy = (NodeProxy)args[0];
+		final CommentProxy commentProxy = (CommentProxy)args[1];
+		final String commentString = (String)args[1];
+		
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			Comment comment;
+    			
+				try
+				{
+					comment = service.updateComment (nodeProxy.node, commentProxy.comment, commentString);
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "CommentService.updateComment()", CommentServiceProxy.this);
+                    return;
+				}
+				
+				CommentProxy commentProxy = new CommentProxy (comment);
+				createEventWithComment (commentProxy, "commentupdated");
+    	        
+    	        super.run();
+    		}
+    	}.start();
+	}
+
+
+	/** Deletes a comment.
+	 @param The node of the comment to be deleted
+	 @param The comment that needs to be deleted.
+	 @since v1.1
+	*/
+	@Kroll.method
+	void deleteCommentFromNode(Object args[])
+	{
+		final NodeProxy nodeProxy = (NodeProxy)args[0];
+		final CommentProxy commentProxy = (CommentProxy)args[1];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+				try
+				{
+					service.deleteComment (nodeProxy.node, commentProxy.comment);
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "CommentService.deleteComment()", CommentServiceProxy.this);
+                    return;
+				}
+				
+				HashMap<String, Object> map = new HashMap<String, Object>();
+		        map.put("code", new Integer(1));
+		        fireEvent("deletedcomment", new KrollDict(map));
+    	        
+    	        super.run();
+    		}
+    	}.start();
+	}
+
+	
+	
+	private void createEventWithComment (CommentProxy commentProxy, String context)
 	{
 		HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("comment", commentProxy);
-        fireEvent("commentnode", new KrollDict(map));
+        fireEvent(context, new KrollDict(map));
 	}
 }
