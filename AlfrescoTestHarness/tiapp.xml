@@ -45,8 +45,8 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-        <module platform="iphone">com.alfresco.appcelerator.module.sdk</module>
-        <module platform="android">com.alfresco.appcelerator.module.sdk</module>
+        <module platform="android" version="1.1">com.alfresco.appcelerator.module.sdk</module>
+        <module platform="iphone" version="1.1">com.alfresco.appcelerator.module.sdk</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>
