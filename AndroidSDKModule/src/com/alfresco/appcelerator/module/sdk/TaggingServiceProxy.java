@@ -19,6 +19,7 @@
  */
 package com.alfresco.appcelerator.module.sdk;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -139,6 +140,43 @@ public class TaggingServiceProxy extends KrollProxy
     	}.start();
 	}
 	
+
+	/** Adds the given tags to the given node.
+	 @param Array of strings containing tags that should be added.
+	 @param The node to which the tags should be added.
+	 @since v1.1
+	 */
+	@Kroll.method
+	void addTags(Object args[])
+	{
+		final Object[] tags = (Object[])args[0];
+		final NodeProxy nodeProxy = (NodeProxy)args[1];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			String[] stringTags = Arrays.copyOf (tags, tags.length, String[].class);
+    			
+				try
+				{
+					service.addTags (nodeProxy.node, Arrays.asList(stringTags));
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "TaggingService.addTags()", TaggingServiceProxy.this);
+                    return;
+				}
+				
+				HashMap<String, Object> map = new HashMap<String, Object>();
+		        map.put("code", (Integer)1);
+		        fireEvent("addedtags", new KrollDict(map));
+    	        super.run();
+    		}
+    	}.start();
+	}
+		
 	
 	private void createEventWithTag (TagProxy tag)
 	{
