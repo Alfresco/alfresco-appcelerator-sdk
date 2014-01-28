@@ -253,8 +253,8 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 		    
 		    if (isFolder)
 		    {
-		    	ops = { cancel: 3,
-						options: ['View contents', 'Delete contents', 'Create nodes in folder', 'Cancel'],
+		    	ops = { cancel: 6,
+						options: ['View folder', 'Delete folder', 'Add comment', 'Add tags', 'Like folder', 'Create nodes', 'Cancel'],
 						selectedIndex: 0,
 						destructive: 0,
 						title: 'Folder Actions'
@@ -263,7 +263,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 			else
 			{
 				ops = { cancel: 5,
-						options: ['View document', 'Delete document', 'Add comment', 'Add tag', 'Like document', 'Cancel'],
+						options: ['View document', 'Delete document', 'Add comment', 'Add tags', 'Like document', 'Cancel'],
 						selectedIndex: 0,
 						destructive: 0,
 						title: 'Document Actions'
@@ -275,20 +275,23 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 		  	dlg.addEventListener('click', function(ev)
 		  	{
 		  		if (ev.index == 0)
-		  		{
 		  			viewNode(e);
-		  			return;
-				}
 				else
 				if (ev.index == 1)
-			    {
 			    	service.deleteNode(node);
-			    	return;
-				}
-				
+				else
+				if (ev.index == 2)
+			    	commentService.addCommentToNode(node, "New comment", "New comment title");
+			    else
+			    if (ev.index == 3)
+			    	taggingService.addTags(['one', 'two', 'three'], node);
+			    else
+			    if (ev.index == 4)
+			    	ratingService.likeNode(node);
+				else
 				if (isFolder)
 				{
-					if (ev.index == 2)
+					if (ev.index == 5)
 				    {
 				    	var foldername = 'New ' + (new Date()).getTime();
 				    	
@@ -296,27 +299,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 						
 						service.createFolderWithName(foldername, item.properties.folderobject, {'cm:title' : 'A new test folder'});  
 				    }
-				}
-				else
-				{
-					if (ev.index == 2)
-				    {
-				    	commentService.addCommentToNode(item.properties.docobject, "New comment", "New comment title");
-				    }
-				    else
-				    if (ev.index == 3)
-				    {
-				    	taggingService.addTags(['one', 'two', 'three'], item.properties.docobject);
-				    }
-				    else
-				    if (ev.index == 4)
-				    {
-				    	//if (ratingService.isNodeLiked(item.properties.docobject))
-				    	//	ratingService.unlikeNode(item.properties.docobject);
-				    	//else
-				    		ratingService.likeNode(item.properties.docobject);
-				    }
-				}   
+				}  
 			});
 		  
 			dlg.show();

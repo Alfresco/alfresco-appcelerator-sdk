@@ -23,9 +23,11 @@ var documentFolderService = null;
 var commentService;
 var taggingService;
 var personService;
+var ratingService;
 var permissionsDataSet = [];
 var commentsDataSet = [];
 var tagsDataSet = [];
+var ratingsDataSet  = [];
 var lastNode = null;
 var parentFolders = new Array();
 
@@ -37,12 +39,14 @@ Ti.App.addEventListener('cleartabs', function()
 		$.properties.deleteItemsAt(0,$.properties.getItems().length);
 		$.permissions.deleteItemsAt(0,$.permissions.getItems().length);
 		$.comments.deleteItemsAt(0,$.comments.getItems().length);
+		$.ratings.deleteItemsAt(0,$.ratings.getItems().length);
 		$.tags.deleteItemsAt(0,$.tags.getItems().length);
 		$.folderList.deleteItemsAt(0,$.folderList.getItems().length);
 		propertiesDataSet = [];
 		permissionsDataSet = [];	
 		commentsDataSet = [];
 		tagsDataSet = [];
+		ratingsDataSet  = [];
 	}
 });
 
@@ -68,11 +72,13 @@ Ti.App.addEventListener('propspopulate',function()
 		$.comments.deleteItemsAt(0,$.comments.getItems().length);
 		$.tags.deleteItemsAt(0,$.tags.getItems().length);
 		$.folderList.deleteItemsAt(0,$.folderList.getItems().length);
+		$.ratings.deleteItemsAt(0,$.ratings.getItems().length);
 		propertiesDataSet = [];
 		permissionsDataSet = [];	
 		commentsDataSet = [];
 		tagsDataSet = [];
-					
+		ratingsDataSet  = [];
+				
 		Alloy.Globals.recurseProperties (node, "", function(name,value)
 		{
 			var propertiesDataSet = [];
@@ -92,7 +98,9 @@ Ti.App.addEventListener('propspopulate',function()
 			documentFolderService.retrievePermissionsOfNode(node);	
 			commentService.retrieveCommentsForNode(node);
 			taggingService.retrieveTagsForNode(node);
-			
+			ratingService.isNodeLiked(node);
+			ratingService.retrieveLikeCountForNode(node);
+				
 			if (node.isDocument)
 				versionService.retrieveAllVersionsOfDocument(node);
 			else
@@ -116,6 +124,9 @@ Ti.App.addEventListener('propspopulate',function()
 			var versionsDataSet = [];
 			versionsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
 			$.folderList.appendItems(versionsDataSet);
+			
+			ratingsDataSet.push({info: {text: "Not applicable"}, es_info: {text: ""}, pic: {image: ""}});
+			$.ratings.appendItems(ratingsDataSet);
 		}
 	}
 }); 
@@ -197,11 +208,26 @@ function init()
 		{
 		});	
 
+		ratingService = Alloy.Globals.SDKModule.createRatingService();		
+		ratingService.addEventListener('error', function(e) { alert("ratingService:\r\n" + e.errorstring); });
+		ratingService.addEventListener('retrievedisliked',function(e) 
+		{
+			ratingsDataSet = [];
+			ratingsDataSet.push({info: {text: "Liked by this user?"}, es_info: {text: e.isliked==1 ? "Yes" : "No"}, pic: {image: "default_entry_icon.png"}});
+			$.ratings.appendItems(ratingsDataSet);
+		});
+		ratingService.addEventListener('retrievedlikecount',function(e) 
+		{
+			ratingsDataSet = [];
+			ratingsDataSet.push({info: {text: "Overall like count"}, es_info: {text: e.count }, pic: {image: "default_entry_icon.png"}});
+			$.ratings.appendItems(ratingsDataSet);
+		});
 		
 		documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 		personService.initialiseWithSession(Alloy.Globals.repositorySession);
 		commentService.initialiseWithSession(Alloy.Globals.repositorySession);
 		taggingService.initialiseWithSession(Alloy.Globals.repositorySession);
 		versionService.initialiseWithSession(Alloy.Globals.repositorySession);
+		ratingService.initialiseWithSession(Alloy.Globals.repositorySession);
 	}
 }
