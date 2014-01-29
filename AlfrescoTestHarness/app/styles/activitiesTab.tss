@@ -17,12 +17,13 @@
 },
 "#infoLabel":{
 	color: 'black',
-    font: { fontFamily:'Arial', fontSize: '14dp', fontWeight:'bold'},
+	font: { fontFamily:'Arial', fontSize: '11dp', fontWeight:'bold' },
 	left: '60dp', 
-	top: 7
+	top: 0
 },
 "#esinfoLabel":{
-    font: { fontFamily:'Arial', fontSize: '16dp'},
+    color: 'black',
+    font: { fontFamily:'Arial', fontSize: '8dp' },
     left: '60dp', 
-    top: '50dp'
+    top: '25dp'
 }
