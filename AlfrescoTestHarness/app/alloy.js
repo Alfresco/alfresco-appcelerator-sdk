@@ -150,19 +150,13 @@ Alloy.Globals.activitiesModelListener = function(service, section)
 	{
 		var activity = e.activity;
 		var title = activity.type;
-		var siteName = activity.siteShortName;
-		
-		if (siteName.length == 0)
-			name = "No site name present in this field";
-			
-  	 	Ti.API.info("ACTIVITY: title = " + title + ", type = " + activity.type + ", created by = " + activity.createdBy);
-  	 	
-  	 	var creationDate = new String + activity.createdAt;
-  	 	creationDate = creationDate.substr(0,21);
-  	 	
+		var extra = (activity.data.nodeRef ? "Node: " + activity.data.title + ". " : "") +
+					(activity.siteShortName.length > 0 ? "Site: " + activity.siteShortName + ". " : "") +
+					"User: " + activity.createdBy + ". " +
+  	 				(activity.data.role ? "Role: " + activity.data.role : "");	
   	 	var mainDataSet = [];
-  	 	var data = {info: {text: title}, es_info: {text: creationDate + " by " + activity.createdBy}, pic: {image: 'default_entry_icon.png'}, 
-  	 				 properties: {data: activity.data, title: title, siteShortName: siteName, identifier: activity.identifier, createdAt: activity.createdAt, createdBy: activity.createdBy, type: activity.type} };
+  	 	var data = {info: {text: title}, es_info: {text: extra}, pic: {image: 'default_entry_icon.png'}, 
+  	 				 properties: {data: activity.data, title: title, siteShortName: activity.siteShortName, identifier: activity.identifier, createdAt: activity.createdAt, createdBy: activity.createdBy, type: activity.type} };
         		
   	 	mainDataSet.push(data);
   	 	section.appendItems(mainDataSet);
