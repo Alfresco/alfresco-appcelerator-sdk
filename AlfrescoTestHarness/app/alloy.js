@@ -272,16 +272,28 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 		  			viewNode(e);
 				else
 				if (ev.index == 1)
+			    {
 			    	service.deleteNode(node);
+			    	alert("Node deleted");
+			    }	
 				else
 				if (ev.index == 2)
+				{
 			    	commentService.addCommentToNode(node, "New comment", "New comment title");
+			    	alert("Added comment 'New comment' to node");
+			    }
 			    else
 			    if (ev.index == 3)
+			    {
 			    	taggingService.addTags(['one', 'two', 'three'], node);
+			    	alert("Added tags 'one', 'two', 'three' to node");
+			    }
 			    else
 			    if (ev.index == 4)
+			    {
 			    	ratingService.likeNode(node);
+			    	alert("Liked node");
+			    }
 				else
 				if (isFolder)
 				{

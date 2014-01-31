@@ -22,7 +22,7 @@
 //  ComAlfrescoAppceleratorSdkRatingService.h
 //  iOSSDKModule
 //
-//  Created by Luke Jagger on 12/09/2013.
+//  Created by Luke Jagger on 01/2014.
 //
 //
 

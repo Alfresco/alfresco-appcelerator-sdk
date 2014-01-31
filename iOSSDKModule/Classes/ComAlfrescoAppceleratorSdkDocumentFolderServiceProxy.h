@@ -47,7 +47,8 @@
 * **'retrieveddocument' - ** Sent when document retrieval complete.  ***Properties:*** *ContentFile contentfile*
 * **'newdocumentnode' - ** Sent after creation of new document node.  ***Properties:*** Document *document*
 * **'newfoldernode' - ** Sent after creation of new folder node.  ***Properties:*** *Folder folder*
-
+* **'deletednode' - ** Sent after node deletion.  ***Properties:*** *none*
+ 
 #Javascript example:#
  
  

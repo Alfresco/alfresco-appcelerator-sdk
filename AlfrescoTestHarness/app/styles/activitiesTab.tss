@@ -5,6 +5,7 @@
 }, 
 "#activityList":{
 	backgroundColor: 'white',
+	separatorColor:"#CCCCCC",
 	top: 0, 
 	left: 0,
 	height: '100%' 
@@ -22,8 +23,8 @@
 	top: 0
 },
 "#esinfoLabel":{
-    color: 'black',
-    font: { fontFamily:'Arial', fontSize: '8dp' },
+    color: 'gray',
+    font: { fontFamily:'Arial', fontSize: '10dp' },
     left: '60dp', 
     top: '25dp'
 }

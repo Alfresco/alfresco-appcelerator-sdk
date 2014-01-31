@@ -3,11 +3,12 @@
 	navBarHidden:true,
 	fullscreen:true
 }, 
-"#propsList":{
+"#propList":{
 	backgroundColor: 'white',
+	separatorColor:"#CCCCCC",
 	top: 0, 
 	left: 0,
-	height: '45%' 
+	height: '100%' 
 },
 "#picImage":{
 	width: '35dp', 
@@ -22,7 +23,8 @@
 	top: 7
 },
 "#esinfoLabel":{
-    font: { fontFamily:'Arial', fontSize: '16dp'},
+    font: { fontFamily:'Arial', fontSize: '12dp'},
+    color: 'gray',
     left: '60dp', 
     top: '25dp'
 }

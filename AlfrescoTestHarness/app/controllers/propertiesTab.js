@@ -167,14 +167,14 @@ function init()
 		});
 		taggingService.addEventListener('tagnode', function(e)
 		{
-		 	tagsDataSet.push({info: {text: e.tag.identifier}, es_info: {text: e.tag.value}, pic: {image: "default_entry_icon.png"}});
+		 	tagsDataSet.push({info: {text: e.tag.identifier ? e.tag.identifier : e.tag.value}, es_info: {text: e.tag.value}, pic: {image: "default_entry_icon.png"}});
 		});
 		
 		personService = Alloy.Globals.SDKModule.createPersonService();
 		personService.addEventListener('error', function(e) { alert("personService:\r\n" + e.errorstring); });		
 		personService.addEventListener('endenumeration', function(e)
 		{
-		}); 
+		});
 		personService.addEventListener('personnode', function(e)
 		{
 			var person = e.person;

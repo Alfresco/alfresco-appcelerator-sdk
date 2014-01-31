@@ -51,6 +51,8 @@ Ti.App.addEventListener('activitiespopulate',function()
 				});
 			}
 						
+			$.activities.deleteItemsAt(0, $.activities.getItems().length);
+			
 			activityService.retrieveActivityStream();
 		}
 	}
