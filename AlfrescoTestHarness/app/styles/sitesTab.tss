@@ -7,7 +7,8 @@
 	top: 0, 
 	left: 0,
 	height: '48%',
-	backgroundColor: '#FFFFFF' 
+	backgroundColor: 'white', 
+	separatorColor:"#CCCCCC",
 },
 "#folderLabel":{
 	text: "", 
@@ -20,6 +21,7 @@
 },
 "#folderList":{ 
 	backgroundColor: '#DDDDDD',
+	separatorColor:"#EEEEEE",
 	top: '52%', 
 	left: 0,
 	height: '48%'
@@ -37,7 +39,7 @@
 },
 "#esinfoLabel":{
     color: 'gray',
-    font: { fontFamily:'Arial', fontSize: '11dp' },
+    font: { fontFamily:'Arial', fontSize: '12dp' },
     left: '60dp', 
     top: '25dp'
 }

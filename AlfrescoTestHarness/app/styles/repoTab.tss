@@ -1,6 +1,5 @@
 "Window":{
 	backgroundColor:"white",
-	separatorColor:"white",
 	navBarHidden:true,
 	fullscreen:true
 },
@@ -16,6 +15,7 @@
 },
 "#folderList":{
 	backgroundColor: 'white',
+	separatorColor:"#CCCCCC",
 	top: '40dp', 
 	left: 0 
 }, 

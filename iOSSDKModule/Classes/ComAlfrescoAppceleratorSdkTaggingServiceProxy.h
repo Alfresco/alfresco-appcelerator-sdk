@@ -39,7 +39,7 @@
 * **'tagnode' - ** Sent for each tag node.  ***Properties:*** *Tag tag*
 * **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
 * **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
-
+* **'addedtags' - ** Sent when tags have been added.  ***Properties:*** *none* 
 */
 
 @interface ComAlfrescoAppceleratorSdkTaggingServiceProxy : TiProxy
