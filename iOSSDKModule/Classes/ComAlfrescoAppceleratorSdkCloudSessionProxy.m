@@ -19,20 +19,20 @@
  */
 
 //
-//  AlfrescoRepositorySessionProxy.m
+//  AlfrescoCloudSessionProxy.m
 //  iOSSDKModule
 //
-//  Created by Luke Jagger on 20/05/2013.
+//  Created by Luke Jagger on 02/2014.
 //
 //
 
-#import "ComAlfrescoAppceleratorSdkRepositorySessionProxy.h"
-#import "AlfrescoRepositorySession.h"
+#import "ComAlfrescoAppceleratorSdkCloudSessionProxy.h"
+#import "AlfrescoCloudSession.h"
 #import "TiUtils.h"
 #include "SDKUtil.h"
 
 
-@implementation ComAlfrescoAppceleratorSdkRepositorySessionProxy
+@implementation ComAlfrescoAppceleratorSdkCloudSessionProxy
 
  
 -(void)connect:(id)noargs
@@ -49,9 +49,9 @@
         return;
     } 
     
-    ComAlfrescoAppceleratorSdkRepositorySessionProxy *weakSelf = self;
+    ComAlfrescoAppceleratorSdkCloudSessionProxy *weakSelf = self;
   
-    [AlfrescoRepositorySession connectWithUrl:url username:user password:pwd
+    [AlfrescoCloudSession connectWithUrl:url username:user password:pwd
                                                         completionBlock:^(id<AlfrescoSession> session, NSError *error)
                                                         {
                                                             if (nil == session)
@@ -62,7 +62,7 @@
                                                             else
                                                             {
                                                                 weakSelf.session = session;
-                                                                weakSelf.info = weakSelf.session.repositoryInfo;
+                                                                weakSelf.info = weakSelf.session.CloudInfo;
                                                                 
                                                                 NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:weakSelf.info.name, @"servername", nil];
                                                                 [weakSelf fireEvent:@"success" withObject:event];

@@ -19,10 +19,10 @@
  */
 
 //
-//  AlfrescoRepositorySessionProxy.h
+//  AlfrescoCloudSessionProxy.h
 //  iOSSDKModule
 //
-//  Created by Luke Jagger on 20/05/2013.
+//  Created by Luke Jagger on 02/2014.
 //
 //
 
@@ -33,7 +33,7 @@
 /**
  
 #Javascript object:#
-<code>RepositorySession</code>
+<code>CloudSession</code>
 
 #Required properties:#
 * String serverUrl
@@ -50,7 +50,7 @@
  
     var properties  = {serverUrl: "http://localhost:8080/alfresco",  serverUsername: "admin",  serverPassword: "pwd"};
  
-    var repoSession = SDKModule.createRepositorySession(properties);
+    var repoSession = SDKModule.createCloudSession(properties);
  
     repoSession.addEventListener('error', function(e) { alert("Cannot connect to server (" + e.errorcode + "): " + e.errorstring); } );
  
@@ -60,12 +60,57 @@
  
 */
 
-@interface ComAlfrescoAppceleratorSdkRepositorySessionProxy : ComAlfrescoAppceleratorSdkSessionProxy
+@interface ComAlfrescoAppceleratorSdkCloudSessionProxy : ComAlfrescoAppceleratorSdkSessionProxy
 
-/** Connect to the repository using the properties set at creation
-@since v1.0
-*/
--(void)connect:(id)noargs;
+/**
+ This initialiser uses OAuth authentication processes. It will only be successful if the AlfrescoOAuthData contain a valid access and refresh token.
+ Therefore, this method should only be used after the initial OAuth setup is complete.
+ The method well set the home network/tenant ID as default
+ @param oauthData
+ @since v1.2
+ */
+-(void)connectWithOAuthData:(id)args;
+
+
+/**
+ This initialiser uses OAuth authentication processes. It will only be successful if the AlfrescoOAuthData contain a valid access and refresh token.
+ Therefore, this method should only be used after the initial OAuth setup is complete.
+ The method well set the home network/tenant ID as default
+ @param oauthData
+ @param parameters - optional, may be nil
+ @since v1.2
+ */
+-(void)connectWithOAuthData:(id)args;
+
+
+/**
+ This initialiser uses OAuth authentication processes. It will only be successful if the AlfrescoOAuthData contain a valid access and refresh token.
+ Therefore, this method should only be used after the initial OAuth setup is complete.
+ The method well set to the specified network/tenant ID.
+ @param oauthData
+ @param networkIdentifer - also known as tenent ID
+ @since v1.2
+ */
+-(void)connectWithOAuthData:(id)args;
+
+
+/**
+ This initialiser uses OAuth authentication processes. It will only be successful if the AlfrescoOAuthData contain a valid access and refresh token.
+ Therefore, this method should only be used after the initial OAuth setup is complete.
+ The method well set to the specified network/tenant ID.
+ @param oauthData
+ @param networkIdentifer - also known as tenent ID
+ @param parameters - optional, may be nil
+ @since v1.2
+ */
+-(void)connectWithOAuthData:(id)args;
+
+
+/**
+ This method obtains a list of available Cloud networks (or domains/tenants) for the registered user.
+ */
+-(void)retrieveNetworksWithCompletionBlock:(id)noargs;
+
 
 @end
 
