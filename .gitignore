@@ -26,3 +26,6 @@ xcuserdata
 iOSSDKModule/*.zip
 iOSSDKModule/ComAlfrescoAppceleratorModuleIosSdk.h
 iOSSDKModule/ComAlfrescoAppceleratorModuleIosSdk.m
+AndroidSDKModule/libs/armeabi-v7a/libcom.alfresco.appcelerator.module.sdk.so
+AndroidSDKModule/libs/armeabi/libcom.alfresco.appcelerator.module.sdk.so
+AndroidSDKModule/libs/x86/libcom.alfresco.appcelerator.module.sdk.so
