@@ -37,8 +37,10 @@
 <code>CloudSession</code>
  
 #Javascript events:#
+* **'retrievedsession' - ** Sent upon successful retieval of authenticated session.  ***Properties:*** *none*
 * **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
 * **'success' - ** Sent upon successful connection.  ***Properties:*** *string serverName*
+* **'retrievednetwork' - ** Sent for each network ID retrieved.  ***Properties:*** *string networkid*
  
 #Javascript example:#
  
@@ -46,38 +48,35 @@
  
     var cloudSession = SDKModule.createCloudSession();
  
-    cloudSession.addEventListener('error', function(e) { alert("Cannot connect to server (" + e.errorcode + "): " + e.errorstring); } );
- 
-    cloudSession.addEventListener('success',function(e) { Ti.API.info("Connected to server: " + e.servername); } );
- 
     var OAuthData = SDKModule.createOAuthData();
     OAuthData.initWithAPIKey (apiKey, secretKey, jsonData);   //Keys obtained using HTTP requests to https://api.alfresco.com/auth/oauth/... urls.
  
-    cloudSession.connectWithOAuthData(OAuthData);
+    cloudSession.initialiseWithOAuthData(OAuthData);
+ 
+    cloudSession.addEventListener('retrievedsession', function(e)
+    { 
+        cloudSession.connect();
+ 
+        cloudSession.addEventListener('error', function(e) { alert("Cannot connect to server (" + e.errorcode + "): " + e.errorstring); } );
+ 
+        cloudSession.addEventListener('success',function(e) { Ti.API.info("Connected to server: " + e.servername); } );
+    }
  
 */
 
+
 @interface ComAlfrescoAppceleratorSdkCloudSessionProxy : ComAlfrescoAppceleratorSdkSessionProxy
-
-/**
- This initialiser uses OAuth authentication processes. It will only be successful if the AlfrescoOAuthData contain a valid access and refresh token.
- Therefore, this method should only be used after the initial OAuth setup is complete.
- The method well set the home network/tenant ID as default
- @param oauthData
- @since v1.2
- */
--(void)connectWithOAuthData:(id)args;
+{
+    AlfrescoOAuthData* data;
+}
 
 
 /**
- This initialiser uses OAuth authentication processes. It will only be successful if the AlfrescoOAuthData contain a valid access and refresh token.
- Therefore, this method should only be used after the initial OAuth setup is complete.
- The method well set to the specified network/tenant ID.
+ Initialise the Cloud Session.  This must be called before any retrieveNetworks call.
  @param oauthData
- @param networkIdentifer - also known as tenent ID
  @since v1.2
  */
--(void)connectWithOAuthDataAndNetworkID:(id)args;
+-(void)initialiseWithOAuthData:(id)arg;
 
 
 /**
@@ -85,6 +84,21 @@
  @since v1.2
  */
 -(void)retrieveNetworks:(id)noargs;
+
+
+/**
+ Connect to default network using access and refresh tokens from OAuth data provided during initialisation.
+ @since v1.2
+ */
+-(void)connect:(id)noargs;
+
+
+/**
+ Connect to given network using access and refresh tokens from OAuth data provided during initialisation.
+ @param networkIdentifer - also known as tenent ID
+ @since v1.2
+ */
+-(void)connectWithNetworkID:(id)arg;
 
 @end
 

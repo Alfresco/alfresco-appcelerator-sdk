@@ -44,3 +44,38 @@ $.index.addEventListener('focus',function(e)
  		Ti.App.fireEvent('propspopulate');
 });
 
+
+var style;
+
+if (Ti.Platform.name === 'iPhone OS')
+	style = Ti.UI.iPhone.ActivityIndicatorStyle.LIGHT;
+else
+	style = Ti.UI.ActivityIndicatorStyle.PLAIN;
+	
+Alloy.Globals.activityIndicator = Ti.UI.createActivityIndicator({
+  color: 'white',
+  backgroundColor:'black',
+  font: {fontFamily:'Helvetica Neue', fontSize:24, fontWeight:'bold'},
+  message: 'Loading...',
+  style:style,
+  height:'25%',
+  width:'75%'
+});
+
+Alloy.Globals.activityIndicator.hide();
+$.index.add(Alloy.Globals.activityIndicator);
+
+
+Alloy.Globals.showSpinner = function(show)
+{
+	if (show==true)
+	{
+		Alloy.Globals.activityIndicator.show();
+		Alloy.Globals.tabGroup.touchEnabled = false;
+	}
+	else
+	{
+		Alloy.Globals.activityIndicator.hide();
+		Alloy.Globals.tabGroup.touchEnabled = true;
+	}
+};

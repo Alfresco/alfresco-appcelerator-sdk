@@ -36,17 +36,14 @@
 
 @implementation ComAlfrescoAppceleratorSdkCloudSessionProxy
 
--(void)connectWithOAuthData:(id)arg
+-(void)initialiseWithOAuthData:(id)arg
 {
     ENSURE_UI_THREAD_1_ARG(arg)
-    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkOAuthDataProxy)
     
-    ComAlfrescoAppceleratorSdkOAuthDataProxy* data = [arg objectAtIndex:0];
-    AlfrescoOAuthData* oad = [data performSelector:NSSelectorFromString(@"OAuthData")];
+    ComAlfrescoAppceleratorSdkOAuthDataProxy* dataArg = [arg objectAtIndex:0];
+    data = [dataArg performSelector:NSSelectorFromString(@"OAuthData")];
     
-    //NSLog(@"[INFO] OAuthData.accessToken: %@", oad.accessToken);
-    
-    [AlfrescoCloudSession connectWithOAuthData:oad
+    [AlfrescoCloudSession connectWithOAuthData:data
      completionBlock:^(id<AlfrescoSession> session, NSError *error)
      {
          if (nil == session)
@@ -65,17 +62,37 @@
 }
 
 
--(void)connectWithOAuthDataAndNetworkID:(id)args
+-(void)connect:(id)noargs
 {
-    ENSURE_UI_THREAD_1_ARG(args)
+    ENSURE_UI_THREAD_0_ARGS
     
-    ComAlfrescoAppceleratorSdkOAuthDataProxy* data = [args objectAtIndex:0];
-    AlfrescoOAuthData* oad = [data performSelector:NSSelectorFromString(@"OAuthData")];
-    NSString* networkID = [args objectAtIndex:1];
+    [AlfrescoCloudSession connectWithOAuthData:data parameters:nil
+                               completionBlock:^(id<AlfrescoSession> session, NSError *error)
+     {
+         if (nil == session)
+         {
+             self.error = error;
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             self.session = session;
+             self.info = self.session.repositoryInfo;
+             
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:self.info.name, @"servername", nil];
+             [self fireEvent:@"success" withObject:event];
+         }
+     }];
+}
+
+
+-(void)connectWithNetworkID:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
     
-    //NSLog(@"[INFO] OAuthData.accessToken: %@", oad.accessToken);
+    NSString* networkID = [arg objectAtIndex:0];
     
-    [AlfrescoCloudSession connectWithOAuthData:oad networkIdentifer:networkID parameters:nil
+    [AlfrescoCloudSession connectWithOAuthData:data networkIdentifer:networkID parameters:nil
      completionBlock:^(id<AlfrescoSession> session, NSError *error)
      {
          if (nil == session)
@@ -95,7 +112,7 @@
 }
 
 
--(void)retrieveNetworks:(id)arg
+-(void)retrieveNetworks:(id)noargs
 {
     ENSURE_UI_THREAD_0_ARGS
     

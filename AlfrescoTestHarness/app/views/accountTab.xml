@@ -1,22 +1,23 @@
 <Alloy>
 		
 	<Window id="loginContent">
-
-	<ScrollView id="scroller">
+	
+		<ScrollView id="scroller">
+			
+			<ImageView id="logoImage" platform='ios'/>
+					
+			<Label id="serverLabel">
+			<TextField id="serverEdit">
+			
+			<Label id="usernameLabel">
+			<TextField id="usernameEdit">
 		
-		<ImageView id="logoImage" platform='ios'/>
-				
-		<Label id="serverLabel">
-		<TextField id="serverEdit">
+			<Label id="passwordLabel">
+			<TextField id="passwordEdit">
 		
-		<Label id="usernameLabel">
-		<TextField id="usernameEdit">
-	
-		<Label id="passwordLabel">
-		<TextField id="passwordEdit">
-	
-		<Button id="loginButton" onClick="loginButtonClick">
-	
+			<Button id="loginButton" onClick="loginButtonClick">
+			<Button id="cloudButton" onClick="cloudButtonClick">
+						
 	</ScrollView>
 	
 	</Window>
