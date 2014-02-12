@@ -18,16 +18,27 @@
  *****************************************************************************
  */
 
+/** The AlfrescoWorkflowTask model object
+ 
+ Author: Tauseef Mughal (Alfresco)
+ */
 
 #import <Foundation/Foundation.h>
 
-@interface AlfrescoContent : NSObject
-/// @param the mimeType
-@property (nonatomic, strong, readonly) NSString *mimeType;
+@protocol AlfrescoSession;
 
-/// @param the length of the file
-@property (nonatomic, assign, readonly) unsigned long long length;
+@interface AlfrescoWorkflowTask : NSObject <NSCoding>
 
-- (id)initWithMimeType:(NSString *)mimeType;
-- (id)initWithMimeType:(NSString *)mimeType length:(unsigned long long)length;
+@property (nonatomic, strong, readonly) NSString *identifier;
+@property (nonatomic, strong, readonly) NSString *processIdentifier;
+@property (nonatomic, strong, readonly) NSString *processDefinitionIdentifier;
+@property (nonatomic, strong, readonly) NSDate *startedAt;
+@property (nonatomic, strong, readonly) NSDate *endedAt;
+@property (nonatomic, strong, readonly) NSDate *dueAt;
+@property (nonatomic, strong, readonly) NSString *taskDescription;
+@property (nonatomic, strong, readonly) NSNumber *priority;
+@property (nonatomic, strong, readonly) NSString *assigneeIdentifier;
+
+- (id)initWithProperties:(NSDictionary *)properties session:(id<AlfrescoSession>)session;
+
 @end

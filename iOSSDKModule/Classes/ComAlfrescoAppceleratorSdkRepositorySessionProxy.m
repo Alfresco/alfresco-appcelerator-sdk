@@ -49,23 +49,21 @@
         return;
     } 
     
-    ComAlfrescoAppceleratorSdkRepositorySessionProxy *weakSelf = self;
-  
     [AlfrescoRepositorySession connectWithUrl:url username:user password:pwd
                                                         completionBlock:^(id<AlfrescoSession> session, NSError *error)
                                                         {
                                                             if (nil == session)
                                                             {
                                                                 self.error = error;                                                                
-                                                                [SDKUtil createErrorEvent:error proxyObject:weakSelf];
+                                                                [SDKUtil createErrorEvent:error proxyObject:self];
                                                             }
                                                             else
                                                             {
-                                                                weakSelf.session = session;
-                                                                weakSelf.info = weakSelf.session.repositoryInfo;
+                                                                self.session = session;
+                                                                self.info = self.session.repositoryInfo;
                                                                 
-                                                                NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:weakSelf.info.name, @"servername", nil];
-                                                                [weakSelf fireEvent:@"success" withObject:event];
+                                                                NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:self.info.name, @"servername", nil];
+                                                                [self fireEvent:@"success" withObject:event];
                                                             }
                                                         }];
 }

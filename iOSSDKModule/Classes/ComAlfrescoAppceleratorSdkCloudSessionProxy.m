@@ -1,6 +1,6 @@
 /*
  ******************************************************************************
- * Copyright (C) 2005-2013 Alfresco Software Limited.
+ * Copyright (C) 2005-2014 Alfresco Software Limited.
  *
  * This file is part of the Alfresco Mobile SDK.
  *
@@ -27,6 +27,8 @@
 //
 
 #import "ComAlfrescoAppceleratorSdkCloudSessionProxy.h"
+#import "ComAlfrescoAppceleratorSdkOAuthDataProxy.h"
+
 #import "AlfrescoCloudSession.h"
 #import "TiUtils.h"
 #include "SDKUtil.h"
@@ -34,40 +36,91 @@
 
 @implementation ComAlfrescoAppceleratorSdkCloudSessionProxy
 
- 
--(void)connect:(id)noargs
+-(void)connectWithOAuthData:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkOAuthDataProxy)
+    
+    ComAlfrescoAppceleratorSdkOAuthDataProxy* data = [arg objectAtIndex:0];
+    AlfrescoOAuthData* oad = [data performSelector:NSSelectorFromString(@"OAuthData")];
+    
+    //NSLog(@"[INFO] OAuthData.accessToken: %@", oad.accessToken);
+    
+    [AlfrescoCloudSession connectWithOAuthData:oad
+     completionBlock:^(id<AlfrescoSession> session, NSError *error)
+     {
+         if (nil == session)
+         {
+             self.error = error;
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             self.session = session;
+             
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:@"", @"code", nil];
+             [self fireEvent:@"retrievedsession" withObject:event];
+         }
+     }];
+}
+
+
+-(void)connectWithOAuthDataAndNetworkID:(id)args
+{
+    ENSURE_UI_THREAD_1_ARG(args)
+    
+    ComAlfrescoAppceleratorSdkOAuthDataProxy* data = [args objectAtIndex:0];
+    AlfrescoOAuthData* oad = [data performSelector:NSSelectorFromString(@"OAuthData")];
+    NSString* networkID = [args objectAtIndex:1];
+    
+    //NSLog(@"[INFO] OAuthData.accessToken: %@", oad.accessToken);
+    
+    [AlfrescoCloudSession connectWithOAuthData:oad networkIdentifer:networkID parameters:nil
+     completionBlock:^(id<AlfrescoSession> session, NSError *error)
+     {
+         if (nil == session)
+         {
+             self.error = error;
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             self.session = session;
+             self.info = self.session.repositoryInfo;
+             
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:self.info.name, @"servername", nil];
+             [self fireEvent:@"success" withObject:event];
+         }
+     }];
+}
+
+
+-(void)retrieveNetworks:(id)arg
 {
     ENSURE_UI_THREAD_0_ARGS
     
-    NSURL *url = [NSURL URLWithString:[self valueForKey:@"serverUrl"]];
-    NSString *user = [self valueForKey:@"serverUsername"];
-    NSString *pwd = [self valueForKey:@"serverPassword"];
+    AlfrescoCloudSession* cloudSession = self.session;
     
-    if (url == nil  ||  user == nil  ||  pwd == nil)
-    {
-        [SDKUtil createParamErrorEvent:self];
-        return;
-    } 
-    
-    ComAlfrescoAppceleratorSdkCloudSessionProxy *weakSelf = self;
-  
-    [AlfrescoCloudSession connectWithUrl:url username:user password:pwd
-                                                        completionBlock:^(id<AlfrescoSession> session, NSError *error)
-                                                        {
-                                                            if (nil == session)
-                                                            {
-                                                                self.error = error;                                                                
-                                                                [SDKUtil createErrorEvent:error proxyObject:weakSelf];
-                                                            }
-                                                            else
-                                                            {
-                                                                weakSelf.session = session;
-                                                                weakSelf.info = weakSelf.session.CloudInfo;
-                                                                
-                                                                NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:weakSelf.info.name, @"servername", nil];
-                                                                [weakSelf fireEvent:@"success" withObject:event];
-                                                            }
-                                                        }];
+    [cloudSession retrieveNetworksWithCompletionBlock:
+     ^(NSArray* networks, NSError *error)
+     {
+         if (error != NULL)
+         {
+             self.error = error;
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < networks.count;  i++)
+             {
+                 AlfrescoCloudNetwork* currentNet = [networks objectAtIndex:i];
+                 
+                 NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:currentNet.identifier, @"networkid", nil];
+                 [self fireEvent:@"retrievednetwork" withObject:event];
+             }
+             [SDKUtil createEnumerationEndEvent:self];
+         }
+     }];
 }
 
 @end

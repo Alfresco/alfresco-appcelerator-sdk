@@ -18,16 +18,22 @@
  *****************************************************************************
  */
 
+/** The AlfrescoWorkflowProcessDefinition model object
+ 
+ Author: Tauseef Mughal (Alfresco)
+ */
 
 #import <Foundation/Foundation.h>
 
-@interface AlfrescoContent : NSObject
-/// @param the mimeType
-@property (nonatomic, strong, readonly) NSString *mimeType;
+@protocol AlfrescoSession;
 
-/// @param the length of the file
-@property (nonatomic, assign, readonly) unsigned long long length;
+@interface AlfrescoWorkflowProcessDefinition : NSObject <NSCoding>
 
-- (id)initWithMimeType:(NSString *)mimeType;
-- (id)initWithMimeType:(NSString *)mimeType length:(unsigned long long)length;
+@property (nonatomic, strong, readonly) NSString *identifier;
+@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, strong, readonly) NSString *processDescription;
+@property (nonatomic, strong, readonly) NSNumber *version;
+
+- (id)initWithProperties:(NSDictionary *)properties session:(id<AlfrescoSession>)session;
+
 @end

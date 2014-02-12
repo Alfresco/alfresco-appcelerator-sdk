@@ -18,16 +18,21 @@
  *****************************************************************************
  */
 
+/** The AlfrescoWorkflowInfo model object
+ 
+ Author: Tauseef Mughal (Alfresco)
+ */
 
 #import <Foundation/Foundation.h>
+#import "AlfrescoConstants.h"
 
-@interface AlfrescoContent : NSObject
-/// @param the mimeType
-@property (nonatomic, strong, readonly) NSString *mimeType;
+@protocol AlfrescoSession;
 
-/// @param the length of the file
-@property (nonatomic, assign, readonly) unsigned long long length;
+@interface AlfrescoWorkflowInfo : NSObject <NSCoding>
 
-- (id)initWithMimeType:(NSString *)mimeType;
-- (id)initWithMimeType:(NSString *)mimeType length:(unsigned long long)length;
+@property (nonatomic, assign, readonly) AlfrescoWorkflowEngineType workflowEngine;
+@property (nonatomic, assign, readonly) BOOL publicAPI;
+
+- (id)initWithSession:(id<AlfrescoSession>)session workflowEngine:(AlfrescoWorkflowEngineType)workflowEngine;
+
 @end

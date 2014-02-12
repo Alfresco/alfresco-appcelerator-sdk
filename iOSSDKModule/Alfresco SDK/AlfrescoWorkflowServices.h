@@ -18,16 +18,11 @@
  *****************************************************************************
  */
 
+/** Add workflow services.
+ 
+ Author: Tauseef Mughal (Alfresco)
+ */
 
-#import <Foundation/Foundation.h>
-
-@interface AlfrescoContent : NSObject
-/// @param the mimeType
-@property (nonatomic, strong, readonly) NSString *mimeType;
-
-/// @param the length of the file
-@property (nonatomic, assign, readonly) unsigned long long length;
-
-- (id)initWithMimeType:(NSString *)mimeType;
-- (id)initWithMimeType:(NSString *)mimeType length:(unsigned long long)length;
-@end
+#import "AlfrescoWorkflowProcessDefinitionService.h"
+#import "AlfrescoWorkflowProcessService.h"
+#import "AlfrescoWorkflowTaskService.h"

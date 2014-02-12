@@ -18,16 +18,19 @@
  *****************************************************************************
  */
 
+/** The AlfrescoWorkflowVariable model object
+ 
+ Author: Tauseef Mughal (Alfresco)
+ */
 
 #import <Foundation/Foundation.h>
 
-@interface AlfrescoContent : NSObject
-/// @param the mimeType
-@property (nonatomic, strong, readonly) NSString *mimeType;
+@interface AlfrescoWorkflowVariable : NSObject <NSCoding>
 
-/// @param the length of the file
-@property (nonatomic, assign, readonly) unsigned long long length;
+@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, strong, readonly) NSString *type;
+@property (nonatomic, strong, readonly) id value;
 
-- (id)initWithMimeType:(NSString *)mimeType;
-- (id)initWithMimeType:(NSString *)mimeType length:(unsigned long long)length;
+- (instancetype)initWithProperties:(NSDictionary *)properties;
+
 @end
