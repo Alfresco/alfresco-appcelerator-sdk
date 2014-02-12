@@ -81,8 +81,20 @@
 "#loginButton":{
 	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' },
-	top:40,left: '2%', 
+	top:10,left: '2%', 
 	width: '96%', 
-	title: "Log in"
-}
+	title: "Log in",
+	backgroundColor:'white',
+	color:'black'
+},	
+"#cloudButton":{
+	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+	font: { fontFamily:'Arial', fontSize: '22dp', fontWeight:'bold' },
+	top:10,left: '2%', 
+	width: '96%',
+	title: "Cloud account...", 
+	color:'#4444AA',
+	backgroundColor:'white'
+}	
+
 

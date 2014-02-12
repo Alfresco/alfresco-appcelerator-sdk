@@ -19,6 +19,7 @@
  */
 
 
+
 /*
  createServiceListeners
  
@@ -102,6 +103,8 @@ Alloy.Globals.modelListeners = function(service, mainSection)
   	service.addEventListener('retrieveddocument',function(e)
 	{
 		var contentFile = e.contentfile;
+		
+		Alloy.Globals.showSpinner(false);
 		
 		if (Ti.Platform.name == 'iPhone OS')
 		{
@@ -318,6 +321,8 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 		var mainSection = e.section;
 	    var item = e.section.getItemAt(e.itemIndex);
 	    var name = item.properties.name;
+	    
+	    Alloy.Globals.showSpinner(true);
 	    
 		if (item.properties.folder > 0)
 		{

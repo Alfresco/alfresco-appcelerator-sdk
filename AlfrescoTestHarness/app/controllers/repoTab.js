@@ -96,8 +96,14 @@ Ti.App.addEventListener('repopopulate', function()
 				//listingContext.initialiseWithMaxItemsAndSkipCount(2, 0);
 				//documentFolderService.retrieveChildrenInFolderWithListingContext(listingContext);
 				
+				Alloy.Globals.showSpinner(true);
 				documentFolderService.retrieveChildrenInFolder(listingContext);
-			});	
+			});
+			
+			documentFolderService.addEventListener('endenumeration',function(e)
+			{
+				Alloy.Globals.showSpinner(false);
+			});
 		}	
 		
 		

@@ -54,7 +54,8 @@
     <sdk-version>3.2.0.GA</sdk-version>
     <plugins/>
     <modules>
-        <module platform="iphone" version="1.0">com.alfresco.appcelerator.module.sdk</module>
-        <module platform="android" version="1.0">com.alfresco.appcelerator.module.sdk</module>
+        <module platform="android" version="1.1">com.alfresco.appcelerator.module.sdk</module>
+        <module platform="iphone" version="1.1">com.alfresco.appcelerator.module.sdk</module>
+
     </modules>
 </ti:app>

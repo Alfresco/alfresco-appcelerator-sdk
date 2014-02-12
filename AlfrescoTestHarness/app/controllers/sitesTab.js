@@ -21,6 +21,7 @@
 var documentFolderService;
 var parentFolders = new Array();
 var siteService = null;
+var enums = 3;
 
 
 Ti.App.addEventListener('cleartabs', function()
@@ -55,14 +56,25 @@ Ti.App.addEventListener('sitespopulate',function()
 				documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
 				documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 				Alloy.Globals.modelListeners(documentFolderService, $.repo);
-				 
+				
+				documentFolderService.addEventListener('endenumeration',function(e)
+				{
+					Alloy.Globals.showSpinner(false);
+				});
+				siteService.addEventListener('endenumeration',function(e)
+				{
+					if (--enums == 0)
+						Alloy.Globals.showSpinner(false);
+				});
+				
 				siteService.addEventListener('siteupdated', function(e)
 				{
 					$.mySites.deleteItemsAt(0,$.mySites.getItems().length);
 					$.allSites.deleteItemsAt(0,$.allSites.getItems().length);
 					$.favSites.deleteItemsAt(0,$.favSites.getItems().length);
 					$.repo.deleteItemsAt(0,$.repo.getItems().length);		
-								
+						
+					Alloy.Globals.showSpinner(true);		
 					siteService.retrieveSites();
 					siteService.retrieveAllSites();
 					siteService.retrieveFavoriteSites();
@@ -135,6 +147,8 @@ Ti.App.addEventListener('sitespopulate',function()
 			    	$.repo.deleteItemsAt(0,$.repo.getItems().length);
 			    	
 					documentFolderService.setFolder(e.folder);
+					
+					Alloy.Globals.showSpinner(true);
 					documentFolderService.retrieveChildrenInFolder();
 			    });
 			    
@@ -159,7 +173,9 @@ Ti.App.addEventListener('sitespopulate',function()
 			$.allSites.deleteItemsAt(0,$.allSites.getItems().length);
 			$.favSites.deleteItemsAt(0,$.favSites.getItems().length);
 			$.repo.deleteItemsAt(0,$.repo.getItems().length);		
-						
+				
+			Alloy.Globals.showSpinner(true);
+			enums = 3;
 			siteService.retrieveSites();
 			siteService.retrieveAllSites();
 			siteService.retrieveFavoriteSites();
