@@ -85,7 +85,7 @@ Ti.App.addEventListener('propspopulate',function()
 	  	 	propertiesDataSet.push({info: {text: name + ":"}, es_info: {text: value}, pic: {image: "default_entry_icon.png"}});
 	  	 	$.properties.appendItems(propertiesDataSet);
 	  	 	
-	  	 	if (name == 'createdBy'  &&  value != 'System')
+	  	 	if (name == 'createdBy'  &&  value  &&  value.length > 0  &&  value != 'System')
 	 		{
 	 			Ti.API.info("Person id: " + value);	  	 			
 	 			personService.retrievePersonWithIdentifier(value);

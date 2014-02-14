@@ -29,6 +29,7 @@ import org.alfresco.mobile.android.api.model.ContentFile;
 import org.alfresco.mobile.android.api.model.Document;
 import org.alfresco.mobile.android.api.model.Folder;
 import org.alfresco.mobile.android.api.model.Node;
+import org.alfresco.mobile.android.api.model.PagingResult;
 import org.alfresco.mobile.android.api.model.Permissions;
 import org.alfresco.mobile.android.api.services.DocumentFolderService;
 import org.appcelerator.kroll.KrollDict;
@@ -123,6 +124,49 @@ public class DocumentFolderServiceProxy extends KrollProxy
     }
     
     
+    /** Retrieve children in current folder (either root after retrieveRootFolder(), or a specific folder after a setFolder() call).
+    Result event will include listing context for paged handling.
+    @since v1.0
+    */
+    @Kroll.method
+    void retrieveChildrenInFolderWithListingContext(Object[] arg)
+    {
+    	final ListingContextProxy lc = (ListingContextProxy)arg[0];
+    	
+    	new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			PagingResult<Node> nodes;
+    			try
+    			{
+	    			// Get children of document library
+	    	        nodes = service.getChildren(currentFolder, lc.listingContext);
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.getChildren()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    	        Log.i("Alfresco", "Nodes: " + nodes.getList().size());
+    	        
+    	        for (Node node : nodes.getList())
+    	        {
+    	        	SDKUtil.createEventWithNode (node, DocumentFolderServiceProxy.this);
+    	        }
+    	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this);
+    	        SDKUtil.createEventWithPagingResult (nodes, DocumentFolderServiceProxy.this);
+    	        
+    			super.run();
+    		}
+    	}.start();
+    }
+    
+   
     @Kroll.method
     FolderProxy getCurrentFolder()
     {

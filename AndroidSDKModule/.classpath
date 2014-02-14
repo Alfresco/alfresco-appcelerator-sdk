@@ -13,6 +13,5 @@
 	<classpathentry kind="lib" path="/Users/ljagger/Documents/Titanium_Studio_Workspace/fork/alfresco-appcelerator-sdk/AndroidSDKModule/lib/alfresco-mobile-android-client-api-1.3.0.jar"/>
 	<classpathentry kind="lib" path="/Users/ljagger/Documents/Titanium_Studio_Workspace/fork/alfresco-appcelerator-sdk/AndroidSDKModule/lib/alfresco-opencmis-extension-0.6-ANDROID.jar"/>
 	<classpathentry kind="lib" path="/Users/ljagger/Documents/Titanium_Studio_Workspace/fork/alfresco-appcelerator-sdk/AndroidSDKModule/lib/chemistry-opencmis-android-client-0.10.0.jar"/>
-	<classpathentry kind="lib" path="/Users/ljagger/Documents/Titanium_Studio_Workspace/fork/alfresco-appcelerator-sdk/AndroidSDKModule/lib/slf4j-android-1.6.1-RC1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

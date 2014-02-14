@@ -120,7 +120,7 @@ public class SDKUtil
     	try 
     	{
     		method = obj.getClass().getMethod (getterMethod.toString()); 
-    		Log.i("Alfresco", "property: " + getterMethod.toString());
+    		//Log.i("Alfresco", "property: " + getterMethod.toString());
     	}
     	catch (NoSuchMethodException e)
     	{
@@ -129,18 +129,18 @@ public class SDKUtil
 			try 
 			{
 				 method = obj.getClass().getMethod ("get" + getterMethod.toString());
-				 Log.i("Alfresco", "property: get" + getterMethod.toString()); 
+				 //Log.i("Alfresco", "property: get" + getterMethod.toString()); 
 			}
 			catch (NoSuchMethodException f)
 	    	{
 				try
 				{
 					method = obj.getClass().getMethod ("is" + getterMethod.toString()); 
-					Log.i("Alfresco", "property: is" + getterMethod.toString());
+					//Log.i("Alfresco", "property: is" + getterMethod.toString());
 				}
 				catch (NoSuchMethodException g)
 				{
-					Log.i("Alfresco", "property not found: " + getter);
+					//Log.i("Alfresco", "property not found: " + getter);
 					return null;
 				}
 			}
@@ -181,7 +181,7 @@ public class SDKUtil
 		{
 		}
 		
-		Log.i("Alfresco", "property retrieval caused exception. " + getter);
+		//Log.i("Alfresco", "property retrieval caused exception. " + getter);
 		return null;
     }
 };

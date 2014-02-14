@@ -20,7 +20,7 @@
 package com.alfresco.appcelerator.module.sdk;
 
 import org.alfresco.mobile.android.api.model.RepositoryInfo;
-import org.alfresco.mobile.android.api.session.RepositorySession;
+import org.alfresco.mobile.android.api.session.AlfrescoSession;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 
@@ -33,6 +33,6 @@ public class SessionProxy extends KrollProxy
 	}
 	
 	public RepositoryInfo info;
-	public RepositorySession session;
+	public AlfrescoSession session;
 	public int error;
 }

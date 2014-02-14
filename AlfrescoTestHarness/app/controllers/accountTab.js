@@ -187,7 +187,7 @@ function cloudButtonClick()
 	function authenticate()
 	{
 		//As desktop page is served up, a width of 200% ensures login details are centered large enough to read!
-		var win = Ti.UI.createWindow({width:'200%', height:'100%', backgroundColor:'white', fullscreen:'true'});
+		var win = Ti.UI.createWindow({width:'200%', height:'100%', backgroundColor:'white', fullscreen:'true', navBarHidden:'true'});
 		var webview = Titanium.UI.createWebView({width:'100%', height:'100%', url:authURL});
 		
 		win.add(webview);		//Add Cloud authentication login.

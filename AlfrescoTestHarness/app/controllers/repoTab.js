@@ -46,7 +46,10 @@ Ti.App.addEventListener('repopopulate', function()
 	if (Alloy.Globals.repositorySession != null)
 	{
 		if (documentFolderService == null)
-		{ 
+		{
+			listingContext = Alloy.Globals.SDKModule.createListingContext();
+			listingContext.initialiseWithMaxItemsAndSkipCount(20, 0);
+														 
 			documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
 			
 			documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
@@ -61,7 +64,7 @@ Ti.App.addEventListener('repopopulate', function()
 													if (allNodeTypes)
 													{
 														documentFolderService.setFolder(folder);
-												        documentFolderService.retrieveChildrenInFolder();
+												        documentFolderService.retrieveChildrenInFolderWithListingContext(listingContext);
 												        //Will result in an event fired to re-populate.
 												   	}
 												   	else
@@ -80,24 +83,23 @@ Ti.App.addEventListener('repopopulate', function()
 			
 			documentFolderService.addEventListener('pagingresult', function(e)
 			{
-				alert ("Total items = " + e.totalitems);
-				
 				hasMoreItems = e.hasmoreitems;
 				
 				if (hasMoreItems)
-					alert("There are more items available");
+				{
+					var mainDataSet = [];
+			  	 	var data = {info: {text: "(" + e.totalitems + " total items)"}, es_info: {text: "Folder contains more items not shown"}, pic: {image: 'default_entry_icon.png'},  properties: {folder: -1, name: null, folderobject: null} };		
+			  	 	mainDataSet.push(data);
+			  	 	mainSection.appendItems(mainDataSet);
+				}
 			});
 			
 			documentFolderService.addEventListener('retrievedfolder',function(e)
 			{
 				$.folderLabel.text = " " + documentFolderService.getCurrentFolder().getName();
 				
-				//listingContext = Alloy.Globals.SDKModule.createListingContext();
-				//listingContext.initialiseWithMaxItemsAndSkipCount(2, 0);
-				//documentFolderService.retrieveChildrenInFolderWithListingContext(listingContext);
-				
-				Alloy.Globals.showSpinner(true);
-				documentFolderService.retrieveChildrenInFolder(listingContext);
+				Alloy.Globals.showSpinner(true);				
+				documentFolderService.retrieveChildrenInFolderWithListingContext(listingContext);
 			});
 			
 			documentFolderService.addEventListener('endenumeration',function(e)

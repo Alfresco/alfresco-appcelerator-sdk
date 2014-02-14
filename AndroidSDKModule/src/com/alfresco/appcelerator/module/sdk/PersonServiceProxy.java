@@ -118,13 +118,16 @@ public class PersonServiceProxy extends KrollProxy
                     return;
 				}
 				
-				ContentFileProxy cfProxy = new ContentFileProxy(avatar);
-				HashMap<String, Object> map = new HashMap<String, Object>();
-		        map.put("contentfile", cfProxy);
-		        fireEvent("retrievedavatar", new KrollDict(map));
-    	        
-    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this);
-    	    
+				if (avatar != null)
+				{
+					ContentFileProxy cfProxy = new ContentFileProxy(avatar);
+					HashMap<String, Object> map = new HashMap<String, Object>();
+			        map.put("contentfile", cfProxy);
+			        fireEvent("retrievedavatar", new KrollDict(map));
+	    	        
+	    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this);
+				}
+				
     	        super.run();
     		}
     	}.start();
