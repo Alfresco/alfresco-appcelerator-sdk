@@ -45,6 +45,7 @@ $.index.addEventListener('focus',function(e)
 });
 
 
+Alloy.Globals.activityIndicator = Ti.UI.createWindow({fullscreen:'true', width:'100%', height:'100%', backgroundColor:'white', navBarHidden:'true'});
 var style;
 
 if (Ti.Platform.name === 'iPhone OS')
@@ -52,7 +53,7 @@ if (Ti.Platform.name === 'iPhone OS')
 else
 	style = Ti.UI.ActivityIndicatorStyle.PLAIN;
 	
-Alloy.Globals.activityIndicator = Ti.UI.createActivityIndicator({
+var indicator = Ti.UI.createActivityIndicator({
   color: 'white',
   backgroundColor:'black',
   font: {fontFamily:'Helvetica Neue', fontSize:24, fontWeight:'bold'},
@@ -62,20 +63,15 @@ Alloy.Globals.activityIndicator = Ti.UI.createActivityIndicator({
   width:'75%'
 });
 
-Alloy.Globals.activityIndicator.hide();
-$.index.add(Alloy.Globals.activityIndicator);
+indicator.show();
+Alloy.Globals.activityIndicator.add (indicator);
+Alloy.Globals.activityIndicator.opacity=0.8;
 
-
+		
 Alloy.Globals.showSpinner = function(show)
 {
-	if (show==true)
-	{
-		Alloy.Globals.activityIndicator.show();
-		Alloy.Globals.tabGroup.touchEnabled = false;
-	}
+	if (show)
+		Alloy.Globals.activityIndicator.open();
 	else
-	{
-		Alloy.Globals.activityIndicator.hide();
-		Alloy.Globals.tabGroup.touchEnabled = true;
-	}
+		Alloy.Globals.activityIndicator.close();
 };

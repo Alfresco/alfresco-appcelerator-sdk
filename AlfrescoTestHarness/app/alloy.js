@@ -244,7 +244,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	    {
 	    	viewNode(e);
 	    }
-	    else
+	    else if (item.properties.folder >= 0)
 	    {
 		    var ops;
 		    
@@ -355,7 +355,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 		  	
 		  	onFolder(folder);
 	    }    
-	    else
+	    else if (item.properties.folder == 0)	//Document.
 	    {
 	    	var doc = item.properties.docobject;
 	    	
