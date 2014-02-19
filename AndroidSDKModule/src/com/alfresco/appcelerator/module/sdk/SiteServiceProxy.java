@@ -25,6 +25,7 @@ import java.util.List;
 import org.alfresco.mobile.android.api.model.Folder;
 import org.alfresco.mobile.android.api.model.ListingContext;
 import org.alfresco.mobile.android.api.model.PagingResult;
+import org.alfresco.mobile.android.api.model.Person;
 import org.alfresco.mobile.android.api.model.Site;
 import org.alfresco.mobile.android.api.services.SiteService;
 import org.appcelerator.kroll.KrollDict;
@@ -515,6 +516,178 @@ public class SiteServiceProxy extends KrollProxy
 				super.run();
 			}
 		}.start();
+	}
+
+	
+	/** Returns a list of all members for a site.
+	 @param site - site from which members are retrieved
+	 @since v1.2
+	 */
+	@Kroll.method
+	void retrieveAllMembers(Object[] arg)
+	{
+		final SiteProxy proxy = (SiteProxy) arg[0];
+		
+		new Thread()
+		{
+			@Override
+			public void run() 
+			{
+				List<Person> members;
+				
+				try
+				{
+					members = service.getAllMembers (proxy.site);
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "SiteService.getAllSites()", SiteServiceProxy.this);
+	                return;
+				}
+				
+				for (Person person : members)
+				{
+					PersonProxy personProxy = new PersonProxy (person);
+					HashMap<String, Object> map = new HashMap<String, Object>();
+			        map.put("person", personProxy);
+			        fireEvent("personnode", new KrollDict(map));
+				}
+				
+				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+				
+				super.run();
+			}
+		}.start();
+	}
+
+	
+	/** Returns a paged list of all members for a site.
+	 @param site - site from which members are retrieved
+	 @param listingContext - The listing context with a paging definition that's used to retrieve members.
+	 @since v1.2
+	 */
+	@Kroll.method
+	void retrieveAllMembersWithListingContext(Object[] args)
+	{
+		final SiteProxy proxy = (SiteProxy) args[0];
+		final ListingContextProxy lc = (ListingContextProxy)args[1];
+		
+		new Thread()
+		{
+			@Override
+			public void run() 
+			{
+				PagingResult<Person> members;
+				
+				try
+				{
+					members = service.getAllMembers (proxy.site, lc.listingContext);
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "SiteService.getAllMembers(ListingContext)", SiteServiceProxy.this);
+	                return;
+				}
+				
+				for (Person person : members.getList())
+				{
+					PersonProxy personProxy = new PersonProxy (person);
+					HashMap<String, Object> map = new HashMap<String, Object>();
+			        map.put("person", personProxy);
+			        fireEvent("personnode", new KrollDict(map));
+				}
+				
+				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+				SDKUtil.createEventWithPagingResult (members, SiteServiceProxy.this);
+				
+				super.run();
+			}
+		}.start();
+	}
+
+	
+	/** Returns a paged list of all members for a site that respect the filter.
+	 @param site - site from which members are retrieved
+	 @param filter - filter that needs to be applied to search query.
+	 @param listingContext - The listing context with a paging definition that's used to retrieve members.
+	 @since v1.2
+	 */
+     @Kroll.method
+	void searchMembers(Object[] args)
+    {
+    	final SiteProxy proxy = (SiteProxy) args[0];
+    	final String filter = (String)args[1];
+ 		final ListingContextProxy lc = (ListingContextProxy)args[2];
+ 		
+ 		new Thread()
+ 		{
+ 			@Override
+ 			public void run() 
+ 			{
+ 				PagingResult<Person> members;
+ 				
+ 				try
+ 				{
+ 					members = service.searchMembers (proxy.site, filter, lc.listingContext);
+ 				}
+ 				catch(Exception e)
+ 				{
+ 					SDKUtil.createErrorEvent (e, "SiteService.searchMembers()", SiteServiceProxy.this);
+ 	                return;
+ 				}
+ 				
+ 				for (Person person : members.getList())
+ 				{
+ 					PersonProxy personProxy = new PersonProxy (person);
+ 					HashMap<String, Object> map = new HashMap<String, Object>();
+ 			        map.put("person", personProxy);
+ 			        fireEvent("personnode", new KrollDict(map));
+ 				}
+ 				
+ 				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+ 				SDKUtil.createEventWithPagingResult (members, SiteServiceProxy.this);
+ 				
+ 				super.run();
+ 			}
+ 		}.start();
+    }
+     
+
+	/** Returns true if the person is member of the site, returns false otherwise
+	 @param person - person for whom membership status is retrieved
+	 @param site - site from which membership status for the person is retrieved
+	 @since v1.2
+	 */
+	@Kroll.method
+	void isPersonMember(Object[] args)
+	{
+		final PersonProxy personProxy = (PersonProxy) args[0];
+		final SiteProxy siteProxy = (SiteProxy) args[1];
+ 		
+ 		new Thread()
+ 		{
+ 			@Override
+ 			public void run() 
+ 			{
+ 				boolean isMember = false;
+ 				
+ 				try
+ 				{
+ 					isMember = service.isMember (siteProxy.site, personProxy.person);
+ 				}
+ 				catch(Exception e)
+ 				{
+ 					SDKUtil.createErrorEvent (e, "SiteService.isMember()", SiteServiceProxy.this);
+ 	                return;
+ 				}
+ 				 				
+				HashMap<String, Object> map = new HashMap<String, Object>();
+		        map.put("isMember", isMember ? 1 : 0);
+		        fireEvent("retrievedmembership", new KrollDict(map));
+ 				
+ 				super.run();
+ 			}
+ 		}.start();
 	}
 
 

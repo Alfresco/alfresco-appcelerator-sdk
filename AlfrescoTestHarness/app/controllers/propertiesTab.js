@@ -30,7 +30,7 @@ var tagsDataSet = [];
 var ratingsDataSet  = [];
 var lastNode = null;
 var parentFolders = new Array();
-
+var person;
 
 Ti.App.addEventListener('cleartabs', function()
 {
@@ -177,7 +177,7 @@ function init()
 		});
 		personService.addEventListener('personnode', function(e)
 		{
-			var person = e.person;
+			person = e.person;
 			Ti.API.info("Person: " + person.fullName);
 			
 			personService.retrieveAvatarForPerson(person);
@@ -196,6 +196,11 @@ function init()
 		Alloy.Globals.modelListeners(versionService,$.folderList);
 		$.propList.addEventListener('itemclick', function(e)
 		{
+			if (e.itemIndex == creatorIndex)	//createdBy item?
+			{
+				Alloy.Globals.recursePropertiesAndAlert("Person Properties", person);
+			}
+			else
 			if (e.section == $.folderList)
 			{
 				//Alloy.Globals.currentNode = e.section.getItemAt(e.itemIndex).properties.docobject;

@@ -1,6 +1,6 @@
 /*
  ******************************************************************************
- * Copyright (C) 2005-2013 Alfresco Software Limited.
+ * Copyright (C) 2005-2014 Alfresco Software Limited.
  * 
  * This file is part of the Alfresco Mobile SDK.
  * 
@@ -24,7 +24,9 @@ import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class, 
-propertyAccessors = {"identifier", "firstName", "lastName", "fullName", "avatarIdentifier"})
+propertyAccessors = {"identifier", "firstName", "lastName", "fullName", "avatarIdentifier",
+					//@since v1.2
+					"jobTitle", "location", "description", "telephoneNumber", "mobileNumber", "email", "skypeId", "instantMessageId", "googleId", "status", "statusTime"})
 public class PersonProxy extends KrollProxy
 {
 	public Person person;
@@ -38,7 +40,7 @@ public class PersonProxy extends KrollProxy
 	{
         this.person = person;
 
-        String nodeGetters[] = {"identifier", "firstName", "lastName", "fullName", "avatarIdentifier"};    	
+        String nodeGetters[] = {"identifier", "firstName", "lastName", "fullName", "avatarIdentifier", "jobTitle", "location", "description", "telephoneNumber", "mobileNumber", "email", "skypeId", "instantMessageId", "googleId", "status", "statusTime"};    	
 		for (int i = 0;  i < nodeGetters.length;  i++)
 		{
 			Object value = SDKUtil.extractProperty(person, nodeGetters[i]);

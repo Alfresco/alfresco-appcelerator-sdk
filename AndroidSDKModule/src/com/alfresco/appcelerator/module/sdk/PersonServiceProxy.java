@@ -20,8 +20,11 @@
 package com.alfresco.appcelerator.module.sdk;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.alfresco.mobile.android.api.model.ContentFile;
+import org.alfresco.mobile.android.api.model.Node;
+import org.alfresco.mobile.android.api.model.PagingResult;
 import org.alfresco.mobile.android.api.model.Person;
 import org.alfresco.mobile.android.api.services.PersonService;
 import org.appcelerator.kroll.KrollDict;
@@ -123,9 +126,162 @@ public class PersonServiceProxy extends KrollProxy
 					ContentFileProxy cfProxy = new ContentFileProxy(avatar);
 					HashMap<String, Object> map = new HashMap<String, Object>();
 			        map.put("contentfile", cfProxy);
+			        map.put("personid", personProxy.person.getIdentifier());
 			        fireEvent("retrievedavatar", new KrollDict(map));
 	    	        
 	    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this);
+				}
+				
+    	        super.run();
+    		}
+    	}.start();
+	}
+	
+	
+	/**---------------------------------------------------------------------------------------
+	 * @name Update Person profile method
+	 *  ---------------------------------------------------------------------------------------
+	 */
+	/** Update person profile
+	 @param properties - dictionary of properties that are being updated
+	 @since v1.2
+	 */
+	@Kroll.method
+	void updateProfile (Object[] arg)
+	{
+		SDKUtil.createErrorEventWithCode(1, "Not implemented in Android Alfresco SDK v1.3", PersonServiceProxy.this);
+	}
+
+	
+	/**---------------------------------------------------------------------------------------
+	 * @name Search Person methods
+	 *  ---------------------------------------------------------------------------------------
+	 */
+	/** Returns a list of site members that respect the filter.
+	 
+	 @param filter - filter that needs to be applied to search query.
+	 @since v1.2
+	 */
+	@Kroll.method
+	void search (Object[] arg)
+	{
+		final String filter = (String)arg[0];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			List<Person> searchResult;
+    			
+				try
+				{
+					searchResult = service.search(filter);
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "PersonService.search()", PersonServiceProxy.this);
+                    return;
+				}
+				
+				if (searchResult != null)
+				{
+					for (Person person : searchResult)
+					{
+						PersonProxy personProxy = new PersonProxy (person);
+						HashMap<String, Object> map = new HashMap<String, Object>();
+				        map.put("person", personProxy);
+				        fireEvent("personnode", new KrollDict(map));
+					}
+					SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this);
+				}
+				
+    	        super.run();
+    		}
+    	}.start();
+	}
+
+	
+	/** Returns a paged list of site members that respect the filter.
+	 
+	 @param filter - filter that needs to be applied to search query.
+	 @param listingContext - The listing context with a paging definition that's used to search for people.
+	 @since v1.2
+	 */
+	@Kroll.method
+	void searchWithListingContext (Object[] args)
+	{
+		final String filter = (String)args[0];
+		final ListingContextProxy proxy = (ListingContextProxy)args[1];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			PagingResult<Person> searchResult;
+    			
+				try
+				{
+					searchResult = service.search(filter, proxy.listingContext);
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "PersonService.search()", PersonServiceProxy.this);
+                    return;
+				}
+				
+				if (searchResult != null)
+				{
+					for (Person person : searchResult.getList())
+					{
+						PersonProxy personProxy = new PersonProxy (person);
+						HashMap<String, Object> map = new HashMap<String, Object>();
+				        map.put("person", personProxy);
+				        fireEvent("personnode", new KrollDict(map));
+					}
+					SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this);
+				}
+				
+    	        super.run();
+    		}
+    	}.start();
+	}
+
+	
+	/** Retrieve the latest (and complete) properties for person.
+	 
+	 @param The person which is to be refreshed with its latest properties
+	 @since v1.2
+	 */
+	@Kroll.method
+	void refreshPerson (Object[] arg)
+	{
+		final PersonProxy personProxy = (PersonProxy)arg[0];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			Person person;
+    			
+				try
+				{
+					person = service.refresh(personProxy.person);
+				}
+				catch(Exception e)
+				{
+					SDKUtil.createErrorEvent (e, "PersonService.getAvatar()", PersonServiceProxy.this);
+                    return;
+				}
+				
+				if (person != null)
+				{
+					PersonProxy personProxy = new PersonProxy (person);
+					HashMap<String, Object> map = new HashMap<String, Object>();
+			        map.put("person", personProxy);
+			        fireEvent("personnode", new KrollDict(map));
 				}
 				
     	        super.run();

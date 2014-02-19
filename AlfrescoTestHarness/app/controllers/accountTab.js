@@ -21,7 +21,9 @@
 //---------------------------------------------------------------------------------------------------------------------------------
 //This provides convenient defaults while testing.
 //---------------------------------------------------------------------------------------------------------------------------------
-if (Titanium.Platform.model == 'google_sdk' ||  Titanium.Platform.model == 'Simulator')  
+Ti.API.info("Platform model = " + Titanium.Platform.model);
+
+if (Titanium.Platform.model == 'sdk' ||  Titanium.Platform.model == 'Simulator')  
 	$.serverEdit.value = "http://localhost:8080/alfresco";		//Running on Simulator/Emulator. Assume local server on the PC/Mac.
 else
 	$.serverEdit.value = "http://192.168.1.91:8080/alfresco";	//Running on-device. NOTE: Change to your servers IP address!	
