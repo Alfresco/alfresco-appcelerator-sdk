@@ -48,6 +48,8 @@ Ti.App.addEventListener('activitiespopulate',function()
 					
 					Alloy.Globals.currentNode = item.properties;
 		    		Alloy.Globals.nodeJustProperties = true;
+		    		
+		    		alert("Go to the Properties tab to see this objects full properties.");
 				});
 			}
 						

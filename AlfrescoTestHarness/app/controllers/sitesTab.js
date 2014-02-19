@@ -22,7 +22,7 @@ var documentFolderService;
 var parentFolders = new Array();
 var siteService = null;
 var enums = 3;
-
+var siteMembers = "";
 
 Ti.App.addEventListener('cleartabs', function()
 {
@@ -65,6 +65,18 @@ Ti.App.addEventListener('sitespopulate',function()
 				{
 					if (--enums == 0)
 						Alloy.Globals.showSpinner(false);
+						
+					if (siteMembers.length > 0)
+					{
+						Alloy.Globals.showSpinner(false);
+						alert(siteMembers);
+						siteMembers = "";
+					}
+				});
+				
+				siteService.addEventListener('personnode', function(e)
+				{
+					siteMembers += e.person.fullName + "\r\n";
 				});
 				
 				siteService.addEventListener('siteupdated', function(e)
@@ -95,10 +107,11 @@ Ti.App.addEventListener('sitespopulate',function()
 					}
 					else
 					{
-						var ops =	{	cancel: 3,
+						var ops =	{	cancel: 4,
 								  		options: ['View site', 
 								  			(site.isFavorite ? 'Unfavourite' : 'Favourite') + ' site',
 											(site.isMember ? 'Leave' : 'Join') + ' site', 
+											'Show Site members',
 											'Cancel'],
 								  		selectedIndex: 0,
 								  		destructive: 0,
@@ -136,6 +149,13 @@ Ti.App.addEventListener('sitespopulate',function()
 						    		siteService.joinSite(site);
 						    	}
 						    }
+						    if (ev.index == 3)
+						    {
+						    	siteMembers = "'" + name + "' site members:\r\n\r\n";
+						    	
+						    	Alloy.Globals.showSpinner(true);
+						    	siteService.retrieveAllMembers(site);
+						    }
 						});
 					  
 						dlg.show();
@@ -164,7 +184,8 @@ Ti.App.addEventListener('sitespopulate',function()
 											    {
 											    	documentFolderService.saveDocument (document);
 											    	//Will result in an event fired to preview the saved file.
-											    });
+											    },
+											    true);
 
 			}
 			

@@ -32,6 +32,12 @@
 				
 		</Tab> 
 		
+		<Tab backgroundColor="#DDDDDD" id="personSearchTab" title="" icon="manfigure.png">
+			
+			<Require src="personSearchTab" id="personsearchtab">
+				
+		</Tab> 
+		
 		<Tab backgroundColor="#DDDDDD" id="propsTab" title="" icon="KS_nav_ui.png">
 			
 			<Require src="propertiesTab" id="propstab">

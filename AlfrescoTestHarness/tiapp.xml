@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.alfresco.appcelerator.alfrescotestharness</id>
     <name>AlfrescoTestHarness</name>
-    <version>1.1</version>
+    <version>1.2</version>
     <publisher>ljagger</publisher>
     <url>http://www.alfresco.com</url>
     <description>Test harness for Alfresco modules.</description>
@@ -45,8 +45,8 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-        <module platform="android" version="1.1">com.alfresco.appcelerator.module.sdk</module>
-        <module platform="iphone" version="1.1">com.alfresco.appcelerator.module.sdk</module>
+        <module platform="android" version="1.2">com.alfresco.appcelerator.module.sdk</module>
+        <module platform="iphone" version="1.2">com.alfresco.appcelerator.module.sdk</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>
@@ -56,7 +56,7 @@
         <target device="mobileweb">false</target>
         <target device="tizen">false</target>
     </deployment-targets>
-    <sdk-version>3.2.0.GA</sdk-version>
+    <sdk-version>3.2.1.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>

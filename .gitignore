@@ -101,3 +101,15 @@ AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/TaggingServiceProxy$3.
 AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/TaggingServiceProxy.class
 AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/VersionServiceProxy$1.class
 AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/VersionServiceProxy.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/CloudSessionProxy$1.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/CloudSessionProxy$ConnectToRepo.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/CloudSessionProxy.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/DocumentFolderServiceProxy$8.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/OAuthDataProxy.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/PersonServiceProxy$3.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/PersonServiceProxy$4.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/PersonServiceProxy$5.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/SiteServiceProxy$13.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/SiteServiceProxy$14.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/SiteServiceProxy$15.class
+AndroidSDKModule/bin/com/alfresco/appcelerator/module/sdk/SiteServiceProxy$16.class

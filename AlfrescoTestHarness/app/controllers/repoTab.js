@@ -77,7 +77,8 @@ Ti.App.addEventListener('repopopulate', function()
 											    {
 											    	documentFolderService.saveDocument (document);
 											    	//Will result in an event fired to preview the saved file.
-											    });
+											    },
+											    true);
 																				
 			Alloy.Globals.modelListeners(documentFolderService, mainSection);
 			

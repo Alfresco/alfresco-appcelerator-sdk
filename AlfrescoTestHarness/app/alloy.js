@@ -169,21 +169,24 @@ Alloy.Globals.activitiesModelListener = function(service, section)
 var createdFolder;
 var itemClicked;
 
-Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument)
+Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFolder, onDocument, navigable)
 {
 	service.addEventListener('deletednode', function(e)
 	{
-		//Empty the list and add 'Back' item if we're not at root folder.
-	    itemClicked.section.deleteItemsAt(0,itemClicked.section.getItems().length);
-	    if (parentFolders.length > 0)
-	    {      
-	        var mainDataSet = [];
-	  	 	var data = {info: {text: "Back"}, es_info: {text: "Previous folder"}, pic: {image: 'wm_back.png'},  properties: {folder: 2, name: null, folderobject: null} };		
-	  	 	mainDataSet.push(data);
-	  	 	itemClicked.section.appendItems(mainDataSet);
-	  	}
-	  	
-		onFolder(service.getCurrentFolder());	
+		if (navigable)
+		{
+			//Empty the list and add 'Back' item if we're not at root folder.
+		    itemClicked.section.deleteItemsAt(0,itemClicked.section.getItems().length);
+		    if (parentFolders.length > 0)
+		    {      
+		        var mainDataSet = [];
+		  	 	var data = {info: {text: "Back"}, es_info: {text: "Previous folder"}, pic: {image: 'wm_back.png'},  properties: {folder: 2, name: null, folderobject: null} };		
+		  	 	mainDataSet.push(data);
+		  	 	itemClicked.section.appendItems(mainDataSet);
+		  	}
+		  	
+			onFolder(service.getCurrentFolder());	//Refresh the folder contents.
+		}	
 	});
 	
 	
@@ -278,6 +281,8 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 			    {
 			    	service.deleteNode(node);
 			    	alert("Node deleted");
+			    	
+			    	Alloy.Globals.currentNode = null;
 			    }	
 				else
 				if (ev.index == 2)
@@ -302,11 +307,16 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 				{
 					if (ev.index == 5)
 				    {
-				    	var foldername = 'New ' + (new Date()).getTime();
-				    	
-						alert("Creating new folder '" + foldername + "' and document...");
-						
-						service.createFolderWithName(foldername, item.properties.folderobject, {'cm:title' : 'A new test folder'});  
+				    	if (!navigable)
+				    		alert("Cannot create nodes in this view");
+				    	else
+				    	{
+					    	var foldername = 'New ' + (new Date()).getTime();
+					    	
+							alert("Creating new folder '" + foldername + "' and document...");
+							
+							service.createFolderWithName(foldername, item.properties.folderobject, {'cm:title' : 'A new test folder'});
+						}  
 				    }
 				}  
 			});

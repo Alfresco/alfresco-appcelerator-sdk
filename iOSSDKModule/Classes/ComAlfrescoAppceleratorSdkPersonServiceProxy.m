@@ -81,9 +81,10 @@
     ENSURE_UI_THREAD_1_ARG(arg)
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkPersonProxy)
     
-    ComAlfrescoAppceleratorSdkPersonProxy* person = arg;
+    ComAlfrescoAppceleratorSdkPersonProxy* personProxy = arg;
+    AlfrescoPerson* person = [person performSelector:NSSelectorFromString(@"person")];
     
-    [service retrieveAvatarForPerson:[person performSelector:NSSelectorFromString(@"person")]
+    [service retrieveAvatarForPerson:person
      completionBlock:^(AlfrescoContentFile* contentFile, NSError* error)
      {
          if (error != NULL)
@@ -94,6 +95,7 @@
          {
              NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [[ComAlfrescoAppceleratorSdkContentFileProxy alloc] initWithContentFile:contentFile], @"contentfile",
+                                    person.identifier, @"personid",
                                     nil];
              
              [self fireEvent:@"retrievedavatar" withObject:event];

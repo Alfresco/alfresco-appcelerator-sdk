@@ -19,82 +19,78 @@
  */
 
 var mainSection = $.mainSection;
-var documentFolderService;
 var searchService;
 var listingContext;
-var parentFolders = new Array();
 var skipCount = 0;
 var hasMoreItems = false;
+var persons = {};
 
-
-Ti.App.addEventListener('searchinit',function()
+Ti.App.addEventListener('personsearchinit',function()
 {
-	if (Alloy.Globals.AlfrescoSDKVersion >= 1.0)
+	if (Alloy.Globals.AlfrescoSDKVersion >= 1.2)
 	{
 		mainSection.deleteItemsAt(0, mainSection.getItems().length);
 		listingContext = Alloy.Globals.SDKModule.createListingContext();
 		hasMoreItems = false;
 		skipCount = 0;
 		listingContext.initialiseWithMaxItemsAndSkipCount (10, skipCount);
-		$.searchButton.title = "Get first ten nodes";
-		
+		$.searchButton.title = "Get first ten people";
 		
 		if (Alloy.Globals.repositorySession != null  &&  searchService == null)
 		{ 
-			documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
-			documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
-		
-			searchService = Alloy.Globals.SDKModule.createSearchService();
+			searchService = Alloy.Globals.SDKModule.createPersonService();
 			searchService.addEventListener('error', function(e) { alert(e.errorstring); });
 			
 			searchService.initialiseWithSession(Alloy.Globals.repositorySession);
 			
 			listingContext = Alloy.Globals.SDKModule.createListingContext();
 			
-			//Set up the list's on-click functionality. 
-			Alloy.Globals.controllerNavigation($, documentFolderService, parentFolders,
-												function(folder)
-												{
-													documentFolderService.setFolder(folder);
-											        documentFolderService.retrieveChildrenInFolder();
-											        //Will result in an event fired to re-populate.
-											    },    
-											    function(document)
-											    {
-											    	documentFolderService.saveDocument (document);
-											    	//Will result in an event fired to preview the saved file.
-											    },
-											    false);	
-	
-			Alloy.Globals.modelListeners(searchService, mainSection);
-			
-			documentFolderService.addEventListener('retrieveddocument',function(e)
+			searchService.addEventListener('personnode', function(e) 
 			{
-				var contentFile = e.contentfile;
+				var person = e.person;
+				var propertiesDataSet = [];
+	  	 		propertiesDataSet.push({info: {text: person.fullName}, es_info: {text: person.email.length > 0 ? person.email : "No email address"}, pic: {image: "default_entry_icon.png"}, data: person});
+		  	 	$.mainSection.appendItems(propertiesDataSet);
+		  	 	
+		  	 	if (person.identifier != 'System')
+		 		{
+		 			persons[person.identifier] = $.mainSection.getItems().length-1;
+		 			
+		 			//alert(JSON.stringify(persons));
+		 			
+		 			searchService.retrieveAvatarForPerson(person);
+		 		}
+			});
 				
-				Alloy.Globals.showSpinner(false);
+			searchService.addEventListener('retrievedavatar', function(e)
+			{
+				var id = e.personid;
+				var contentFile = e.contentfile;			
+				var personIdx = persons[id];
 				
-				if (Ti.Platform.name == 'iPhone OS')
-				{
-					Ti.UI.iOS.createDocumentViewer({url:contentFile.getPath()}).show();
-				}
-				else
-				if (Ti.Platform.name == 'android')
-				{
-					Ti.Android.currentActivity.startActivity(Ti.Android.createIntent( { action: Ti.Android.ACTION_VIEW, type: contentFile.getMIMEType(), data: contentFile.getPath() } ));
-				}
+				Ti.API.info("ID: " + id + ", Image: " + contentFile.getPath());
+				
+				var item = $.mainSection.getItemAt(personIdx);
+				item.pic.image = contentFile.getPath();
+				$.mainSection.updateItemAt(personIdx, item);	
+			});
+			
+			$.folderList.addEventListener('itemclick', function(e)
+			{
+				Alloy.Globals.currentNode = $.mainSection.getItemAt(e.itemIndex).data;
+				Alloy.Globals.nodeJustProperties = true;
+				
+				alert("Go to the Properties tab to see this objects full properties.");
 			});
 			
 			searchService.addEventListener('pagingresult', function(e)
 			{
-				//alert("Has more? " + e.hasmoreitems + ", total is " + e.totalitems);
-
 				hasMoreItems = e.hasmoreitems;
 				
 				if (hasMoreItems)
-					$.searchButton.title = "Next ten...";
+					$.searchButton.title = "Next ten people...";
 				else
-					$.searchButton.title = "Get first ten nodes";
+					$.searchButton.title = "Get first ten people";
 			});
 		}
 	}
@@ -103,14 +99,13 @@ Ti.App.addEventListener('searchinit',function()
 
 Ti.App.addEventListener('cleartabs', function()
 {
-	parentFolders = new Array();
 	mainSection.deleteItemsAt(0, mainSection.getItems().length);
 });
 
 
 function searchButtonClick()
 {
-	if (Alloy.Globals.AlfrescoSDKVersion >= 1.0)
+	if (Alloy.Globals.AlfrescoSDKVersion >= 1.2)
 	{
 		if (hasMoreItems)
 		{
@@ -123,11 +118,8 @@ function searchButtonClick()
 		
 		listingContext.initialiseWithMaxItemsAndSkipCount (10, skipCount);
 		
-		var searchTerm = "SELECT * FROM cmis:document WHERE cmis:name LIKE '%" + $.searchEdit.value + "%'";
-	
-		parentFolders = new Array();
 		mainSection.deleteItemsAt(0, mainSection.getItems().length);
 						
-		searchService.searchWithStatementAndListingContext(searchTerm, listingContext);
+		searchService.searchWithListingContext($.searchEdit.value, listingContext);
 	}			
 }					

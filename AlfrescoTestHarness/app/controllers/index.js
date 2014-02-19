@@ -20,7 +20,7 @@
  *****************************************************************************
  */
 
-Alloy.Globals.AlfrescoSDKVersion=1.1;	//Restricts functionality to this SDK version.
+Alloy.Globals.AlfrescoSDKVersion=1.2;	//Restricts functionality to this SDK version.
 Alloy.Globals.SDKModule = require('com.alfresco.appcelerator.module.sdk');
 Alloy.Globals.tabGroup = $.index;
 Alloy.Globals.currentNode = null;
@@ -41,17 +41,26 @@ $.index.addEventListener('focus',function(e)
  		Ti.App.fireEvent('searchinit');
  	else
  	if (e.index == 5)
+ 		Ti.App.fireEvent('personsearchinit');
+ 	else
+ 	if (e.index == 6)
  		Ti.App.fireEvent('propspopulate');
 });
 
 
-Alloy.Globals.activityIndicator = Ti.UI.createWindow({fullscreen:'true', width:'100%', height:'100%', backgroundColor:'white', navBarHidden:'true'});
+
 var style;
 
 if (Ti.Platform.name === 'iPhone OS')
+{
+	Alloy.Globals.activityIndicator = Ti.UI.createWindow({fullscreen:'true', width:Ti.UI.FILL, height:Ti.UI.FILL, backgroundColor:'white', navBarHidden:'true'});
 	style = Ti.UI.iPhone.ActivityIndicatorStyle.LIGHT;
+}
 else
+{
+	Alloy.Globals.activityIndicator = Ti.UI.createWindow({fullscreen:'false', width:Ti.UI.FILL, height:Ti.UI.FILL, backgroundColor:'white', navBarHidden:'true'});
 	style = Ti.UI.ActivityIndicatorStyle.PLAIN;
+}
 	
 var indicator = Ti.UI.createActivityIndicator({
   color: 'white',
