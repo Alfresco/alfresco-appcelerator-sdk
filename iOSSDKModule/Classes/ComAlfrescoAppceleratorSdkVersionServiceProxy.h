@@ -37,7 +37,7 @@
 * **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
 * **'documentnode' - ** Sent for each document node.  ***Properties:*** *Document document*
 * **'foldernode' - ** Sent for each folder node.  ***Properties:*** *Folder folder*
-* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *string eventsource, string eventobject*
 
  
 */

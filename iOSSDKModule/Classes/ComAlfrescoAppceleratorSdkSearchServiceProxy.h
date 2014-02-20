@@ -40,7 +40,7 @@
 * **'documentnode' - ** ***Properties:*** *Document document*
 * **'foldernode' - ** ***Properties:*** *Folder folder*
 * **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
-* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *string eventsource, string eventobject*
  
 */
 

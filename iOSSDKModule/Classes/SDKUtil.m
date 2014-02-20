@@ -34,9 +34,13 @@
 @implementation SDKUtil
 
 
-+createEnumerationEndEvent:(TiProxy*)proxyObj
++createEnumerationEndEvent:(TiProxy*)proxyObj eventSource:(NSString*)eventSrc eventObject:(NSString*)eventObj
 {
-    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
+    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
+                           eventSrc, @"eventsource",
+                           eventObj, @"eventobject",
+                           nil];
+    
     [proxyObj fireEvent:@"endenumeration" withObject:event];
 }
 

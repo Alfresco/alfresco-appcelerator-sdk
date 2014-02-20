@@ -42,7 +42,7 @@
 * **'documentnode' - ** Sent for each document.  ***Properties:*** Document *document*
 * **'foldernode' - ** Sent for each folder.  ***Properties:*** *Folder folder*
 * **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
-* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *string eventsource, string eventobject*
 * **'progresseddocument' - ** Sent during document retrieval progress.  ***Properties:*** *int total, int bytes*
 * **'retrieveddocument' - ** Sent when document retrieval complete.  ***Properties:*** *ContentFile contentfile*
 * **'newdocumentnode' - ** Sent after creation of new document node.  ***Properties:*** Document *document*

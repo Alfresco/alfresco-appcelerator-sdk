@@ -33,7 +33,7 @@
 
 @interface SDKUtil : NSObject
 
-+createEnumerationEndEvent:(TiProxy*)proxyObj;
++createEnumerationEndEvent:(TiProxy*)proxyObj eventSource:(NSString*)eventSrc eventObject:(NSString*)eventObj;
 
 +createParamErrorEvent:(TiProxy*)proxyObj;
 

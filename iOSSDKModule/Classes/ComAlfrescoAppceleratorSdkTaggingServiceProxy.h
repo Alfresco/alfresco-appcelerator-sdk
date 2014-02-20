@@ -38,7 +38,7 @@
 * **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
 * **'tagnode' - ** Sent for each tag node.  ***Properties:*** *Tag tag*
 * **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
-* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *string eventsource, string eventobject*
 * **'addedtags' - ** Sent when tags have been added.  ***Properties:*** *none* 
 */
 

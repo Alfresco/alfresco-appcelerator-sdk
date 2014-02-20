@@ -92,7 +92,7 @@ public class TaggingServiceProxy extends KrollProxy
     	        	TagProxy tagProxy = new TagProxy(entry);
     	        	createEventWithTag (tagProxy);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (TaggingServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (TaggingServiceProxy.this, "retrieveAllTags", null);
     	    
     	        super.run();
     		}
@@ -133,7 +133,7 @@ public class TaggingServiceProxy extends KrollProxy
     	        	TagProxy tagProxy = new TagProxy(entry);
     	        	createEventWithTag (tagProxy);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (TaggingServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (TaggingServiceProxy.this, "retrieveTagsForNode", nodeProxy);
     	    
     	        super.run();
     		}

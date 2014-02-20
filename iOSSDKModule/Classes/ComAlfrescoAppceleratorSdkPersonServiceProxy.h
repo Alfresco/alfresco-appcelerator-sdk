@@ -38,8 +38,8 @@
 #Javascript events:#
 * **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
 * **'personnode' - ** Sent for each person node. ***Properties:*** *Person person*
-* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
-* **'retrievedavatar' - ** Sent upon retrieval of avatar. ***Properties:*** *ContentFile contentfile*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *string eventsource, string eventobject*
+* **'retrievedavatar' - ** Sent upon retrieval of avatar. ***Properties:*** *ContentFile contentfile, string personid*
  
 */
 

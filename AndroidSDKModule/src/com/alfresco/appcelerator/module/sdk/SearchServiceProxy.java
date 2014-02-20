@@ -85,7 +85,7 @@ public class SearchServiceProxy extends KrollProxy
     	        {
     	        	SDKUtil.createEventWithNode(entry, SearchServiceProxy.this);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (SearchServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (SearchServiceProxy.this, "searchWithStatement", searchTerm);
     	    
     	        super.run();
     		}
@@ -130,7 +130,7 @@ public class SearchServiceProxy extends KrollProxy
     	        
     	        SDKUtil.createEventWithPagingResult (entries, SearchServiceProxy.this);
     	        
-    	        SDKUtil.createEnumerationEndEvent (SearchServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (SearchServiceProxy.this, "searchWithStatementAndListingContext", searchTerm);
     	    
     	        super.run();
     		}
@@ -172,7 +172,7 @@ public class SearchServiceProxy extends KrollProxy
     	        {
     	        	SDKUtil.createEventWithNode(entry, SearchServiceProxy.this);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (SearchServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (SearchServiceProxy.this, "searchWithKeywords", searchTerm);
     	    
     	        super.run();
     		}
@@ -215,7 +215,7 @@ public class SearchServiceProxy extends KrollProxy
     	        {
     	        	SDKUtil.createEventWithNode(entry, SearchServiceProxy.this);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (SearchServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (SearchServiceProxy.this, "searchWithKeywordsAndListingContext", searchTerm);
     	    
     	        super.run();
     		}

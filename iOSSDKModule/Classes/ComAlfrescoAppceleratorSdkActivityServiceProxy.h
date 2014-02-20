@@ -38,7 +38,7 @@
 * **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
 * **'activitynode' - ** Sent for each activity node. ***Properties:*** *Activity activity*
 * **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
-* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *string eventsource, string eventobject*
 
 */
 

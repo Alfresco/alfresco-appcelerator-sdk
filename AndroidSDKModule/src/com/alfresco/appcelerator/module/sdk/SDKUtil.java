@@ -1,6 +1,6 @@
 /*
  ******************************************************************************
- * Copyright (C) 2005-2013 Alfresco Software Limited.
+ * Copyright (C) 2005-2014 Alfresco Software Limited.
  *
  * This file is part of the Alfresco Mobile SDK.
  *
@@ -29,10 +29,8 @@ import org.alfresco.mobile.android.api.model.Node;
 import org.alfresco.mobile.android.api.model.PagingResult;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
-import org.appcelerator.titanium.util.Log;
 import org.appcelerator.titanium.util.TiConvert;
 
-@SuppressWarnings("deprecation")
 public class SDKUtil
 {
 	public static final int ERROR_CODE_SDK_METHOD_EXCEPTION = 1;
@@ -40,10 +38,11 @@ public class SDKUtil
 	public static final int ERROR_CODE_FILE_NOT_FOUND = 3;
 	
 	
-	public static void createEnumerationEndEvent (KrollProxy proxyObj)
+	public static void createEnumerationEndEvent (KrollProxy proxyObj, String method, Object identifyingObject)
 	{
 		HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("code", TiConvert.toInt(1));
+		map.put("eventsource", method);
+		map.put("eventobject", identifyingObject);
         proxyObj.fireEvent("endenumeration", new KrollDict(map));
 	}
 

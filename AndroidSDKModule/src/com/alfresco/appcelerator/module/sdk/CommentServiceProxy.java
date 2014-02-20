@@ -87,7 +87,7 @@ public class CommentServiceProxy extends KrollProxy
     	        	CommentProxy commentProxy = new CommentProxy(entry);
     	        	createEventWithComment (commentProxy, "commentnode");
     	        }
-    	        SDKUtil.createEnumerationEndEvent (CommentServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (CommentServiceProxy.this, "retrieveCommentsForNode", nodeProxy);
     	    
     	        super.run();
     		}
@@ -129,7 +129,7 @@ public class CommentServiceProxy extends KrollProxy
     	        	CommentProxy commentProxy = new CommentProxy(entry);
     	        	createEventWithComment (commentProxy, "commentnode");
     	        }
-    	        SDKUtil.createEnumerationEndEvent (CommentServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (CommentServiceProxy.this, "retrieveCommentsForNodeWithListingContext", nodeProxy);
     	    
     	        super.run();
     		}
@@ -148,7 +148,7 @@ public class CommentServiceProxy extends KrollProxy
 	{
 		final NodeProxy nodeProxy = (NodeProxy)args[0];
 		final String commentString = (String)args[1];
-		final String commentTitle = (String)args[2];
+		//final String commentTitle = (String)args[2];
 		
 		new Thread()
     	{

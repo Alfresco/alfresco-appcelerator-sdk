@@ -83,7 +83,7 @@ public class ActivityServiceProxy extends KrollProxy
     	        {
     	        	createEventWithActivityEntry(entry);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this, "retrieveActivityStream", null);
     	    
     	        super.run();
     		}
@@ -123,7 +123,7 @@ public class ActivityServiceProxy extends KrollProxy
     	        	createEventWithActivityEntry(entry);
     	        }
     	        SDKUtil.createEventWithPagingResult(entries, ActivityServiceProxy.this);
-    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this, "retrieveActivityStreamWithListingContext", null);
     	    
     	        super.run();
     		}
@@ -162,7 +162,7 @@ public class ActivityServiceProxy extends KrollProxy
     	        {
     	        	createEventWithActivityEntry(entry);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this, "retrieveActivityStreamForPerson", person);
     	    
     	        super.run();
     		}
@@ -204,7 +204,7 @@ public class ActivityServiceProxy extends KrollProxy
     	        	createEventWithActivityEntry(entry);
     	        }
     	        SDKUtil.createEventWithPagingResult (entries, ActivityServiceProxy.this);
-    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this, "retrieveActivityStreamForPersonWithListingContext", person);
     	    
     	        super.run();
     		}
@@ -244,7 +244,7 @@ public class ActivityServiceProxy extends KrollProxy
     	        {
     	        	createEventWithActivityEntry(entry);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this, "retrieveActivityStreamForSite", site);
     	    
     	        super.run();
     		}
@@ -287,7 +287,7 @@ public class ActivityServiceProxy extends KrollProxy
     	        	createEventWithActivityEntry(entry);
     	        }
     	        SDKUtil.createEventWithPagingResult(entries, ActivityServiceProxy.this);
-    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (ActivityServiceProxy.this, "retrieveActivityStreamForSiteWithListingContext", site);
     	    
     	        super.run();
     		}
