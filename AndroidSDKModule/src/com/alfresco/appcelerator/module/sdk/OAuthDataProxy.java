@@ -19,10 +19,8 @@
  */
 package com.alfresco.appcelerator.module.sdk;
 
-import java.io.Serializable;
 import java.util.HashMap;
 
-import org.alfresco.mobile.android.api.session.authentication.OAuthData;
 import org.alfresco.mobile.android.api.session.authentication.impl.OAuth2DataImpl;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;

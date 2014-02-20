@@ -44,7 +44,7 @@
 * **'mysitesnode' - ** Sent for each of current users site nodes.  ***Properties:*** *Site site*
 * **'favsitesnode' - ** Sent for each favourite site node.  ***Properties:*** *Site site*
 * **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
-* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *string eventsource, string eventobject*
 * **'siteupdated' - ** Sent when site has been updated with changes.  ***Properties:*** *Site site*
 * **'retrievedpendingsite' - ** Sent for each pending site.  ***Properties:*** *Site site*
 */

@@ -90,7 +90,7 @@ public class VersionServiceProxy extends KrollProxy
     	        {
     	        	SDKUtil.createEventWithNode(entry, VersionServiceProxy.this);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (VersionServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (VersionServiceProxy.this, "retrieveAllVersionsOfDocument", docProxy);
     	    
     	        super.run();
     		}

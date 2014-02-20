@@ -37,7 +37,7 @@
 * **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
 * **'commentnode' - ** Sent for each comment node.  ***Properties:*** *Comment comment*
 * **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
-* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *none*
+* **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *string eventsource, string eventobject*
 * **'commentupdated' - ** Sent when comment updated with changes.  ***Properties:*** *Comment comment*
 * **'deletedcomment' - ** Sent when comment deleted.  ***Properties:*** *none*
 */

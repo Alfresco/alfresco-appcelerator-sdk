@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.alfresco.mobile.android.api.model.Folder;
-import org.alfresco.mobile.android.api.model.ListingContext;
 import org.alfresco.mobile.android.api.model.PagingResult;
 import org.alfresco.mobile.android.api.model.Person;
 import org.alfresco.mobile.android.api.model.Site;
@@ -88,7 +87,7 @@ public class SiteServiceProxy extends KrollProxy
     	        {
     	        	createEventWithSite (site, "allsitesnode");
     	        }
-    	        SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this, "retrieveAllSites", null);
     	    
     	        super.run();
     		}
@@ -125,7 +124,7 @@ public class SiteServiceProxy extends KrollProxy
     	        {
     	        	createEventWithSite (site, "mysitesnode");
     	        }
-    	        SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this, "retrieveSites", null);
     	    
     	        super.run();
     		}
@@ -162,7 +161,7 @@ public class SiteServiceProxy extends KrollProxy
     	        {
     	        	createEventWithSite (site, "favsitesnode");
     	        }
-    	        SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this, "retrieveFavoriteSites", null);
     	    
     	        super.run();
     		}
@@ -399,7 +398,7 @@ public class SiteServiceProxy extends KrollProxy
 					createEventWithSite (site, "retrievedpendingsite");
 				}
 				
-				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this, "retrievePendingSites", null);
 				
 				super.run();
 			}
@@ -439,7 +438,7 @@ public class SiteServiceProxy extends KrollProxy
 					createEventWithSite (site, "retrievedpendingsite");
 				}
 				
-				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this, "retrievePendingSitesWithListingContext", null);
 				SDKUtil.createEventWithPagingResult (sites, SiteServiceProxy.this);
 				
 				super.run();
@@ -553,7 +552,7 @@ public class SiteServiceProxy extends KrollProxy
 			        fireEvent("personnode", new KrollDict(map));
 				}
 				
-				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this, "retrieveAllMembers", null);
 				
 				super.run();
 			}
@@ -597,7 +596,7 @@ public class SiteServiceProxy extends KrollProxy
 			        fireEvent("personnode", new KrollDict(map));
 				}
 				
-				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this, "retrieveAllMembersWithListingContext", proxy);
 				SDKUtil.createEventWithPagingResult (members, SiteServiceProxy.this);
 				
 				super.run();
@@ -644,7 +643,7 @@ public class SiteServiceProxy extends KrollProxy
  			        fireEvent("personnode", new KrollDict(map));
  				}
  				
- 				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this);
+ 				SDKUtil.createEnumerationEndEvent (SiteServiceProxy.this, "searchMembers", proxy);
  				SDKUtil.createEventWithPagingResult (members, SiteServiceProxy.this);
  				
  				super.run();

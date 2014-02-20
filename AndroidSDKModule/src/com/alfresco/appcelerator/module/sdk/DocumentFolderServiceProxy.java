@@ -23,7 +23,6 @@ package com.alfresco.appcelerator.module.sdk;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.alfresco.mobile.android.api.model.ContentFile;
 import org.alfresco.mobile.android.api.model.Document;
@@ -36,7 +35,6 @@ import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.titanium.util.Log;
-import org.appcelerator.titanium.util.TiConvert;
 
 
 @SuppressWarnings("deprecation")
@@ -116,7 +114,7 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	        {
     	        	SDKUtil.createEventWithNode (node, DocumentFolderServiceProxy.this);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this, "retrieveChildrenInFolder", null);
     	        
     			super.run();
     		}
@@ -158,7 +156,7 @@ public class DocumentFolderServiceProxy extends KrollProxy
     	        {
     	        	SDKUtil.createEventWithNode (node, DocumentFolderServiceProxy.this);
     	        }
-    	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this, "retrieveChildrenInFolderWithListingContext", null);
     	        SDKUtil.createEventWithPagingResult (nodes, DocumentFolderServiceProxy.this);
     	        
     			super.run();
@@ -233,7 +231,7 @@ public class DocumentFolderServiceProxy extends KrollProxy
     {
     	new Thread()
     	{
-    		@SuppressWarnings({ "unchecked", "rawtypes" })
+    		@SuppressWarnings({ "unchecked" })
 			@Override
     		public void run() 
     		{
@@ -266,7 +264,7 @@ public class DocumentFolderServiceProxy extends KrollProxy
     {
     	new Thread()
     	{
-    		@SuppressWarnings({ "unchecked", "rawtypes" })
+    		@SuppressWarnings({ "unchecked" })
 			@Override
     		public void run() 
     		{

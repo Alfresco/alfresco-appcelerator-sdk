@@ -21,16 +21,11 @@
 package com.alfresco.appcelerator.module.sdk;
 
 import java.util.HashMap;
-import java.util.List;
 
-import org.alfresco.mobile.android.api.model.Comment;
 import org.alfresco.mobile.android.api.services.RatingService;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
-import org.appcelerator.titanium.util.Log;
-import org.appcelerator.titanium.util.TiConvert;
-
 
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class)
 public class RatingServiceProxy extends KrollProxy

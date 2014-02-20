@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.alfresco.mobile.android.api.model.ContentFile;
-import org.alfresco.mobile.android.api.model.Node;
 import org.alfresco.mobile.android.api.model.PagingResult;
 import org.alfresco.mobile.android.api.model.Person;
 import org.alfresco.mobile.android.api.services.PersonService;
@@ -87,7 +86,7 @@ public class PersonServiceProxy extends KrollProxy
 		        map.put("person", personProxy);
 		        fireEvent("personnode", new KrollDict(map));
     	        
-    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this);
+    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this, "retrievePersonWithIdentifier", id);
     	    
     	        super.run();
     		}
@@ -129,7 +128,7 @@ public class PersonServiceProxy extends KrollProxy
 			        map.put("personid", personProxy.person.getIdentifier());
 			        fireEvent("retrievedavatar", new KrollDict(map));
 	    	        
-	    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this);
+	    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this, "retrieveAvatarForPerson", personProxy);
 				}
 				
     	        super.run();
@@ -193,7 +192,7 @@ public class PersonServiceProxy extends KrollProxy
 				        map.put("person", personProxy);
 				        fireEvent("personnode", new KrollDict(map));
 					}
-					SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this);
+					SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this, "search", filter);
 				}
 				
     	        super.run();
@@ -240,7 +239,7 @@ public class PersonServiceProxy extends KrollProxy
 				        map.put("person", personProxy);
 				        fireEvent("personnode", new KrollDict(map));
 					}
-					SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this);
+					SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this, "searchWithListingContext", filter);
 				}
 				
     	        super.run();

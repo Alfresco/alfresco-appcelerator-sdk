@@ -89,7 +89,7 @@ public class CloudSessionProxy extends SessionProxy
                     map.put("networkid", n.getIdentifier());
                     fireEvent("retrievednetwork", new KrollDict(map));
 				}
-				SDKUtil.createEnumerationEndEvent (CloudSessionProxy.this);
+				SDKUtil.createEnumerationEndEvent (CloudSessionProxy.this, "retrieveNetworks", null);
     		}
 		}.start();
 	}
