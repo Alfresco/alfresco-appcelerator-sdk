@@ -67,8 +67,13 @@ function cloudButtonClick()
 	var OAuthData = Alloy.Globals.SDKModule.createOAuthData();
 	var cloudSession = Alloy.Globals.SDKModule.createCloudSession();			
 	
-	var APIKey = "Your key here";
-	var secretKey = "Your key here";
+	//---------------------------------------
+	//Include your private keys here:
+	var APIKey="";
+	var secretKey="";
+	Ti.include('privateTestHarnessKeys.js');
+	//---------------------------------------
+	
 	var authURL = "https://api.alfresco.com/auth/oauth/versions/2/authorize?client_id=" + APIKey + 
 					"&redirect_uri=http://www.alfresco.com/mobile-auth-callback.html&scope=pub_api&response_type=code";
 	var networks=[];
