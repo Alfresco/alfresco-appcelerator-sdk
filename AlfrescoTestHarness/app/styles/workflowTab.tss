@@ -1,0 +1,45 @@
+"Window":{
+	backgroundColor: 'black',
+	navBarHidden:true,
+	fullscreen:true
+}, 
+"#workflowList":{
+	top: 0, 
+	left: 0,
+	height: '48%',
+	backgroundColor: 'white', 
+	separatorColor:"#CCCCCC",
+},
+"#folderLabel":{
+	text: "", 
+	color: 'black', 
+	font: { fontFamily:'Arial', fontSize: '12dp', fontWeight:'bold' }, 
+	backgroundColor: 'black', 
+	top: '47%', 
+	left: 0, 
+	width: Ti.UI.FILL
+},
+"#folderList":{ 
+	backgroundColor: '#DDDDDD',
+	separatorColor:"#EEEEEE",
+	top: '52%', 
+	left: 0,
+	height: '48%'
+},  
+"#picImage":{
+	width: '35dp', 
+	height: '35dp',
+	left: 5
+},
+"#infoLabel":{
+	color: 'black',
+	font: { fontFamily:'Arial', fontSize: '13dp', fontWeight:'bold' },
+	left: '60dp', 
+	top: 0
+},
+"#esinfoLabel":{
+    color: 'gray',
+    font: { fontFamily:'Arial', fontSize: '12dp' },
+    left: '60dp', 
+    top: '25dp'
+}

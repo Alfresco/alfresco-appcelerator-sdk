@@ -1,0 +1,37 @@
+<Alloy>
+	
+	<Window>
+			
+		<ListView id="workflowList" defaultItemTemplate="workflowTemplate">
+			
+			 <Templates>
+                <ItemTemplate name="workflowTemplate">
+    				<ImageView id="picImage" bindId="pic"/>
+    				<Label id="infoLabel" bindId="info"/>
+    				<Label id="esinfoLabel" bindId="es_info"/>
+                </ItemTemplate>
+            </Templates>
+            
+            <ListSection headerTitle="Tasks" id="tasks"/>
+            <ListSection headerTitle="Processes" id="processes"/>
+            <ListSection headerTitle="Process Definitions" id="processDefinitions"/>
+		</ListView>
+	
+		<Label id="folderLabel">
+		<ListView id="folderList" defaultItemTemplate="repoTemplate">
+			
+			 <Templates>
+                <ItemTemplate name="repoTemplate">
+    				<ImageView id="picImage" bindId="pic"/>
+    				<Label id="infoLabel" bindId="info"/>
+    				<Label id="esinfoLabel" bindId="es_info"/>
+                </ItemTemplate>
+            </Templates>
+            
+            <ListSection headerTitle="Attachments" id="repo"/>
+            
+		</ListView>
+				
+	</Window> 
+
+</Alloy>

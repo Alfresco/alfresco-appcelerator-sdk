@@ -32,18 +32,23 @@ $.index.addEventListener('focus',function(e)
 {
 	if (e.index == 1)
  		Ti.App.fireEvent('repopopulate');
- 	else
+	else
     if (e.index == 2)
- 		Ti.App.fireEvent('sitespopulate');
+ 		Ti.App.fireEvent('workflowpopulate');
+	else
  	if (e.index == 3)
- 		Ti.App.fireEvent('activitiespopulate');
+ 		Ti.App.fireEvent('sitespopulate');
+	else
  	if (e.index == 4)
- 		Ti.App.fireEvent('searchinit');
- 	else
+ 		Ti.App.fireEvent('activitiespopulate');
+	else
  	if (e.index == 5)
- 		Ti.App.fireEvent('personsearchinit');
- 	else
+ 		Ti.App.fireEvent('searchinit');
+	else
  	if (e.index == 6)
+ 		Ti.App.fireEvent('personsearchinit');
+	else
+ 	if (e.index == 7)
  		Ti.App.fireEvent('propspopulate');
 });
 
