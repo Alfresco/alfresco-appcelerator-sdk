@@ -211,7 +211,7 @@ public class WorkflowServiceProxy extends KrollProxy
 	   	        {
 	   	        	ProcessDefinitionProxy processProxy = new ProcessDefinitionProxy (process);
 					HashMap<String, Object> map = new HashMap<String, Object>();
-			        map.put("processdefiniton", processProxy);
+			        map.put("processdefinition", processProxy);
 			        fireEvent("processdefinitionnode", new KrollDict(map));
 				}
 	   	        SDKUtil.createEnumerationEndEvent (WorkflowServiceProxy.this, "retrieveProcessDefinitionsWithListingContext", null);
@@ -496,7 +496,7 @@ public class WorkflowServiceProxy extends KrollProxy
     			}
     			
 				HashMap<String, Object> map = new HashMap<String, Object>();
-		        map.put("processdefinition", processDefinition);
+		        map.put("processdefinition", new ProcessDefinitionProxy(processDefinition));
 		        fireEvent("processdefinitionnode", new KrollDict(map));
     	        	    
     	        super.run();
@@ -530,10 +530,11 @@ public class WorkflowServiceProxy extends KrollProxy
     			for (Task task : tasks)
     			{
 					HashMap<String, Object> map = new HashMap<String, Object>();
-			        map.put("task", task);
+			        map.put("task", new TaskProxy(task));
 			        fireEvent("tasknode", new KrollDict(map));
     			}
-    	        	    
+    			SDKUtil.createEnumerationEndEvent (WorkflowServiceProxy.this, "retrieveAllTasks", null);
+    			
     	        super.run();
     		}
     	}.start();
@@ -568,7 +569,7 @@ public class WorkflowServiceProxy extends KrollProxy
     			for (Task task : tasks.getList())
     			{
 					HashMap<String, Object> map = new HashMap<String, Object>();
-			        map.put("task", task);
+			        map.put("task", new TaskProxy(task));
 			        fireEvent("tasknode", new KrollDict(map));
     			}
     			SDKUtil.createEnumerationEndEvent (WorkflowServiceProxy.this, "retrieveTasksWithListingContext", null);
@@ -606,7 +607,7 @@ public class WorkflowServiceProxy extends KrollProxy
     			}
     			
 				HashMap<String, Object> map = new HashMap<String, Object>();
-		        map.put("task", task);
+		        map.put("task", new TaskProxy(task));
 		        fireEvent("tasknode", new KrollDict(map));
     	        	    
     	        super.run();
