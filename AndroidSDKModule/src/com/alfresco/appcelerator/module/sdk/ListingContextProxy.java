@@ -88,4 +88,11 @@ public class ListingContextProxy extends KrollProxy
 	{
 		listingContext = new ListingContext((String)args[2], (Integer)args[0], (Integer)args[1], ((Integer)args[3] > 0) );
 	}
+	
+	
+	@Kroll.method
+	void setFilter(Object[] arg)
+	{
+		listingContext.setFilter (((ListingFilterProxy)arg[0]).listingFilter);
+	}
 }
