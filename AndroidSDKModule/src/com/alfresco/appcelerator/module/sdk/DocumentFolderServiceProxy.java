@@ -27,6 +27,7 @@ import java.util.List;
 import org.alfresco.mobile.android.api.model.ContentFile;
 import org.alfresco.mobile.android.api.model.Document;
 import org.alfresco.mobile.android.api.model.Folder;
+import org.alfresco.mobile.android.api.model.ListingContext;
 import org.alfresco.mobile.android.api.model.Node;
 import org.alfresco.mobile.android.api.model.PagingResult;
 import org.alfresco.mobile.android.api.model.Permissions;
@@ -319,4 +320,341 @@ public class DocumentFolderServiceProxy extends KrollProxy
     		}
     	}.start();
     }
+    
+    
+
+	/** Retrieves a list of favorite documents for current user .
+	 @since v1.2
+	 */
+	@Kroll.method
+	void retrieveFavoriteDocuments(Object[] noargs)
+	{
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			List<Document> docs;
+    			
+    			try
+    			{
+    				docs = service.getFavoriteDocuments();
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.getFavoriteDocuments()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    			for (Document doc : docs)
+     	        {
+     	        	SDKUtil.createEventWithNode (doc, DocumentFolderServiceProxy.this);
+     	        }
+     	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this, "retrieveFavoriteDocuments", null);
+    		}
+    	}.start();
+	}
+	
+	
+	/** Retrieves a list of favorite documents with a listing context for current user.
+	 @param listingContext The listing context with a paging definition that's used to retrieve favorite documents.
+	 @since v1.2
+	 */
+	@Kroll.method
+	void retrieveFavoriteDocumentsWithListingContext(Object[] arg)
+	{
+		final ListingContextProxy lc = (ListingContextProxy)arg[0];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			PagingResult<Document> docs;
+    			
+    			try
+    			{
+    				docs = service.getFavoriteDocuments (lc.listingContext);
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.getFavoriteDocuments()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    			for (Document doc : docs.getList())
+     	        {
+     	        	SDKUtil.createEventWithNode (doc, DocumentFolderServiceProxy.this);
+     	        }
+     	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this, "retrieveFavoriteDocumentsWithListingContext", null);
+     	        SDKUtil.createEventWithPagingResult (docs, DocumentFolderServiceProxy.this);
+    		}
+    	}.start();
+	}
+	
+	
+	/** Retrieves a list of favorite folders for current user.
+	 @since v1.2
+	 */
+	@Kroll.method
+	void retrieveFavoriteFolders(Object[] noargs)
+	{
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			List<Folder> folders;
+    			
+    			try
+    			{
+    				folders = service.getFavoriteFolders();
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.getFavoriteFolders()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    			for (Folder folder : folders)
+     	        {
+     	        	SDKUtil.createEventWithNode (folder, DocumentFolderServiceProxy.this);
+     	        }
+     	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this, "retrieveFavoriteFolders", null);
+    		}
+    	}.start();
+	}
+	
+	
+	/** Retrieves a list of favorite folders with a listing context for current user.
+	 @param listingContext The listing context with a paging definition that's used to retrieve favorite folders.
+	 @since v1.2
+	 */
+	@Kroll.method
+	void retrieveFavoriteFoldersWithListingContext(Object[] arg)
+	{
+		final ListingContextProxy lc = (ListingContextProxy)arg[0];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			PagingResult<Folder> folders;
+    			
+    			try
+    			{
+    				folders = service.getFavoriteFolders (lc.listingContext);
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.getFavoriteFolders()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    			for (Folder folder : folders.getList())
+     	        {
+     	        	SDKUtil.createEventWithNode (folder, DocumentFolderServiceProxy.this);
+     	        }
+     	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this, "retrieveFavoriteFoldersWithListingContext", null);
+     	        SDKUtil.createEventWithPagingResult (folders, DocumentFolderServiceProxy.this);
+    		}
+    	}.start();
+	}
+	
+	
+	/** Retrieves a list of favorite nodes for current user.
+	 @since v1.2
+	 */
+	@Kroll.method
+	void retrieveFavoriteNodes(Object[] noargs)
+	{
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			List<Node> nodes;
+    			
+    			try
+    			{
+    				nodes = service.getFavoriteNodes();
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.getFavoriteNodes()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    			for (Node node : nodes)
+     	        {
+     	        	SDKUtil.createEventWithNode (node, DocumentFolderServiceProxy.this);
+     	        }
+     	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this, "retrieveFavoriteNodes", null);
+    		}
+    	}.start();
+	}
+	
+	
+	/** Retrieves a list of favorite nodes with a listing context for current user.
+	 @param listingContext The listing context with a paging definition that's used to retrieve favorite nodes.
+	 @since v1.2
+	 */
+	@Kroll.method
+	void retrieveFavoriteNodesWithListingContext(Object[] arg)
+	{
+		final ListingContextProxy lc = (ListingContextProxy)arg[0];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			PagingResult<Node> nodes;
+    			
+    			try
+    			{
+    				nodes = service.getFavoriteNodes (lc.listingContext);
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.getFavoriteNodes()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    			for (Node node : nodes.getList())
+     	        {
+     	        	SDKUtil.createEventWithNode (node, DocumentFolderServiceProxy.this);
+     	        }
+     	        SDKUtil.createEnumerationEndEvent (DocumentFolderServiceProxy.this, "retrieveFavoriteNodesWithListingContext", null);
+    		}
+    	}.start();
+	}
+	
+	
+	/** Determine whether given node is favorite.
+	 @param node The node for which favorite status is being determined
+	 @since v1.2
+	 */
+	@Kroll.method
+	void isFavorite(Object[] arg)
+	{
+		final NodeProxy nodeProxy = (NodeProxy)arg[0];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			boolean isFavourite;
+    			
+    			try
+    			{
+    				isFavourite = service.isFavorite (nodeProxy.node);
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.isFavorite()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    			HashMap<String, Object> map = new HashMap<String, Object>();
+    	        map.put("favourite", isFavourite ? 1 : 0);
+    	        fireEvent("retrievedisfavourite", new KrollDict(map) );
+    		}
+    	}.start();
+	}
+	
+	
+	/** Favorite a node.
+	 @param node The node which is to be favorited
+	 @since v1.2
+	 */
+	@Kroll.method
+	void addFavorite(Object[] arg)
+	{
+		final NodeProxy nodeProxy = (NodeProxy)arg[0];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			try
+    			{
+    				service.addFavorite (nodeProxy.node);
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.addFavorite()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    			HashMap<String, Object> map = new HashMap<String, Object>();
+    	        map.put("favourite", 1);
+    	        fireEvent("addedFavourite", new KrollDict(map) );
+    		}
+    	}.start();
+	}
+	
+	
+	/** UnFavorite a node.
+	 @param node The node which is to be unfavorited
+	 @since v1.2
+	 */
+	@Kroll.method
+	void removeFavorite(Object[] arg)
+	{
+		final NodeProxy nodeProxy = (NodeProxy)arg[0];
+		
+		new Thread()
+    	{
+    		@Override
+    		public void run() 
+    		{
+    			try
+    			{
+    				service.removeFavorite (nodeProxy.node);
+    			}
+    			catch (Exception e)
+    			{
+    				e.printStackTrace();
+    				
+    				SDKUtil.createErrorEvent (e, "DocumentFolderService.removeFavorite()", DocumentFolderServiceProxy.this);
+                    return;
+    			}
+    			
+    			HashMap<String, Object> map = new HashMap<String, Object>();
+    	        map.put("favourite", 0);
+    	        fireEvent("removedFavourite", new KrollDict(map) );
+    		}
+    	}.start();
+	}
+	
+	
+	/**
+	 clears the Favorites cache
+	 @since v1.2
+	 */
+	@Kroll.method
+	void clearFavoritesCache(Object[] noargs)
+	{
+		service.clear();
+	}
 }
