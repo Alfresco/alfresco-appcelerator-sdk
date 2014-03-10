@@ -210,6 +210,16 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 		file.initialiseWithPlainText('The quick brown fox jumped over the lazy dog');	
 	});
 	
+	service.addEventListener('removedfavorite', function(e) { alert("Favourite removed"); });
+	service.addEventListener('addedfavorite', function(e) { alert("Favourite added"); });
+	service.addEventListener('retrievedisfavorite', function(e)
+	{
+		if (e.favorite == 1)
+			service.removeFavorite(e.node);
+		else
+			service.addFavorite(e.node);
+	});
+	
 	
 	var commentService = Alloy.Globals.SDKModule.createCommentService();
 	commentService.initialiseWithSession(Alloy.Globals.repositorySession);
@@ -224,7 +234,17 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	ratingService.initialiseWithSession(Alloy.Globals.repositorySession);
 	ratingService.addEventListener('error',function(e) { alert("Operation failed (" + e.errorcode + "): " + e.errorstring); });
 	ratingService.addEventListener('retrievedisliked',function(e) { liked = e.isliked; });
-				    			    	
+	
+	ratingService.addEventListener('likednode', function(e) { alert("Node Liked"); });
+	ratingService.addEventListener('unlikednode', function(e) { alert("Node Unliked"); });
+	ratingService.addEventListener('retrievedisliked', function(e)
+	{
+		if (e.isliked == 1)
+			ratingService.unlikeNode(e.node);
+		else
+			ratingService.likeNode(e.node);
+	});
+			    			    	
 	view.folderList.addEventListener('itemclick', function(e)
 	{
 		var mainSection = e.section;
@@ -241,8 +261,8 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 			Alloy.Globals.currentNode = node = item.properties.docobject;
 		
 		Alloy.Globals.nodeJustProperties = false;
-			
-	    if (item.properties.folder == 2  ||  				//'Up' folder item press.
+		
+		if (item.properties.folder == 2  ||  				//'Up' folder item press.
 	    	Alloy.Globals.AlfrescoSDKVersion < 1.1)
 	    {
 	    	viewNode(e);
@@ -254,7 +274,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 		    if (isFolder)
 		    {
 		    	ops = { cancel: 6,
-						options: ['View folder', 'Delete folder', 'Add comment', 'Add tags', 'Like folder', 'Create nodes', 'Cancel'],
+						options: ['View folder', 'Delete folder', 'Add comment', 'Add tags', 'Like/Unlike folder', 'Create nodes', 'Cancel'],
 						selectedIndex: 0,
 						destructive: 0,
 						title: 'Folder Actions'
@@ -263,7 +283,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 			else
 			{
 				ops = { cancel: 5,
-						options: ['View document', 'Delete document', 'Add comment', 'Add tags', 'Like document', 'Cancel'],
+						options: ['View document', 'Delete document', 'Add comment', 'Add tags', 'Like/Unlike document', 'Favourite/Unfavourite', 'Cancel'],
 						selectedIndex: 0,
 						destructive: 0,
 						title: 'Document Actions'
@@ -299,26 +319,34 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 			    else
 			    if (ev.index == 4)
 			    {
-			    	ratingService.likeNode(node);
-			    	alert("Liked node");
+			    	ratingService.isNodeLiked(node);
 			    }
 				else
-				if (isFolder)
 				{
-					if (ev.index == 5)
-				    {
-				    	if (!navigable)
-				    		alert("Cannot create nodes in this view");
-				    	else
-				    	{
-					    	var foldername = 'New ' + (new Date()).getTime();
-					    	
-							alert("Creating new folder '" + foldername + "' and document...");
-							
-							service.createFolderWithName(foldername, item.properties.folderobject, {'cm:title' : 'A new test folder'});
-						}  
-				    }
-				}  
+					if (isFolder)
+					{
+						if (ev.index == 5)
+					    {
+					    	if (!navigable)
+					    		alert("Cannot create nodes in this view");
+					    	else
+					    	{
+						    	var foldername = 'New ' + (new Date()).getTime();
+						    	
+								alert("Creating new folder '" + foldername + "' and document...");
+								
+								service.createFolderWithName(foldername, item.properties.folderobject, {'cm:title' : 'A new test folder'});
+							}  
+					    }
+					} 
+					else
+					{
+						if (ev.index == 5)
+						{
+							service.isFavorite(node);
+						}
+					}
+				} 
 			});
 		  
 			dlg.show();
