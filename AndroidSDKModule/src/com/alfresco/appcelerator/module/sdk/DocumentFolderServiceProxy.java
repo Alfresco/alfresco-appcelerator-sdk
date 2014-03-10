@@ -573,8 +573,9 @@ public class DocumentFolderServiceProxy extends KrollProxy
     			}
     			
     			HashMap<String, Object> map = new HashMap<String, Object>();
-    	        map.put("favourite", isFavourite ? 1 : 0);
-    	        fireEvent("retrievedisfavourite", new KrollDict(map) );
+    	        map.put("favorite", isFavourite ? 1 : 0);
+    	        map.put("node", nodeProxy);
+    	        fireEvent("retrievedisfavorite", new KrollDict(map) );
     		}
     	}.start();
 	}
@@ -607,8 +608,8 @@ public class DocumentFolderServiceProxy extends KrollProxy
     			}
     			
     			HashMap<String, Object> map = new HashMap<String, Object>();
-    	        map.put("favourite", 1);
-    	        fireEvent("addedFavourite", new KrollDict(map) );
+    	        map.put("node", nodeProxy);
+    	        fireEvent("addedfavorite", new KrollDict(map) );
     		}
     	}.start();
 	}
@@ -641,8 +642,8 @@ public class DocumentFolderServiceProxy extends KrollProxy
     			}
     			
     			HashMap<String, Object> map = new HashMap<String, Object>();
-    	        map.put("favourite", 0);
-    	        fireEvent("removedFavourite", new KrollDict(map) );
+    	        map.put("node", nodeProxy);
+    	        fireEvent("removedfavorite", new KrollDict(map) );
     		}
     	}.start();
 	}

@@ -110,6 +110,7 @@ public class RatingServiceProxy extends KrollProxy
 				
 				HashMap<String, Object> map = new HashMap<String, Object>();
 		        map.put ("isliked", new Integer(isLiked ? 1 : 0));
+		        map.put("node", nodeProxy);
 		        fireEvent ("retrievedisliked", new KrollDict(map));
     	    
     	        super.run();
@@ -143,7 +144,7 @@ public class RatingServiceProxy extends KrollProxy
 				}
 				
 				HashMap<String, Object> map = new HashMap<String, Object>();
-		        map.put ("code", new Integer(1));
+		        map.put("node", nodeProxy);
 		        fireEvent ("likednode", new KrollDict(map));
     	    
     	        super.run();
@@ -177,7 +178,7 @@ public class RatingServiceProxy extends KrollProxy
 				}
 				
 				HashMap<String, Object> map = new HashMap<String, Object>();
-		        map.put ("code", new Integer(1));
+				map.put("node", nodeProxy);
 		        fireEvent ("unlikednode", new KrollDict(map));
     	    
     	        super.run();

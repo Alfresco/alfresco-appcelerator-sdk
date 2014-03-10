@@ -84,7 +84,7 @@
      {
          if (succeeded)
          {
-             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:isLiked ? 1 : 0], @"isliked", nil];
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:arg, @"node", nil];
              [self fireEvent:@"retrievedisliked" withObject:event];
          }
          else
@@ -106,7 +106,7 @@
      {
          if (succeeded)
          {
-             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:arg, @"node", nil];
              [self fireEvent:@"likednode" withObject:event];
          }
          else
@@ -128,7 +128,7 @@
      {
          if (succeeded)
          {
-             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:1], @"code", nil];
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:arg, @"node", nil];
              [self fireEvent:@"unlikednode" withObject:event];
          }
          else
