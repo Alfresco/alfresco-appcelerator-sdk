@@ -82,7 +82,7 @@
              }
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveCommentsForNode" eventObject:nodeProxy];
      }];
 }
 

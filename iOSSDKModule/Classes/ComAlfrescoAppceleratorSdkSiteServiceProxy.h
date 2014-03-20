@@ -28,7 +28,6 @@
 
 #import "TiProxy.h"
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
-#import "AlfrescoSiteService.h"
 
 
 /**
@@ -158,7 +157,36 @@
 -(void)leaveSite:(id)arg;
 
  
+/** Returns a list of all members for a site.
+ @param site - site from which members are retrieved
+ @since v1.2
+ */
+-(void)retrieveAllMembers:(id)arg;
 
+
+/** Returns a paged list of all members for a site.
+ @param site - site from which members are retrieved
+ @param listingContext - The listing context with a paging definition that's used to retrieve members.
+ @since v1.2
+ */
+-(void)retrieveAllMembersWithListingContext:(id)args;
+    
+
+/** Returns a paged list of all members for a site that respect the filter.
+ @param site - site from which members are retrieved
+ @param filter - filter that needs to be applied to search query.
+ @param listingContext - The listing context with a paging definition that's used to retrieve members.
+ @since v1.2
+ */
+-(void)searchMembers:(id)args;
+
+
+/** Returns true if the person is member of the site, returns false otherwise
+ @param person - person for whom membership status is retrieved
+ @param site - site from which membership status for the person is retrieved
+ @since v1.2
+ */
+-(void)isPersonMember:(id)args;
 
 
 //Internal

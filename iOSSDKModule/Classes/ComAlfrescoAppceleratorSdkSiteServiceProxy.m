@@ -31,11 +31,11 @@
 #import "ComAlfrescoAppceleratorSdkSiteProxy.h"
 #import "ComAlfrescoAppceleratorSdkFolderProxy.h"
 #import "ComAlfrescoAppceleratorSdkListingContextProxy.h"
+#import "ComAlfrescoAppceleratorSdkPersonProxy.h"
 #import "SDKUtil.h"
 
-#import "AlfrescoFolder.h"
 #import <objc/runtime.h>
-#import "TiUtils.h"
+
 
 @implementation ComAlfrescoAppceleratorSdkSiteServiceProxy
 
@@ -85,7 +85,7 @@
              }
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveAllSites" eventObject:nil];
      }];
 }
 
@@ -108,7 +108,7 @@
              }
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveSites" eventObject:nil];
      }];
 }
 
@@ -131,7 +131,7 @@
              }
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveFavoriteSites" eventObject:nil];
      }];
 } 
 
@@ -263,7 +263,7 @@
                  [self createEventWithSite:sites[i] context:@"retrievedpendingsite"];
              }
              
-             [SDKUtil createEnumerationEndEvent:self];
+             [SDKUtil createEnumerationEndEvent:self eventSource:@"retrievePendingSites" eventObject:nil];
          }
      }];
 }
@@ -288,7 +288,7 @@
                  [self createEventWithSite:results.objects[i] context:@"retrievedpendingsite"];
              }
              
-             [SDKUtil createEnumerationEndEvent:self];
+             [SDKUtil createEnumerationEndEvent:self eventSource:@"retrievePendingSitesWithListingContext" eventObject:nil];
              
              [SDKUtil createEventWithPagingResult:results proxyObject:self];
          }
@@ -334,6 +334,120 @@
          }
      }];
 }
- 
+
+    
+-(void)retrieveAllMembers:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkSiteProxy)
+    
+    [service retrieveAllMembersOfSite:[arg performSelector:NSSelectorFromString(@"currentSite")]
+       completionBlock:^(NSArray* array, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 ComAlfrescoAppceleratorSdkPersonProxy* personProxy = [[ComAlfrescoAppceleratorSdkPersonProxy alloc]initWithPerson:array[i]];
+                 NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:personProxy, @"person", nil];
+                 
+                 [self fireEvent:@"personnode" withObject:event];
+             }
+             
+             [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveAllMembers" eventObject:arg];
+         }
+     }];
+}
+
+
+-(void)retrieveAllMembersWithListingContext:(id)args
+{
+    ENSURE_UI_THREAD_1_ARG(args)
+    
+    ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [args objectAtIndex:0];
+    ComAlfrescoAppceleratorSdkListingContextProxy* lc = [args objectAtIndex:1];
+    
+    [service retrieveAllMembersOfSite:[siteProxy performSelector:NSSelectorFromString(@"currentSite")] listingContext:lc.listingContext
+     completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < pagingResult.objects.count;  i++)
+             {
+                 ComAlfrescoAppceleratorSdkPersonProxy* personProxy = [[ComAlfrescoAppceleratorSdkPersonProxy alloc]initWithPerson:pagingResult.objects[i]];
+                 NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:personProxy, @"person", nil];
+                 
+                 [self fireEvent:@"personnode" withObject:event];
+             }
+             
+             [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveAllMembersWithListingContext" eventObject:siteProxy];
+             [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         }
+     }];
+}
+
+
+-(void)searchMembers:(id)args
+{
+    ENSURE_UI_THREAD_1_ARG(args)
+    
+    ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [args objectAtIndex:0];
+    NSString* filter = [args objectAtIndex:1];
+    ComAlfrescoAppceleratorSdkListingContextProxy* lc = [args objectAtIndex:2];
+
+    [service searchMembersOfSite:[siteProxy performSelector:NSSelectorFromString(@"currentSite")] keywords:filter listingContext:lc.listingContext
+     completionBlock:^(AlfrescoPagingResult *pagingResult, NSError *error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < pagingResult.objects.count;  i++)
+             {
+                 ComAlfrescoAppceleratorSdkPersonProxy* personProxy = [[ComAlfrescoAppceleratorSdkPersonProxy alloc]initWithPerson:pagingResult.objects[i]];
+                 NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:personProxy, @"person", nil];
+                 
+                 [self fireEvent:@"personnode" withObject:event];
+             }
+             
+             [SDKUtil createEnumerationEndEvent:self eventSource:@"searchMembers" eventObject:siteProxy];
+             [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         }
+     }];
+}
+
+
+-(void)isPersonMember:(id)args
+{
+    
+    ENSURE_UI_THREAD_1_ARG(args)
+    ComAlfrescoAppceleratorSdkSiteProxy* siteProxy = [args objectAtIndex:0];
+    ComAlfrescoAppceleratorSdkPersonProxy* personProxy = [args objectAtIndex:1];
+    
+    [service isPerson:[personProxy performSelector:NSSelectorFromString(@"person")]
+     memberOfSite:[siteProxy performSelector:NSSelectorFromString(@"currentSite")]
+     completionBlock:^(BOOL succeeded, BOOL isMember, NSError *error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else if (succeeded)
+         {
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[NSNumber alloc]initWithInt:(isMember ? 1 : 0)], @"ismember", nil];
+             [self fireEvent:@"retrievedmembership" withObject:event];
+         }
+     }];
+}
 
 @end

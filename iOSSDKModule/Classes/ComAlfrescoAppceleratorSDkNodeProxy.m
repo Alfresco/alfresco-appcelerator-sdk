@@ -19,14 +19,14 @@
  */
 
 //
-//  ComAlfrescoAppceleratorSDkNodeProxy.m
+//  ComAlfrescoAppceleratorSdkNodeProxy.m
 //  iOSSDKModule
 //
 //  Created by Luke Jagger on 04/09/2013.
 //
 //
 
-#import "ComAlfrescoAppceleratorSDkNodeProxy.h"
+#import "ComAlfrescoAppceleratorSdkNodeProxy.h"
 
 @interface ComAlfrescoAppceleratorSdkNodeProxy()
 @property(nonatomic,strong) AlfrescoNode *node;

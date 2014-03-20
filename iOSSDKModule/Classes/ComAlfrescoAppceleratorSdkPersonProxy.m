@@ -42,7 +42,7 @@
     {
         self.person = person;
 
-        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"firstName", @"lastName", @"fullName", @"avatarIdentifier", nil];
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"firstName", @"lastName", @"fullName", @"avatarIdentifier", @"jobTitle", @"location", @"description", @"telephoneNumber", @"mobileNumber", @"email", @"skypeId", @"instantMessageId", @"googleId", @"status", @"statusTime", nil];
 
         NSMutableDictionary* values = [[self.person dictionaryWithValuesForKeys:keys] mutableCopy];
 

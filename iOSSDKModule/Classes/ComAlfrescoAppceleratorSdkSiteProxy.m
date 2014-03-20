@@ -27,7 +27,6 @@
 //
 
 #import "TiProxy.h"
-#import "AlfrescoSite.h"
 #import "ComAlfrescoAppceleratorSdkSiteProxy.h"
 
 @interface ComAlfrescoAppceleratorSdkSiteProxy()

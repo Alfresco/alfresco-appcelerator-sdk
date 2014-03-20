@@ -30,6 +30,7 @@
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 #import "ComAlfrescoAppceleratorSdkPersonProxy.h"
 #import "ComAlfrescoAppceleratorSdkContentFileProxy.h"
+#import "ComAlfrescoAppceleratorSdkListingContextProxy.h"
 #import "SDKUtil.h"
 
 
@@ -71,7 +72,7 @@
              [self fireEvent:@"personnode" withObject:event];
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrievePersonWithIdentifier" eventObject:arg];
      }];
 }
 
@@ -101,8 +102,93 @@
              [self fireEvent:@"retrievedavatar" withObject:event];
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveAvatarForPerson" eventObject:personProxy];
     }];
+}
+    
+
+-(void)search:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,NSString)
+    
+    [service searchWithKeywords:arg
+     completionBlock:^(NSArray* array, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 ComAlfrescoAppceleratorSdkPersonProxy* personProxy = [[ComAlfrescoAppceleratorSdkPersonProxy alloc]initWithPerson:[array objectAtIndex:i]];
+                 
+                 NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:personProxy, @"person", nil];
+                 
+                 [self fireEvent:@"personnode" withObject:event];
+             }
+         }
+         
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"search" eventObject:arg];
+     }];
+}
+
+
+-(void)searchWithListingContext:(id)args
+{
+    ENSURE_UI_THREAD_1_ARG(args)
+    NSString* filter = [args objectAtIndex:0];
+    ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
+    
+    [service searchWithKeywords:filter listingContext:listingContextProxy.listingContext
+     completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < pagingResult.objects.count;  i++)
+             {
+                 ComAlfrescoAppceleratorSdkPersonProxy* personProxy = [[ComAlfrescoAppceleratorSdkPersonProxy alloc]initWithPerson:[pagingResult.objects objectAtIndex:i]];
+                 
+                 NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:personProxy, @"person", nil];
+                 
+                 [self fireEvent:@"personnode" withObject:event];
+             }
+         }
+         
+         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"searchWithListingContext" eventObject:filter];
+     }];
+}
+
+    
+-(void)refreshPerson:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkPersonProxy)
+    
+    [service refreshPerson:arg
+     completionBlock:^(AlfrescoPerson* person, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             ComAlfrescoAppceleratorSdkPersonProxy* personProxy = [[ComAlfrescoAppceleratorSdkPersonProxy alloc]initWithPerson:person];
+             
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:personProxy, @"person", nil];
+             
+             [self fireEvent:@"refreshedperson" withObject:event];
+         }
+     }];
 }
 
 @end
+

@@ -27,7 +27,6 @@
 //
 
 #import "TiProxy.h"
-#import "AlfrescoFolder.h"
 #import "ComAlfrescoAppceleratorSdkNodeProxy.h"
 
 

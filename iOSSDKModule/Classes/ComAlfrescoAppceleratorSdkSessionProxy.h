@@ -26,9 +26,6 @@
 //
 //
 
-#import "TiProxy.h"
-#import "AlfrescoSession.h"
-
 @interface ComAlfrescoAppceleratorSdkSessionProxy : TiProxy
 
 @property (nonatomic, strong) id<AlfrescoSession> session;

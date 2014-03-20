@@ -137,27 +137,7 @@ public class PersonServiceProxy extends KrollProxy
 	}
 	
 	
-	/**---------------------------------------------------------------------------------------
-	 * @name Update Person profile method
-	 *  ---------------------------------------------------------------------------------------
-	 */
-	/** Update person profile
-	 @param properties - dictionary of properties that are being updated
-	 @since v1.2
-	 */
-	@Kroll.method
-	void updateProfile (Object[] arg)
-	{
-		SDKUtil.createErrorEventWithCode(1, "Not implemented in Android Alfresco SDK v1.3", PersonServiceProxy.this);
-	}
-
-	
-	/**---------------------------------------------------------------------------------------
-	 * @name Search Person methods
-	 *  ---------------------------------------------------------------------------------------
-	 */
-	/** Returns a list of site members that respect the filter.
-	 
+	/** Returns a list of site members that respect the filter. 
 	 @param filter - filter that needs to be applied to search query.
 	 @since v1.2
 	 */
@@ -226,7 +206,7 @@ public class PersonServiceProxy extends KrollProxy
 				}
 				catch(Exception e)
 				{
-					SDKUtil.createErrorEvent (e, "PersonService.search()", PersonServiceProxy.this);
+					SDKUtil.createErrorEvent (e, "PersonService.searchWithListingContext()", PersonServiceProxy.this);
                     return;
 				}
 				
@@ -271,7 +251,7 @@ public class PersonServiceProxy extends KrollProxy
 				}
 				catch(Exception e)
 				{
-					SDKUtil.createErrorEvent (e, "PersonService.getAvatar()", PersonServiceProxy.this);
+					SDKUtil.createErrorEvent (e, "PersonService.refreshPerson()", PersonServiceProxy.this);
                     return;
 				}
 				
@@ -280,7 +260,7 @@ public class PersonServiceProxy extends KrollProxy
 					PersonProxy personProxy = new PersonProxy (person);
 					HashMap<String, Object> map = new HashMap<String, Object>();
 			        map.put("person", personProxy);
-			        fireEvent("personnode", new KrollDict(map));
+			        fireEvent("refreshedperson", new KrollDict(map));
 				}
 				
     	        super.run();

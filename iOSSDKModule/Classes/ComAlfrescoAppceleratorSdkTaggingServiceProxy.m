@@ -30,7 +30,6 @@
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
 #import "ComAlfrescoAppceleratorSdkNodeProxy.h"
 #import "ComAlfrescoAppceleratorSdkTagProxy.h"
-#import "AlfrescoTag.h"
 #import "SDKUtil.h"
 
 @implementation ComAlfrescoAppceleratorSdkTaggingServiceProxy
@@ -79,7 +78,7 @@
              }
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveAllTags" eventObject:nil];
      }];
 }
 
@@ -113,7 +112,7 @@
              }
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveTagsForNode" eventObject:nodeProxy];
      }];
 }
 

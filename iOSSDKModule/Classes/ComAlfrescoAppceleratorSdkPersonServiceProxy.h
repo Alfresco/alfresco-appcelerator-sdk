@@ -26,8 +26,6 @@
 //
 //
 
-#import "TiProxy.h"
-#import "AlfrescoPersonService.h"
 
 
 /**
@@ -67,5 +65,27 @@
  @param Person person
  */
 -(void)retrieveAvatarForPerson:(id)arg;
+
+
+/** Returns a list of site members that respect the filter.
+ @param filter - filter that needs to be applied to search query.
+ @since v1.2
+ */
+-(void)search:(id)arg;
+
+    
+/** Returns a paged list of site members that respect the filter.
+ @param filter - filter that needs to be applied to search query.
+ @param listingContext - The listing context with a paging definition that's used to search for people.
+ @since v1.2
+ */
+-(void)searchWithListingContext:(id)args;
+
+
+/** Retrieve the latest (and complete) properties for person.
+ @param The person which is to be refreshed with its latest properties
+ @since v1.2
+ */
+-(void)refreshPerson:(id)arg;
 
 @end

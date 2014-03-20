@@ -27,13 +27,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TiProxy.h"
-#import "AlfrescoNode.h"
-#import "AlfrescoPagingResult.h"
+
 
 @interface SDKUtil : NSObject
 
-+createEnumerationEndEvent:(TiProxy*)proxyObj eventSource:(NSString*)eventSrc eventObject:(NSString*)eventObj;
++createEnumerationEndEvent:(TiProxy*)proxyObj eventSource:(NSString*)eventSrc eventObject:(id)eventObj;
 
 +createParamErrorEvent:(TiProxy*)proxyObj;
 

@@ -1,4 +1,6 @@
 
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
+    #import "AlfrescoSDK/AlfrescoSDK.h"
+    #import "TiProxy.h"
 #endif

@@ -34,7 +34,7 @@
 @implementation SDKUtil
 
 
-+createEnumerationEndEvent:(TiProxy*)proxyObj eventSource:(NSString*)eventSrc eventObject:(NSString*)eventObj
++createEnumerationEndEvent:(TiProxy*)proxyObj eventSource:(NSString*)eventSrc eventObject:(id)eventObj
 {
     NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
                            eventSrc, @"eventsource",

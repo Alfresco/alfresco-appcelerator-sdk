@@ -27,7 +27,6 @@
 //
 
 #import "ComAlfrescoAppceleratorSdkRepositorySessionProxy.h"
-#import "AlfrescoRepositorySession.h"
 #import "TiUtils.h"
 #include "SDKUtil.h"
 

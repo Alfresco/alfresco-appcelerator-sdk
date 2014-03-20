@@ -86,7 +86,7 @@
              }
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"searchWithStatement" eventObject:arg];
      }];
 }
 
@@ -151,7 +151,7 @@
                  [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
              }
              
-             [SDKUtil createEnumerationEndEvent:self];
+             [SDKUtil createEnumerationEndEvent:self eventSource:@"searchWithKeywordsAndListingContext" eventObject:[dictionary objectForKey:@"keywords"]];
          }];
     }
     else
@@ -171,7 +171,7 @@
                  }
              }
              
-             [SDKUtil createEnumerationEndEvent:self];
+             [SDKUtil createEnumerationEndEvent:self eventSource:@"searchWithKeywords" eventObject:[dictionary objectForKey:@"keywords"]];
          }];
     }
 }
@@ -209,7 +209,7 @@
              [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
         }
         
-        [SDKUtil createEnumerationEndEvent:self];
+        [SDKUtil createEnumerationEndEvent:self eventSource:@"searchWithStatement" eventObject:[dictionary objectForKey:@"statement"]];
     }];
 }
 

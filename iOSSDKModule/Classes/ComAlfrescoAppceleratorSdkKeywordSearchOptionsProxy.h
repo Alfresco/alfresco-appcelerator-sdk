@@ -26,8 +26,6 @@
 //
 //
 
-#import "TiProxy.h"
-#import "AlfrescoKeywordSearchOptions.h"
 
 /**
 #Javascript object:#
