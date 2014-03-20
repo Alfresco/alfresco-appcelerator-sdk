@@ -35,7 +35,6 @@
 #import "ComAlfrescoAppceleratorSdkListingContextProxy.h"
 #import "ComAlfrescoAppceleratorSdkPermissionsProxy.h"
 
-#import "AlfrescoFolder.h"
 #import <objc/runtime.h>
 #import "TiUtils.h"
 #import "SDKUtil.h"
@@ -126,7 +125,7 @@
             }
         }
         
-        [SDKUtil createEnumerationEndEvent:self];
+        [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveChildrenInFolder" eventObject:nil];
     }];
 }
 
@@ -161,7 +160,7 @@
          }
          
          [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveChildrenInFolderWithListingContext" eventObject:nil];
      }];
 }
 
@@ -365,7 +364,7 @@
              }
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveDocumentsInFolder" eventObject:proxy];
      }];
 }
 
@@ -374,7 +373,8 @@
 {
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
-    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:[folderProxy performSelector:NSSelectorFromString(@"node")], @"folder", listingContextProxy.listingContext, @"listingContext", nil];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:[folderProxy performSelector:NSSelectorFromString(@"node")], @"folder", listingContextProxy.listingContext, @"listingContext",
+        folderProxy, @"folderProxy", nil];
 
     [self internalRetrieveDocumentsInFolderWithListingContext:internalParams];
 }
@@ -409,7 +409,7 @@
              [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveDocumentsInFolderWithListingContext" eventObject:[arg objectForKey:@"folderProxy"]];
      }];
 }
 
@@ -442,7 +442,7 @@
              }
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveFoldersInFolder" eventObject:proxy];
      }];
 }
 
@@ -451,7 +451,8 @@
 {
     ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [args objectAtIndex:0];
     ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = [args objectAtIndex:1];
-    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:[folderProxy performSelector:NSSelectorFromString(@"node")], @"folder", listingContextProxy.listingContext, @"listingContext", nil];
+    NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:[folderProxy performSelector:NSSelectorFromString(@"node")], @"folder", listingContextProxy.listingContext, @"listingContext",
+        folderProxy, @"folderProxy", nil];
     
     [self internalRetrieveFoldersInFolderWithListingContext:internalParams];
 }
@@ -486,7 +487,7 @@
              [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveFoldersInFolderWithListingContext" eventObject:[arg objectForKey:@"folderProxy"]];
      }];
 }
 
@@ -651,6 +652,285 @@
              [SDKUtil createErrorEvent:error proxyObject:self];
          }
      }];
-
 }
+    
+
+/** Retrieves a list of favorite documents for current user .
+ @since v1.2
+ */
+-(void)retrieveFavoriteDocuments:(id)noargs
+{
+    ENSURE_UI_THREAD_0_ARGS
+    
+    [service retrieveFavoriteDocumentsWithCompletionBlock:
+     ^(NSArray* array, NSError *error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+             }
+         }
+         
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveFavoriteDocuments" eventObject:nil];
+     }];
+}
+    
+    
+/** Retrieves a list of favorite documents with a listing context for current user.
+ @param listingContext The listing context with a paging definition that's used to retrieve favorite documents.
+ @since v1.2
+ */
+-(void)retrieveFavoriteDocumentsWithListingContext:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkListingContextProxy)
+    
+    ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = arg;
+    AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
+    
+    [service retrieveFavoriteDocumentsWithListingContext:listingContext
+     completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < pagingResult.objects.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+             }
+         }
+         
+         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveFavoriteDocumentsWithListingContext" eventObject:listingContext];
+     }];
+}
+    
+    
+/** Retrieves a list of favorite folders for current user.
+ @since v1.2
+ */
+-(void)retrieveFavoriteFolders:(id)noargs
+{
+    ENSURE_UI_THREAD_0_ARGS
+    
+    [service retrieveFavoriteFoldersWithCompletionBlock:
+     ^(NSArray* array, NSError *error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+             }
+         }
+         
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveFavoriteFolders" eventObject:nil];
+     }];
+}
+
+    
+/** Retrieves a list of favorite folders with a listing context for current user.
+ @param listingContext The listing context with a paging definition that's used to retrieve favorite folders.
+ @since v1.2
+ */
+-(void)retrieveFavoriteFoldersWithListingContext:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkListingContextProxy)
+    
+    ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = arg;
+    AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
+    
+    [service retrieveFavoriteFoldersWithListingContext:listingContext
+     completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < pagingResult.objects.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+             }
+         }
+         
+         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveFavoriteFoldersWithListingContext" eventObject:listingContext];
+     }];
+}
+    
+    
+/** Retrieves a list of favorite nodes for current user.
+ @since v1.2
+ */
+-(void)retrieveFavoriteNodes:(id)noargs
+{
+    ENSURE_UI_THREAD_0_ARGS
+    
+    [service retrieveFavoriteNodesWithCompletionBlock:
+     ^(NSArray* array, NSError *error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < array.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[array objectAtIndex:i] proxyObject:self];
+             }
+         }
+         
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveFavoriteNodes" eventObject:nil];
+     }];
+}
+
+    
+/** Retrieves a list of favorite nodes with a listing context for current user.
+ @param listingContext The listing context with a paging definition that's used to retrieve favorite nodes.
+ @since v1.2
+ */
+-(void)retrieveFavoriteNodesWithListingContext:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkListingContextProxy)
+    
+    ComAlfrescoAppceleratorSdkListingContextProxy* listingContextProxy = arg;
+    AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
+    
+    [service retrieveFavoriteNodesWithListingContext:listingContext
+     completionBlock:^(AlfrescoPagingResult* pagingResult, NSError* error)
+     {
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+         else
+         {
+             for (int i = 0;  i < pagingResult.objects.count;  i++)
+             {
+                 [SDKUtil createEventWithNode:[pagingResult.objects objectAtIndex:i] proxyObject:self];
+             }
+         }
+         
+         [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveFavoriteNodesWithListingContext" eventObject:listingContext];
+     }];
+}
+    
+    
+/** Determine whether given node is favorite.
+ @param node The node for which favorite status is being determined
+ @since v1.2
+ */
+-(void)isFavorite:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkNodeProxy)
+    
+    ComAlfrescoAppceleratorSdkNodeProxy* nodeProxy = arg;
+    
+    [service isFavorite:[nodeProxy performSelector:NSSelectorFromString(@"node")]
+     completionBlock:^(BOOL succeeded, BOOL isFavorited, NSError *error)
+     {
+         if (succeeded)
+         {
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:nodeProxy, @"node",
+                                    [[NSNumber alloc]initWithInt:(isFavorited ? 1 : 0)], @"favorite",
+                                    nil];
+             
+             [self fireEvent:@"retrievedisfavorite" withObject:event];
+         }
+         else
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+     }];
+}
+    
+    
+/** Favorite a node.
+ @param node The node which is to be favorited
+ @since v1.2
+ */
+-(void)addFavorite:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkNodeProxy)
+    
+    ComAlfrescoAppceleratorSdkNodeProxy* nodeProxy = arg;
+    
+    [service addFavorite:[nodeProxy performSelector:NSSelectorFromString(@"node")]
+     completionBlock:^(BOOL succeeded, BOOL isFavorited, NSError *error)
+     {
+         if (succeeded)
+         {
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:nodeProxy, @"node", nil];
+             [self fireEvent:@"addedfavorite" withObject:event];
+         }
+         else
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+     }];
+}
+    
+    
+/** UnFavorite a node.
+ @param node The node which is to be unfavorited
+ @since v1.2
+ */
+-(void)removeFavorite:(id)arg
+{
+    ENSURE_UI_THREAD_1_ARG(arg)
+    ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkNodeProxy)
+    
+    ComAlfrescoAppceleratorSdkNodeProxy* nodeProxy = arg;
+    
+    [service removeFavorite:[nodeProxy performSelector:NSSelectorFromString(@"node")]
+         completionBlock:^(BOOL succeeded, BOOL isFavorited, NSError *error)
+     {
+         if (succeeded)
+         {
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:nodeProxy, @"node", nil];
+             [self fireEvent:@"removedfavorite" withObject:event];
+         }
+         else
+         if (error != NULL)
+         {
+             [SDKUtil createErrorEvent:error proxyObject:self];
+         }
+     }];
+}
+    
+    
+/**
+ clears the Favorites cache
+ @since v1.2
+ */
+-(void)clearFavoritesCache:(id)noargs
+{
+    ENSURE_UI_THREAD_0_ARGS
+    
+    [service clear];
+}
+    
 @end

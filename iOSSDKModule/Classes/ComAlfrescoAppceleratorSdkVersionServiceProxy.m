@@ -75,7 +75,7 @@
              }
          }
          
-         [SDKUtil createEnumerationEndEvent:self];
+         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveAllVersionsOfDocument" eventObject:docProxy];
      }];
 }
 

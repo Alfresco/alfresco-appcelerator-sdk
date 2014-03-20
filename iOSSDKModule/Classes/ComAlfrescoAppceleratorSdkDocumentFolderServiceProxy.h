@@ -28,7 +28,6 @@
 
 #import "TiProxy.h"
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
-#import "AlfrescoDocumentFolderService.h"
 
 
 /**
@@ -224,6 +223,74 @@
  */
 -(void)deleteNode:(id)arg;
 
+
+/** Retrieves a list of favorite documents for current user .
+ @since v1.2
+ */
+-(void)retrieveFavoriteDocuments:(id)noargs;
+    
+
+/** Retrieves a list of favorite documents with a listing context for current user.
+ @param listingContext The listing context with a paging definition that's used to retrieve favorite documents.
+ @since v1.2
+ */
+-(void)retrieveFavoriteDocumentsWithListingContext:(id)arg;
+
+
+/** Retrieves a list of favorite folders for current user.
+ @since v1.2
+ */
+-(void)retrieveFavoriteFolders:(id)noargs;
+
+
+/** Retrieves a list of favorite folders with a listing context for current user.
+ @param listingContext The listing context with a paging definition that's used to retrieve favorite folders.
+ @since v1.2
+ */
+-(void)retrieveFavoriteFoldersWithListingContext:(id)arg;
+
+
+/** Retrieves a list of favorite nodes for current user.
+ @since v1.2
+ */
+-(void)retrieveFavoriteNodes:(id)noargs;
+
+
+/** Retrieves a list of favorite nodes with a listing context for current user.
+ @param listingContext The listing context with a paging definition that's used to retrieve favorite nodes.
+ @since v1.2
+ */
+-(void)retrieveFavoriteNodesWithListingContext:(id)arg;
+
+
+/** Determine whether given node is favorite.
+ @param node The node for which favorite status is being determined
+ @since v1.2
+ */
+-(void)isFavorite:(id)arg;
+
+
+/** Favorite a node.
+ @param node The node which is to be favorited
+ @since v1.2
+ */
+-(void)addFavorite:(id)arg;
+
+
+/** UnFavorite a node.
+ @param node The node which is to be unfavorited
+ @since v1.2
+ */
+-(void)removeFavorite:(id)arg;
+
+
+/**
+ clears the Favorites cache
+ @since v1.2
+ */
+-(void)clearFavoritesCache:(id)noargs;
+
+	
 
 //Internal
 

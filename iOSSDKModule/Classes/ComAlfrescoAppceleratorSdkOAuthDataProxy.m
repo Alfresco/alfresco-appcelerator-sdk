@@ -27,7 +27,6 @@
 //
 
 #import "ComAlfrescoAppceleratorSDkOAuthDataProxy.h"
-#import "AlfrescoOAuthData.h"
 
 @interface ComAlfrescoAppceleratorSdkOAuthDataProxy()
 @property(nonatomic,strong) AlfrescoOAuthData *OAuthData;

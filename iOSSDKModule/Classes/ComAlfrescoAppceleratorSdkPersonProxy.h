@@ -26,8 +26,6 @@
 //
 //
 
-#import "TiProxy.h"
-#import "AlfrescoPerson.h"
 
 /**
  #Javascript object:#
@@ -41,6 +39,18 @@
 * string avatarIdentifier
 * properties properties
 
+#Additional Javascript properties since v1.2:#
+* string jobTitle
+* string location
+* string description
+* string telephoneNumber
+* string mobileNumber
+* string email
+* string skypeId
+* string instantMessageId
+* string googleId
+* string status
+* string statusTime
 */
 
 @interface ComAlfrescoAppceleratorSdkPersonProxy : TiProxy

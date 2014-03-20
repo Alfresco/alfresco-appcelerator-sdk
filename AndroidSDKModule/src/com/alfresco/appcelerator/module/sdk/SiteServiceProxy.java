@@ -681,7 +681,7 @@ public class SiteServiceProxy extends KrollProxy
  				}
  				 				
 				HashMap<String, Object> map = new HashMap<String, Object>();
-		        map.put("isMember", isMember ? 1 : 0);
+		        map.put("ismember", isMember ? 1 : 0);
 		        fireEvent("retrievedmembership", new KrollDict(map));
  				
  				super.run();

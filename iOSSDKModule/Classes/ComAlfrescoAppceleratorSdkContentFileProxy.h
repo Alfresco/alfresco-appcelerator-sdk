@@ -27,7 +27,6 @@
 //
 
 #import "TiProxy.h"
-#import "AlfrescoContentFile.h"
 
 /**
  #Javascript object:#

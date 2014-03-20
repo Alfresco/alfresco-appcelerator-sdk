@@ -17,7 +17,7 @@ public class TaskProxy extends KrollProxy
 		
 		String taskGetters[] =   {"assigneeIdentifier", "taskDescription", "dueAt", "endedAt", "identifier", "key", "name",
 								  "priority", "processDefinitionIdentifier", "processIdentifier", "startedAt"};  
-		String taskPropNames[] = {null, "description", "null", null, null, null, null, null, null, null, null}; //For where they differ from iOS property names.
+		String taskPropNames[] = {null, "description", null, null, null, null, null, null, null, null, null}; //For where they differ from iOS property names.
 		    	
 		for (int i = 0;  i < taskGetters.length;  i++)
 		{

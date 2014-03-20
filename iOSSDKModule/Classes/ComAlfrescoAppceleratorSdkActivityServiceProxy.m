@@ -81,7 +81,7 @@
             }
         }
         
-        [SDKUtil createEnumerationEndEvent:self];
+        [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveActivityStream" eventObject:nil];
     }];
 }
 
@@ -110,7 +110,7 @@
             [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
         }
         
-        [SDKUtil createEnumerationEndEvent:self];
+        [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveActivityStreamWithListingContext" eventObject:nil];
     }];
 }
 
@@ -135,7 +135,7 @@
             }
         }
         
-        [SDKUtil createEnumerationEndEvent:self];
+        [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveActivityStreamForPerson" eventObject:person];
     }];
 }
 
@@ -180,7 +180,7 @@
             [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
         }
         
-        [SDKUtil createEnumerationEndEvent:self];
+        [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveForPerson" eventObject:[arg objectForKey:@"person"]];
     }];
 }
 
@@ -207,7 +207,7 @@
             }
         }
         
-        [SDKUtil createEnumerationEndEvent:self];
+        [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveActivityStreamForSite" eventObject:siteProxy];
     }];
 }
 
@@ -222,6 +222,7 @@
     AlfrescoListingContext* listingContext = listingContextProxy.listingContext;
     NSDictionary *internalParams = [NSDictionary dictionaryWithObjectsAndKeys:listingContext, @"listingContext",
                                                                               site, @"site",
+                                                                              siteProxy, @"siteProxy",
                                                                               nil];
     [self internalRetrieveForSite:internalParams];
 }
@@ -254,7 +255,7 @@
             [SDKUtil createEventWithPagingResult:pagingResult proxyObject:self];
         }
         
-        [SDKUtil createEnumerationEndEvent:self];
+        [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveForSite" eventObject:[arg objectForKey:@"siteProxy"]];
     }];
 }
 

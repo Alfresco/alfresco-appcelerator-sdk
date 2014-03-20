@@ -28,7 +28,6 @@
 
 
 #import "TiProxy.h"
-#import "AlfrescoActivityEntry.h"
 
 /**
 #Javascript object:#

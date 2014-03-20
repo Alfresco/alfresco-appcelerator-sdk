@@ -282,7 +282,7 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 			}
 			else
 			{
-				ops = { cancel: 5,
+				ops = { cancel: 6,
 						options: ['View document', 'Delete document', 'Add comment', 'Add tags', 'Like/Unlike document', 'Favourite/Unfavourite', 'Cancel'],
 						selectedIndex: 0,
 						destructive: 0,

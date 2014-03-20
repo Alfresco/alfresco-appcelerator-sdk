@@ -29,7 +29,6 @@
 #import "ComAlfrescoAppceleratorSdkCloudSessionProxy.h"
 #import "ComAlfrescoAppceleratorSdkOAuthDataProxy.h"
 
-#import "AlfrescoCloudSession.h"
 #import "TiUtils.h"
 #include "SDKUtil.h"
 
@@ -135,7 +134,7 @@
                  NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:currentNet.identifier, @"networkid", nil];
                  [self fireEvent:@"retrievednetwork" withObject:event];
              }
-             [SDKUtil createEnumerationEndEvent:self];
+             [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveNetworks" eventObject:nil];
          }
      }];
 }

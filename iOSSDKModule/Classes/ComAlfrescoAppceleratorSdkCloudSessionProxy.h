@@ -26,10 +26,9 @@
 //
 //
 
-#import "TiProxy.h"
 #import "ComAlfrescoAppceleratorSdkRequestProxy.h"
 #import "ComAlfrescoAppceleratorSdkSessionProxy.h"
-#import "AlfrescoOAuthData.h"
+
 
 /**
  

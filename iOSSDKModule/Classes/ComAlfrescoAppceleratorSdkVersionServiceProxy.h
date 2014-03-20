@@ -26,8 +26,6 @@
 //
 //
 
-#import "TiProxy.h"
-#import "AlfrescoVersionService.h"
 
 /**
  #Javascript object:#
