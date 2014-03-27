@@ -224,31 +224,6 @@ public class WorkflowServiceProxy extends KrollProxy
 	
 	
 	/**
-	 Retrieves an array of processes that are in a given state.
-	 Valid states can be found in AlfrescoConstants.h.
-	 @param state State of the processes to retrieve
-	 */
-	@Kroll.method
-	void retrieveProcessesInState(Object[] arg)
-	{
-		SDKUtil.createErrorEventWithCode(1, "Not implemented in Android Alfresco SDK v1.3", WorkflowServiceProxy.this);
-	}
-	
-
-	/**
-	 Retrieves a paged result of the of processes that are in a given state in accordance to the listing context provided.
-	 Valid states can be found in AlfrescoConstants.h.
-	 @param state State of the process to retrieve
-	 @param listingContext The listing context with a paging definition that's used to retrieve the processes
-	 */
-	@Kroll.method
-	void retrieveProcessesInStateWithListingContext(Object[] args)
-	{
-		SDKUtil.createErrorEventWithCode(1, "Not implemented in Android Alfresco SDK v1.3", WorkflowServiceProxy.this);
-	}
-
-	
-	/**
 	 Retrieves a process for a given process identifier.
 	 @param processID The process identifier of the process to retrieve
 	 @param completionBlock The block that's called with the operation completes
@@ -324,18 +299,6 @@ public class WorkflowServiceProxy extends KrollProxy
     	        super.run();
     		}
     	}.start();
-	}
-
-	
-	/**
-	 Retrieves an array of all tasks that the user is able to see which are in a specific state. Tasks are returned if created by the user, or if the user is involved in the task.
-	 @param process The process for which task(s) should be retrieved
-	 @param state State of that task(s) to retrieve
-	 */
-	@Kroll.method
-	void retrieveTasksForProcess(Object[] args)
-	{
-		SDKUtil.createErrorEventWithCode(1, "Not implemented in Android Alfresco SDK v1.3", WorkflowServiceProxy.this);
 	}
 
 	
@@ -943,7 +906,7 @@ public class WorkflowServiceProxy extends KrollProxy
     			
     			HashMap<String, Object> map = new HashMap<String, Object>();
 		        map.put("task", taskProxy.task);
-		        fireEvent("removedattachments", new KrollDict(map));
+		        fireEvent("removedattachment", new KrollDict(map));
 	   	        
     	        super.run();
     		}

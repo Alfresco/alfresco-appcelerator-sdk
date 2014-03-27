@@ -42,8 +42,8 @@
     {
         self.task = task;
         
-        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"assigneeIdentifier", @"taskDescription", @"dueAt", @"endedAt",
-                                                                        @"identifier", @"key", @"name", @"priority", @"processDefinitionIdentifier", @"processIdentifier", @"startedAt", nil];
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"assigneeIdentifier", @"description", @"dueAt", @"endedAt",
+                                                                        @"identifier", @"name", @"priority", @"processDefinitionIdentifier", @"processIdentifier", @"startedAt", nil];
         
         NSMutableDictionary* values = [[task dictionaryWithValuesForKeys:keys] mutableCopy];
         
