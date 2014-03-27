@@ -5,7 +5,7 @@ import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 
 @Kroll.proxy(creatableInModule = AndroidsdkmoduleModule.class, 
-propertyAccessors = {"identifier", "processDefinitionIdentifier", "processDefinitionKey", "title", "startedAt",
+propertyAccessors = {"identifier", "processDefinitionIdentifier", "processDefinitionKey", "startedAt",
 					 "endedAt", "dueAt", "priority", "processDescription", "initiatorUsername"})
 public class ProcessProxy extends KrollProxy 
 {
@@ -15,9 +15,9 @@ public class ProcessProxy extends KrollProxy
 	{
 		this.process = process;
 		
-		String processGetters[] = {"identifier", "processDefinitionIdentifier", "processDefinitionKey", "title", "startedAt",
+		String processGetters[] = {"identifier", "processDefinitionIdentifier", "processDefinitionKey", "startedAt",
 				 				   "endedAt", "dueAt", "priority", "processDescription", "initiatorUsername"};  
-		String processPropNames[] = {null, "definitionIdentifier", "null", null, null, null, null, null, "description", "initiatorIdentifer"}; //For where they differ from iOS property names.
+		String processPropNames[] = {null, "definitionIdentifier", null, null, null, null, null, "description", "initiatorIdentifer"}; //For where they differ from iOS property names.
 		
 		for (int i = 0;  i < processGetters.length;  i++)
 		{

@@ -42,7 +42,7 @@
     {
         self.processDefinition = processDefinition;
         
-        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"name", @"processDescription", @"version", nil];
+        NSMutableArray* keys = [[NSMutableArray alloc] initWithObjects:@"identifier", @"name", @"version", nil];
         
         NSMutableDictionary* values = [[processDefinition dictionaryWithValuesForKeys:keys] mutableCopy];
         

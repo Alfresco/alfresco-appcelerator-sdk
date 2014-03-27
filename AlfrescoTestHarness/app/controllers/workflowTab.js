@@ -103,6 +103,9 @@ Ti.App.addEventListener('workflowpopulate',function()
 				
 				$.workflowList.addEventListener('itemclick', function(e)
 				{
+					Alloy.Globals.nodeJustProperties = true;			
+					Alloy.Globals.currentNode = e.section.getItemAt(e.itemIndex).data;
+						
 					if (e.section == $.processes || e.section == $.processDefinitions)
 					{
 						alert("Go to the Properties tab to see this objects full properties.");
@@ -110,9 +113,6 @@ Ti.App.addEventListener('workflowpopulate',function()
 					else
 					{
 			  			var task = e.section.getItemAt(e.itemIndex).data;
-						
-						Alloy.Globals.nodeJustProperties = true;			
-						Alloy.Globals.currentNode = task;
 						
 						var ops =	{	cancel: 1,
 								  		options: ['View attachments', 'Cancel'],
