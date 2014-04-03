@@ -83,11 +83,11 @@
     ENSURE_SINGLE_ARG(arg,ComAlfrescoAppceleratorSdkPersonProxy)
     
     ComAlfrescoAppceleratorSdkPersonProxy* personProxy = arg;
-    AlfrescoPerson* person = [person performSelector:NSSelectorFromString(@"person")];
-    
+    AlfrescoPerson* person = [personProxy performSelector:NSSelectorFromString(@"person")];
+
     [service retrieveAvatarForPerson:person
      completionBlock:^(AlfrescoContentFile* contentFile, NSError* error)
-     {
+     {         
          if (error != NULL)
          {
              [SDKUtil createErrorEvent:error proxyObject:self];
@@ -101,8 +101,6 @@
              
              [self fireEvent:@"retrievedavatar" withObject:event];
          }
-         
-         [SDKUtil createEnumerationEndEvent:self eventSource:@"retrieveAvatarForPerson" eventObject:personProxy];
     }];
 }
     

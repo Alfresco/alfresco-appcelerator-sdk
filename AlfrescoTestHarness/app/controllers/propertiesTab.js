@@ -137,7 +137,7 @@ function init()
 	if (documentFolderService == null)
 	{
 		documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
-		documentFolderService.addEventListener('error', function(e) { alert("documentFolderService:\r\n" + e.errorstring); });
+		documentFolderService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert("documentFolderService:\r\n" + e.errorstring); });
 		documentFolderService.addEventListener('retrievedpermissions', function(e)
 		{
 			Alloy.Globals.recurseProperties (e.permissions, "", function(name,value)
@@ -149,7 +149,7 @@ function init()
 		});  
 		
 		commentService = Alloy.Globals.SDKModule.createCommentService();
-		commentService.addEventListener('error', function(e) { alert("commentService:\r\n" + e.errorstring); });
+		commentService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert("commentService:\r\n" + e.errorstring); });
 		commentService.addEventListener('endenumeration', function(e)
 		{
 			$.comments.appendItems(commentsDataSet);
@@ -160,7 +160,7 @@ function init()
 		});	
 			
 		taggingService = Alloy.Globals.SDKModule.createTaggingService();
-		taggingService.addEventListener('error', function(e) { alert("taggingService:\r\n" + e.errorstring); });
+		taggingService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert("taggingService:\r\n" + e.errorstring); });
 		taggingService.addEventListener('endenumeration', function(e)
 		{
 			$.tags.appendItems(tagsDataSet);
@@ -171,7 +171,7 @@ function init()
 		});
 		
 		personService = Alloy.Globals.SDKModule.createPersonService();
-		personService.addEventListener('error', function(e) { alert("personService:\r\n" + e.errorstring); });		
+		personService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert("personService:\r\n" + e.errorstring); });		
 		personService.addEventListener('endenumeration', function(e)
 		{
 		});
@@ -208,13 +208,13 @@ function init()
 				//Ti.App.fireEvent('propspopulate');
 			}
 		});
-		versionService.addEventListener('error', function(e) { alert("versionService:\r\n" + e.errorstring); });
+		versionService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert("versionService:\r\n" + e.errorstring); });
 		versionService.addEventListener('endenumeration', function(e)
 		{
 		});	
 
 		ratingService = Alloy.Globals.SDKModule.createRatingService();		
-		ratingService.addEventListener('error', function(e) { alert("ratingService:\r\n" + e.errorstring); });
+		ratingService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert("ratingService:\r\n" + e.errorstring); });
 		ratingService.addEventListener('retrievedisliked',function(e) 
 		{
 			ratingsDataSet = [];

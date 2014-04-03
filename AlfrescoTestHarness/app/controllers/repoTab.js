@@ -54,7 +54,7 @@ Ti.App.addEventListener('repopopulate', function()
 			
 			documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 			
-			documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
+			documentFolderService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert(e.errorstring); });
 			
 			
 			//Set up the list's on-click functionality. 

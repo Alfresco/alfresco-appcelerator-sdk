@@ -56,12 +56,10 @@ Ti.App.addEventListener('personsearchinit',function()
 		 		{
 		 			persons[person.identifier] = $.mainSection.getItems().length-1;
 		 			
-		 			//alert(JSON.stringify(persons));
-		 			
 		 			searchService.retrieveAvatarForPerson(person);
 		 		}
 			});
-				
+					
 			searchService.addEventListener('retrievedavatar', function(e)
 			{
 				var id = e.personid;

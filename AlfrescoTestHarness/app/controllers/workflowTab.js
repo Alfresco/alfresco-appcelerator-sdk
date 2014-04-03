@@ -47,11 +47,11 @@ Ti.App.addEventListener('workflowpopulate',function()
 			if (workflowService == null)
 			{
 				workflowService = Alloy.Globals.SDKModule.createWorkflowService();
-				workflowService.addEventListener('error', function(e) { alert(e.errorstring); });
+				workflowService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert(e.errorstring); });
 				workflowService.initialiseWithSession(Alloy.Globals.repositorySession);
 				
 				documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
-				documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
+				documentFolderService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert(e.errorstring); });
 				documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 				
 				Alloy.Globals.modelListeners (workflowService, $.repo);
