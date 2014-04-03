@@ -45,7 +45,7 @@ Ti.App.addEventListener('searchinit',function()
 			documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 		
 			searchService = Alloy.Globals.SDKModule.createSearchService();
-			searchService.addEventListener('error', function(e) { alert(e.errorstring); });
+			searchService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert(e.errorstring); });
 			
 			searchService.initialiseWithSession(Alloy.Globals.repositorySession);
 			

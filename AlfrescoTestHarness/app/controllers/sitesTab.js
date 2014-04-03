@@ -45,7 +45,14 @@ Ti.App.addEventListener('sitespopulate',function()
 			if (siteService == null)
 			{
 				siteService = Alloy.Globals.SDKModule.createSiteService();
-				siteService.addEventListener('error', function(e) { alert(e.errorstring); });
+				siteService.addEventListener('error', function(e)
+				{
+					if (--enums == 0)
+						Alloy.Globals.showSpinner(false);
+						
+					 alert("SiteService: " + e.errorstring); 
+				});
+					 
 				siteService.initialiseWithSession(Alloy.Globals.repositorySession);
 				
 				Alloy.Globals.sitesModelListener(siteService, $.mySites, 'mysitesnode');
@@ -53,7 +60,7 @@ Ti.App.addEventListener('sitespopulate',function()
 				Alloy.Globals.sitesModelListener(siteService, $.favSites, 'favsitesnode');
 				
 				documentFolderService = Alloy.Globals.SDKModule.createDocumentFolderService();
-				documentFolderService.addEventListener('error', function(e) { alert(e.errorstring); });
+				documentFolderService.addEventListener('error', function(e) { Alloy.Globals.showSpinner(false); alert("DocumentFolderService: " + e.errorstring); });
 				documentFolderService.initialiseWithSession(Alloy.Globals.repositorySession);
 				Alloy.Globals.modelListeners(documentFolderService, $.repo);
 				

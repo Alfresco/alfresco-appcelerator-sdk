@@ -36,7 +36,7 @@ Ti.App.addEventListener('activitiespopulate',function()
 			if (activityService == null)
 			{
 				activityService = Alloy.Globals.SDKModule.createActivityService();
-				activityService.addEventListener('error', function(e) { alert(e.errorstring); });
+				activityService.addEventListener('error', function(e) {Alloy.Globals.showSpinner(false); alert(e.errorstring); });
 			
 				activityService.initialiseWithSession(Alloy.Globals.repositorySession);
 				
