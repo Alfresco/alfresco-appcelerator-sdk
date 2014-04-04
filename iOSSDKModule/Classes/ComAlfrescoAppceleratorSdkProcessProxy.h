@@ -36,12 +36,11 @@
 * string identifier
 * string processDefinitionIdentifier
 * string processDefinitionKey
-* string title
 * date startedAt
 * date endedAt
 * date dueAt
 * integer priority
-* string processDescription
+* string description
 * string initiatorUsername
  
 */

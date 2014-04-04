@@ -35,7 +35,6 @@
 #Javascript properties:#
 * string identifier
 * string name
-* string processDescription
 string version
  
 */

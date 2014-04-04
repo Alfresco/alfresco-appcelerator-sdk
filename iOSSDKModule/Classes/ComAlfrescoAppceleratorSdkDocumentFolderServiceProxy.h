@@ -47,6 +47,10 @@
 * **'newdocumentnode' - ** Sent after creation of new document node.  ***Properties:*** Document *document*
 * **'newfoldernode' - ** Sent after creation of new folder node.  ***Properties:*** *Folder folder*
 * **'deletednode' - ** Sent after node deletion.  ***Properties:*** *none*
+* **'retrievedisfavorite' - ** Sent after favorite status retrieved.  ***Properties:*** *Node node, int favorite (1=yes, 0=no)*
+* **'addedfavorite' - ** Sent after favorite added.  ***Properties:*** *Node node*
+* **'removedfavorite' - ** Sent after favorite removed.  ***Properties:*** *Node node*
+
  
 #Javascript example:#
  
