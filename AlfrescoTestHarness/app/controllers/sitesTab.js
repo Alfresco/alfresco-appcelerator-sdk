@@ -169,7 +169,7 @@ Ti.App.addEventListener('sitespopulate',function()
 					}
 				});
 				
-				siteService.addEventListener('retrievedDocumentFolder', function(e)
+				siteService.addEventListener('retrieveddocumentfolder', function(e)
 			    {
 			    	$.repo.deleteItemsAt(0,$.repo.getItems().length);
 			    	

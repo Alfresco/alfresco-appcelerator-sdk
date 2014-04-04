@@ -40,6 +40,7 @@
 * **'error' - ** Sent upon error condition from any API.  ***Properties:*** *string errorstring, int errorcode*
 * **'success' - ** Sent upon successful connection.  ***Properties:*** *string serverName*
 * **'retrievednetwork' - ** Sent for each network ID retrieved.  ***Properties:*** *string networkid*
+* **'retrievedsession' - ** Sent when session retrieved from initialise call.  ***Properties:*** *none*
  
 #Javascript basic API example:#
  

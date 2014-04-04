@@ -42,10 +42,14 @@
 * **'allsitesnode' - ** Sent for each site node.  ***Properties:*** *Site site*
 * **'mysitesnode' - ** Sent for each of current users site nodes.  ***Properties:*** *Site site*
 * **'favsitesnode' - ** Sent for each favourite site node.  ***Properties:*** *Site site*
+* **'retrieveddocumentfolder' - ** Sent upon retrieval of site's repository folder.  ***Properties:*** *Folder folder*
 * **'pagingresult' - ** Sent when using ListingContext.  ***Properties:*** *int hasmoreitems, int totalitems*
 * **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *string eventsource, string eventobject*
 * **'siteupdated' - ** Sent when site has been updated with changes.  ***Properties:*** *Site site*
 * **'retrievedpendingsite' - ** Sent for each pending site.  ***Properties:*** *Site site*
+* **'retrievedmembership' - ** Sent upon membership retrieval.  ***Properties:*** *int ismember*
+* **'personnode' - ** Sent for each member.  ***Properties:*** *Person person*
+ 
 */
 
 @interface ComAlfrescoAppceleratorSdkSiteServiceProxy : TiProxy

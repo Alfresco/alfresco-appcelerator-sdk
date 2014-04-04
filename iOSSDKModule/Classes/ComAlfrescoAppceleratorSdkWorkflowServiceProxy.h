@@ -36,8 +36,19 @@
 * **'documentnode' - ** Sent for each document node.  ***Properties:*** *Document document*
 * **'foldernode' - ** Sent for each folder node.  ***Properties:*** *Folder folder*
 * **'endenumeration' - ** Sent when no more nodes available.  ***Properties:*** *string eventsource, string eventobject*
-
- 
+* **'processdefinitionnode' - ** Sent for each process definition.  ***Properties:*** *ProcessDefinition processdefinition*
+* **'processnode' - ** Sent for each process.  ***Properties:*** *Process process*
+* **'tasknode' - ** Sent for each task.  ***Properties:*** *Task task*
+* **'retrievedimage' - ** Sent upon retrieval of process image.  ***Properties:*** *ContentFile contentfile, Process process*
+* **'deletedProcess' - ** Sent upon deletion of process.  ***Properties:*** *Process process*
+* **'completedtask' - ** Sent upon completion of task.  ***Properties:*** *Task task*
+* **'claimedtask' - ** Sent upon claiming of task.  ***Properties:*** *Task task*
+* **'unclaimedtask' - ** Sent upon unclaiming of task.  ***Properties:*** *Task task*
+* **'assignedtask' - ** Sent upon assignment of task.  ***Properties:*** *Task task*
+* **'resolvedtask' - ** Sent upon resolution of task.  ***Properties:*** *Task task*
+* **'addedattachment' - ** Sent upon attachment added to task.  ***Properties:*** *Task task*
+* **'addedattachments' - ** Sent upon a number of attachments added to task.  ***Properties:*** *Task task* 
+* **'removedattachment' - ** Sent upon removal of attachment.  ***Properties:*** *Task task*
 */
 
 @interface ComAlfrescoAppceleratorSdkWorkflowServiceProxy : TiProxy

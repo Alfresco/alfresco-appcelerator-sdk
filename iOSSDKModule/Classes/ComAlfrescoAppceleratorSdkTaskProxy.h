@@ -31,14 +31,13 @@
 /**
 #Javascript object:#
 <code>Task</code>
- 
+  
 #Javascript properties:#
 * string assigneeIdentifier
-* string taskDescription
+* string description
 * date dueAt
 * date endedAt
 * string identifier
-* string key
 * string name
 * integer priority
 * string processDefinitionIdentifier

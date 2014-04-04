@@ -241,7 +241,7 @@ public class SiteServiceProxy extends KrollProxy
                     return;
     			}
     			
-    			SDKUtil.createEventWithNode (folder, SiteServiceProxy.this, "retrievedDocumentFolder");
+    			SDKUtil.createEventWithNode (folder, SiteServiceProxy.this, "retrieveddocumentfolder");
     			
     			super.run();
     		}

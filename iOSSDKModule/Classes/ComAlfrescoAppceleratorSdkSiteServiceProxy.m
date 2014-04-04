@@ -173,7 +173,7 @@
              ComAlfrescoAppceleratorSdkFolderProxy* folderProxy = [[ComAlfrescoAppceleratorSdkFolderProxy alloc]initWithNode:folder];
              NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:folderProxy, @"folder", nil];
 
-             [self fireEvent:@"retrievedDocumentFolder" withObject:event];
+             [self fireEvent:@"retrieveddocumentfolder" withObject:event];
          }
      }];
 }
