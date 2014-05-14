@@ -8,7 +8,7 @@
 	top:0,left:0,width:Ti.UI.FILL,height:Ti.UI.FILL,layout:'vertical'
 }
 "#searchEdit":{
-	value: "Enter your search string here",
+	value: "Enter full or partial name",
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, 
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, 
 	color: '#336699', 

@@ -31,6 +31,7 @@ import org.appcelerator.kroll.annotations.Kroll;
 public class RatingServiceProxy extends KrollProxy
 {
 	private RatingService service;
+    private boolean supportsLiking = false;
     
     public RatingServiceProxy() 
     {
@@ -42,6 +43,8 @@ public class RatingServiceProxy extends KrollProxy
     void initialiseWithSession(Object[] args)
     {
     	SessionProxy seshProxy = (SessionProxy) args[0];
+    	supportsLiking = seshProxy.session.getRepositoryInfo().getCapabilities().doesSupportLikingNodes();
+    	
         service = seshProxy.session.getServiceRegistry().getRatingService();
     }
     
@@ -62,16 +65,19 @@ public class RatingServiceProxy extends KrollProxy
     		{
     			int count = 0;
     			
-				try
-				{
-					count = service.getLikeCount (nodeProxy.node);
-				}
-				catch(Exception e)
-				{
-					SDKUtil.createErrorEvent (e, "RatingService.getLikeCount()", RatingServiceProxy.this);
-                    return;
-				}
-				
+    			if (supportsLiking)
+    			{
+    				try
+					{
+						count = service.getLikeCount (nodeProxy.node);
+					}
+					catch(Exception e)
+					{
+						SDKUtil.createErrorEvent (e, "RatingService.getLikeCount()", RatingServiceProxy.this);
+	                    return;
+					}
+    			}
+    			
 				HashMap<String, Object> map = new HashMap<String, Object>();
 		        map.put ("count", new Integer(count));
 		        fireEvent ("retrievedlikecount", new KrollDict(map));
@@ -98,15 +104,18 @@ public class RatingServiceProxy extends KrollProxy
     		{
     			boolean isLiked = false;
     			
-				try
-				{
-					isLiked = service.isLiked (nodeProxy.node);
-				}
-				catch(Exception e)
-				{
-					SDKUtil.createErrorEvent (e, "RatingService.isLiked()", RatingServiceProxy.this);
-                    return;
-				}
+    			if (supportsLiking)
+    			{
+					try
+					{
+						isLiked = service.isLiked (nodeProxy.node);
+					}
+					catch(Exception e)
+					{
+						SDKUtil.createErrorEvent (e, "RatingService.isLiked()", RatingServiceProxy.this);
+	                    return;
+					}
+    			}
 				
 				HashMap<String, Object> map = new HashMap<String, Object>();
 		        map.put ("isliked", new Integer(isLiked ? 1 : 0));
@@ -133,15 +142,18 @@ public class RatingServiceProxy extends KrollProxy
     		@Override
     		public void run() 
     		{
-				try
-				{
-					service.like (nodeProxy.node);
-				}
-				catch(Exception e)
-				{
-					SDKUtil.createErrorEvent (e, "RatingService.like()", RatingServiceProxy.this);
-                    return;
-				}
+    			if (supportsLiking)
+    			{	
+					try
+					{
+						service.like (nodeProxy.node);
+					}
+					catch(Exception e)
+					{
+						SDKUtil.createErrorEvent (e, "RatingService.like()", RatingServiceProxy.this);
+	                    return;
+					}
+    			}
 				
 				HashMap<String, Object> map = new HashMap<String, Object>();
 		        map.put("node", nodeProxy);
@@ -167,15 +179,18 @@ public class RatingServiceProxy extends KrollProxy
     		@Override
     		public void run() 
     		{
-				try
-				{
-					service.unlike (nodeProxy.node);
-				}
-				catch(Exception e)
-				{
-					SDKUtil.createErrorEvent (e, "RatingService.unlike()", RatingServiceProxy.this);
-                    return;
-				}
+    			if (supportsLiking)
+    			{
+					try
+					{
+						service.unlike (nodeProxy.node);
+					}
+					catch(Exception e)
+					{
+						SDKUtil.createErrorEvent (e, "RatingService.unlike()", RatingServiceProxy.this);
+	                    return;
+					}
+    			}
 				
 				HashMap<String, Object> map = new HashMap<String, Object>();
 				map.put("node", nodeProxy);

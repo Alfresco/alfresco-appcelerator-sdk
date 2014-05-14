@@ -123,7 +123,7 @@ function searchButtonClick()
 		
 		listingContext.initialiseWithMaxItemsAndSkipCount (10, skipCount);
 		
-		var searchTerm = "SELECT * FROM cmis:document WHERE cmis:name LIKE '%" + $.searchEdit.value + "%'";
+		var searchTerm = "SELECT * FROM cmis:document WHERE cmis:name LIKE '" + $.searchEdit.value + "%'";
 	
 		parentFolders = new Array();
 		mainSection.deleteItemsAt(0, mainSection.getItems().length);

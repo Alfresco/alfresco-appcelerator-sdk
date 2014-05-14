@@ -30,6 +30,8 @@
 
 #import "ComAlfrescoAppceleratorSdkFolderProxy.h"
 #import "ComAlfrescoAppceleratorSdkDocumentProxy.h"
+#import "AlfrescoNode.h"
+#import "AlfrescoPagingResult.h"
 
 @implementation SDKUtil
 

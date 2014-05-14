@@ -35,6 +35,7 @@ import org.appcelerator.kroll.annotations.Kroll;
 public class PersonServiceProxy extends KrollProxy
 {
 	PersonService service;
+	private boolean supportsAvatars = false;
 	
 	public PersonServiceProxy()
 	{
@@ -50,7 +51,7 @@ public class PersonServiceProxy extends KrollProxy
 	void initialiseWithSession (Object[] arg)
 	{
 		SessionProxy seshProxy = (SessionProxy) arg[0];
-    	
+		supportsAvatars = seshProxy.session.getRepositoryInfo().getCapabilities().doesSupportLikingNodes();
         service = seshProxy.session.getServiceRegistry().getPersonService();
 	}
 
@@ -103,37 +104,41 @@ public class PersonServiceProxy extends KrollProxy
 	{
 		final PersonProxy personProxy = (PersonProxy)arg[0];
 		
-		new Thread()
-    	{
-    		@Override
-    		public void run() 
-    		{
-    			ContentFile avatar;
-    			
-				try
-				{
-					avatar = service.getAvatar (personProxy.person);
-				}
-				catch(Exception e)
-				{
-					SDKUtil.createErrorEvent (e, "PersonService.getAvatar()", PersonServiceProxy.this);
-                    return;
-				}
-				
-				if (avatar != null)
-				{
-					ContentFileProxy cfProxy = new ContentFileProxy(avatar);
-					HashMap<String, Object> map = new HashMap<String, Object>();
-			        map.put("contentfile", cfProxy);
-			        map.put("personid", personProxy.person.getIdentifier());
-			        fireEvent("retrievedavatar", new KrollDict(map));
-	    	        
-	    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this, "retrieveAvatarForPerson", personProxy);
-				}
-				
-    	        super.run();
-    		}
-    	}.start();
+		if (supportsAvatars)
+		{
+			new Thread()
+	    	{
+	    		@Override
+	    		public void run() 
+	    		{
+	    			ContentFile avatar;
+	    			
+					try
+					{
+						avatar = service.getAvatar (personProxy.person);
+					}
+					catch(Exception e)
+					{
+						SDKUtil.createErrorEvent (e, "PersonService.getAvatar()", PersonServiceProxy.this);
+						
+	                    return;
+					}
+					
+					if (avatar != null)
+					{
+						ContentFileProxy cfProxy = new ContentFileProxy(avatar);
+						HashMap<String, Object> map = new HashMap<String, Object>();
+				        map.put("contentfile", cfProxy);
+				        map.put("personid", personProxy.person.getIdentifier());
+				        fireEvent("retrievedavatar", new KrollDict(map));
+		    	        
+		    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this, "retrieveAvatarForPerson", personProxy);
+					}
+					
+	    	        super.run();
+	    		}
+	    	}.start();
+		}
 	}
 	
 	
