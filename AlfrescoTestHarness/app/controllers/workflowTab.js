@@ -95,8 +95,10 @@ Ti.App.addEventListener('workflowpopulate',function()
 				
 				$.folderList.addEventListener('itemclick', function(e)
 				{
+					var item = e.section.getItemAt(e.itemIndex);
+					
+					Alloy.Globals.currentNode = node = item.properties.docobject;
 					Alloy.Globals.nodeJustProperties = false;			
-					Alloy.Globals.currentNode = e.docobject;
 						
 					alert("Go to the Properties tab to see this objects full properties.");
 				});

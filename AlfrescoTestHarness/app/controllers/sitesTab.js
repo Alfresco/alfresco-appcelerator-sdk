@@ -93,7 +93,8 @@ Ti.App.addEventListener('sitespopulate',function()
 					$.favSites.deleteItemsAt(0,$.favSites.getItems().length);
 					$.repo.deleteItemsAt(0,$.repo.getItems().length);		
 						
-					Alloy.Globals.showSpinner(true);		
+					Alloy.Globals.showSpinner(true);
+					enums = 3;		
 					siteService.retrieveSites();
 					siteService.retrieveAllSites();
 					siteService.retrieveFavoriteSites();

@@ -517,10 +517,10 @@
 {
     ENSURE_UI_THREAD_1_ARG(args)
     ComAlfrescoAppceleratorSdkTaskProxy* taskProxy = [args objectAtIndex:0];
-    NSDictionary* properties = [args objectAtIndex:1];
+    NSDictionary* vars = [args objectAtIndex:1];
     
     [service completeTask:[taskProxy performSelector:NSSelectorFromString(@"task")]
-     properties:properties
+     variables:vars
      completionBlock:^(AlfrescoWorkflowTask *task, NSError *error)
      {
          errorCode = error;

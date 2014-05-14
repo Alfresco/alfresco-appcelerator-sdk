@@ -80,7 +80,7 @@ extern NSString * const kAlfrescoMetadataExtraction;
 extern NSString * const kAlfrescoThumbnailCreation;
 
 /**---------------------------------------------------------------------------------------
- * @name thumbnail constant (for OnPremise services)
+ * @name thumbnail constant
  --------------------------------------------------------------------------------------- */
 extern NSString * const kAlfrescoThumbnailRendition;
 
@@ -100,6 +100,7 @@ extern NSString * const kAlfrescoSortByDescription;
 extern NSString * const kAlfrescoFilterByWorkflowState;
 extern NSString * const kAlfrescoFilterValueWorkflowStateActive;
 extern NSString * const kAlfrescoFilterValueWorkflowStateCompleted;
+extern NSString * const kAlfrescoFilterValueWorkflowStateAny;
 
 /**---------------------------------------------------------------------------------------
  * @name capability constants
@@ -127,16 +128,62 @@ extern NSString * const kAlfrescoConnectUsingClientSSLCertificate;
 extern NSString * const kAlfrescoClientCertificateCredentials;
 
 /**---------------------------------------------------------------------------------------
+ * @name Model Constants
+ --------------------------------------------------------------------------------------- */
+extern NSString * const kAlfrescoModelTypeContent;
+extern NSString * const kAlfrescoModelTypeFolder;
+
+extern NSString * const kAlfrescoModelAspectTitled;
+extern NSString * const kAlfrescoModelAspectAuthor;
+extern NSString * const kAlfrescoModelAspectGeographic;
+extern NSString * const kAlfrescoModelAspectExif;
+extern NSString * const kAlfrescoModelAspectAudio;
+
+extern NSString * const kAlfrescoModelPropertyName;
+extern NSString * const kAlfrescoModelPropertyTitle;
+extern NSString * const kAlfrescoModelPropertyDescription;
+extern NSString * const kAlfrescoModelPropertyAuthor;
+extern NSString * const kAlfrescoModelPropertyLatitude;
+extern NSString * const kAlfrescoModelPropertyLongitude;
+extern NSString * const kAlfrescoModelPropertyExifDateTimeOriginal;
+extern NSString * const kAlfrescoModelPropertyExifPixelXDimension;
+extern NSString * const kAlfrescoModelPropertyExifPixelYDimension;
+extern NSString * const kAlfrescoModelPropertyExifExposureTime;
+extern NSString * const kAlfrescoModelPropertyExifFNumber;
+extern NSString * const kAlfrescoModelPropertyExifFlash;
+extern NSString * const kAlfrescoModelPropertyExifFocalLength;
+extern NSString * const kAlfrescoModelPropertyExifISOSpeedRating;
+extern NSString * const kAlfrescoModelPropertyExifManufacturer;
+extern NSString * const kAlfrescoModelPropertyExifModel;
+extern NSString * const kAlfrescoModelPropertyExifSoftware;
+extern NSString * const kAlfrescoModelPropertyExifOrientation;
+extern NSString * const kAlfrescoModelPropertyExifXResolution;
+extern NSString * const kAlfrescoModelPropertyExifYResolution;
+extern NSString * const kAlfrescoModelPropertyExifResolutionUnit;
+extern NSString * const kAlfrescoModelPropertyAudioAlbum;
+extern NSString * const kAlfrescoModelPropertyAudioArtist;
+extern NSString * const kAlfrescoModelPropertyAudioComposer;
+extern NSString * const kAlfrescoModelPropertyAudioEngineer;
+extern NSString * const kAlfrescoModelPropertyAudioGenre;
+extern NSString * const kAlfrescoModelPropertyAudioTrackNumber;
+extern NSString * const kAlfrescoModelPropertyAudioReleaseDate;
+extern NSString * const kAlfrescoModelPropertyAudioSampleRate;
+extern NSString * const kAlfrescoModelPropertyAudioSampleType;
+extern NSString * const kAlfrescoModelPropertyAudioChannelType;
+extern NSString * const kAlfrescoModelPropertyAudioCompressor;
+
+/**---------------------------------------------------------------------------------------
  * @name Workflow Constants
  --------------------------------------------------------------------------------------- */
-extern NSString * const kAlfrescoWorkflowTaskComment;
-extern NSString * const kAlfrescoWorkflowTaskReviewOutcome;
+extern NSString * const kAlfrescoWorkflowVariableProcessName;
+extern NSString * const kAlfrescoWorkflowVariableProcessPriority;
+extern NSString * const kAlfrescoWorkflowVariableProcessDueDate;
+extern NSString * const kAlfrescoWorkflowVariableProcessSendEmailNotifications;
+extern NSString * const kAlfrescoWorkflowVariableProcessApprovalRate;
+extern NSString * const kAlfrescoWorkflowVariableTaskTransition;
+extern NSString * const kAlfrescoWorkflowVariableTaskComment;
+extern NSString * const kAlfrescoWorkflowVariableTaskStatus;
+extern NSString * const kAlfrescoWorkflowVariableTaskReviewOutcome;
 
 extern NSString * const kAlfrescoWorkflowTaskTransitionApprove;
 extern NSString * const kAlfrescoWorkflowTaskTransitionReject;
-
-extern NSString * const kAlfrescoWorkflowProcessDescription;
-extern NSString * const kAlfrescoWorkflowProcessPriority;
-extern NSString * const kAlfrescoWorkflowProcessSendEmailNotification;
-extern NSString * const kAlfrescoWorkflowProcessDueDate;
-extern NSString * const kAlfrescoWorkflowProcessApprovalRate;

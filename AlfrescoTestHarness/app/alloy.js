@@ -229,11 +229,9 @@ Alloy.Globals.controllerNavigation = function(view, service, parentFolders, onFo
 	taggingService.initialiseWithSession(Alloy.Globals.repositorySession);
 	taggingService.addEventListener('error',function(e)	{ alert("Operation failed (" + e.errorcode + "): " + e.errorstring); });
 
-	var liked = 0;
 	var ratingService = Alloy.Globals.SDKModule.createRatingService();
 	ratingService.initialiseWithSession(Alloy.Globals.repositorySession);
 	ratingService.addEventListener('error',function(e) { alert("Operation failed (" + e.errorcode + "): " + e.errorstring); });
-	ratingService.addEventListener('retrievedisliked',function(e) { liked = e.isliked; });
 	
 	ratingService.addEventListener('likednode', function(e) { alert("Node Liked"); });
 	ratingService.addEventListener('unlikednode', function(e) { alert("Node Unliked"); });
