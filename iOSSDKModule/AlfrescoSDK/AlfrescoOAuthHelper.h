@@ -1,6 +1,6 @@
 /*
  ******************************************************************************
- * Copyright (C) 2005-2014 Alfresco Software Limited.
+ * Copyright (C) 2005-2013 Alfresco Software Limited.
  *
  * This file is part of the Alfresco Mobile SDK.
  *
@@ -22,8 +22,6 @@
 #import <Foundation/Foundation.h>
 #import "AlfrescoOAuthLoginViewController.h"
 #import "AlfrescoOAuthLoginDelegate.h"
-#import "AlfrescoRequest.h"
-
 /** The AlfrescoOAuthHelper handles OAuth authentication processes.
  
  Author: Gavin Cornwell (Alfresco), Tijs Rademakers (Alfresco), Peter Schmidt (Alfresco)
@@ -44,17 +42,17 @@
  @param oauthData - the AlfrescoOAuthData. This object must have the api key, secret key and redirect URI set
  @param completionBlock
  */
-- (AlfrescoRequest *)retrieveOAuthDataForAuthorizationCode:(NSString *)authorizationCode
-                                                 oauthData:(AlfrescoOAuthData *)oauthData
-                                           completionBlock:(AlfrescoOAuthCompletionBlock)completionBlock;
+- (void)retrieveOAuthDataForAuthorizationCode:(NSString *)authorizationCode
+                                    oauthData:(AlfrescoOAuthData *)oauthData
+                              completionBlock:(AlfrescoOAuthCompletionBlock)completionBlock;
 
 
 /**
  @param oauthData - the AlfrescoOAuthData, used for refreshing the access token. For that the AlfrescoOAuthData set needs to contain the api key, secret key, refresh token, and current access token 
  @param completionBlock
  */
-- (AlfrescoRequest *)refreshAccessToken:(AlfrescoOAuthData *)oauthData
-                        completionBlock:(AlfrescoOAuthCompletionBlock)completionBlock;
+- (void)refreshAccessToken:(AlfrescoOAuthData *)oauthData
+           completionBlock:(AlfrescoOAuthCompletionBlock)completionBlock;
 
 
 

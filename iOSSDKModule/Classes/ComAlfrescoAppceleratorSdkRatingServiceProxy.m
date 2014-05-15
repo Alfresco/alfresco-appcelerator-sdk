@@ -84,7 +84,7 @@
      {
          if (succeeded)
          {
-             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:arg, @"node", [[NSNumber alloc]initWithInt:(isLiked ? 1 : 0)], @"isliked", nil];
+             NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:arg, @"node", nil];
              [self fireEvent:@"retrievedisliked" withObject:event];
          }
          else
