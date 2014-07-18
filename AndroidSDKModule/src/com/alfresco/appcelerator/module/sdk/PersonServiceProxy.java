@@ -65,33 +65,36 @@ public class PersonServiceProxy extends KrollProxy
 	{
 		final String id = (String)arg[0];
 		
-		new Thread()
-    	{
-    		@Override
-    		public void run() 
-    		{
-    			Person person;
-    			
-				try
-				{
-					person = service.getPerson (id);
-				}
-				catch(Exception e)
-				{
-					SDKUtil.createErrorEvent (e, "PersonService.getPerson(id)", PersonServiceProxy.this);
-                    return;
-				}
-				
-				PersonProxy personProxy = new PersonProxy (person);
-				HashMap<String, Object> map = new HashMap<String, Object>();
-		        map.put("person", personProxy);
-		        fireEvent("personnode", new KrollDict(map));
-    	        
-    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this, "retrievePersonWithIdentifier", id);
-    	    
-    	        super.run();
-    		}
-    	}.start();
+		if (id != null && id.length() > 0)
+		{
+			new Thread()
+	    	{
+	    		@Override
+	    		public void run() 
+	    		{
+	    			Person person;
+	    			
+					try
+					{
+						person = service.getPerson (id);
+					}
+					catch(Exception e)
+					{
+						SDKUtil.createErrorEvent (e, "PersonService.getPerson(id)", PersonServiceProxy.this);
+	                    return;
+					}
+					
+					PersonProxy personProxy = new PersonProxy (person);
+					HashMap<String, Object> map = new HashMap<String, Object>();
+			        map.put("person", personProxy);
+			        fireEvent("personnode", new KrollDict(map));
+	    	        
+	    	        SDKUtil.createEnumerationEndEvent (PersonServiceProxy.this, "retrievePersonWithIdentifier", id);
+	    	    
+	    	        super.run();
+	    		}
+	    	}.start();
+		}
 	}
 
 
