@@ -75,7 +75,7 @@ Ti.App.addEventListener('repopopulate', function()
 											    },    
 											    function(document)
 											    {
-											    	documentFolderService.saveDocument (document);
+											    	documentFolderService.retrieveContentOfDocument (document);
 											    	//Will result in an event fired to preview the saved file.
 											    },
 											    true);
