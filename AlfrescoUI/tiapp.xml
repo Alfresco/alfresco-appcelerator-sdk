@@ -51,7 +51,7 @@
         <target device="ipad">true</target>
         <target device="iphone">true</target>
     </deployment-targets>
-    <sdk-version>3.2.2.GA</sdk-version>
+    <sdk-version>3.2.0.GA</sdk-version>
     <plugins/>
     <modules>
         <module platform="iphone" version="1.2">com.alfresco.appcelerator.module.sdk</module>

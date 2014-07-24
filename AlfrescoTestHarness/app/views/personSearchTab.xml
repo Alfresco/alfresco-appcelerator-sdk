@@ -2,10 +2,10 @@
 	
 	<Window id="searchWindow">
 		
-		<TextField id="searchEdit">
-		<Button id="searchButton" onClick="searchButtonClick">
+		<TextField id="searchEdit"/>
+		<Button id="searchButton" onClick="searchButtonClick"/>
 
-		<Label id="folderLabel">
+		<Label id="folderLabel"/>
 												
 		<ListView id="folderList" defaultItemTemplate="repoTemplate">
 			

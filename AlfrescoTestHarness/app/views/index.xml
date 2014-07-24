@@ -10,43 +10,43 @@
 		
 		<Tab backgroundColor="#DDDDDD" id="repoTab" title="Repo" icon="KS_nav_folder.png">
 			
-			<Require src="repoTab" id="repotab">
+			<Require src="repoTab" id="repotab"/>
 			
 		</Tab>
 		
 		<Tab backgroundColor="#DDDDDD" id="workflowTab" title="Workflow" icon="hammer.png">
 			
-			<Require src="workflowTab" id="workflowtab">
+			<Require src="workflowTab" id="workflowtab"/>
 				
 		</Tab>
 		
 		<Tab backgroundColor="#DDDDDD" id="sitesTab" title="Sites" icon="KS_nav_sites.png">
 			
-			<Require src="sitesTab" id="sitestab">
+			<Require src="sitesTab" id="sitestab"/>
 				
 		</Tab>
 		
 		<Tab backgroundColor="#DDDDDD" id="activitiesTab" title="Activities" icon="hammer.png">
 			
-			<Require src="activitiesTab" id="activitiestab">
+			<Require src="activitiesTab" id="activitiestab"/>
 				
 		</Tab>
 		
 		<Tab backgroundColor="#DDDDDD" id="searchTab" title="Search" icon="KS_nav_search.png">
 			
-			<Require src="searchTab" id="searchtab">
+			<Require src="searchTab" id="searchtab"/>
 				
 		</Tab> 
 		
 		<Tab backgroundColor="#DDDDDD" id="personSearchTab" title="People" icon="manfigure.png">
 			
-			<Require src="personSearchTab" id="personsearchtab">
+			<Require src="personSearchTab" id="personsearchtab"/>
 				
 		</Tab> 
 		
 		<Tab backgroundColor="#DDDDDD" id="propsTab" title="Properties" icon="KS_nav_ui.png">
 			
-			<Require src="propertiesTab" id="propstab">
+			<Require src="propertiesTab" id="propstab"/>
 				
 		</Tab> 
 		

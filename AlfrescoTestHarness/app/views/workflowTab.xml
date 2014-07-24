@@ -17,7 +17,7 @@
             <ListSection headerTitle="Process Definitions" id="processDefinitions"/>
 		</ListView>
 	
-		<Label id="folderLabel">
+		<Label id="folderLabel"/>
 		<ListView id="folderList" defaultItemTemplate="repoTemplate">
 			
 			 <Templates>
