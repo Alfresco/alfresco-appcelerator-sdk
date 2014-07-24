@@ -17,7 +17,7 @@
             <ListSection headerTitle="Favourite Sites" id="favSites"/>
 		</ListView>
 	
-		<Label id="folderLabel">
+		<Label id="folderLabel"/>
 		<ListView id="folderList" defaultItemTemplate="repoTemplate">
 			
 			 <Templates>

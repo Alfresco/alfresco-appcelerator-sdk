@@ -69,7 +69,7 @@
 	height: '40dp'
 },
 "#passwordEdit":{
-	value: "password",
+	value: "admin",
 	passwordMask:true,
 	font: { fontFamily:'Arial', fontSize: '18dp', fontWeight:'bold' }, 
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, 

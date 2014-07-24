@@ -6,17 +6,17 @@
 			
 			<ImageView id="logoImage" platform='ios'/>
 					
-			<Label id="serverLabel">
-			<TextField id="serverEdit">
+			<Label id="serverLabel"/>
+			<TextField id="serverEdit"/>
 			
-			<Label id="usernameLabel">
-			<TextField id="usernameEdit">
+			<Label id="usernameLabel"/>
+			<TextField id="usernameEdit"/>
 		
-			<Label id="passwordLabel">
-			<TextField id="passwordEdit">
+			<Label id="passwordLabel"/>
+			<TextField id="passwordEdit"/>
 		
-			<Button id="loginButton" onClick="loginButtonClick">
-			<Button id="cloudButton" onClick="cloudButtonClick">
+			<Button id="loginButton" onClick="loginButtonClick"/>
+			<Button id="cloudButton" onClick="cloudButtonClick"/>
 						
 	</ScrollView>
 	

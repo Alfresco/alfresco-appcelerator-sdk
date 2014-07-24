@@ -23,13 +23,17 @@
 //---------------------------------------------------------------------------------------------------------------------------------
 Ti.API.info("Platform model = " + Titanium.Platform.model);
 
-if (Titanium.Platform.model == 'sdk' ||  Titanium.Platform.model == 'Simulator')  
-	$.serverEdit.value = "http://localhost:8080/alfresco";		//Running on Simulator/Emulator. Assume local server on the PC/Mac.
+if (Titanium.Platform.model == 'sdk' ||  Titanium.Platform.model == 'Simulator')
+{
+   // Running on Simulator/Emulator. Assume local server on the PC/Mac.
+	$.serverEdit.value = "http://localhost:8080/alfresco";
+}
 else
-	$.serverEdit.value = "http://192.168.1.91:8080/alfresco";	//Running on-device. NOTE: Change to your servers IP address!	
-																//Examples:
-																//  https://ts.alfresco.com/alfresco
-																//  http://192.168.1.91:8080/alfresco
+{
+   // Running on-device, or third-party emulator (e.g. Genymotion)
+   // NOTE: Change to match your server's IP address!
+	$.serverEdit.value = "http://192.168.1.1:8080/alfresco";
+}
 //---------------------------------------------------------------------------------------------------------------------------------
 
 var clientID;
@@ -37,14 +41,13 @@ var clientID;
 
 if (Ti.Platform.osname == 'android')
 {
-	//All this just to hide the keyboard initially...
-	
+	// Hide the keyboard initially...
 	$.serverEdit.softKeyboardOnFocus = Ti.UI.Android.SOFT_KEYBOARD_HIDE_ON_FOCUS;
 	$.serverEdit.addEventListener('click',function(e)
-    {
-        $.serverEdit.setSoftKeyboardOnFocus(Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS);
-        $.serverEdit.focus();
-    });
+   {
+      $.serverEdit.setSoftKeyboardOnFocus(Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS);
+      $.serverEdit.focus();
+   });
     
     $.usernameEdit.softKeyboardOnFocus = Ti.UI.Android.SOFT_KEYBOARD_HIDE_ON_FOCUS;
     $.usernameEdit.addEventListener('click',function(e)

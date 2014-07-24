@@ -2,7 +2,7 @@
 	
 	<Window>
 		
-		<Label id="folderLabel">
+		<Label id="folderLabel"/>
 				
 		<ListView id="folderList" defaultItemTemplate="repoTemplate">
 				
